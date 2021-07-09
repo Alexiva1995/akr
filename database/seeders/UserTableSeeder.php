@@ -25,6 +25,39 @@ class UserTableSeeder extends Seeder
                 'referred_id' => 0,
                 'status' => '1'
             ]);
+            User::create([
+                'name' => 'Eulin',
+                'last_name' => 'Palma',
+                'fullname' => 'Eulin Palma',
+                'email' => 'eulinpalma@valdusoft.com',
+                'admin' => '0',
+                'password' => Hash::make('12345678'),
+                'whatsapp' => '23423423423432',
+                'referred_id' => 0,
+                'status' => '1'
+            ]);
+            User::create([
+                'name' => 'Leonardo',
+                'last_name' => 'Guilarte',
+                'fullname' => 'Leonardo Guilarte',
+                'email' => 'leomiguel@valdusoft.com',
+                'admin' => '0',
+                'password' => Hash::make('12345678'),
+                'whatsapp' => '23423423423432',
+                'referred_id' => 0,
+                'status' => '1'
+            ]);
+            User::create([
+                'name' => 'Alexis',
+                'last_name' => 'Valera',
+                'fullname' => 'Alexis Valera',
+                'email' => 'alexisvalera@valdusoft.com',
+                'admin' => '0',
+                'password' => Hash::make('12345678'),
+                'whatsapp' => '23423423423432',
+                'referred_id' => 0,
+                'status' => '1'
+            ]);
         } catch (\Throwable $th) {
             dd($th);
             //throw $th;
