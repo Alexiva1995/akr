@@ -8,6 +8,24 @@
 
 @section('content')
 
+
+
+<div class="padre">
+        <div class="card">
+            <div class="card-body p-1 text-center">
+                <div class="row">
+                    <div class="col-12 col-sm-8">
+                        <input type="number" name="" id="iduser" required class="form-control" placeholder="ID Usuario">
+                    </div>
+                    <div class="col-12 col-sm-4">
+                        <button class="btn btn-info" onclick="searchUser('{{strtolower($type)}}')">Buscar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+​
+<hr>
+
     <div class="padre">
         <div class="card d-none shadow-lg" style="margin-bottom: 0px;" id="tarjeta">
             <div class="card-body p-1">
@@ -118,5 +136,15 @@
             
             $('#tarjeta').removeClass('d-none');
         }
+
+        function searchUser(type){
+            let iduser = $('#iduser').val();
+            if (iduser != '') {
+                let ruta = route('genealogy_type_id', [type, btoa(iduser)])
+                window.location.href = ruta   
+            }
+        }
+
+
     </script>
 @endsection
