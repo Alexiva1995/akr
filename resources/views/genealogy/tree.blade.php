@@ -11,6 +11,8 @@
 
 
 <div class="padre">
+
+    @if (Auth::user()->admin == 1)
         <div class="card">
             <div class="card-body p-1 text-center">
                 <div class="row">
@@ -23,6 +25,7 @@
                 </div>
             </div>
         </div>
+    @endif
 ​
 <hr>
 
