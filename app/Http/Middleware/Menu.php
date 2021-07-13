@@ -169,28 +169,16 @@ class Menu
             // Fin Financiero
 
 
-            // Informes
-            'Informes' => [
-                'submenu' => 0,
-                'ruta' => '',
-                'blank' => '', // si es para una pagina diferente del sistema solo coloquen _blank
-                'icon' => '/*Buscar icon*/',
-                'complementoruta' => '',
-            ],
-
-            ///Fin de Informes
-
-
+          
             // Soporte
             'Soporte' => [
                 'submenu' => 0,
-                'ruta' => '',
-                'blank' => '', // si es para una pagina diferente del sistema solo coloquen _blank
+                'ruta' => route('ticket.list-user'),
+                'blank'=> '', // si es para una pagina diferente del sistema solo coloquen _blank
                 'icon' => 'feather icon-help-circle',
                 'complementoruta' => '',
             ],
             // Fin Soporte
-
         ];
     }
 
@@ -387,16 +375,15 @@ class Menu
             ],
             // Fin Liquidaciones
 
-            // Inicio
-            'Soporte' => [
+             // Soporte
+             'Soporte' => [
                 'submenu' => 0,
-                'ruta' => '#',
-                'blank' => '', // si es para una pagina diferente del sistema solo coloquen _blank
+                'ruta' => route('ticket.list-admin'),
+                'blank'=> '', // si es para una pagina diferente del sistema solo coloquen _blank
                 'icon' => 'feather icon-help-circle',
                 'complementoruta' => '',
             ],
-            // Fin inicio
-
+            // Fin Soporte
         ];
     }
 }

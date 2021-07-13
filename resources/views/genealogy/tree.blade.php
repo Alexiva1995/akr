@@ -40,7 +40,7 @@
 
                         <div class="ml-1 mb-1"><span class="font-weight-bold">Estado:</span> <span id="estado"></span></div>
 
-                        <div class="ml-1"><a id="ver_arbol" class="btn btn-primary btn-sm btn-block" href=>Ver arbol</a></div>
+                        <div class="ml-1"><a id="ver_arbol" class="btn btn-primary btn-sm btn-block" href=>Ver Árbol</a></div>
                     </div>
                 </div>
             </div>
@@ -109,7 +109,7 @@
     </div>
     @if (Auth::id() != $base->id)
     <div class="col-12 text-center">
-        <a class="btn btn-info" href="{{route('genealogy_type', strtolower($type))}}">Regresar a mi arbol</a>
+        <a class="btn btn-info" href="{{route('genealogy_type', strtolower($type))}}">Regresar a mi Árbol</a>
     </div>
     @endif
 
