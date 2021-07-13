@@ -8,7 +8,9 @@
                 <div class="card-body card-dashboard">
                     <div class="table-responsive">
                         <h1>Historial de Tickets</h1>
-                        <p>Para ver mas información dar click -> <img src="{{asset('assets/img/sistema/btn-plus.png')}}" alt=""></p>
+
+                        <br>
+        
                         <a href="{{ route('ticket.create')}}" class="btn btn-primary mb-2 waves-effect waves-light"><i class="feather icon-plus"></i>&nbsp; Crear Ticket</a>
                         <table class="table nowrap scroll-horizontal-vertical myTable table-striped">
                             <thead class="">
@@ -18,18 +20,8 @@
                                     <th>Usuario</th>
                                     <th>Estado</th>
                                     <th>Prioridad</th>
-                                    <th></th>
                                     <th>Accion</th>
-                                 {{--    <th>ID</th>
-                                    <th>Whatsapp</th>
-                                    <th>Email</th>
-                                    <th>Asunto</th>
-                                    <th>Descripción</th>
-                                    <th>Estado</th>
-                                    <th>Fecha de Creacion</th>
-                                    <th>Accion</th> --}}
-                                </tr>
-
+                                
                             </thead>
 
                             <tbody>
@@ -44,9 +36,6 @@
                                     {{-- <td>{{ $item->Descripcion}}</td> --}}
                                     
                                  
-                                    
-
-
                                     @if ($item->status == '0')
                                     <td> <a class=" btn btn-info text-white text-bold-600">Abierto</a></td>
                                     @elseif($item->status == '1')
@@ -62,9 +51,7 @@
                                     <td> <a class=" btn btn-danger text-white text-bold-600">Bajo</a></td>
                                     @endif
 
-                                    <td>{{ $item->created_at}}</td>
                                     
-
                                     @if ($item->status == '0')
                                     <td><a href="{{ route('ticket.edit-user',$item->id) }}" class="btn btn-secondary text-bold-600">Editar</a></td>
                                     @else

@@ -47,6 +47,7 @@ class TicketsController extends Controller
         
         Ticket::create([
             'iduser' => Auth::id(),
+            'priority' => request('priority'),
             'whatsapp' => request('whatsapp'),
             'email' => request('email'),
             'issue' => request('issue'),
@@ -55,6 +56,7 @@ class TicketsController extends Controller
 
         return redirect()->route('ticket.list-user')->with('msj-success', 'El Ticket se creo Exitosamente');
     }
+
 
     // permite editar el ticket
 
@@ -65,6 +67,7 @@ class TicketsController extends Controller
         return view('tickets.componenteTickets.user.edit-user')
         ->with('ticket', $ticket);
     }
+    
 
     // permite actualizar el ticket
 
@@ -182,15 +185,6 @@ class TicketsController extends Controller
         ->with('ticket', $ticket);
     }
 
-
-
-
-
-
-
-
-
-
     /**
      * Permite obtener la cantidad de Tickets que tiene un usuario
      *
@@ -250,5 +244,12 @@ class TicketsController extends Controller
             dd($th);
         }
     }
+    public function edit()
+    {
+
+        return view('landing.clients.create');
+
+    }
+    
 
 }
