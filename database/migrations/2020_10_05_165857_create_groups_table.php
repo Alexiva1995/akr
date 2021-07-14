@@ -20,6 +20,15 @@ class CreateGroupsTable extends Migration
             $table->text('description')->nullable();
             $table->enum('status', [0, 1])->default(1)->comment('0 - desactivado, 1 - activado');
             $table->timestamps();
+            $table->string('email');
+           $table->double('ganacia');
+           $table->double('progreso');
+           $table->bigInteger('package')->unsigned();
+
+
+
+
+
         });
     }
 
