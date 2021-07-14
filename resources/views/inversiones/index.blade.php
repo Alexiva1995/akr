@@ -14,8 +14,11 @@
                                     <th>ID</th>
                                     <th>Correo</th>
                                     <th>Paquete</th>
-                                    <th>Ahorro</th>
+                                    <th>Estado</th>
+                                    <th>Fecha</th>
+                                    <th>Progreso</th>
                                     <th>Ganancia</th>
+                                    <th>Ahorro</th>
                                     <th>Capital</th>
                                     <th>% Ganancia</th>
                                     <th>Ganancia acumulada</th>
@@ -33,6 +36,7 @@
                                 $porcentaje = ($ganancia / $inversion->invertido) * 100;
                                 @endphp
                                 <tr class="text-center">
+                                
                                     <td>{{$inversion->id}}</td>
                                     <td>{{$inversion->correo}}</td>
                                     <td>{{$inversion->getPackageOrden->getGroup->name }} - {{$inversion->getPackageOrden->name}}</td>
@@ -48,6 +52,7 @@
                             </tbody>
                         </table>
                     </div>
+                    
                 </div>
             </div>
         </div>
