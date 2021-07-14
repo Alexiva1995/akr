@@ -29,7 +29,7 @@
                                  @foreach ($ticket as $item)
                                 <tr class="text-center">
                                     <td>{{ $item->id}}</td>
-                                    <td>{{ $item->getUser->fullname}}</td>
+                                    <td>{{ $item->iduser}}</td>
                                     {{-- <td>{{ $item->estado}}</td> --}}
                                     {{-- <td>{{ $item->prioridad}}</td> --}}
                                  {{--    <td>{{ $item->issue}}</td> --}}

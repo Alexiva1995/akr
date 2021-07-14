@@ -9,7 +9,7 @@
                 <div class="card-header">
                     <h4 class="card-title">Revisando el Ticket #{{ $ticket->id}}</h4>
                     <h4 class="card-title mt-1">Usuario: <span
-                            class="text-primary">{{ $ticket->getUser->fullname}}</span></h4>
+                            class="text-primary">{{ $ticket->iduser}}</span></h4>
                 </div>
                 <div class="card-content">
                     <div class="card-body">
