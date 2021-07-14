@@ -280,33 +280,33 @@ class Menu
             // Fin Informes
 
             // Ecommerce
-            'Ecommerce' => [
-                'submenu' => 1,
-                'ruta' => 'javascript:;',
-                'blank' => '', // si es para una pagina diferente del sistema solo coloquen _blank
-                'icon' => 'feather icon-shopping-cart',
-                'complementoruta' => '',
-                'submenus' => [
-                    [
-                        'name' => 'Grupos',
-                        'blank' => '', // si es para una pagina diferente del sistema solo coloquen _blank
-                        'ruta' => route('group.index'),
-                        'complementoruta' => ''
-                    ],
-                    [
-                        'name' => 'Paquetes',
-                        'blank' => '', // si es para una pagina diferente del sistema solo coloquen _blank
-                        'ruta' => route('package.index'),
-                        'complementoruta' => ''
-                    ],
-                    [
-                        'name' => 'Tienda',
-                        'blank' => '', // si es para una pagina diferente del sistema solo coloquen _blank
-                        'ruta' => route('shop'),
-                        'complementoruta' => ''
-                    ],
-                ],
-            ],
+            // 'Ecommerce' => [
+            //     'submenu' => 1,
+            //     'ruta' => 'javascript:;',
+            //     'blank' => '', // si es para una pagina diferente del sistema solo coloquen _blank
+            //     'icon' => 'feather icon-shopping-cart',
+            //     'complementoruta' => '',
+            //     'submenus' => [
+            //         [
+            //             'name' => 'Grupos',
+            //             'blank' => '', // si es para una pagina diferente del sistema solo coloquen _blank
+            //             'ruta' => route('group.index'),
+            //             'complementoruta' => ''
+            //         ],
+            //         [
+            //             'name' => 'Paquetes',
+            //             'blank' => '', // si es para una pagina diferente del sistema solo coloquen _blank
+            //             'ruta' => route('package.index'),
+            //             'complementoruta' => ''
+            //         ],
+            //         [
+            //             'name' => 'Tienda',
+            //             'blank' => '', // si es para una pagina diferente del sistema solo coloquen _blank
+            //             'ruta' => route('shop'),
+            //             'complementoruta' => ''
+            //         ],
+            //     ],
+            // ],
             // Fin Ecommerce
             // Informes
             'Informes' => [
@@ -347,26 +347,26 @@ class Menu
                 'complementoruta' => '',
                 'submenus' => [
 
+                    // [
+                    //     'name' => 'Cierre Comisiones',
+                    //     'blank' => '', // si es para una pagina diferente del sistema solo coloquen _blank
+                    //     'ruta' => route('commission_closing.index'),
+                    //     'complementoruta' => ''
+                    // ],
                     [
-                        'name' => 'Cierre Comisiones',
-                        'blank' => '', // si es para una pagina diferente del sistema solo coloquen _blank
-                        'ruta' => route('commission_closing.index'),
-                        'complementoruta' => ''
-                    ],
-                    [
-                        'name' => 'Generar Liquidaciones',
+                        'name' => 'Generacion',
                         'blank' => '', // si es para una pagina diferente del sistema solo coloquen _blank
                         'ruta' => route('settlement'),
                         'complementoruta' => ''
                     ],
                     [
-                        'name' => 'Liquidaciones Pendientes',
+                        'name' => 'Pendientes',
                         'blank' => '', // si es para una pagina diferente del sistema solo coloquen _blank
                         'ruta' => route('settlement.pending'),
                         'complementoruta' => ''
                     ],
                     [
-                        'name' => 'Liquidaciones Realizadas',
+                        'name' => 'Realizadas',
                         'blank' => '', // si es para una pagina diferente del sistema solo coloquen _blank
                         'ruta' => route('settlement.history.status', 'Pagadas'),
                         'complementoruta' => ''
