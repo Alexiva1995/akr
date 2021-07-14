@@ -25,10 +25,10 @@
                 </div>
             </div>
         </div>
-    @endif
-​
-<hr>
+  
 
+<hr>
+@endif
     <div class="padre">
         <div class="card d-none shadow-lg" style="margin-bottom: 0px;" id="tarjeta">
             <div class="card-body p-1">

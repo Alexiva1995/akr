@@ -105,7 +105,7 @@ class Menu
             ],
             // Fin Negocio
 
-            //Inverisones
+            //U-4 Inverisones
             'Inversiones' => [
                 'submenu' => 1,
                 'ruta' => 'javascript:;',
@@ -190,7 +190,7 @@ class Menu
     public function menuAdmin()
     {
         return [
-            // Inicio
+            //1-  Inicio
             'Dashboard' => [
                 'submenu' => 0,
                 'ruta' => route('home'),
@@ -225,31 +225,36 @@ class Menu
             ],
             //Fin de Red
 
-            //Inverisones
-            'Inversiones' => [
+            //3- Ecommerce
+            'Ecommerce' => [
                 'submenu' => 1,
                 'ruta' => 'javascript:;',
                 'blank' => '', // si es para una pagina diferente del sistema solo coloquen _blank
-                'icon' => 'feather icon-activity',
+                'icon' => 'feather icon-shopping-cart',
                 'complementoruta' => '',
                 'submenus' => [
                     [
-                        'name' => 'Activas',
+                        'name' => 'Grupos',
                         'blank' => '', // si es para una pagina diferente del sistema solo coloquen _blank
-                        'ruta' => route('inversiones.index', 1),
+                        'ruta' => route('group.index'),
                         'complementoruta' => ''
                     ],
                     [
-                        'name' => 'Culminadas',
+                        'name' => 'Paquetes',
                         'blank' => '', // si es para una pagina diferente del sistema solo coloquen _blank
-                        'ruta' => route('inversiones.index', 2),
-                        'complementoruta' => '',
+                        'ruta' => route('package.index'),
+                        'complementoruta' => ''
+                    ],
+                    [
+                        'name' => 'Tienda',
+                        'blank' => '',  //si es para una pagina diferente del sistema solo coloquen _blank
+                        'ruta' => route('shop'),
+                        'complementoruta' => ''
                     ],
                 ],
             ],
-            // Fin Inverisones
-
-            // Informes
+            
+            // 4- Informes
             'Informes' => [
                 'submenu' => 1,
                 'ruta' => 'javascript:;',
@@ -279,36 +284,69 @@ class Menu
             ],
             // Fin Informes
 
-            // Ecommerce
-            'Ecommerce' => [
+            //5- Liquidaciones
+            'Liquidaciones' => [
                 'submenu' => 1,
                 'ruta' => 'javascript:;',
                 'blank' => '', // si es para una pagina diferente del sistema solo coloquen _blank
-                'icon' => 'feather icon-shopping-cart',
+                'icon' => 'fa fa-list-alt',
                 'complementoruta' => '',
                 'submenus' => [
+
+                    // [
+                    //     'name' => 'Cierre Comisiones',
+                    //     'blank' => '', // si es para una pagina diferente del sistema solo coloquen _blank
+                    //     'ruta' => route('commission_closing.index'),
+                    //     'complementoruta' => ''
+                    // ],
                     [
-                        'name' => 'Grupos',
+                        'name' => 'Generacion',
                         'blank' => '', // si es para una pagina diferente del sistema solo coloquen _blank
-                        'ruta' => route('group.index'),
+                        'ruta' => route('settlement'),
                         'complementoruta' => ''
                     ],
                     [
-                        'name' => 'Paquetes',
+                        'name' => 'Pendientes',
                         'blank' => '', // si es para una pagina diferente del sistema solo coloquen _blank
-                        'ruta' => route('package.index'),
+                        'ruta' => route('settlement.pending'),
                         'complementoruta' => ''
                     ],
                     [
-                        'name' => 'Tienda',
+                        'name' => 'Realizadas',
                         'blank' => '', // si es para una pagina diferente del sistema solo coloquen _blank
-                        'ruta' => route('shop'),
+                        'ruta' => route('settlement.history.status', 'Pagadas'),
                         'complementoruta' => ''
-                    ],
+                    ]
                 ],
             ],
-            // Fin Ecommerce
-            // Informes
+            // Fin Liquidaciones            
+
+            //Inversiones
+            // 'Inversiones' => [
+            //     'submenu' => 1,
+            //     'ruta' => 'javascript:;',
+            //     'blank' => '', // si es para una pagina diferente del sistema solo coloquen _blank
+            //     'icon' => 'feather icon-activity',
+            //     'complementoruta' => '',
+            //     'submenus' => [
+            //         [
+            //             'name' => 'Activas',
+            //             'blank' => '', // si es para una pagina diferente del sistema solo coloquen _blank
+            //             'ruta' => route('inversiones.index', 1),
+            //             'complementoruta' => ''
+            //         ],
+            //         [
+            //             'name' => 'Culminadas',
+            //             'blank' => '', // si es para una pagina diferente del sistema solo coloquen _blank
+            //             'ruta' => route('inversiones.index', 2),
+            //             'complementoruta' => '',
+            //         ],
+            //     ],
+            // ],
+            // Fin Inverisones
+
+            //  Fin Ecommerce
+            //  Informes
             'Informes' => [
                 'submenu' => 1,
                 'ruta' => 'javascript:;',
@@ -338,42 +376,6 @@ class Menu
             ],
             // Fin Informes
 
-            // Liquidaciones
-            'Liquidaciones' => [
-                'submenu' => 1,
-                'ruta' => 'javascript:;',
-                'blank' => '', // si es para una pagina diferente del sistema solo coloquen _blank
-                'icon' => 'fa fa-list-alt',
-                'complementoruta' => '',
-                'submenus' => [
-
-                    [
-                        'name' => 'Cierre Comisiones',
-                        'blank' => '', // si es para una pagina diferente del sistema solo coloquen _blank
-                        'ruta' => route('commission_closing.index'),
-                        'complementoruta' => ''
-                    ],
-                    [
-                        'name' => 'Generar Liquidaciones',
-                        'blank' => '', // si es para una pagina diferente del sistema solo coloquen _blank
-                        'ruta' => route('settlement'),
-                        'complementoruta' => ''
-                    ],
-                    [
-                        'name' => 'Liquidaciones Pendientes',
-                        'blank' => '', // si es para una pagina diferente del sistema solo coloquen _blank
-                        'ruta' => route('settlement.pending'),
-                        'complementoruta' => ''
-                    ],
-                    [
-                        'name' => 'Liquidaciones Realizadas',
-                        'blank' => '', // si es para una pagina diferente del sistema solo coloquen _blank
-                        'ruta' => route('settlement.history.status', 'Pagadas'),
-                        'complementoruta' => ''
-                    ]
-                ],
-            ],
-            // Fin Liquidaciones
 
              // Soporte
              'Soporte' => [

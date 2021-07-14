@@ -12,11 +12,10 @@
 
                                 <tr class="text-center text-white bg-purple-alt2">                                
                                     <th>ID</th>
-                                    <th>Correo</th>
-                                    <th>Paquete</th>
+                                    <th>Usuario</th>
                                     <th>Monto</th>
                                     <th>Estado</th>
-                                    <th>Fecha de Creación</th>
+                                    <th>Fecha</th>
                                 </tr>
 
                             </thead>
@@ -25,8 +24,7 @@
                                 @foreach ($ordenes as $orden)
                                 <tr class="text-center">
                                     <td>{{$orden->id}}</td>
-                                    <td>{{$orden->getOrdenUser->email}}</td>
-                                    <td>{{$orden->grupo}} - {{$orden->paquete}}</td>
+                                    <td>{{$orden->getOrdenUser->fullname}}</td>
                                     <td>{{$orden->total}}</td>
 
                                     @if ($orden->status == '0')
