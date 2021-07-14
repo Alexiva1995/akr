@@ -25,14 +25,15 @@
 
                             <tbody>
 
-                                @foreach ($ticket as $item)
+                            
+                            @foreach ($ticket as $item)
                                 <tr class="text-center">
                                     <td>{{ $item->id}}</td>
-                                    <td>{{ $item->getUser->fullname}}</td>
+                                    <td>{{ $item->iduser}}</td>
                                     {{-- <td>{{ $item->estado}}</td>
                                     <td>{{ $item->prioridad}}</td>
                                     <td>{{ $item->issue}}</td>
-                                    --}}
+ --}}
                                     @if ($item->status == '0')
                                     <td> <a class=" btn btn-info text-white text-bold-600">Abierto</a></td>
                                     @elseif($item->status == '1')
