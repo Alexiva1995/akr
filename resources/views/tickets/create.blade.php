@@ -16,18 +16,7 @@
                             <div class="form-body">
                                 <div class="row">
                                     <div class="col-12">
-                                        <div class="form-group">
-                                            <label>Email de contacto</label>
-                                            <input type="email" id="email" class="form-control" name="email">
-                                        </div>
-                                    </div>
-                                    <div class="col-12">
-                                        <div class="form-group">
-                                            <label>Whatsapp de contacto</label>
-                                            <input type="text" id="whatsapp" class="form-control" name="whatsapp">
-                                        </div>
-                                    </div>
-
+                                    
                                         
                                     <div class="col-12">
                                     <div class="form-group">

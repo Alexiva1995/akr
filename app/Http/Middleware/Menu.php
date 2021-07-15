@@ -62,7 +62,7 @@ class Menu
             // Paquetes de inversión
             'Paquetes de inversión' => [
                 'submenu' => 0,
-                'ruta' => '',
+                'ruta' => route('shop'),
                 'blank' => '', // si es para una pagina diferente del sistema solo coloquen _blank
                 'icon' => 'feather icon-package',
                 'complementoruta' => '',
@@ -173,7 +173,7 @@ class Menu
 
 
 
-    
+
 
     /**
      * Permite Obtener el menu del admin
@@ -220,7 +220,8 @@ class Menu
 
             //3- inversiones
             'Inversiones' => [
-                'submenu' => 1,
+
+                 'submenu' => 1,
                 'ruta' => 'javascript:;',
                 'blank' => '', // si es para una pagina diferente del sistema solo coloquen _blank
                 'icon' => 'feather icon-shopping-cart',
