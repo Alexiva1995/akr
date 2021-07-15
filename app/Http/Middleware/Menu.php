@@ -107,25 +107,12 @@ class Menu
 
             //U-4 Inverisones
             'Inversiones' => [
-                'submenu' => 1,
+                'submenu' => 0,
                 'ruta' => 'javascript:;',
                 'blank' => '', // si es para una pagina diferente del sistema solo coloquen _blank
                 'icon' => 'feather icon-activity',
                 'complementoruta' => '',
-                'submenus' => [
-                    [
-                        'name' => 'Activas',
-                        'blank' => '', // si es para una pagina diferente del sistema solo coloquen _blank
-                        'ruta' => route('inversiones.index', 1),
-                        'complementoruta' => ''
-                    ],
-                    [
-                        'name' => 'Culminadas',
-                        'blank' => '', // si es para una pagina diferente del sistema solo coloquen _blank
-                        'ruta' => route('inversiones.index', 2),
-                        'complementoruta' => '',
-                    ],
-                ],
+               
             ],
             // Fin Inverisones
 
@@ -182,6 +169,12 @@ class Menu
         ];
     }
 
+
+
+
+
+    
+
     /**
      * Permite Obtener el menu del admin
      *
@@ -225,8 +218,8 @@ class Menu
             ],
             //Fin de Red
 
-            //3- Ecommerce
-            'Ecommerce' => [
+            //3- inversiones
+            'Inversiones' => [
                 'submenu' => 1,
                 'ruta' => 'javascript:;',
                 'blank' => '', // si es para una pagina diferente del sistema solo coloquen _blank
@@ -355,7 +348,7 @@ class Menu
                 'complementoruta' => '',
                 'submenus' => [
                     [
-                        'name' => 'Pedidos',
+                        'name' => 'Ordenes',
                         'blank' => '', // si es para una pagina diferente del sistema solo coloquen _blank
                         'ruta' => route('reports.pedidos'),
                         'complementoruta' => ''
@@ -366,12 +359,7 @@ class Menu
                         'ruta' => route('reports.comision'),
                         'complementoruta' => ''
                     ],
-                    [
-                        'name' => 'Billetera',
-                        'blank' => '', // si es para una pagina diferente del sistema solo coloquen _blank
-                        'ruta' => route('wallet.index'),
-                        'complementoruta' => ''
-                    ],
+                  
                 ],
             ],
             // Fin Informes
