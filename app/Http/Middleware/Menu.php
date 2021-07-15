@@ -211,7 +211,7 @@ class Menu
                     [
                         'name' => 'Arbol Binario',
                         'blank' => '', // si es para una pagina diferente del sistema solo coloquen _blank
-                        'ruta' => route('genealogy_type', 'tree'),
+                        'ruta' => route('genealogy_type', 'matriz'),
                         'complementoruta' => ''
                     ],
                 ],
