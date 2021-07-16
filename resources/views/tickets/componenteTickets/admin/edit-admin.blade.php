@@ -10,6 +10,11 @@
     });
 </script>
 
+
+<div class="container">
+    <h1>Esta Vista Aun No esta terminada</h1>
+</div>
+<!--
 <section id="basic-vertical-layouts">
     <div class="row match-height d-flex justify-content-center">
         <div class="col-md-6 col-12">
@@ -48,7 +53,7 @@
 
 
 
-
+<!--
                                     <div class="col-12">
                                         <div class="form-group">
 
@@ -60,7 +65,7 @@
                                         </div>
                                     </div>
 
-
+-->
 
                                     <!--<div class="col-12">
                                         <div class="form-group">
@@ -75,7 +80,7 @@
                                             </div>
                                         </div>
                                     </div>-->
-                                    <div class="col-12">
+                            <!--        <div class="col-12">
                                         <button type="submit" class="btn btn-primary d-inline-block float-right mb-1 waves-effect waves-light">Enviar
                                         </button>
 
