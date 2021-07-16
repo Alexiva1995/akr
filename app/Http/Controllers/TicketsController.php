@@ -70,9 +70,7 @@ class TicketsController extends Controller
         $ticket = Ticket::find($id);
 
         $fields = [
-           
-            "issue" => ['required'],
-            "description" => ['required'],
+          
             'status' => ['0'],
             
         ];
@@ -136,7 +134,7 @@ class TicketsController extends Controller
         $ticket = Ticket::find($id);
 
         $fields = [
-            'status' => ['required'],
+           
             'note_admin' => ['required']
         ];
 

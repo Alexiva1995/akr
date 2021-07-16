@@ -40,7 +40,7 @@
 
                             @if (Auth::user()->photoDB != NULL)
                             <span>
-                            <img class="round" src="{{asset('storage/'.Auth::user()->photoDB)}}"alt="" height="50" width="50">
+                            <img class="rounded-circle" src="{{asset('storage/'.Auth::user()->photoDB)}}"alt="" height="50" width="50">
                             </span>
                             @else
                             <span>

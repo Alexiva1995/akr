@@ -2,6 +2,14 @@
 
 @section('content')
 
+
+
+<script>
+    $(document).ready(function() {
+        $('#summernote').summernote();
+    });
+</script>
+
 <section id="basic-vertical-layouts">
     <div class="row match-height d-flex justify-content-center">
         <div class="col-md-6 col-12">
@@ -17,25 +25,11 @@
                             @method('PATCH')
                             <div class="form-body">
                                 <div class="row">
-
+                                    <!--
                                     <div class="col-12">
                                         <div class="form-group">
                                             <label>titulo del Ticket</label>
-                                            <input type="text" id="issue" readonly class="form-control" value="{{ $ticket->issue }}" name="issue">
-                                        </div>
-                                    </div>
-                                    <div class="col-12">
-                                        <div class="form-group">
-                                            <label>Especificación del Ticket</label>
-                                            <textarea type="text" rows="5" readonly id="description" class="form-control" name="description">{{ $ticket->description }}</textarea>
-                                        </div>
-                                    </div>
-                                    <div class="col-12">
-                                        <div class="form-group">
-                                            <label>Nota del Administrador</label>
-                                            <span class="text-danger text-bold-600">(Dejar nota Obligatoria para el
-                                                usuario)</span>
-                                            <textarea type="text" rows="5" id="note_admin" placeholder="En este campo estara la nota que deja el administrador que atendio su orden" class="form-control" name="note_admin">{{$ticket->note_admin}}</textarea>
+                                            <input type="text" id="issue"  class="form-control" value="{{ $ticket->issue }}" name="issue">
                                         </div>
                                     </div>
 
@@ -50,7 +44,24 @@
                                                 </select>
                                             </div>
                                         </div>
+                                    </div>-->
+
+
+
+
+                                    <div class="col-12">
+                                        <div class="form-group">
+
+                                            <textarea type="text" rows="5" readonly id="" class="form-control" name="description">{{ $ticket->description}}</textarea>
+
+                                            <br>
+
+                                            <textarea type="text" rows="5" id="" placeholder="En este campo estara la nota que deja el administrador que atendio su orden" class="form-control" name="note_admin">{{$ticket->note_admin}}</textarea>
+                                        </div>
                                     </div>
+
+
+
                                     <!--<div class="col-12">
                                         <div class="form-group">
                                             <div class="controls">
@@ -65,12 +76,14 @@
                                         </div>
                                     </div>-->
                                     <div class="col-12">
-                                        <button type="submit" class="btn btn-primary mr-1 mb-1 waves-effect waves-light">Actualizar
-                                            Ticket</button>
+                                        <button type="submit" class="btn btn-primary d-inline-block float-right mb-1 waves-effect waves-light">Enviar
+                                        </button>
+
                                     </div>
                                 </div>
                             </div>
                         </form>
+
                     </div>
                 </div>
             </div>
