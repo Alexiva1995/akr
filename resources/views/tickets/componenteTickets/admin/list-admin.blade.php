@@ -25,19 +25,19 @@
 
                             <tbody>
 
-                            
-                            @foreach ($ticket as $item)
+
+                                @foreach ($ticket as $item)
                                 <tr class="text-center">
                                     <td>{{ $item->id}}</td>
                                     <td>{{ $item->iduser}}</td>
                                     {{-- <td>{{ $item->estado}}</td>
                                     <td>{{ $item->prioridad}}</td>
                                     <td>{{ $item->issue}}</td>
- --}}
+                                    --}}
                                     @if ($item->status == '0')
-                                    <td> <a class=" btn btn-info text-white text-bold-600">Abierto</a></td>
+                                    <td> <a class=" btn btn-info text-white text-bold-600" style="background-color:red;">Abierto</a></td>
                                     @elseif($item->status == '1')
-                                    <td> <a class=" btn btn-success text-white text-bold-600">Cerrado</a></td>
+                                    <td> <a class=" btn btn-danger text-white text-bold-600">Cerrado</a></td>
                                     @endif
 
                                     @if ($item->priority == '0')

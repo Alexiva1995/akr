@@ -17,18 +17,7 @@
                             @method('PATCH')
                             <div class="form-body">
                                 <div class="row">
-                                    <div class="col-12">
-                                        <div class="form-group">
-                                            <label>Email de contacto</label>
-                                            <input type="email" readonly id="email" class="form-control" value="{{ $ticket->email }}" name="email">
-                                        </div>
-                                    </div>
-                                    <div class="col-12">
-                                        <div class="form-group">
-                                            <label>Whatsapp de contacto</label>
-                                            <input type="text" readonly id="whatsapp" class="form-control" value="{{ $ticket->whatsapp }}" name="whatsapp">
-                                        </div>
-                                    </div>
+
                                     <div class="col-12">
                                         <div class="form-group">
                                             <label>titulo del Ticket</label>
@@ -62,19 +51,19 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-12">
+                                    <!--<div class="col-12">
                                         <div class="form-group">
                                             <div class="controls">
                                                 <label for="priority">prioridad del ticket</label>
                                                 <span class="text-danger text-bold-600">OBLIGATORIO</span>
-                                                <select name="priority" id="priority" class="custom-select priority @error('priority') is-invalid @enderror" required data-toggle="select">
+                                                <select name="priority" id="priority" readonly class="custom-select priority @error('priority') is-invalid @enderror" required data-toggle="select">
                                                     <option value="0" @if($ticket->priority == '0') selected @endif>Alto</option>
                                                     <option value="1" @if($ticket->priority == '1') selected @endif>Medio</option>
                                                     <option value="2" @if($ticket->priority == '2') selected @endif>Bajo</option>
                                                 </select>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div>-->
                                     <div class="col-12">
                                         <button type="submit" class="btn btn-primary mr-1 mb-1 waves-effect waves-light">Actualizar
                                             Ticket</button>

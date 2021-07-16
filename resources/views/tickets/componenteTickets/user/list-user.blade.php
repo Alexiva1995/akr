@@ -39,7 +39,7 @@
                                     @if ($item->status == '0')
                                     <td> <a class=" btn btn-info text-white text-bold-600">Abierto</a></td>
                                     @elseif($item->status == '1')
-                                    <td> <a class=" btn btn-primary text-white text-bold-600">Cerrado</a></td>
+                                    <td> <a class=" btn btn-danger text-white text-bold-600">Cerrado</a></td>
                                     @endif
                                     
 

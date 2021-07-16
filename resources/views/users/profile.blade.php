@@ -20,9 +20,9 @@
 
 
 $(document).ready(function() {
-          @if($user->photoDB != NULL)
+        @if($user->photoDB != NULL)
                 previewPersistedFile("{{asset('storage/'.$user->photoDB)}}", 'photo_preview');
-          @endif
+        @endif
         });
    
 
@@ -32,7 +32,7 @@ $(document).ready(function() {
             var reader = new FileReader();
             reader.onload = function (e) {
                 $("#" + preview_id).attr('src', e.target.result);
-                $("#" + preview_id).css('height', '300px');
+                $("#" + preview_id).css('height', '200px');
                 $("#" + preview_id).parent().parent().removeClass('d-none');
             }
             $("label[for='" + $(input).attr('id') + "']").text(input.files[0].name);
@@ -42,7 +42,7 @@ $(document).ready(function() {
 
     function previewPersistedFile(url, preview_id) {
         $("#" + preview_id).attr('src', url);
-        $("#" + preview_id).css('height', '300px');
+        $("#" + preview_id).css('height', '200px');
         $("#" + preview_id).parent().parent().removeClass('d-none');
 
     }
@@ -71,6 +71,7 @@ $(document).ready(function() {
                                     
                                     <div role="tabpanel" class="tab-pane active" id="account-vertical-general"
                                         aria-labelledby="account-pill-general" aria-expanded="true">
+                                        
 
                                         @include('users.componenteProfile.edit-profile')
 
@@ -84,7 +85,6 @@ $(document).ready(function() {
                                     </div>
 
                          
-
                                 </div>
 
                               {{-- <div class="tab-pane fade " id="account-vertical-social" role="tabpanel"
