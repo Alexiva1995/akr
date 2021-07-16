@@ -10,7 +10,7 @@ class OrdenPurchases extends Model
     protected $table = 'orden_purchases';
 
     protected $fillable = [
-        'iduser', 'group_id', 'package_id', 
+        'iduser', 'package_id', 
         'cantidad', 'total', 'idtransacion',
         'status'
     ];
@@ -30,10 +30,10 @@ class OrdenPurchases extends Model
      *
      * @return void
      */
-    public function getGroupOrden()
-    {
-        return $this->belongsTo('App\Models\Groups', 'group_id');
-    }
+    // public function getGroupOrden()
+    // {
+    //     return $this->belongsTo('App\Models\Groups', 'group_id');
+    // }
 
     /**
      * Permite obtener al usuario de una Compra
