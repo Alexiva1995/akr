@@ -108,7 +108,7 @@ class Menu
             //U-4 Inverisones
             'Inversiones' => [
                 'submenu' => 0,
-                'ruta' => 'javascript:;',
+                'ruta' =>  route('inversiones.index', 1),
                 'blank' => '', // si es para una pagina diferente del sistema solo coloquen _blank
                 'icon' => 'feather icon-activity',
                 'complementoruta' => '',
@@ -221,24 +221,13 @@ class Menu
             //3- inversiones
             'Inversiones' => [
 
-                 'submenu' => 1,
-                'ruta' => 'javascript:;',
+                 'submenu' => 0,
+                'ruta' =>  route('inversiones.index', 1),
                 'blank' => '', // si es para una pagina diferente del sistema solo coloquen _blank
                 'icon' => 'feather icon-shopping-cart',
                 'complementoruta' => '',                
                 'submenus' => [
-                    [
-                        'name' => 'Activas',
-                        'blank'=> '', // si es para una pagina diferente del sistema solo coloquen _blank
-                        'ruta' => route('inversiones.index', 1),
-                        'complementoruta' => ''
-                    ],
-                    [
-                        'name' => 'Culminadas',
-                        'blank'=> '', // si es para una pagina diferente del sistema solo coloquen _blank
-                        'ruta' => route('inversiones.index', 2),
-                        'complementoruta' => ''
-                    ]
+                   
                 ],                
                 // 'submenus' => [
                 //     [
