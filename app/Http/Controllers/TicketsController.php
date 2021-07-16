@@ -29,16 +29,13 @@ class TicketsController extends Controller
     public function store(Request $request){
 
         $fields = [
-            "email" => ['required'],
-            "whatsapp" => ['required'],
+         
             "issue" => ['required'],
             "description" => ['required'],
             'status' => ['0'],
         ];
 
         $msj = [
-            'email.required' => 'El email es Requerido',
-            'whatsapp.required' => 'El whatsapp es Requerido',
             'issue.required' => 'El asunto es Requerido',
             'description.required' => 'La descripción es Requerido',
         ];
@@ -48,15 +45,12 @@ class TicketsController extends Controller
         Ticket::create([
             'iduser' => Auth::id(),
             'priority' => request('priority'),
-            'whatsapp' => request('whatsapp'),
-            'email' => request('email'),
             'issue' => request('issue'),
             'description' => request('description'),
         ]);
 
         return redirect()->route('ticket.list-user')->with('msj-success', 'El Ticket se creo Exitosamente');
     }
-
 
     // permite editar el ticket
 
@@ -76,8 +70,7 @@ class TicketsController extends Controller
         $ticket = Ticket::find($id);
 
         $fields = [
-            "email" => ['required'],
-            "whatsapp" => ['required'],
+           
             "issue" => ['required'],
             "description" => ['required'],
             'status' => ['0'],
@@ -85,8 +78,7 @@ class TicketsController extends Controller
         ];
 
         $msj = [
-            'email.required' => 'El email es Requerido',
-            'whatsapp.required' => 'El whatsapp es Requerido',
+            
             'issue.required' => 'El asunto es Requerido',
             'description.required' => 'La descripción es Requerido',
 
