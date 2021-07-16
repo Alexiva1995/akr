@@ -10,7 +10,7 @@
                     <div class="table-responsive">
                         <h1>Historial de Tickets</h1>
                         <br>
-                        <table class="table nowrap scroll-horizontal-vertical myTable table-striped">
+                        <table class="table nowrap scroll-horizontal-vertical myTable table-striped w-100">
                             <thead class="">
 
                                 <tr class="text-center text-white bg-purple-alt2">
