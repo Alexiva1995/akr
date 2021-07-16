@@ -28,7 +28,6 @@ class WalletController extends Controller
     {
         $this->inversionController = new InversionController;
         $this->treeController = new TreeController;
-        // $this->middleware('kyc')->only('payments', 'index');
         View::share('titleq', 'Billetera');
     }
 

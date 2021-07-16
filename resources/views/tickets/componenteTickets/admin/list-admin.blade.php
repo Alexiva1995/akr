@@ -25,31 +25,50 @@
 
                             <tbody>
 
-                            
-                            @foreach ($ticket as $item)
+
+                                @foreach ($ticket as $item)
                                 <tr class="text-center">
                                     <td>{{ $item->id}}</td>
                                     <td>{{ $item->iduser}}</td>
                                     {{-- <td>{{ $item->estado}}</td>
                                     <td>{{ $item->prioridad}}</td>
                                     <td>{{ $item->issue}}</td>
- --}}
+                                    --}}
                                     @if ($item->status == '0')
-                                    <td> <a class=" btn btn-info text-white text-bold-600">Abierto</a></td>
+                                    <td> <a class=" btn text-white text-bold-600" style="background-color: green;">Abierto</a></td>
                                     @elseif($item->status == '1')
-                                    <td> <a class=" btn btn-success text-white text-bold-600">Cerrado</a></td>
+                                    <td> <a class=" btn text-white text-bold-600" style="background-color: red;">Cerrado</a></td>
                                     @endif
 
+                                   
                                     @if ($item->priority == '0')
-                                    <td> <a class=" btn btn-info text-white text-bold-600">Alto</a></td>
+                                    <td> <a class=" btn  text-dark text-bold-600">Alto</a></td>
                                     @elseif($item->priority == '1')
-                                    <td> <a class=" btn btn-success text-white text-bold-600">Medio</a></td>
+                                    <td> <a class=" btn  text-dark text-bold-600">Medio</a></td>
                                     @elseif($item->priority == '2')
-                                    <td> <a class=" btn btn-success text-white text-bold-600">Bajo</a></td>
+                                    <td> <a class=" btn  text-dark text-bold-600">Bajo</a></td>
                                     @endif
-                                    <td><a href="{{ route('ticket.edit-admin',$item->id) }}" class="btn btn-secondary text-bold-600">Revisar</a></td>
+                                    <td><a href="{{ route('ticket.edit-admin',$item->id) }}" class="btn text-bold-600 text-dark" style="background-color: #0CB7F2;">Revisar</a></td>
                                 </tr>
                                 @endforeach
+
+
+
+                                <style>
+                                    #cerrado {
+                                        background-color: red;
+                                    }
+
+                                    #abierto {
+                                        background-color: green;
+                                    }
+
+                                    #revisar,
+                                    #editar {
+                                        background-color: #0CB7F2;
+                                    }
+                                </style>
+
                             </tbody>
                         </table>
                     </div>

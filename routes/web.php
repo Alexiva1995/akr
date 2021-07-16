@@ -88,7 +88,6 @@ Route::prefix('dashboard')->middleware('menu', 'auth')->group(function ()
     //Ruta para los usuarios
     Route::prefix('user')->group(function(){
     
-        Route::get('kyc', 'UserController@kyc')->name('kyc');
 
         Route::get('profile', 'UserController@editProfile')->name('profile');
 
@@ -100,7 +99,6 @@ Route::prefix('dashboard')->middleware('menu', 'auth')->group(function ()
         Route::delete('user/delete/{id}','UserController@destroyUser')->name('users.destroy-user');
 
         Route::patch('profile-update', 'UserController@updateProfile')->name('profile.update');
-        Route::patch('profile-update-kyc', 'UserController@updateProfileKYC')->name('profile.update.kyc');
 
         Route::post('updateEstadoReinvertir', 'UserController@updateEstadoReinvertir')->name('updateEstadoReinvertir');
 
