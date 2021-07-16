@@ -19,9 +19,20 @@ class UserTableSeeder extends Seeder
                 'name' => 'Admin',
                 'last_name' => 'HDLR',
                 'fullname' => 'Admin HDLR',
-                'email' => 'admin@hdlr.com',
+                'email' => 'admin@email.com',
                 'admin' => '1',
-                'password' => Hash::make('12345678'),
+                'password' => Hash::make('12password'),
+                'whatsapp' => '23423423423432',
+                'referred_id' => 0,
+                'status' => '1'
+            ]);
+            User::create([
+                'name' => 'Leonardo',
+                'last_name' => 'Guilarte',
+                'fullname' => 'Leonardo Guilarte',
+                'email' => 'user@email.com',
+                'admin' => '0',
+                'password' => Hash::make('12password'),
                 'whatsapp' => '23423423423432',
                 'referred_id' => 0,
                 'status' => '1'
@@ -31,17 +42,6 @@ class UserTableSeeder extends Seeder
                 'last_name' => 'Palma',
                 'fullname' => 'Eulin Palma',
                 'email' => 'eulinpalma@valdusoft.com',
-                'admin' => '0',
-                'password' => Hash::make('12345678'),
-                'whatsapp' => '23423423423432',
-                'referred_id' => 0,
-                'status' => '1'
-            ]);
-            User::create([
-                'name' => 'Leonardo',
-                'last_name' => 'Guilarte',
-                'fullname' => 'Leonardo Guilarte',
-                'email' => 'leomiguel@valdusoft.com',
                 'admin' => '0',
                 'password' => Hash::make('12345678'),
                 'whatsapp' => '23423423423432',

@@ -62,7 +62,7 @@ class Menu
             // Paquetes de inversión
             'Paquetes de inversión' => [
                 'submenu' => 0,
-                'ruta' => route('shop'),
+                'ruta' => route('shop.products', '1'),
                 'blank' => '', // si es para una pagina diferente del sistema solo coloquen _blank
                 'icon' => 'feather icon-package',
                 'complementoruta' => '',

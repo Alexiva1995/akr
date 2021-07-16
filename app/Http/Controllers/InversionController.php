@@ -20,7 +20,7 @@ class InversionController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('kyc')->only('index');
+        // $this->middleware('kyc')->only('index');
     }
 
     public function index($tipo)

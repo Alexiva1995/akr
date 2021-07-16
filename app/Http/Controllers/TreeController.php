@@ -20,7 +20,7 @@ class TreeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('kyc')->only('index', 'indexNewtwork');
+        // $this->middleware('kyc')->only('index', 'indexNewtwork');
     }
     public function index($type)
     {
