@@ -10,7 +10,6 @@
                         <h1>Historial de Tickets</h1>
 
                         <br>
-        
                         <a href="{{ route('ticket.create')}}" class="btn btn-primary mb-2 waves-effect waves-light"><i class="feather icon-plus"></i>&nbsp; Crear Ticket</a>
                         <table class="table nowrap scroll-horizontal-vertical myTable table-striped w-100">
                             <thead class="">
@@ -37,25 +36,41 @@
                                     
                                  
                                     @if ($item->status == '0')
-                                    <td> <a class=" btn btn-info text-white text-bold-600">Abierto</a></td>
+                                    <td><a id="abierto" class="btn text-white text-bold-600">Abierto</a></td>
                                     @elseif($item->status == '1')
-                                    <td> <a class=" btn btn-danger text-white text-bold-600">Cerrado</a></td>
+                                    <td> <a id="cerrado" class=" btn text-white text-bold-600">Cerrado</a></td>
                                     @endif
+
+                                    <style>
+                                    
+                                    #cerrado{
+                                        background-color: red;
+                                    }
+                                    
+                                    #abierto{
+                                    background-color: green;
+                                    }
+                                    
+                                    #revisar, #editar{
+                                        background-color: #0CB7F2;
+                                    }
+
+                                    </style>
                                     
 
                                     @if ($item->priority == '0')
-                                    <td> <a class=" btn btn-info text-white text-bold-600">Alto</a></td>
+                                    <td> <a class=" btn  text-dark text-bold-600">Alto</a></td>
                                     @elseif($item->priority == '1')
-                                    <td> <a class=" btn btn-warning text-white text-bold-600">Medio</a></td>
+                                    <td> <a class=" btn  text-dark text-bold-600">Medio</a></td>
                                     @elseif($item->priority == '2')
-                                    <td> <a class=" btn btn-danger text-white text-bold-600">Bajo</a></td>
+                                    <td> <a class=" btn  text-dark text-bold-600">Bajo</a></td>
                                     @endif
 
                                     
                                     @if ($item->status == '0')
-                                    <td><a href="{{ route('ticket.edit-user',$item->id) }}" class="btn btn-secondary text-bold-600">Editar</a></td>
+                                    <td><a href="{{ route('ticket.edit-user',$item->id) }}" id="editar" class="btn text-dark text-bold-600">Editar</a></td>
                                     @else
-                                    <td><a href="{{ route('ticket.show-user',$item->id) }}" class="btn btn-secondary text-bold-600">Revisar</a></td>
+                                    <td><a href="{{ route('ticket.show-user',$item->id) }}" id="revisar" class="btn text-dark text-bold-600">Revisar</a></td>
                                     @endif
                                 </tr>
                                 @endforeach
@@ -65,6 +80,9 @@
                     </div>
                 </div>
             </div>
+
+
+            
         </div>
     </div>
 </div>
