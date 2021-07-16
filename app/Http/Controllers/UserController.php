@@ -37,55 +37,6 @@ class UserController extends Controller
 
     }
 
-    /**
-     * Vista para el KYC
-     *
-     * @return void
-     */
-    public function kyc()
-    {
-
-         View::share('titleg', 'Verificacion KYC');
-
-         return view('users.componenteProfile.kyc');
-
-    }
-
-    /**
-     * Funcion para actualizar el KYC
-     *
-     * @param Request $request
-     * @return void
-     */
-    public function updateProfileKYC(Request $request)
-    {
-
-        $user = User::find(Auth::user()->id);
-
-        $fields = [      ];
-
-        $msj = [    ];
-
-        $this->validate($request, $fields, $msj);
-
-        $user->update($request->all());
-
-     if($request->hasFile('dni')){
-
-        $file = $request->file('dni');
-        $name = $user->id.'_'.$file->getClientOriginalName();
-        $file->move(public_path('storage') . '/dni', $name);
-        $user->dni = $name;
-
-     }
-
-     $user->wallet_address = $request->wallet_address;
-
-     $user->save();
-
-     return redirect()->route('kyc')->with('msj-success','Se actualizo tu perfil');
-
-    }
 
     /**
      * Vista para revisar la informacion del usuario
@@ -95,7 +46,7 @@ class UserController extends Controller
      */
     public function showUser($id){
 
-        View::share('titleg', 'Verificacion KYC');
+        View::share('titleg');
 
         $user = User::find($id);
 
