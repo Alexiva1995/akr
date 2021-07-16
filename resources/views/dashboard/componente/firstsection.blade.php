@@ -22,22 +22,7 @@
                             {{-- ¿Qué tal recargar tu saldo? --}}
                         </p>
                         
-                        <br>
-                        
-                        @if (Auth::user()->dni == NULL)
-                        <p class="m-auto w-75">
-                            KYC: Sin verificar <span class="text-danger h3">◉</span><br>
-                        </p>
-                        @elseif (Auth::user()->dni != NULL && Auth::user()->verify == 0)
-                        <p class="m-auto w-75">
-                            KYC: En Revision <span class="text-warning h3">◉</span><br>
-                        </p>
-                        @elseif (Auth::user()->dni != NULL && Auth::user()->verify == 1)
-                        <p class="m-auto w-75">
-                            KYC: Verificada <span class="text-success h3">◉</span><br>
-                        </p>
-                        @endif
-
+                        <br>                    
                         
                         @if (Auth::user()->status == 0)
                         <p class="m-auto w-75">
@@ -59,13 +44,7 @@
                         <p class="m-auto w-75">
                             Estado: caducado <span class="text-warning h3">◉</span><br>
                         </p>
-                        @endif
-                  
-                        @if (Auth::user()->dni == NULL)
-                        <p class="card-text">
-                            <a class="btn btn-flat-primary padding-button-short bg-white mt-1 waves-effect waves-light" href="{{ route('kyc') }}">Verificación KYC <i class="far fa-copy"></i></a>
-                        </p>    
-                        @endif
+                        @endif                
 
                     </div>
                 </div>

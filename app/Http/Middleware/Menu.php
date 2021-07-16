@@ -225,27 +225,41 @@ class Menu
                 'ruta' => 'javascript:;',
                 'blank' => '', // si es para una pagina diferente del sistema solo coloquen _blank
                 'icon' => 'feather icon-shopping-cart',
-                'complementoruta' => '',
+                'complementoruta' => '',                
                 'submenus' => [
                     [
-                        'name' => 'Grupos',
-                        'blank' => '', // si es para una pagina diferente del sistema solo coloquen _blank
-                        'ruta' => route('group.index'),
+                        'name' => 'Activas',
+                        'blank'=> '', // si es para una pagina diferente del sistema solo coloquen _blank
+                        'ruta' => route('inversiones.index', 1),
                         'complementoruta' => ''
                     ],
                     [
-                        'name' => 'Paquetes',
-                        'blank' => '', // si es para una pagina diferente del sistema solo coloquen _blank
-                        'ruta' => route('package.index'),
+                        'name' => 'Culminadas',
+                        'blank'=> '', // si es para una pagina diferente del sistema solo coloquen _blank
+                        'ruta' => route('inversiones.index', 2),
                         'complementoruta' => ''
-                    ],
-                    [
-                        'name' => 'Tienda',
-                        'blank' => '',  //si es para una pagina diferente del sistema solo coloquen _blank
-                        'ruta' => route('shop'),
-                        'complementoruta' => ''
-                    ],
-                ],
+                    ]
+                ],                
+                // 'submenus' => [
+                //     [
+                //         'name' => 'Grupos',
+                //         'blank' => '', // si es para una pagina diferente del sistema solo coloquen _blank
+                //         'ruta' => route('group.index'),
+                //         'complementoruta' => ''
+                //     ],
+                //     [
+                //         'name' => 'Paquetes',
+                //         'blank' => '', // si es para una pagina diferente del sistema solo coloquen _blank
+                //         'ruta' => route('package.index'),
+                //         'complementoruta' => ''
+                //     ],
+                //     [
+                //         'name' => 'Tienda',
+                //         'blank' => '',  //si es para una pagina diferente del sistema solo coloquen _blank
+                //         'ruta' => route('shop'),
+                //         'complementoruta' => ''
+                //     ],
+                // ],
             ],
             
             // 4- Informes
