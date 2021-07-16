@@ -61,54 +61,9 @@ $(document).ready(function() {
     <div class="header-navbar-shadow"></div>
 
     <div class="content-body">
-        <!-- account setting page start -->
-        <section id="page-account-settings">
-            <div class="row">
-                <!-- left menu section -->
-                <div class="col-md-3 mb-2 mb-md-0">
-                    <ul class="nav nav-pills flex-column mt-md-0 mt-1">
-                        <li class="nav-item">
-                            <a class="nav-link d-flex py-75 active" id="account-pill-general" data-toggle="pill"
-                                href="#account-vertical-general" aria-expanded="true">
-                                <i class="feather icon-user mr-50 font-medium-3"></i>
-                                Datos personales
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link d-flex py-75" id="account-pill-pass" data-toggle="pill"
-                                href="#account-vertical-pass" aria-expanded="false">
-                                <i class="feather icon-lock mr-50 font-medium-3"></i>
-                                Cambiar la contraseña
-                            </a>
-                        </li>
-                        @if (Auth::user()->verify != 1)
-                        <li class="nav-item">
-                            <a class="nav-link d-flex py-75"
-                                href="{{ route('kyc') }}">
-                                <i class="feather icon-file-text mr-50 font-medium-3"></i>
-                                Verificar KYC
-                            </a>
-                        </li>
-                        @endif
-                        {{-- <li class="nav-item">
-                            <a class="nav-link d-flex py-75"
-                                href="{{ route('profile.change-password')}}">
-                                <i class="feather icon-lock mr-50 font-medium-3"></i>
-                                Cambiar la contraseña
-                            </a>
-                        </li> --}}
-                        {{-- <li class="nav-item">
-                            <a class="nav-link d-flex py-75" id="account-pill-social" data-toggle="pill"
-                                href="#account-vertical-social" aria-expanded="false">
-                                <i class="feather icon-link mr-50 font-medium-3"></i>
-                                Tu clave API
-                            </a>
-                        </li> --}}
-                    </ul>
-                </div>
- 
+     
                 <!-- right content section -->
-                <div class="col-md-9">
+                <div class="col-md-12">
                     <div class="card">
                         <div class="card-content">
                             <div class="card-body">

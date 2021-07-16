@@ -103,55 +103,24 @@
                 </div>
             </div>
         </div>
-        <div class="col-12">
-            <div class="form-group">
-                <label for="account-api">Billetera</label>
-                <input type="text" id="account-api" class="form-control"
-                    placeholder="wallet_address" name="wallet_address"
-                    value="{{ $user->wallet_address }}" disabled>
-            </div>
+     
         </div>
     </div>
+    <div class="col-12 d-flex flex-sm-row flex-column justify-content-end">
+            <button type="submit"
+                class="btn btn-primary mr-sm-1 mb-1 mb-sm-0 waves-effect waves-light">GUARDAR</button>
+        </div>
+
     <hr>
+        
     <div class="row">
         <div class="col-12">
             <div class="form-group">
                 <div class="controls">
-                    <h2 class="font-weight-bold">Más Información</h2>
+                    <h2 class="font-weight-bold">Cambiar Contraseña</h2>
                 </div>
             </div>
         </div>
-  
-        <div class="col-12">
-            <div class="form-group">
-                <div class="controls">
-                    <label class="required" for="address">Dirección</label>
-                    <textarea type="text"
-                        class="form-control @error('address') is-invalid @enderror"
-                        id="address"
-                        name="address">{{ $user->address}}</textarea>
-                    @error('address')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                    @enderror
-                </div>
-            </div>
-        </div>
-        <div class="col-12">
-            <div class="form-group">
-                <div class="controls">
-                    <h6 class="font-weight-bold"><span class="text-danger">Nota:
-                        </span> Si no quieres añadir <span
-                            class="text-danger">Más Información</span> deja
-                        estos
-                        espacios en blanco.</h6>
-                </div>
-            </div>
-        </div>
-        <div class="col-12 d-flex flex-sm-row flex-column justify-content-end">
-            <button type="submit"
-                class="btn btn-primary mr-sm-1 mb-1 mb-sm-0 waves-effect waves-light">GUARDAR</button>
-        </div>
+
     </div>
 </form>
