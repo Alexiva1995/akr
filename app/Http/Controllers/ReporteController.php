@@ -7,6 +7,7 @@ use App\Models\Wallet;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\Auth;
 
 class ReporteController extends Controller
 {
@@ -22,6 +23,16 @@ class ReporteController extends Controller
         $ordenes = $this->getOrdenes(0);
         
         return view('reports.perdido', compact('ordenes'));
+    }
+
+    public function UserOrders()
+    {
+        $user_id = Auth::user()->id;
+
+        $ordenes = OrdenPurchases::where('iduser', $user_id);
+
+        return view('reports.UserOrders', compact('ordenes'));
+
     }
 
     /**
