@@ -170,16 +170,6 @@ class Menu
     }
 
 
-
-
-
-
-
-    /**
-     * Permite Obtener el menu del admin
-     *
-     * @return void
-     */
     public function menuAdmin()
     {
         return [
@@ -220,47 +210,12 @@ class Menu
 
             //3- inversiones
             'Inversiones' => [
-
-                 'submenu' => 1,
-                'ruta' => 'javascript:;',
+                'submenu' => 0,
+                'ruta' => route('inversiones.index', 1),
                 'blank' => '', // si es para una pagina diferente del sistema solo coloquen _blank
                 'icon' => 'feather icon-shopping-cart',
-                'complementoruta' => '',                
-                'submenus' => [
-                    [
-                        'name' => 'Activas',
-                        'blank'=> '', // si es para una pagina diferente del sistema solo coloquen _blank
-                        'ruta' => route('inversiones.index', 1),
-                        'complementoruta' => ''
-                    ],
-                    [
-                        'name' => 'Culminadas',
-                        'blank'=> '', // si es para una pagina diferente del sistema solo coloquen _blank
-                        'ruta' => route('inversiones.index', 2),
-                        'complementoruta' => ''
-                    ]
-                ],                
-                // 'submenus' => [
-                //     [
-                //         'name' => 'Grupos',
-                //         'blank' => '', // si es para una pagina diferente del sistema solo coloquen _blank
-                //         'ruta' => route('group.index'),
-                //         'complementoruta' => ''
-                //     ],
-                //     [
-                //         'name' => 'Paquetes',
-                //         'blank' => '', // si es para una pagina diferente del sistema solo coloquen _blank
-                //         'ruta' => route('package.index'),
-                //         'complementoruta' => ''
-                //     ],
-                //     [
-                //         'name' => 'Tienda',
-                //         'blank' => '',  //si es para una pagina diferente del sistema solo coloquen _blank
-                //         'ruta' => route('shop'),
-                //         'complementoruta' => ''
-                //     ],
-                // ],
-            ],
+                'complementoruta' => '',
+            ],                
             
             // 4- Informes
             'Informes' => [

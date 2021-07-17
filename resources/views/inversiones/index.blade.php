@@ -6,6 +6,19 @@
         <div class="card">
             <div class="card-content">
                 <div class="card-body card-dashboard">
+                    @if($tipo == 1)
+                        <h1 class="text-center">Inversiones Activas</h1>
+                        <div class="d-flex justify-content-center">
+                            <a href="{{ route('inversiones.index',1) }}" class="btn btn-secondary  text-bold-600 mr-1 disabled">Ver las Inversiones Activas</a> 
+                            <a href="{{ route('inversiones.index',2) }}" class="btn btn-primary text-bold-600 ml-1">Ver las Inversiones Inactivas</a> 
+                        </div>
+                    @else
+                        <h1 class="text-center">Inversiones Inactivas</h1>
+                        <div class="d-flex justify-content-center">
+                            <a href="{{ route('inversiones.index',1) }}" class="btn btn-primary  text-bold-600 mr-1">Ver las Inversiones Activas</a> 
+                            <a href="{{ route('inversiones.index',2) }}" class="btn btn-secondary text-bold-600 ml-1 disabled">Ver las Inversiones Inactivas</a> 
+                        </div>
+                    @endif
                     <div class="table-responsive">
                         <table class="table w-100 nowrap scroll-horizontal-vertical myTable table-striped">
                             <thead class="">

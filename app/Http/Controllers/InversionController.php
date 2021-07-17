@@ -36,7 +36,7 @@ class InversionController extends Controller
                 $inversion->correo = $inversion->getInversionesUser->email;
             }
             
-            return view('inversiones.index', compact('inversiones'));
+            return view('inversiones.index', compact('inversiones', 'tipo'));
         } catch (\Throwable $th) {
             Log::error('InversionController - index -> Error: '.$th);
             abort(403, "Ocurrio un error, contacte con el administrador");
