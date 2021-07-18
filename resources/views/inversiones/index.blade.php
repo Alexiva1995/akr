@@ -48,7 +48,7 @@
                                 
                                     <td>{{$inversion->id}}</td>
                                     <td>{{$inversion->correo}}</td>
-                                    <td>{{$inversion->getPackageOrden->getGroup->name }} - {{$inversion->getPackageOrden->name}}</td>
+                                    <td>{{$inversion->getPackageOrden->name}}</td>
                                     <td>$ {{number_format($inversion->ganacia, 2, ',', '.')}}</td>
                                     <td>{{number_format($inversion->progreso, 2, ',', '.')}}</td>
                                     <td>{{date('Y-M-d', strtotime($inversion->fecha_vencimiento))}}</td>

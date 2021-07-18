@@ -165,10 +165,10 @@ Route::prefix('dashboard')->middleware('menu', 'auth')->group(function ()
         });
 
         //Rutas para el cierre de productos
-        Route::prefix('accounting')->group(function(){
-            Route::resource('commission_closing', 'CierreComisionController');
-            Route::get('pagarComisiones', 'CierreComisionController@pagarUtilidadFinDeMes')->name('pagarComisiones');
-        });
+        // Route::prefix('accounting')->group(function(){
+        //     Route::resource('commission_closing', 'CierreComisionController');
+        //     Route::get('pagarComisiones', 'CierreComisionController@pagarUtilidadFinDeMes')->name('pagarComisiones');
+        // });
 
         //Rutas para los reportes
         Route::prefix('reports')->group(function(){

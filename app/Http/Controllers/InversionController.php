@@ -43,16 +43,6 @@ class InversionController extends Controller
         }
     }
 
-    /**
-     * Permite guardar las nuevas inversiones generadas
-     *
-     * @param integer $paquete - ID del Paquete Comprado
-     * @param integer $orden - ID de la compra Comprada
-     * @param float $invertido - Monto Total Invertido
-     * @param string $vencimiento - Fecha de Vencimiento del paquete
-     * @param integer $iduser - ID del usuario 
-     * @return void
-     */
     public function saveInversion(int $paquete, int $orden, float $invertido, string $vencimiento, int $iduser)
     {
         try {
@@ -81,11 +71,7 @@ class InversionController extends Controller
         }
     }
 
-    /**
-     * Permite Verificar si una inversion esta terminada
-     *
-     * @return void
-     */
+
     public function checkStatus()
     {
         Inversion::whereDate('fecha_vencimiento', '<', Carbon::now())->update(['status' => 2]);
@@ -148,39 +134,6 @@ class InversionController extends Controller
         } catch (\Throwable $th) {
             Log::error('InversionController - updateGanancia -> Error: '.$th);
             abort(403, "Ocurrio un error, contacte con el administrador");
-        }
-    }
-
-    public function reinvertirCapital()
-    {
-        $users = User::where('reinvertir_capital', true)->get();
-
-        foreach ($users as $user) {
-            if($user->reinvertir_capital == true){
-
-                if(Carbon::parse($user->inversionReinvertir->fecha_vencimiento)->endOfDay()->gte(Carbon::now())){
-                    //return "vigente";
-                }else{
-                    //Guardamos la orden 
-                    $porcentaje = ($user->inversionReinvertir->capital * 0.03);
-                    $total = ($user->inversionReinvertir->capital + $porcentaje);
-
-                    $data = [
-                        'iduser' => $user->id,
-                        'group_id' => $user->packageReinvertir->group_id,
-                        'package_id' => $user->packageReinvertir->id,
-                        'cantidad' => $user->inversionReinvertir->capital,
-                        'total' => $total
-                    ];
-
-                    $orden = OrdenPurchases::create($data);
-
-                    $inversion = $this->saveInversion($user->packageReinvertir->id, $orden->id, $user->inversionReinvertir->capital,  $user->packageReinvertir->expired, $user->id);
-
-                    dump("inversion guardada");
-                    dump($inversion);
-                }
-            }   
         }
     }
 
