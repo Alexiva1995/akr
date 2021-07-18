@@ -52,7 +52,7 @@
     </div>
 </div>
 
-{{-- Segundo Cuadros -> Graficas de Comisiones e inversiones --}}
+<!-- {{-- Segundo Cuadros -> Graficas de Comisiones e inversiones --}}
 <div class="row">
     <div class="col-lg-6 col-md-12 col-12 mt-1">
         <div class="card text-white h-100">
@@ -126,6 +126,6 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
 
 @include('layouts.componenteDashboard.optionDatatable')
