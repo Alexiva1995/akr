@@ -170,18 +170,7 @@ class UserController extends Controller
     {
         $user = User::find(Auth::user()->id);
 
-        $fields = [
-
-         "name" => ['required'],
-         "last_name" => ['required'],
-         "email" => [
-            'required',
-            'string',
-            'email',
-            'max:255',
-        ],
-
-        ];
+        
 
         $msj = [
 
@@ -191,7 +180,7 @@ class UserController extends Controller
 
         ];
 
-        $this->validate($request, $fields, $msj);
+        $this->validate($request, $msj);
 
         $fullname = $request->name .' '. $request->last_name;
 
