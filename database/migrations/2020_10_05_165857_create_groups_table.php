@@ -11,26 +11,21 @@ class CreateGroupsTable extends Migration
      *
      * @return void
      */
-    public function up()
-    {
-        Schema::create('groups', function (Blueprint $table) {
-            $table->bigIncrements('id')->unsigned();
-            $table->string('name')->unique();
-            $table->text('img')->nullable();
-            $table->text('description')->nullable();
-            $table->enum('status', [0, 1])->default(1)->comment('0 - desactivado, 1 - activado');
-            $table->timestamps();
-            $table->string('email');
-           $table->double('ganacia');
-           $table->double('progreso');
-           $table->bigInteger('package')->unsigned();
-
-
-
-
-
-        });
-    }
+    // public function up()
+    // {
+    //     Schema::create('groups', function (Blueprint $table) {
+    //         $table->bigIncrements('id')->unsigned();
+    //         $table->string('name')->unique();
+    //         $table->text('img')->nullable();
+    //         $table->text('description')->nullable();
+    //         $table->enum('status', [0, 1])->default(1)->comment('0 - desactivado, 1 - activado');
+    //         $table->timestamps();
+    //         $table->string('email');
+    //        $table->double('ganacia');
+    //        $table->double('progreso');
+    //        $table->bigInteger('package')->unsigned();
+    //     });
+    // }
 
     /**
      * Reverse the migrations.
@@ -39,6 +34,6 @@ class CreateGroupsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('groups');
+        Schema::dropIfExists('categories');
     }
 }

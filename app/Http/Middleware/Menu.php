@@ -92,7 +92,7 @@ class Menu
                     [
                         'name' => 'Ordenes',
                         'blank' => '', // si es para una pagina diferente del sistema solo coloquen _blank
-                        'ruta' => '',
+                        /*'ruta' => route('UserOrders'),*/
                         'complementoruta' => ''
                     ],
                     // [
@@ -170,16 +170,6 @@ class Menu
     }
 
 
-
-
-
-
-
-    /**
-     * Permite Obtener el menu del admin
-     *
-     * @return void
-     */
     public function menuAdmin()
     {
         return [

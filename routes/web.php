@@ -86,9 +86,8 @@ Route::prefix('dashboard')->middleware('menu', 'auth')->group(function ()
 
     
     //Ruta para los usuarios
-    Route::prefix('user')->group(function(){
-    
-
+    Route::prefix('user')->group(function()
+    {
         Route::get('profile', 'UserController@editProfile')->name('profile');
 
         Route::get('user-list', 'UserController@listUser')->name('users.list-user')->middleware('auth', 'checkrole:1');
@@ -107,6 +106,8 @@ Route::prefix('dashboard')->middleware('menu', 'auth')->group(function ()
 
         Route::get('/impersonate/stop', 'ImpersonateController@stop')->name('impersonate.stop');
         Route::post('/impersonate/{user}/start', 'ImpersonateController@start')->name('impersonate.start');
+
+        Route::get('UserOrders', 'ReporteController@UserOrders')->name('UserOrders');
     });
 
     Route::prefix('inversiones')->group(function ()
@@ -164,16 +165,15 @@ Route::prefix('dashboard')->middleware('menu', 'auth')->group(function ()
         });
 
         //Rutas para el cierre de productos
-        Route::prefix('accounting')->group(function(){
-            Route::resource('commission_closing', 'CierreComisionController');
-            Route::get('pagarComisiones', 'CierreComisionController@pagarUtilidadFinDeMes')->name('pagarComisiones');
-        });
+        // Route::prefix('accounting')->group(function(){
+        //     Route::resource('commission_closing', 'CierreComisionController');
+        //     Route::get('pagarComisiones', 'CierreComisionController@pagarUtilidadFinDeMes')->name('pagarComisiones');
+        // });
 
         //Rutas para los reportes
         Route::prefix('reports')->group(function(){
             Route::get('purchase', 'ReporteController@indexPedidos')->name('reports.pedidos');
             Route::get('commission', 'ReporteController@indexComision')->name('reports.comision');
-
         });
 
     });
