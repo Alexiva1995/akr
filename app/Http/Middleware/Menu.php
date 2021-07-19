@@ -92,7 +92,7 @@ class Menu
                     [
                         'name' => 'Ordenes',
                         'blank' => '', // si es para una pagina diferente del sistema solo coloquen _blank
-                        /*'ruta' => route('UserOrders'),*/
+                        /*'ruta' => route('reports.UserOrders'),*/
                         'complementoruta' => ''
                     ],
                     // [

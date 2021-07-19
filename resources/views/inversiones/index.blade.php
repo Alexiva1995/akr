@@ -15,7 +15,7 @@
                         </div>
                     @else
                        
-                        <div class="d-flex justify-content-center">
+                        <div class="d-flex float-right">
                             <a href="{{ route('inversiones.index',1) }}" style="background-color: green;"  class="btn text-white text-bold-600 mr-1"> Activas</a> 
 
                             <a href="{{ route('inversiones.index',2) }}" style="background-color: red;"  class="btn text-white  text-bold-600 ml-1 "> Culminadas</a> 
