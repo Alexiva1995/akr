@@ -9,10 +9,10 @@ class Ticket extends Model
 {
     protected $table = 'tickets';
 
-    public $timestamps = false;
+    public $timestamps = true;
     
     protected $fillable = [
-        'iduser','name', 'status', 'priority','issue','email','description','note_admin'
+         'iduser','status', 'priority','issue'
     ];
 
     public function getUser()
