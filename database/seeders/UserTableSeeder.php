@@ -24,7 +24,8 @@ class UserTableSeeder extends Seeder
                 'password' => Hash::make('12password'),
                 'whatsapp' => '23423423423432',
                 'referred_id' => 0,
-                'status' => '1'
+                'status' => '1',
+                'binary_id' => '0',
             ]);
             User::create([
                 'name' => 'Leonardo',
@@ -34,45 +35,59 @@ class UserTableSeeder extends Seeder
                 'admin' => '0',
                 'password' => Hash::make('12password'),
                 'whatsapp' => '23423423423432',
-                'referred_id' => 0,
-                'status' => '1'
+                'referred_id' => '1',
+                'status' => '1',
+                'binary_side' => 'I'
             ]);
             User::create([
-                'name' => 'Eulin',
-                'last_name' => 'Palma',
-                'fullname' => 'Eulin Palma',
-                'email' => 'eulinpalma@valdusoft.com',
+                'name' => 'Juan',
+                'last_name' => 'Rojas',
+                'fullname' => 'Juan Rojas',
+                'email' => 'test@email.com',
                 'admin' => '0',
-                'password' => Hash::make('12345678'),
+                'password' => Hash::make('12password'),
                 'whatsapp' => '23423423423432',
-                'referred_id' => 0,
-                'status' => '1'
-            ]);
-            User::create([
-                'name' => 'Alexis',
-                'last_name' => 'Valera',
-                'fullname' => 'Alexis Valera',
-                'email' => 'alexisvalera@valdusoft.com',
-                'admin' => '0',
-                'password' => Hash::make('12345678'),
-                'whatsapp' => '23423423423432',
-                'referred_id' => 0,
-                'status' => '1'
-            ]);
+                'referred_id' => '2',
+                'binary_id' => '2',
+                'status' => '1',
+                'binary_side' => 'I'
+            ]);            
+            // User::create([
+            //     'name' => 'Eulin',
+            //     'last_name' => 'Palma',
+            //     'fullname' => 'Eulin Palma',
+            //     'email' => 'eulinpalma@valdusoft.com',
+            //     'admin' => '0',
+            //     'password' => Hash::make('12345678'),
+            //     'whatsapp' => '23423423423432',
+            //     'referred_id' => 0,
+            //     'status' => '1'
+            // ]);
+            // User::create([
+            //     'name' => 'Alexis',
+            //     'last_name' => 'Valera',
+            //     'fullname' => 'Alexis Valera',
+            //     'email' => 'alexisvalera@valdusoft.com',
+            //     'admin' => '0',
+            //     'password' => Hash::make('12345678'),
+            //     'whatsapp' => '23423423423432',
+            //     'referred_id' => 0,
+            //     'status' => '1'
+            // ]);
 
-            for($i = 0; $i <= 25; $i++){
-                User::create([
-                    'name' => Str::random(5),
-                    'last_name' => Str::random(5),
-                    'fullname' => Str::random(5),
-                    'email' => Str::random(5).'@valdusoft.com',
-                    'admin' => '0',
-                    'password' => Hash::make('12345678'),
-                    'whatsapp' => '23423423423432',
-                    'referred_id' => random_int(1,10),
-                    'status' => '1'
-                ]);
-            }
+            // for($i = 0; $i <= 25; $i++){
+            //     User::create([
+            //         'name' => Str::random(5),
+            //         'last_name' => Str::random(5),
+            //         'fullname' => Str::random(5),
+            //         'email' => Str::random(5).'@valdusoft.com',
+            //         'admin' => '0',
+            //         'password' => Hash::make('12345678'),
+            //         'whatsapp' => '23423423423432',
+            //         'referred_id' => random_int(1,10),
+            //         'status' => '1'
+            //     ]);
+            // }
 
         } catch (\Throwable $th) {
             dd($th);

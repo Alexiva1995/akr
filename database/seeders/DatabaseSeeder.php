@@ -96,7 +96,7 @@ class DatabaseSeeder extends Seeder
         {
             OrdenPurchases::create([
                 'iduser' => random_int(1,3),
-                'package_id' => random_int(1,2),
+                'package_id' => random_int(1,3),
                 'cantidad' => 1,
                 'total' => random_int(1000,10000),
                 'status' => '0',
