@@ -86,6 +86,7 @@
                                                         <div class="chat-body">
                                                             <div class="chat-content">
                                                                 <p>¿Cómo podemos ayudarle? </p>
+                                                                <p> </p>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -139,12 +140,10 @@
                                     <textarea class="form-control border rounded-0 chat-window-message" required type="text" id="message" name="message"></textarea>
                                 </div>
 
-
-
                             </div>
 
                             <div class="col-12">
-                                <button type="submit" class="btn btn-primary mr-1 mb-1 waves-effect waves-light">Enviar
+                                <button type="submit" class="btn btn-primary mr-1 mb-1 waves-effect waves-light float-right">Enviar
                                     Ticket</button>
                             </div>
                     </div>
