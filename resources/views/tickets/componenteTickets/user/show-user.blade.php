@@ -62,11 +62,11 @@
 
                                             <div class="msg-bubble">
                                                     <div class="msg-info">
-                                                        <div class="msg-info-name text-dark" id="correo">{{Auth::user()->email}}</div>
+                                                        <div class="msg-info-name text-dark" id="correo">{{$emailadmin[0]}}</div>
                                                     </div>
 
                                             <div class="msg right-msg">
-                                                <img class="rounded-circle" width="50" height="50" src="{{$ticket->photoDB}}" alt="">
+                                                <img class="rounded-circle" width="50" height="50" src="{{$photoadmin[0]}}" alt="">
 
                                               
                                               

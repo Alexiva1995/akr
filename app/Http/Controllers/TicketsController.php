@@ -110,11 +110,12 @@ class TicketsController extends Controller
     // permite ver el ticket
 
     public function showUser($id){
-
         $ticket = Ticket::find($id);
-        
-        return view('tickets.componenteTickets.user.show-user')
-        ->with('ticket', $ticket);
+        $photoadmin = User::where('id',1)->pluck("photoDB");
+        $emailadmin = User::where('id',1)->pluck("email");
+        $photouser = Auth::user()->photoDB;
+        return view('tickets.componenteTickets.user.show-user')->with('ticket', $ticket)
+        ->with('photouser', $photouser)->with('photoadmin', $photoadmin)->with('emailadmin', $emailadmin);
     }
 
 
