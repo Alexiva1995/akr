@@ -32,6 +32,16 @@
                                     </div>
                                 </div>
 
+                             
+                              
+                                    <div class="col-12">
+                                        <div class="form-group">
+                                        <label>Email de contacto</label>
+                                            <input type="email" id="email" class="form-control" name="email">
+                                        </div>
+                                    </div>
+
+
                                     <div class="col-12">
                                         <div class="form-group">
                                             <label>Asunto del Ticket</label>

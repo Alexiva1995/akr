@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\ValidationException;
+use App\Models\User;
+
 
 
 class TicketsController extends Controller
@@ -29,13 +31,14 @@ class TicketsController extends Controller
     public function store(Request $request){
 
         $fields = [
-         
+            "email" => ['required'],
             "issue" => ['required'],
             "description" => ['required'],
             'status' => ['0'],
         ];
 
         $msj = [
+            'email.required' => 'El email es Requerido',
             'issue.required' => 'El asunto es Requerido',
             'description.required' => 'La descripción es Requerido',
         ];
@@ -44,7 +47,7 @@ class TicketsController extends Controller
         
         Ticket::create([
             'iduser' => Auth::id(),
-            'priority' => request('priority'),
+            'email' => request('email'),
             'issue' => request('issue'),
             'description' => request('description'),
         ]);
@@ -72,6 +75,7 @@ class TicketsController extends Controller
         $fields = [
           
             'status' => ['0'],
+            
             
         ];
 
@@ -115,18 +119,15 @@ class TicketsController extends Controller
     }
 
 
-
-
     // permite editar el ticket
-
     public function editAdmin($id){
-
         $ticket = Ticket::find($id);
-
+        $user = User::find($ticket->iduser);
+        $ticket->fullname = $user->fullname;
+        $ticket->photoDB = asset('storage/'.$user->photoDB);
         return view('tickets.componenteTickets.admin.edit-admin')
         ->with('ticket', $ticket);
     }
-
     // permite actualizar el ticket
 
     public function updateAdmin(Request $request, $id){
