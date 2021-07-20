@@ -22,8 +22,9 @@ class TicketsController extends Controller
     // permite ver la vista de creacion del ticket
 
     public function create(){
-     
+      
         return view('tickets.create');
+        
     }
 
     // permite la creacion del ticket
@@ -52,8 +53,8 @@ class TicketsController extends Controller
             'description' => request('description'),
         ]);
 
-        return redirect()->route('ticket.list-user')->with('msj-success', 'El Ticket se creo Exitosamente');
-    }
+        return redirect()->route('ticket.list-user')->with('msj-success', 'El Ticket se creo Exitosamente');}
+    
 
     // permite editar el ticket
 
@@ -92,18 +93,16 @@ class TicketsController extends Controller
         $ticket->note_admin = $request->note_admin;
         $ticket->save();
 
-        $route = route('ticket.list-user');
+        $route = route('ticket.edit-user',$ticket->id);
         return redirect($route)->with('msj-success', 'Ticket '.$id.' Actualizado ');
     }
 
     // permite ver la lista de tickets
 
     public function listUser(Request $request){
-
+       
         $ticket = Ticket::where('iduser', Auth::id())->get();
-
         View::share('titleg', 'Historial de Tickets');
-
         return view('tickets.componenteTickets.user.list-user')
         ->with('ticket', $ticket);
     }
@@ -113,7 +112,7 @@ class TicketsController extends Controller
     public function showUser($id){
 
         $ticket = Ticket::find($id);
-
+        
         return view('tickets.componenteTickets.user.show-user')
         ->with('ticket', $ticket);
     }
@@ -134,23 +133,19 @@ class TicketsController extends Controller
 
         $ticket = Ticket::find($id);
 
-        $fields = [
-           
-            'note_admin' => ['required']
-        ];
 
         $msj = [
             'status.required' => 'Es requerido el Estatus de la ticket',
             'note_admin.required' => 'Es requerido Nota del admin',
         ];
 
-        $this->validate($request, $fields, $msj);
+        $this->validate($request, $msj);
 
         $ticket->update($request->all());
         $ticket->note_admin = $request->note_admin;
         $ticket->save();
 
-        $route = route('ticket.list-admin');
+        $route = route('ticket.edit-admin',$ticket->id);
         return redirect($route)->with('msj-success', 'Ticket '.$id.' Actualizado ');
     }
 
