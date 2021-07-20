@@ -51,7 +51,7 @@
             </div>
         </div>
     </div>
-    {{-- <div class="col-lg-6 col-md-12 col-12 mt-1">
+    <div class="col-lg-6 col-md-12 col-12 mt-1">
         <div class="card text-white bg-gradient-danger bg-red-alt h-100">
             <div class="card-content d-flex justify-contents-start align-items-center">
                 <div class="card-body pb-0 pt-3">
@@ -65,57 +65,41 @@
                 </div>
             </div>
         </div>
-    </div> --}}
+    </div>
+
     <div class="col-lg-6 col-md-12 col-12 mt-1">
-        <div class="card pt-2 h-80" style="background: #1b1b1b; height: 230px;">
-            <div class="card-header d-flex align-items-center text-right pb-0 pt-0 white">
-                <h5 class="mt-1 mb-0 text-white"><b>Lado Binario</b></h5>
-            </div>
+        <div class="card text-white bg-gradient-danger bg-red-alt h-100">
+            <div class="card-content">
+                <div class="card-body pb-0">
+                    <div class="card-header d-flex align-items-center text-right pb-0 pt-0 white">
+                        <h5 class="mt-1 mb-0 text-white"><b>Lado Binario</b></h5>
+                    </div>
+                </div>
 
-            <div class="card-sub d-flex align-items-center ">
-                <h1 class="gold text-bold-700 mb-0">
-                    @if (Auth::user()->binary_side_register == 'I')
-                    IZQUIERDA
+                <div class="card-sub ml-3">
+                    <h1 class="text-warning text-bold-700">
+                        @if (Auth::user()->binary_side_register == 'I')
+                        IZQUIERDA
+                        @else
+                        DERECHA
+                        @endif
+                    </h1>
+                </div>
+
+                <div class="mt-4">
+                    @if (Auth::user()->binary_side_register == 'I')                    
+                        <div class="d-flex justify-content-center">
+                            <a href="#" class="btn bg-white text-black text-bold-600 mr-1" v-on:click="updateBinarySide('D')">Derecha</a> 
+                            <a href="#" class="btn bg-black text-white text-bold-600 ml-1 disabled"  >Izquierda</a> 
+                        </div>                 
                     @else
-                    DERECHA
-                    @endif
-                </h1>
-            </div>
-            <div class="row no-gutters card-header align-items-center h-100">
-
-                @if (Auth::user()->binary_side_register == 'I')
-                    <div class="col">     
-                        <a href="#"
-                            class="btn btn-primary btn-block padding-button-short mt-1 waves-effect waves-light text-white"
-                            v-on:click="updateBinarySide('I')">
-                            IZQUIERDA
-                        </a>
-                    </div>
-                    <div class="col">
-                        <a href="#"
-                            class="btn btn-block btn-outline-warning padding-button-short mt-1 waves-effect waves-light text-white"
-                            v-on:click="updateBinarySide('D')" style="height: 44.78px">
-                            DERECHA
-                        </a>
-                    </div>
-                @else
-                        <div class="col">
-                            <a href="#"
-                                class="btn btn-block btn-outline-warning padding-button-short mt-1 waves-effect waves-light text-white"
-                                v-on:click="updateBinarySide('I')">
-                                IZQUIERDA
-                            </a>
-                        </div>
-                        <div class="col">
-                            <a href="#"
-                                class="btn btn-block btn-primary padding-button-short mt-1 waves-effect waves-light text-white"
-                                v-on:click="updateBinarySide('D')" style="height: 44.78px">
-                                DERECHA
-                            </a>
-                        </div>
-                    
-                @endif
-
+                        <div class="d-flex justify-content-center">
+                            <a href="#" class="btn bg-white text-black  text-bold-600 mr-1 disabled">Derecha</a> 
+                            <a href="#" class="btn bg-black text-white text-bold-600 ml-1"  v-on:click="updateBinarySide('I')">Izquierda</a> 
+                        </div>                    
+                    @endif    
+                </div>
+                </div>                
 
             </div>
         </div>
