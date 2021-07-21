@@ -11,12 +11,26 @@
 
 @section('content')
 <div id="adminServices">
-    <div class="col-12">
+    <div class="card">
+        <div class="card-content">
+            <div class="card-body card-dashboard">
+                <div class="container">
+                    <form action="#">
+                    <div class="form-group">
+                        <input type="range" min="70" max="10000" step="100" value="70" class="form-control-range" name="range">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Comprar Paquete</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+      
+    {{-- <div class="col-12">
         <div class="card">
             <div class="card-content">
                 <div class="card-body card-dashboard">
                     <div class="row">
-
                         <div class="table-responsive">
                             <table class="table w-100 nowrap scroll-horizontal-vertical myTable table-striped">
                                 <thead class="">
@@ -59,8 +73,7 @@
                     </div>
                 </div>
             </div>
-
-
         </div>
-
-        @endsection
+    </div> --}}
+</div>
+@endsection
