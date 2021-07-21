@@ -211,7 +211,7 @@ class Menu
             //3- inversiones
             'Inversiones' => [
 
-                 'submenu' => 0,
+                'submenu' => 0,
                 'ruta' =>  route('inversiones.index', 1),
                 'blank' => '', // si es para una pagina diferente del sistema solo coloquen _blank
                 'icon' => 'feather icon-shopping-cart',

@@ -14,8 +14,9 @@
         @foreach ($wallets as $wallet)
         <tr class="text-center">
             <td>{{$wallet->id}}</td>
-            <td>{{$wallet->iduser->fullname}}</td>
-            <td>{{date('d-m-Y', strtotime($wallet->created_at))}}</td>
+        <td>{{date('d-m-Y', strtotime($wallet->created_at))}}</td>
+
+            <td>{{$wallet->iduser}}</td>
             <td>{{$wallet->descripcion}}</td>
            
             {{--
