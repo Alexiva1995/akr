@@ -63,7 +63,7 @@
                                                             </div>
                                                             <div class="chat-body">
                                                                 <div class="chat-content">
-                                                                <div class="email-admin mb-1"></div>
+                                                                <div class="email-admin mb-1">{{$admin}}</div>
                                                                     <p>¿Cómo podemos ayudarle? </p>
                                                                 </div>
                                                             </div>

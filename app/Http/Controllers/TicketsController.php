@@ -106,10 +106,12 @@ class TicketsController extends Controller
     public function showUser($id){
         $ticket = Ticket::find($id);
         $message =MessageTicket::all()->where('id_ticket', $id);
+        $email = User::find(1);
+        $admin = $email->email;
         return view('tickets.componenteTickets.user.show-user')
         ->with('ticket', $ticket)
         ->with('message', $message)
-        ;
+        ->with('admin', $admin);
     }
 
 
