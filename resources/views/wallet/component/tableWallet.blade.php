@@ -2,11 +2,10 @@
     <thead class="">
         <tr class="text-center text-white bg-purple-alt2">
             <th>ID</th>
-            @if (Auth::user()->admin == 0)
-            <th>Referido</th>
-            @endif
-            <th>Descripcion</th>
+        
             <th>Fecha</th>
+            <th>Usuario</th>
+            <th>Descripcion</th>
             <th>Monto</th>
             <th>Estado</th>
         </tr>
@@ -15,12 +14,10 @@
         @foreach ($wallets as $wallet)
         <tr class="text-center">
             <td>{{$wallet->id}}</td>
-
-            @if (Auth::user()->admin == 0)
-            <td>{{$wallet->getWalletReferred->fullname}}</td>
-            @endif
-            <td>{{$wallet->descripcion}}</td>
+            <td>{{$wallet->iduser->fullname}}</td>
             <td>{{date('d-m-Y', strtotime($wallet->created_at))}}</td>
+            <td>{{$wallet->descripcion}}</td>
+           
             {{--
             @php
                 $monto = $wallet->monto;
