@@ -40,7 +40,7 @@
                                     @if ($item->status == '0')
                                     <td> <a class=" btn text-white text-bold-600" style="background-color: green;">Abierto</a></td>
                                     @elseif($item->status == '1')
-                                    <td> <a class=" btn text-white text-bold-600" style="background-color: green;">Cerrado</a></td>
+                                    <td> <a class=" btn text-white text-bold-600" style="background-color: red;">Cerrado</a></td>
                                     @endif
                                     
                                     @if ($item->priority == '0')

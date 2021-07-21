@@ -85,7 +85,7 @@
                                                         </div>
                                                         <div class="chat-body">
                                                             <div class="chat-content">
-                                                            <div class="email-admin mb-1">Imnoteverywhere12@gmail.com</div>
+                                                                <div class="email-admin mb-1">Imnoteverywhere12@gmail.com</div>
                                                                 <p>¿Cómo podemos ayudarle? </p>
                                                                 <p> </p>
                                                             </div>
@@ -105,7 +105,7 @@
                                                         </div>
                                                         <div class="chat-body">
                                                             <div class="chat-content">
-                                                            <div class="email-user mb-1">Imnoteverywhere12@gmail.com</div>
+                                                                <div class="email-user mb-1">Imnoteverywhere12@gmail.com</div>
                                                                 <p>{{ $item->message }}</p>
                                                             </div>
                                                         </div>
@@ -125,7 +125,7 @@
                                                         </div>
                                                         <div class="chat-body">
                                                             <div class="chat-content">
-                                                            <div class="email-admin mb-1">Imnoteverywhere12@gmail.com</div>
+                                                                <div class="email-admin mb-1">Imnoteverywhere12@gmail.com</div>
                                                                 <p>{{ $item->message }}</p>
                                                             </div>
                                                         </div>
@@ -178,12 +178,13 @@
                     flex-direction: row-reverse;
 
                 }
-                .email-admin{
+
+                .email-admin {
                     font-weight: 600;
                     display: flex;
 
                 }
-               
+
 
                 .chat-thread {
                     margin: 24px auto 0 auto;

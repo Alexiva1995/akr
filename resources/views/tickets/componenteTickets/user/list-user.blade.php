@@ -36,9 +36,9 @@
                                                                                                        
 
                                     @if ($item->status == '0')
-                                    <td> <a class=" btn text-bold-600 text-dark" style="background-color: green;">Abierto</a></td>
+                                    <td> <a class=" btn text-bold-600 text-white" style="background-color: green;">Abierto</a></td>
                                     @elseif($item->status == '1')
-                                    <td> <a class=" btn  text-bold-600 text-dark" style="background-color: red;">Cerrado</a></td>
+                                    <td> <a class=" btn  text-bold-600 text-white" style="background-color: red;">Cerrado</a></td>
                                     @endif
                                     
 
