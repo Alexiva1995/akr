@@ -77,9 +77,8 @@
                                                         <div class="chat-avatar">
                                                             <span class="avatar ">
                                                                 @if (Auth::user()->photoDB != NULL)
-                                                                <img src="{{asset('storage/photo/'.Auth::user()->photoDB)}}" alt="avatar" height="36" width="36">
-                                                                @else
-                                                                <img src="{{ asset('assets/img/legazy_pro/logo.svg') }}" alt="avatar" height="40" width="40">
+                                                                <img src="{{asset('storage/'.Auth::user()->photoDB)}}" alt="avatar" height="40" width="40">
+                                                                
                                                                 @endif
                                                             </span>
                                                         </div>
@@ -105,7 +104,7 @@
                                                         </div>
                                                         <div class="chat-body">
                                                             <div class="chat-content">
-                                                                <div class="email-user mb-1">Imnoteverywhere12@gmail.com</div>
+                                                                <div class="email-user mb-1">{{ $item->getUser->email}}</div>
                                                                 <p>{{ $item->message }}</p>
                                                             </div>
                                                         </div>
@@ -117,15 +116,14 @@
                                                         <div class="chat-avatar">
                                                             <span class="avatar ">
                                                                 @if (Auth::user()->photoDB != NULL)
-                                                                <img src="{{asset('storage/photo/'.Auth::user()->photoDB)}}" alt="avatar" height="36" width="36">
-                                                                @else
-                                                                <img src="{{ asset('assets/img/legazy_pro/logo.svg') }}" alt="avatar" height="40" width="40">
+                                                                <img src="{{asset('storage/'.Auth::user()->photoDB)}}" alt="avatar" height="40" width="40">
+                                                               
                                                                 @endif
                                                             </span>
                                                         </div>
                                                         <div class="chat-body">
                                                             <div class="chat-content">
-                                                                <div class="email-admin mb-1">Imnoteverywhere12@gmail.com</div>
+                                                                <div class="email-admin mb-1"></div>
                                                                 <p>{{ $item->message }}</p>
                                                             </div>
                                                         </div>
