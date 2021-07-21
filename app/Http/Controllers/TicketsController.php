@@ -61,10 +61,11 @@ class TicketsController extends Controller
 
         $ticket = Ticket::find($id);
         $message = MessageTicket::where('id_ticket', $id)->orderby('created_at','ASC')->get();
-
+        $email = User::all()->where('id', $message[0]->id_admin);
+        $admin = $email[0]->email;
         return view('tickets.componenteTickets.user.edit-user')
         ->with('ticket', $ticket)
-         ->with('message', $message);
+         ->with('message', $message)->with('admin', $admin);
     }
 
     // permite actualizar el ticket
@@ -105,13 +106,19 @@ class TicketsController extends Controller
     public function showUser($id){
         $ticket = Ticket::find($id);
         $message =MessageTicket::all()->where('id_ticket', $id);
-
         return view('tickets.componenteTickets.user.show-user')
         ->with('ticket', $ticket)
-        ->with('message', $message);
+        ->with('message', $message)
+        ;
     }
 
 
+
+    //////////////////////////////////
+
+    /* CONTROLADORES DE EL SOPORTE DEL ADMIN*/
+
+    /////////////////////////////////
 
     // permite editar el ticket
 
@@ -119,10 +126,12 @@ class TicketsController extends Controller
 
         $ticket = Ticket::find($id);
         $message = MessageTicket::where('id_ticket', $id)->orderby('created_at','ASC')->get();
-         
+        $email = User::all()->where('id', $message[0]->id_admin);
+        $admin = $email[0]->email;
         return view('tickets.componenteTickets.admin.edit-admin')
         ->with('ticket', $ticket)
-        ->with('message', $message);
+        ->with('message', $message)
+        ->with('admin', $admin);
 
     }
 
@@ -164,7 +173,7 @@ class TicketsController extends Controller
 
         $ticket = Ticket::find($id);
         $message =MessageTicket::all()->where('id_ticket', $id);
-
+        
         return view('tickets.componenteTickets.admin.show-admin')
         ->with('ticket', $ticket)
         ->with('message', $message);

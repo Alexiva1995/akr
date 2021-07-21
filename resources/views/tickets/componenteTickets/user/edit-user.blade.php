@@ -6,6 +6,7 @@
 @section('content')
 
 <section>
+
     <div class="row match-height d-flex justify-content-center">
         <div class="col-md-9 col-12">
             <div class="card bg-lp">
@@ -58,12 +59,13 @@
                                                     <div class="chat chat-left">
                                                         <div class="chat-avatar">
                                                             <span class="avatar ">
-                                                                <img src="{{ asset('assets/img/legazy_pro/logo.svg') }}" alt="avatar" height="40" width="40">
+                                                                <img src="{{asset('assets/img/sistema/favicon.png')}}" alt="avatar" height="40" width="40" style="background-color: white;" alt="avatar" height="40" width="40">
                                                             </span>
                                                         </div>
                                                         <div class="chat-body">
                                                             <div class="chat-content">
-                                                            <div class="email-admin mb-1">Imnoteverywhere12@gmail.com</div>
+                                                            <div class="email-admin mb-1">{{$admin}}</div>
+                                                           
 
                                                                 <p>¿Cómo Podemos ayudarle?</p>
                                                             </div>
@@ -80,7 +82,7 @@
                                                                 @if (Auth::user()->photoDB != NULL)
                                                                 <img src="{{asset('storage/'.Auth::user()->photoDB)}}" alt="avatar" height="40" width="40">
                                                                 @else
-                                                                <img src="{{ asset('assets/img/legazy_pro/logo.svg') }}" alt="avatar" height="40" width="40">
+                                                                <img src="{{asset('assets/img/sistema/favicon.png')}}" alt="avatar" height="40" width="40" style="background-color: white;">
                                                                 @endif
                                                             </span>
                                                         </div>
@@ -98,12 +100,12 @@
                                                     <div class="chat chat-left">
                                                         <div class="chat-avatar">
                                                             <span class="avatar ">
-                                                                <img src="{{ asset('assets/img/legazy_pro/logo.svg') }}" alt="avatar" height="40" width="40">
+                                                                <img src="{{asset('assets/img/sistema/favicon.png')}}" alt="avatar" height="40" width="40" style="background-color: white;">
                                                             </span>
                                                         </div>
                                                         <div class="chat-body">
                                                             <div class="chat-content">
-                                                            <div class="email-admin mb-1">Imnoteverywhere12@gmail.com</div>
+                                                            <div class="email-admin mb-1">{{ $item->getAdmin->email}}</div>
                                                            
                                                                 <p>{{ $item->message }}</p>
                                                             </div>

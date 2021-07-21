@@ -51,7 +51,7 @@
                                                         <div class="chat chat-left">
                                                             <div class="chat-avatar">
                                                                 <span class="avatar ">
-                                                                    <img src="{{ asset('assets/img/legazy_pro/logo.svg') }}" alt="avatar" height="40" width="40">
+                                                                    <img src="{{asset('assets/img/sistema/favicon.png')}}" alt="avatar" height="40" width="40" style="background-color: white;">
                                                                 </span>
                                                             </div>
                                                             <div class="chat-body">
