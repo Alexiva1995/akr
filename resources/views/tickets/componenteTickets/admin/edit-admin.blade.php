@@ -85,6 +85,7 @@
                                                         </div>
                                                         <div class="chat-body">
                                                             <div class="chat-content">
+                                                            <div class="email-admin mb-1">Imnoteverywhere12@gmail.com</div>
                                                                 <p>¿Cómo podemos ayudarle? </p>
                                                                 <p> </p>
                                                             </div>
@@ -104,6 +105,7 @@
                                                         </div>
                                                         <div class="chat-body">
                                                             <div class="chat-content">
+                                                            <div class="email-user mb-1">Imnoteverywhere12@gmail.com</div>
                                                                 <p>{{ $item->message }}</p>
                                                             </div>
                                                         </div>
@@ -123,6 +125,7 @@
                                                         </div>
                                                         <div class="chat-body">
                                                             <div class="chat-content">
+                                                            <div class="email-admin mb-1">Imnoteverywhere12@gmail.com</div>
                                                                 <p>{{ $item->message }}</p>
                                                             </div>
                                                         </div>
@@ -169,17 +172,18 @@
                     background-color: #D6A83E;
                 }
 
-                .email-admin {
-                    position: absolute;
-                    font-weight: 600;
-
-                }
-
                 .email-user {
-                    position: absolute;
                     font-weight: 600;
+                    display: flex;
+                    flex-direction: row-reverse;
 
                 }
+                .email-admin{
+                    font-weight: 600;
+                    display: flex;
+
+                }
+               
 
                 .chat-thread {
                     margin: 24px auto 0 auto;
