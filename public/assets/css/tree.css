@@ -83,7 +83,7 @@
 
   .btn-darks:hover {
     border: #1b1b1b 1px solid!important;
-    background: linear-gradient(90deg, rgba(172,118,19,1) 0%, rgba(214,168,62,1) 94%) !important;
+    background: linear-gradient(90deg, rgb(19, 136, 172) 0%, rgb(62, 128, 214) 94%) !important;
     box-shadow : 0 8px 25px -8px #1E1E1E;
   }
 
@@ -343,7 +343,7 @@ right connector from last child*/
 }
 
 .headerBalance{
-  background: #D6A83E;
+  background: #13192E;
   color: #ffffff;
   padding: 4px;
   border-radius: 6px;

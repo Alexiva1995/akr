@@ -18,8 +18,7 @@ class InversionController extends Controller
      * @param [type] $tipo
      * @return void
      */
-    public function index($tipo)
-    
+    public function index($tipo)    
     {
        
        try {
