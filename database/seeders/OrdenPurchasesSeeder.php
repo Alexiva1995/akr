@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\OrdenPurchases;
+use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 
 class OrdenPurchasesSeeder extends Seeder
@@ -17,7 +18,7 @@ class OrdenPurchasesSeeder extends Seeder
         for($i = 0; $i<20; $i++)
         {
             OrdenPurchases::create([
-                'iduser' => random_int(1,3),
+                'iduser' => random_int(1,2),
                 'package_id' => random_int(1,2),
                 'cantidad' => 1,
                 'total' => random_int(1000,10000),

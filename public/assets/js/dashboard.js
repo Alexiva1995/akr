@@ -35,14 +35,14 @@ var vm_dashboard = new Vue({
          * @param {string} side 
          */
         updateBinarySide: function (side) {
-            // let url = route('ajax.update.side.binary', side)
-            // axios.get(url).then((response) => {
-            //     if (response.data == 'bien') {
-            getlink(side)
-            // }
-            // }).catch(function (error) {
-            //     toastr.warning("Ocurrio un error al Actualizar el lado binario", '¡Advertencia!', { "progressBar": true });
-            // })
+            let url = route('ajax.update.side.binary', side)
+            axios.get(url).then((response) => {
+                if (response.data == 'bien') {
+                    location.reload();
+            }
+            }).catch(function (error) {
+                toastr.warning("Ocurrio un error al Actualizar el lado binario", '¡Advertencia!', { "progressBar": true });
+            })
         },
 
         /**
