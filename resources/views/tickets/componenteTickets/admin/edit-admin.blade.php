@@ -102,8 +102,11 @@
                                                         <div class="chat-avatar">
                                                             <span class="avatar">
                                                             @if (Auth::user()->photoDB != NULL)
+
                                                               <img src="{{asset('storage/'.Auth::user()->photoDB)}}" alt="avatar" height="40" width="40">
                                                             @else
+
+
                                                             <img src="{{asset('assets/img/sistema/favicon.png')}}" alt="avatar" height="40" width="40" style="background-color: white;">
                                                                     @endif
                                                             </span>

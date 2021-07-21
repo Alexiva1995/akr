@@ -127,6 +127,7 @@ class TicketsController extends Controller
         $ticket = Ticket::find($id);
         $message = MessageTicket::where('id_ticket', $id)->orderby('created_at','ASC')->get();
         $email = User::all()->where('id', $message[0]->id_admin);
+       
         $admin = $email[0]->email;
         return view('tickets.componenteTickets.admin.edit-admin')
         ->with('ticket', $ticket)
