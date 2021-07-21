@@ -92,7 +92,7 @@ class Menu
                     [
                         'name' => 'Ordenes',
                         'blank' => '', // si es para una pagina diferente del sistema solo coloquen _blank
-                        'ruta' => route('UserOrders'),
+                        'ruta' => (''),
                         'complementoruta' => ''
                     ],
                     // [
@@ -108,7 +108,7 @@ class Menu
             //U-4 Inverisones
             'Inversiones' => [
                 'submenu' => 0,
-                'ruta' => 'javascript:;',
+                'ruta' =>  route('inversiones.index', 1),
                 'blank' => '', // si es para una pagina diferente del sistema solo coloquen _blank
                 'icon' => 'feather icon-activity',
                 'complementoruta' => '',
@@ -210,12 +210,36 @@ class Menu
 
             //3- inversiones
             'Inversiones' => [
-                'submenu' => 0,
-                'ruta' => route('inversiones.index', 1),
+
+                 'submenu' => 0,
+                'ruta' =>  route('inversiones.index', 1),
                 'blank' => '', // si es para una pagina diferente del sistema solo coloquen _blank
                 'icon' => 'feather icon-shopping-cart',
-                'complementoruta' => '',
-            ],                
+                'complementoruta' => '',                
+                'submenus' => [
+                   
+                ],                
+                // 'submenus' => [
+                //     [
+                //         'name' => 'Grupos',
+                //         'blank' => '', // si es para una pagina diferente del sistema solo coloquen _blank
+                //         'ruta' => route('group.index'),
+                //         'complementoruta' => ''
+                //     ],
+                //     [
+                //         'name' => 'Paquetes',
+                //         'blank' => '', // si es para una pagina diferente del sistema solo coloquen _blank
+                //         'ruta' => route('package.index'),
+                //         'complementoruta' => ''
+                //     ],
+                //     [
+                //         'name' => 'Tienda',
+                //         'blank' => '',  //si es para una pagina diferente del sistema solo coloquen _blank
+                //         'ruta' => route('shop'),
+                //         'complementoruta' => ''
+                //     ],
+                // ],
+            ],
             
             // 4- Informes
             'Informes' => [

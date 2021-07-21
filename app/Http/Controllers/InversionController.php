@@ -19,7 +19,9 @@ class InversionController extends Controller
      * @return void
      */
     public function index($tipo)
+    
     {
+       
        try {
            $this->checkStatus();
             if ($tipo == '') {
