@@ -92,7 +92,7 @@ class Menu
                     [
                         'name' => 'Ordenes',
                         'blank' => '', // si es para una pagina diferente del sistema solo coloquen _blank
-                        'ruta' => (''),
+                        'ruta' => '',
                         'complementoruta' => ''
                     ],
                     // [
@@ -134,7 +134,7 @@ class Menu
                     [
                         'name' => 'Retiros',
                         'blank' => '', // si es para una pagina diferente del sistema solo coloquen _blank
-                        'ruta' => '',
+                        'ruta' => route('payments.index'),
                         'complementoruta' => ''
                     ],
                     // [
