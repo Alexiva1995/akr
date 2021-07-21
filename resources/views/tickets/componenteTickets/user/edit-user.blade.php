@@ -63,7 +63,8 @@
                                                         </div>
                                                         <div class="chat-body">
                                                             <div class="chat-content">
-                                                            
+                                                            <div class="email-admin mb-1">Imnoteverywhere12@gmail.com</div>
+
                                                                 <p>¿Cómo Podemos ayudarle?</p>
                                                             </div>
                                                         </div>
@@ -102,6 +103,7 @@
                                                         </div>
                                                         <div class="chat-body">
                                                             <div class="chat-content">
+                                                            <div class="email-admin mb-1">Imnoteverywhere12@gmail.com</div>
                                                            
                                                                 <p>{{ $item->message }}</p>
                                                             </div>
