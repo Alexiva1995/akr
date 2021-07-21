@@ -66,7 +66,7 @@
                                 </div>
 
                                 <div class="col-12 mt-2 mb-2">
-                                    <label class="form-label text-white" for="note"><b>Chat con el usuario</b></label>
+                                    <label class="form-label " for="note"><b>Chat con el usuario</b></label>
 
                                     <section class="chat-app-window mb-2 border rounded-0">
                                         <div class="active-chat">
@@ -76,16 +76,15 @@
                                                     <div class="chat">
                                                         <div class="chat-avatar">
                                                             <span class="avatar ">
-                                                                @if (Auth::user()->photoDB != NULL)
-                                                                <img src="{{asset('storage/photo/'.Auth::user()->photoDB)}}" alt="avatar" height="36" width="36">
-                                                                @else
-                                                                <img src="{{ asset('assets/img/legazy_pro/logo.svg') }}" alt="avatar" height="40" width="40">
-                                                                @endif
+                                                                <img src="{{asset('assets/img/sistema/favicon.png')}}" alt="avatar" height="40" width="40" style="background-color: white;">
+                                                                
+                                                              
                                                             </span>
                                                         </div>
                                                         <div class="chat-body">
                                                             <div class="chat-content">
-                                                                <div class="email-admin mb-1">Imnoteverywhere12@gmail.com</div>
+
+                                                                <div class="email-admin mb-1">{{ $admin }}</div>
                                                                 <p>¿Cómo podemos ayudarle? </p>
                                                                 <p> </p>
                                                             </div>
@@ -94,18 +93,27 @@
 
                                                     @foreach ( $message as $item )
 
+
                                                     {{-- user --}}
-                                                    @if ($item->type == 0)
+ 
+                                                   @if ($item->type == 0)
 
                                                     <div class="chat chat-left">
                                                         <div class="chat-avatar">
                                                             <span class="avatar">
-                                                                <img src="{{ asset('assets/img/legazy_pro/logo.svg') }}" alt="avatar" height="40" width="40">
+                                                            @if (Auth::user()->photoDB != NULL)
+
+                                                              <img src="{{asset('storage/'.Auth::user()->photoDB)}}" alt="avatar" height="40" width="40">
+                                                            @else
+
+
+                                                            <img src="{{asset('assets/img/sistema/favicon.png')}}" alt="avatar" height="40" width="40" style="background-color: white;">
+                                                                    @endif
                                                             </span>
                                                         </div>
                                                         <div class="chat-body">
                                                             <div class="chat-content">
-                                                                <div class="email-user mb-1">Imnoteverywhere12@gmail.com</div>
+                                                                <div class="email-user mb-1">{{ $item->getUser->email}}</div>
                                                                 <p>{{ $item->message }}</p>
                                                             </div>
                                                         </div>
@@ -116,16 +124,15 @@
                                                     <div class="chat">
                                                         <div class="chat-avatar">
                                                             <span class="avatar ">
-                                                                @if (Auth::user()->photoDB != NULL)
-                                                                <img src="{{asset('storage/photo/'.Auth::user()->photoDB)}}" alt="avatar" height="36" width="36">
-                                                                @else
-                                                                <img src="{{ asset('assets/img/legazy_pro/logo.svg') }}" alt="avatar" height="40" width="40">
-                                                                @endif
+                                                                <img src="{{asset('assets/img/sistema/favicon.png')}}" alt="avatar" height="40" width="40" style="background-color: white;" alt="avatar" height="40" width="40">
+                                                               
+                                                              
                                                             </span>
                                                         </div>
                                                         <div class="chat-body">
                                                             <div class="chat-content">
-                                                                <div class="email-admin mb-1">Imnoteverywhere12@gmail.com</div>
+                                                            
+                                                                <div class="email-admin mb-1">{{ $item->getAdmin->email}}</div>
                                                                 <p>{{ $item->message }}</p>
                                                             </div>
                                                         </div>

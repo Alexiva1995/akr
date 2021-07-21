@@ -6,6 +6,7 @@
 @section('content')
 
 <section>
+
     <div class="row match-height d-flex justify-content-center">
         <div class="col-md-9 col-12">
             <div class="card bg-lp">
@@ -23,7 +24,7 @@
                                 <div class="col-12">
                                     <label class="form-label mb-1" for="issue"><b>Asunto del
                                             ticket</b></label>
-                                    <input class="form-control border  rounded-0" type="text" id="issue" name="issue" value="{{ $ticket->issue }}" rows="3" />
+                                    <input class="form-control border  rounded-0" type="text" id="issue" name="issue" value="{{ $ticket->issue }}" rows="3" disabled/>
 
                                 </div>
 
@@ -33,7 +34,7 @@
                                             <label for="priority" class="">Prioridad del
                                                 Ticket</label>
                                             <span class="text-danger text-bold-600">OBLIGATORIO</span>
-                                            <select name="priority" id="priority" class="custom-select priority form-control bg-lp border  rounded-0 @error('priority') is-invalid @enderror" required data-toggle="select">
+                                            <select name="priority" id="priority" class="custom-select priority form-control bg-lp border  rounded-0 @error('priority') is-invalid @enderror" required data-toggle="select" disabled>
                                                 <option value="0" @if($ticket->priority == '0') selected
                                                     @endif>Alto</option>
                                                 <option value="1" @if($ticket->priority == '1') selected
@@ -58,12 +59,13 @@
                                                     <div class="chat chat-left">
                                                         <div class="chat-avatar">
                                                             <span class="avatar ">
-                                                                <img src="{{ asset('assets/img/legazy_pro/logo.svg') }}" alt="avatar" height="40" width="40">
+                                                                <img src="{{asset('assets/img/sistema/favicon.png')}}" alt="avatar" height="40" width="40" style="background-color: white;" alt="avatar" height="40" width="40">
                                                             </span>
                                                         </div>
                                                         <div class="chat-body">
                                                             <div class="chat-content">
-                                                            <div class="email-admin mb-1">Imnoteverywhere12@gmail.com</div>
+                                                            <div class="email-admin mb-1">{{$admin}}</div>
+                                                           
 
                                                                 <p>¿Cómo Podemos ayudarle?</p>
                                                             </div>
@@ -78,15 +80,15 @@
                                                         <div class="chat-avatar">
                                                             <span class="avatar ">
                                                                 @if (Auth::user()->photoDB != NULL)
-                                                                <img src="{{asset('storage/photo/'.Auth::user()->photoDB)}}" alt="avatar" height="40" width="40">
+                                                                <img src="{{asset('storage/'.Auth::user()->photoDB)}}" alt="avatar" height="40" width="40">
                                                                 @else
-                                                                <img src="{{ asset('assets/img/legazy_pro/logo.svg') }}" alt="avatar" height="40" width="40">
+                                                                <img src="{{asset('assets/img/sistema/favicon.png')}}" alt="avatar" height="40" width="40" style="background-color: white;">
                                                                 @endif
                                                             </span>
                                                         </div>
                                                         <div class="chat-body ">
                                                             <div class="chat-content">
-                                                            <div class="email-user mb-1">Imnoteverywhere12@gmail.com</div>
+                                                            <div class="email-user mb-1">{{ $item->getUser->email}}</div>
 
                                                                 <p>{{ $item->message }}</p>
                                                             </div>
@@ -98,12 +100,12 @@
                                                     <div class="chat chat-left">
                                                         <div class="chat-avatar">
                                                             <span class="avatar ">
-                                                                <img src="{{ asset('assets/img/legazy_pro/logo.svg') }}" alt="avatar" height="40" width="40">
+                                                                <img src="{{asset('assets/img/sistema/favicon.png')}}" alt="avatar" height="40" width="40" style="background-color: white;">
                                                             </span>
                                                         </div>
                                                         <div class="chat-body">
                                                             <div class="chat-content">
-                                                            <div class="email-admin mb-1">Imnoteverywhere12@gmail.com</div>
+                                                            <div class="email-admin mb-1">{{ $item->getAdmin->email}}</div>
                                                            
                                                                 <p>{{ $item->message }}</p>
                                                             </div>
