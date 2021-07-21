@@ -24,7 +24,7 @@
                                 <div class="col-12">
                                     <label class="form-label mb-1" for="issue"><b>Asunto del
                                             ticket</b></label>
-                                    <input class="form-control border  rounded-0" type="text" id="issue" name="issue" value="{{ $ticket->issue }}" rows="3" />
+                                    <input class="form-control border  rounded-0" type="text" id="issue" name="issue" value="{{ $ticket->issue }}" rows="3" disabled/>
 
                                 </div>
 
@@ -34,7 +34,7 @@
                                             <label for="priority" class="">Prioridad del
                                                 Ticket</label>
                                             <span class="text-danger text-bold-600">OBLIGATORIO</span>
-                                            <select name="priority" id="priority" class="custom-select priority form-control bg-lp border  rounded-0 @error('priority') is-invalid @enderror" required data-toggle="select">
+                                            <select name="priority" id="priority" class="custom-select priority form-control bg-lp border  rounded-0 @error('priority') is-invalid @enderror" required data-toggle="select" disabled>
                                                 <option value="0" @if($ticket->priority == '0') selected
                                                     @endif>Alto</option>
                                                 <option value="1" @if($ticket->priority == '1') selected
