@@ -7,7 +7,7 @@
             <div class="card-content">
                 <div class="card-body card-dashboard">
                     <div class="table-responsive">
-                        <h1 class="text-white">Historial de Tickets</h1>
+                        <h1 class="">Historial de Tickets</h1>
                         
                         <a href="{{ route('ticket.create')}}" class="btn btn-primary mb-2 waves-effect waves-light"><i class="feather icon-plus"></i>&nbsp; Crear Ticket</a>
                         <table class="table nowrap scroll-horizontal-vertical myTable table-striped w-100">

@@ -63,6 +63,7 @@
                                                             </div>
                                                             <div class="chat-body">
                                                                 <div class="chat-content">
+                                                                <div class="email-admin mb-1">Imnoteverywhere12@gmail.com</div>
                                                                     <p>¿Cómo podemos ayudarle? </p>
                                                                 </div>
                                                             </div>
@@ -84,6 +85,7 @@
                                                             </div>
                                                             <div class="chat-body">
                                                                 <div class="chat-content">
+                                                                <div class="email-user mb-1">Imnoteverywhere12@gmail.com</div>
                                                                     <p>{{ $item->message }}</p>
                                                                 </div>
                                                             </div>
@@ -99,6 +101,7 @@
                                                             </div>
                                                             <div class="chat-body">
                                                                 <div class="chat-content">
+                                                                <div class="email-admin mb-1">Imnoteverywhere12@gmail.com</div>
                                                                     <p>{{ $item->message }}</p>
                                                                 </div>
                                                             </div>
@@ -112,7 +115,6 @@
                                             </div>
                                         </section>
 
-                                        <span class="text-danger text-bold-600">Aqui podra escribir el mensaje para el admin</span>
                                         <textarea class="form-control border  rounded-0" type="text" id="message" name="message" disabled rows="3"></textarea>
                                     </div>
                                 </div>
@@ -137,15 +139,15 @@
                     background-color: #D6A83E;
                 }
 
-                .email-admin {
-                    position: absolute;
+                .email-user {
                     font-weight: 600;
+                    display: flex;
+                    flex-direction: row-reverse;
 
                 }
-
-                .email-user {
-                    position: absolute;
+                .email-admin{
                     font-weight: 600;
+                    display: flex;
 
                 }
 

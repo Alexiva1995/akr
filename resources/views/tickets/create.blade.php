@@ -56,7 +56,7 @@
                                                             </div>
                                                             <div class="chat-body">
                                                                 <div class="chat-content">
-                                                                    <p>¿Cómo Podria ayudarle? </p>
+                                                                    <p>¿Cómo Podemos ayudarle? </p>
                                                                 </div>
                                                             </div>
                                                         </div>
