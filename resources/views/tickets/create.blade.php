@@ -56,10 +56,12 @@
                                                             </div>
                                                             <div class="chat-body">
                                                                 <div class="chat-content">
-                                                                    <p>¿Cómo Podemos ayudarle? </p>
+                                                                <div class="email-admin mb-1">{{$admin}}</div>
+                                                                    <p>¿Cómo podemos ayudarle? </p>
                                                                 </div>
                                                             </div>
                                                         </div>
+                                                                
 
                                                     </div>
                                                 </div>
@@ -79,157 +81,160 @@
 
                                 </div>
                                 <style>
-                /*Responsive*/
+                                    /*Responsive*/
                 @import "https://fonts.googleapis.com/css?family=Noto+Sans";
 
-                ::-webkit-scrollbar {
-                    width: 10px;
-                }
+::-webkit-scrollbar {
+    width: 10px;
+}
 
-                ::-webkit-scrollbar-track {
-                    border-radius: 10px;
-                    background-color: rgba(27, 27, 27, 0.727);
-                }
+::-webkit-scrollbar-track {
+    border-radius: 10px;
+    background-color: rgba(27, 27, 27, 0.727);
+}
 
-                ::-webkit-scrollbar-thumb {
-                    border-radius: 10px;
-                    background-color: #D6A83E;
-                }
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: #D6A83E;
+}
 
-                .email-admin {
-                    position: absolute;
-                    font-weight: 600;
+.email-user {
+    font-weight: 600;
+    display: flex;
+    flex-direction: row-reverse;
 
-                }
+}
+.email-admin{
+    font-weight: 600;
+    display: flex;
 
-                .email-user {
-                    position: absolute;
-                    font-weight: 600;
+}
 
-                }
 
-                .chat-thread {
-                    margin: 24px auto 0 auto;
-                    padding: 0 20px 0 0;
-                    list-style: none;
-                    overflow-y: scroll;
-                    overflow-x: hidden;
-                }
 
-                /* Small screens */
-                @media all and (max-width: 767px) {
-                    .chat-thread {
-                        width: 90%;
-                        height: 260px;
-                    }
 
-                }
+.chat-thread {
+    margin: 24px auto 0 auto;
+    padding: 0 20px 0 0;
+    list-style: none;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
 
-                /* Medium and large screens */
-                @media all and (min-width: 768px) {
-                    .chat-thread {
-                        /* width: 50%; */
-                        height: 320px;
-                    }
-                }
+/* Small screens */
+@media all and (max-width: 767px) {
+    .chat-thread {
+        width: 90%;
+        height: 260px;
+    }
 
-                /*FIN DEL RESPONSIVE*/
+}
 
-                .chat-app-window .user-chats {
-                    padding: 1rem;
-                    position: relative;
-                    height: calc(100% - 65px - 65px)
-                }
+/* Medium and large screens */
+@media all and (min-width: 768px) {
+    .chat-thread {
+        /* width: 50%; */
+        height: 320px;
+    }
+}
 
-                .chat-app-window .active-chat {
-                    height: inherit
-                }
+/*FIN DEL RESPONSIVE*/
 
-                .chat-app-window .active-chat .chat-header {
-                    display: -webkit-box;
-                    display: -webkit-flex;
-                    display: -ms-flexbox;
-                    display: flex;
-                    -webkit-box-pack: justify;
-                    -webkit-justify-content: space-between;
-                    -ms-flex-pack: justify;
-                    justify-content: space-between;
-                    height: 65px;
-                    padding: 0 1rem;
-                }
+.chat-app-window .user-chats {
+    padding: 1rem;
+    position: relative;
+    height: calc(100% - 65px - 65px)
+}
 
-                .chat-app-window .chats .chat-avatar {
-                    float: right
-                }
+.chat-app-window .active-chat {
+    height: inherit
+}
 
-                .chat-app-window .chats .chat-body {
-                    display: block;
-                    margin: 10px 30px 0 0;
-                    overflow: hidden
-                }
+.chat-app-window .active-chat .chat-header {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    height: 65px;
+    padding: 0 1rem;
+}
 
-                .chat-app-window .chats .chat-body .chat-content {
-                    float: right;
-                    padding: .7rem 1rem;
-                    margin: 0 1rem 10px 0;
-                    clear: both;
-                    border-radius: .357rem;
-                    max-width: 75%
-                }
+.chat-app-window .chats .chat-avatar {
+    float: right
+}
 
-                .chat-app-window .chats .chat-body .chat-content p {
-                    margin: 0
-                }
+.chat-app-window .chats .chat-body {
+    display: block;
+    margin: 10px 30px 0 0;
+    overflow: hidden
+}
 
-                .chat-app-window .chats .chat-left .chat-avatar {
-                    float: left
-                }
+.chat-app-window .chats .chat-body .chat-content {
+    float: right;
+    padding: .7rem 1rem;
+    margin: 0 1rem 10px 0;
+    clear: both;
+    border-radius: .357rem;
+    max-width: 75%
+}
 
-                .chat-app-window .chats .chat-left .chat-body .chat-content {
-                    float: left;
-                    margin: 0 0 10px 1rem;
+.chat-app-window .chats .chat-body .chat-content p {
+    margin: 0
+}
 
-                }
+.chat-app-window .chats .chat-left .chat-avatar {
+    float: left
+}
 
-                .chat-app-window .chat-app-form {
-                    height: 65px;
-                    padding: 0 1rem;
-                    display: -webkit-box;
-                    display: -webkit-flex;
-                    display: -ms-flexbox;
-                    display: flex;
-                    -webkit-box-align: center;
-                    -webkit-align-items: center;
-                    -ms-flex-align: center;
-                    align-items: center;
-                }
+.chat-app-window .chats .chat-left .chat-body .chat-content {
+    float: left;
+    margin: 0 0 10px 1rem;
 
-                .chat-widget .card-header {
-                    padding-top: .8rem;
-                    padding-bottom: .8rem
-                }
+}
 
-                .chat-widget .chat-app-window .user-chats {
-                    height: 390px
-                }
+.chat-app-window .chat-app-form {
+    height: 65px;
+    padding: 0 1rem;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
 
-                .chat-widget .chat-app-window .chat-app-form {
-                    border-top: 0;
-                    border-bottom-left-radius: .357rem;
-                    border-bottom-right-radius: .357rem;
-                    height: 56px
-                }
+.chat-widget .card-header {
+    padding-top: .8rem;
+    padding-bottom: .8rem
+}
 
-                .chat-widget .chat-app-window .chat-app-form .input-group-text,
-                .chat-widget .chat-app-window .chat-app-form .message {
-                    border: 0;
-                    padding-left: 0
-                }
+.chat-widget .chat-app-window .user-chats {
+    height: 390px
+}
 
-                .chat-widget .chat-app-window .chat-app-form .input-group:not(.bootstrap-touchspin):focus-within {
-                    box-shadow: none
-                }
-            </style>
+.chat-widget .chat-app-window .chat-app-form {
+    border-top: 0;
+    border-bottom-left-radius: .357rem;
+    border-bottom-right-radius: .357rem;
+    height: 56px
+}
+
+.chat-widget .chat-app-window .chat-app-form .input-group-text,
+.chat-widget .chat-app-window .chat-app-form .message {
+    border: 0;
+    padding-left: 0
+}
+
+.chat-widget .chat-app-window .chat-app-form .input-group:not(.bootstrap-touchspin):focus-within {
+    box-shadow: none
+}
+                                </style>
 
 
 

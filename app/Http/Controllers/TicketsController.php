@@ -24,8 +24,9 @@ class TicketsController extends Controller
 
    
     public function create(){
-      
-      return view('tickets.create');
+        $email = User::find(1);
+        $admin = $email->email;
+      return view('tickets.create')->with('admin', $admin);
 
     }
 
