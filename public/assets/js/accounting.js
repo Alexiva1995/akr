@@ -53,3 +53,4 @@ var vm_cierreComision = new Vue({
         }
     }
 })
+

@@ -24,8 +24,9 @@ class TicketsController extends Controller
 
    
     public function create(){
-      
-      return view('tickets.create');
+        $email = User::find(1);
+        $admin = $email->email;
+      return view('tickets.create')->with('admin', $admin);
 
     }
 
@@ -176,10 +177,11 @@ class TicketsController extends Controller
 
         $ticket = Ticket::find($id);
         $message =MessageTicket::all()->where('id_ticket', $id);
-        
+        $email = User::find(1);
+        $admin = $email->email;
         return view('tickets.componenteTickets.admin.show-admin')
         ->with('ticket', $ticket)
-        ->with('message', $message);
+        ->with('message', $message)->with('admin', $admin);
     }
 
 

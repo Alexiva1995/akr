@@ -1,26 +1,22 @@
-<table class="table w-100 nowrap scroll-horizontal-vertical myTable table-striped">
-    <thead class="">
-        <tr class="text-center text-white bg-purple-alt2">
-            <th>ID</th>
-            @if (Auth::user()->admin == 0)
-            <th>Referido</th>
-            @endif
-            <th>Descripcion</th>
+<table class="table w-100 nowrap scroll-horizontal-vertical myTableOrdenDesc table-striped w-100">
+
+    <thead class="text-white">
+        <tr class="text-center  bg-purple-alt2">
+            <th>#</th>
             <th>Fecha</th>
+            <th>Usuario</th>
+            <th>Descripcion</th>
             <th>Monto</th>
             <th>Estado</th>
         </tr>
     </thead>
     <tbody>
         @foreach ($wallets as $wallet)
-        <tr class="text-center">
+        <tr class="text-center ">
             <td>{{$wallet->id}}</td>
-
-            @if (Auth::user()->admin == 0)
-            <td>{{$wallet->getWalletReferred->fullname}}</td>
-            @endif
-            <td>{{$wallet->descripcion}}</td>
             <td>{{date('d-m-Y', strtotime($wallet->created_at))}}</td>
+            <td>{{$wallet->getWalletUser->fullname}}</td>
+            <td>{{$wallet->descripcion}}</td>
             {{--
             @php
                 $monto = $wallet->monto;

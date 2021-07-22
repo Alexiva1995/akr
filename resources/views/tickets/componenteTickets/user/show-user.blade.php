@@ -58,12 +58,12 @@
                                                         <div class="chat chat-left">
                                                             <div class="chat-avatar">
                                                                 <span class="avatar ">
-                                                                <img src="{{asset('assets/img/sistema/favicon.png')}}" alt="avatar" height="40" width="40" style="background-color: white;" alt="avatar" height="40" width="40">
+                                                                    <img src="{{asset('assets/img/sistema/favicon.png')}}" alt="avatar" height="40" width="40" style="background-color: white;" alt="avatar" height="40" width="40">
                                                                 </span>
                                                             </div>
                                                             <div class="chat-body">
                                                                 <div class="chat-content">
-                                                                <div class="email-admin mb-1">{{$admin}}</div>
+                                                                    <div class="email-admin mb-1">{{$admin}}</div>
                                                                     <p>¿Cómo podemos ayudarle? </p>
                                                                 </div>
                                                             </div>
@@ -85,7 +85,7 @@
                                                             </div>
                                                             <div class="chat-body">
                                                                 <div class="chat-content">
-                                                                <div class="email-user mb-1">{{ $item->getUser->email}}</div>
+                                                                    <div class="email-user mb-1">{{ $item->getUser->email}}</div>
                                                                     <p>{{ $item->message }}</p>
                                                                 </div>
                                                             </div>
@@ -96,12 +96,12 @@
                                                         <div class="chat chat-left">
                                                             <div class="chat-avatar">
                                                                 <span class="avatar ">
-                                                                <img src="{{asset('assets/img/sistema/favicon.png')}}" alt="avatar" height="40" width="40" style="background-color: white;" alt="avatar" height="40" width="40">
+                                                                    <img src="{{asset('assets/img/sistema/favicon.png')}}" alt="avatar" height="40" width="40" style="background-color: white;" alt="avatar" height="40" width="40">
                                                                 </span>
                                                             </div>
                                                             <div class="chat-body">
                                                                 <div class="chat-content">
-                                                                <div class="email-admin mb-1">{{ $item->getAdmin->email}}</div>
+                                                                    <div class="email-admin mb-1">{{ $item->getAdmin->email}}</div>
                                                                     <p>{{ $item->message }}</p>
                                                                 </div>
                                                             </div>
@@ -121,158 +121,7 @@
                             </div>
                         </form>
                     </div>
-                    <style>
-                /*Responsive*/
-                @import "https://fonts.googleapis.com/css?family=Noto+Sans";
 
-                ::-webkit-scrollbar {
-                    width: 10px;
-                }
-
-                ::-webkit-scrollbar-track {
-                    border-radius: 10px;
-                    background-color: rgba(27, 27, 27, 0.727);
-                }
-
-                ::-webkit-scrollbar-thumb {
-                    border-radius: 10px;
-                    background-color: #D6A83E;
-                }
-
-                .email-user {
-                    font-weight: 600;
-                    display: flex;
-                    flex-direction: row-reverse;
-
-                }
-                .email-admin{
-                    font-weight: 600;
-                    display: flex;
-
-                }
-
-                .chat-thread {
-                    margin: 24px auto 0 auto;
-                    padding: 0 20px 0 0;
-                    list-style: none;
-                    overflow-y: scroll;
-                    overflow-x: hidden;
-                }
-
-                /* Small screens */
-                @media all and (max-width: 767px) {
-                    .chat-thread {
-                        width: 90%;
-                        height: 260px;
-                    }
-
-                }
-
-                /* Medium and large screens */
-                @media all and (min-width: 768px) {
-                    .chat-thread {
-                        /* width: 50%; */
-                        height: 320px;
-                    }
-                }
-
-                /*FIN DEL RESPONSIVE*/
-
-                .chat-app-window .user-chats {
-                    padding: 1rem;
-                    position: relative;
-                    height: calc(100% - 65px - 65px)
-                }
-
-                .chat-app-window .active-chat {
-                    height: inherit
-                }
-
-                .chat-app-window .active-chat .chat-header {
-                    display: -webkit-box;
-                    display: -webkit-flex;
-                    display: -ms-flexbox;
-                    display: flex;
-                    -webkit-box-pack: justify;
-                    -webkit-justify-content: space-between;
-                    -ms-flex-pack: justify;
-                    justify-content: space-between;
-                    height: 65px;
-                    padding: 0 1rem;
-                }
-
-                .chat-app-window .chats .chat-avatar {
-                    float: right
-                }
-
-                .chat-app-window .chats .chat-body {
-                    display: block;
-                    margin: 10px 30px 0 0;
-                    overflow: hidden
-                }
-
-                .chat-app-window .chats .chat-body .chat-content {
-                    float: right;
-                    padding: .7rem 1rem;
-                    margin: 0 1rem 10px 0;
-                    clear: both;
-                    border-radius: .357rem;
-                    max-width: 75%
-                }
-
-                .chat-app-window .chats .chat-body .chat-content p {
-                    margin: 0
-                }
-
-                .chat-app-window .chats .chat-left .chat-avatar {
-                    float: left
-                }
-
-                .chat-app-window .chats .chat-left .chat-body .chat-content {
-                    float: left;
-                    margin: 0 0 10px 1rem;
-
-                }
-
-                .chat-app-window .chat-app-form {
-                    height: 65px;
-                    padding: 0 1rem;
-                    display: -webkit-box;
-                    display: -webkit-flex;
-                    display: -ms-flexbox;
-                    display: flex;
-                    -webkit-box-align: center;
-                    -webkit-align-items: center;
-                    -ms-flex-align: center;
-                    align-items: center;
-                }
-
-                .chat-widget .card-header {
-                    padding-top: .8rem;
-                    padding-bottom: .8rem
-                }
-
-                .chat-widget .chat-app-window .user-chats {
-                    height: 390px
-                }
-
-                .chat-widget .chat-app-window .chat-app-form {
-                    border-top: 0;
-                    border-bottom-left-radius: .357rem;
-                    border-bottom-right-radius: .357rem;
-                    height: 56px
-                }
-
-                .chat-widget .chat-app-window .chat-app-form .input-group-text,
-                .chat-widget .chat-app-window .chat-app-form .message {
-                    border: 0;
-                    padding-left: 0
-                }
-
-                .chat-widget .chat-app-window .chat-app-form .input-group:not(.bootstrap-touchspin):focus-within {
-                    box-shadow: none
-                }
-            </style>
                 </div>
             </div>
         </div>
