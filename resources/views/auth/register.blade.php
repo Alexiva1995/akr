@@ -87,13 +87,40 @@ $referred = DB::table('users')
                         @endif
 
                         <div class="form-group row">
-
                             <div class="col-md-12">
                                 <input id="name" type="text" class="form-control @error('name') is-invalid @enderror"
                                     name="name" value="{{ old('name') }}" required autocomplete="name" autofocus
                                     placeholder="Nombre y Apellido">
 
                                 @error('name')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <input id="dni" type="text" class="form-control @error('dni') is-invalid @enderror"
+                                    name="dni" value="{{ old('dni') }}" required autocomplete="dni" autofocus
+                                    placeholder="Número de Identificación">
+
+                                @error('dni')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                            </div>
+                        </div>                        
+
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <input id="phone" type="text" class="form-control @error('phone') is-invalid @enderror"
+                                    name="phone" value="{{ old('phone') }}" required autocomplete="phone" autofocus
+                                    placeholder="Teléfono">
+
+                                @error('phone')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
@@ -113,10 +140,51 @@ $referred = DB::table('users')
                                 </span>
                                 @enderror
                             </div>
+                        </div>    
+                        
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <input id="country" type="text" class="form-control @error('country') is-invalid @enderror"
+                                    name="country" value="{{ old('country') }}" required autocomplete="country" autofocus
+                                    placeholder="País">
+
+                                @error('country')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                            </div>
+                        </div> 
+                        
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <input id="age" type="date" class="form-control @error('age') is-invalid @enderror"
+                                    name="age" value="{{ old('age') }}" required autocomplete="age" autofocus
+                                    placeholder="País">
+
+                                @error('age')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                            </div>
                         </div>
+                        
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <input id="city" type="text" class="form-control @error('city') is-invalid @enderror"
+                                    name="city" value="{{ old('city') }}" required autocomplete="city" autofocus
+                                    placeholder="Ciudad">
+
+                                @error('city')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                            </div>
+                        </div>                        
 
                         <div class="form-group row">
-
                             <div class="col-md-12">
                                 <input id="password" type="password"
                                     class="form-control @error('password') is-invalid @enderror" name="password"

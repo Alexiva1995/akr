@@ -24,6 +24,11 @@ class User extends Authenticatable
         'wallet', 'address', 'binary_side', 'binary_side_register', 'dni', 'photoDB', 'wallet_address'
     ];
 
+    public function country()
+    {
+        return $this->belongsTo('App\Models\Country', 'country_id', 'id');
+    }
+
     /**
      * The attributes that should be hidden for arrays.
      *

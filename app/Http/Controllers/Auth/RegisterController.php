@@ -60,6 +60,11 @@ class RegisterController extends Controller
                 'name' => ['required', 'string', 'max:255'],
                 'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
                 'password' => ['required', 'string', 'min:8', 'confirmed'],
+                'phone' => ['required', 'string', 'min:8'],
+                'country' => ['required'],
+                'dni' => ['required'],
+                'city' => ['required'],
+                'age' => ['required', 'date', ],
                 'term' => ['required']
             ]);
         } catch (\Throwable $th) {
@@ -95,12 +100,20 @@ class RegisterController extends Controller
                 'whatsapp' => $whatsapp,
                 'referred_id' => $data['referred_id'],
                 'binary_id' => $binary_id,
-                'binary_side' => $binary_side
+                'binary_side' => $binary_side,
+                'phone' => $data['phone'],
+                'country' => $data['country'],
+                'city' => $data['city'],
+                'age' => $data['age'],
+                'dni' => $data['dni']
             ]);
         } catch (\Throwable $th) {
             dd($th);
             //throw $th;
         }
     }
+
+
+    
 
 }
