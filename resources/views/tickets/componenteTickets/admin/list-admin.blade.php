@@ -33,10 +33,7 @@
                                     <td>{{ $item->prioridad}}</td>
                                     <td>{{ $item->issue}}</td>
                                     --}}
-                                 
-                
-
-        
+                                
                                     @if ($item->status == '0')
                                     <td> <a class=" btn text-white text-bold-600" style="background-color: green;">Abierto</a></td>
                                     @elseif($item->status == '1')
