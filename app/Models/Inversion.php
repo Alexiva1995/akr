@@ -12,7 +12,8 @@ class Inversion extends Model
     protected $fillable = [
         'package_id', 'orden_id', 'invertido',
         'ganacia', 'retiro', 'capital', 'progreso',
-        'fecha_vencimiento', 'iduser'
+        'fecha_vencimiento', 'iduser', 'ganancia_acumulada',
+        'restante', 'max_ganancia'
     ];
 
     
@@ -43,7 +44,19 @@ class Inversion extends Model
      */
     public function getOrdenInversion()
     {
-        return $this->belongsTo('App\Models\OrdenPurchases', 'orden_id', 'id');
+        return $this->hasMany('App\Models\OrdenPurchases', 'inversion_id');
     }
 
+    public function progreso()
+    {
+        if(isset($this->max_ganancia) && isset($this->restante)){
+            $total = $this->max_ganancia - $this->restante;
+
+            $operacion = ($total * 100) / $this->max_ganancia;
+        }else{
+            $operacion = 0;
+        }
+
+        return $operacion;
+    }
 }
