@@ -1,11 +1,6 @@
 <?php
 
 use Illuminate\Database\Seeder;
-// use Database\Seeders\PackagesTableSeeder;
-// use Database\Seeders\OrdenPurchaseSeeder;
-use App\Models\Packages;
-use App\Models\OrdenPurchases;
-use Carbon\Carbon;
 use Database\Seeders\CountriesTableSeederr;
 
 class DatabaseSeeder extends Seeder
@@ -28,21 +23,5 @@ class DatabaseSeeder extends Seeder
         // $this->call(TimeZoneTableSeeder::class);
         // $this->call(AddSaldoTableSeeder::class);
         // $this->call(WalletTableSeeder::class);
-
-        // $date = Carbon::now(); 
-        // $expired = $date->addYear();  
-
-        // for($i = 0; $i<20; $i++)
-        // {
-        //     OrdenPurchases::create([
-        //         'iduser' => random_int(1,3),
-        //         'package_id' => random_int(1,3),
-        //         'cantidad' => 1,
-        //         'total' => random_int(1000,10000),
-        //         'status' => '0',
-        //         'created_at' => Carbon::now(),
-        //         'updated_at' => Carbon::now()
-        //     ]);
-        // }
     }
 }

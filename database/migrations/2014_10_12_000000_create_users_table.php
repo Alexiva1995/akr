@@ -18,12 +18,12 @@ class CreateUsersTable extends Migration
             $table->string('name');
             $table->string('last_name');
             $table->string('fullname');
-            $table->longtext('dni')->nullable();
-            $table->bigInteger('country_id')->unsigned();
-            $table->foreign('country_id')->references('id')->on('countries');
-            $table->string('city')->nullable();
-            $table->string('phone')->nullable();      
-            $table->date('age')->nullable();             
+            // $table->longtext('dni')->nullable();
+            // $table->bigInteger('country_id')->unsigned();
+            // $table->foreign('country_id')->references('id')->on('countries');
+            // $table->string('city')->nullable();
+            // $table->string('phone')->nullable();      
+            // $table->date('age')->nullable();             
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('whatsapp');
