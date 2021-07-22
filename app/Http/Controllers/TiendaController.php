@@ -22,7 +22,7 @@ class TiendaController extends Controller
     public function __construct()
     {
         $this->inversionController = new InversionController();
-        $this->apis_key_nowpayments = 'J9KX1AC-8BE4VYV-MQ51VMT-QVWVZTW';
+        $this->apis_key_nowpayments = 'ECQYK47-JYNMC98-GZ3FHBW-WWRH660';
     }
     
     /**
