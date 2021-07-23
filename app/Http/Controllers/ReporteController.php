@@ -25,7 +25,7 @@ class ReporteController extends Controller
         foreach ($ordenes as $orden) {
             $orden->name = $orden->getOrdenUser->fullname;
             // $orden->grupo = $orden->getGroupOrden->name;
-            $orden->paquete = $orden->getPackageOrden->name;
+            // $orden->paquete = $orden->getPackageOrden->name;
         }        
         return view('reports.perdido', compact('ordenes'));
     }
@@ -57,7 +57,7 @@ class ReporteController extends Controller
         foreach ($ordenes as $orden) {
             $orden->name = $orden->getOrdenUser->fullname;
             // $orden->grupo = $orden->getGroupOrden->name;
-            $orden->paquete = $orden->getPackageOrden->name;
+            // $orden->paquete = $orden->getPackageOrden->name;
         }
 
         return $ordenes;

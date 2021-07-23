@@ -1,6 +1,8 @@
 <?php
 
+use App\Models\OrdenPurchases;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Support\Str;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
@@ -91,6 +93,20 @@ class UserTableSeeder extends Seeder
             //         'status' => '1'
             //     ]);
             // }
+
+            for($i = 0; $i<20; $i++)
+            {
+                OrdenPurchases::create([
+                    'iduser' => random_int(1,3),
+                    // 'package_id' => random_int(1,3),
+                    'cantidad' => 1,
+                    'total' => random_int(1000,10000),
+                    'status' => '0',
+                    'created_at' => Carbon::now(),
+                    'updated_at' => Carbon::now()
+                ]);
+            }
+
 
         } catch (\Throwable $th) {
             dd($th);
