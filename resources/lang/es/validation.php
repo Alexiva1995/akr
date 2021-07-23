@@ -22,7 +22,8 @@ return [
     'alpha_num'            => 'El campo :attribute solo puede contener letras y números.',
     'array'                => 'El campo :attribute debe ser un array.',
     'before'               => 'El campo :attribute debe ser una fecha anterior a :date.',
-    'before_or_equal'      => 'El campo :attribute debe ser una fecha anterior o igual a :date.',
+    // 'before_or_equal'      => 'El campo :attribute debe ser una fecha anterior o igual a :date.',
+    'before_or_equal'      => 'Necesitas ser mayor de edad para poder registrarte',
     'between'              => [
         'numeric' => 'El campo :attribute debe ser un valor entre :min y :max.',
         'file'    => 'El archivo :attribute debe pesar entre :min y :max kilobytes.',

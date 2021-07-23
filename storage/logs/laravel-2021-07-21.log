@@ -1683,7 +1683,6 @@ Stack trace:
 #47 C:\\laragon\\www\\akr\\public\\index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
 #48 {main}
 "} 
-<<<<<<< HEAD
 [2021-07-21 23:44:21] local.ERROR: Method App\Http\Controllers\ReporteController::graphisDashboard does not exist. {"userId":2,"exception":"[object] (BadMethodCallException(code: 0): Method App\\Http\\Controllers\\ReporteController::graphisDashboard does not exist. at C:\\laragon\\www\\akr\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Controller.php:68)
 [stacktrace]
 #0 C:\\laragon\\www\\akr\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Controller.php(54): Illuminate\\Routing\\Controller->__call('graphisDashboar...', Array)
@@ -1839,7 +1838,6 @@ Stack trace:
 #46 C:\\laragon\\www\\akr\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(110): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter(Object(Illuminate\\Http\\Request))
 #47 C:\\laragon\\www\\akr\\public\\index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
 #48 {main}
-=======
 [2021-07-21 22:48:53] local.ERROR: Method App\Http\Controllers\ReporteController::graphisDashboard does not exist. {"userId":1,"exception":"[object] (BadMethodCallException(code: 0): Method App\\Http\\Controllers\\ReporteController::graphisDashboard does not exist. at /home/abraham/Documents/coding/akr/vendor/laravel/framework/src/Illuminate/Routing/Controller.php:68)
 [stacktrace]
 #0 /home/abraham/Documents/coding/akr/vendor/laravel/framework/src/Illuminate/Routing/Controller.php(54): Illuminate\\Routing\\Controller->__call()
@@ -13524,5 +13522,4 @@ Stack trace:
 #48 /home/abraham/Documents/coding/akr/public/index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle()
 #49 /home/abraham/Documents/coding/akr/server.php(21): require_once('/home/abraham/D...')
 #50 {main}
->>>>>>> abraham
 "} 

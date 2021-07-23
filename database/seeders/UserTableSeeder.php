@@ -24,7 +24,7 @@ class UserTableSeeder extends Seeder
                 'password' => Hash::make('12password'),
                 'whatsapp' => '23423423423432',
                 'referred_id' => 0,
-                // 'country_id' => '237',
+                'country_id' => '237',
                 'status' => '1',
                 'binary_id' => '0',
             ]);
@@ -37,7 +37,7 @@ class UserTableSeeder extends Seeder
                 'password' => Hash::make('12password'),
                 'whatsapp' => '23423423423432',
                 'referred_id' => '1',
-                // 'country_id' => '237',
+                'country_id' => '237',
                 'status' => '1',
                 'binary_side' => 'I'
             ]);
@@ -50,7 +50,7 @@ class UserTableSeeder extends Seeder
                 'password' => Hash::make('12password'),
                 'whatsapp' => '23423423423432',
                 'referred_id' => '2',
-                // 'country_id' => '237',
+                'country_id' => '237',
                 'binary_id' => '2',
                 'status' => '1',
                 'binary_side' => 'I'

@@ -9,6 +9,7 @@ use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Carbon;
 
 class RegisterController extends Controller
 {
@@ -60,6 +61,12 @@ class RegisterController extends Controller
                 'name' => ['required', 'string', 'max:255'],
                 'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
                 'password' => ['required', 'string', 'min:8', 'confirmed'],
+                'phone' => ['required', 'string', 'min:8'],
+                'country' => ['required'],
+                'dni' => ['required'],
+                'city' => ['required'],
+                'age' => ['required', 'before_or_equal:'. \Carbon\Carbon::now()->subYears(18)->format("Y-m-d")],
+                'g-recaptcha-response' => ['required', 'captcha'],
                 'term' => ['required']
             ]);
         } catch (\Throwable $th) {
@@ -95,7 +102,12 @@ class RegisterController extends Controller
                 'whatsapp' => $whatsapp,
                 'referred_id' => $data['referred_id'],
                 'binary_id' => $binary_id,
-                'binary_side' => $binary_side
+                'binary_side' => $binary_side,
+                'dni' => $data['dni'],
+                'phone' => $data['phone'],
+                'city' => $data['city'],
+                'country_id' => $data['country'],
+                'age' => $data['age'],
             ]);
         } catch (\Throwable $th) {
             dd($th);
