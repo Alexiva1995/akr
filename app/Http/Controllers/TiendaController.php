@@ -11,6 +11,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\InversionController;
+use Hexters\CoinPayment\CoinPayment;
+use Hexters\CoinPayment\Helpers\CoinPaymentHelper;
 
 
 class TiendaController extends Controller
@@ -273,5 +275,64 @@ class TiendaController extends Controller
         $user->save();
 
         return redirect()->back()->with('msj-success', 'Orden actualizada exitosamente');
+    }
+
+
+    public function makeInversion(Request $request)
+    {
+
+        $validate = $request->validate([
+            'range' => 'required|numeric|min:70|max:10000',
+        ]);
+
+        try{
+            if($validate){
+                $data = OrdenPurchases::latest('id')->first();
+                
+                $transacion = [
+                    'amountTotal' => (INT)$request->range,
+                    'note' => 'Inversión realizada por un precio de $'.(INT)$request->range,
+                    // 'order_id' => $this->guardarOrden($infoOrden),
+                    'order_id' => 1,
+                    'tipo' => 'Compra de un paquete',
+                    'tipo_transacion' => 3,
+                    'buyer_name' => Auth::user()->fullname,
+                    'buyer_email' => Auth::user()->email,
+                    'redirect_url' => url('/dashboard/home'),
+                    'cancel_url' => url('/dashboard/home')
+                ];
+                $transacion['items'][] = [
+                    'itemDescription' => 'Inversión de  $'.(INT)$request->range,
+                    'itemPrice' => (INT)$request->range, // USD
+                    'itemQty' => (INT) 1,
+                    'itemSubtotalAmount' => (INT)$request->range + 10 // USD
+                ];
+                $ruta = \CoinPayment::generatelink($transacion);
+                return redirect($ruta);
+            }
+        } catch (\Throwable $th) {
+            Log::error('Tienda - MakeInversion -> Error: '.$th);
+            abort(403, "Ocurrio un error, contacte con el administrador");
+        }
+    
+
+        // $product = ProductWarehouse::find($id);
+        $user = Auth::user()->id;
+        $hayData = $data? $data->id+1 : 1;
+
+        $infoOrden = [
+            'user_id' => Auth::user()->id,
+            // 'product_id' => $product->id,
+            // 'amount' => $product->price,
+            'status' => '0'
+        ];
+    }
+
+    public function guardarOrden($infoOrden)
+    {
+        $orden = OrdenPurchases::create($infoOrden);
+
+        return $orden->id;
+
     }
 }

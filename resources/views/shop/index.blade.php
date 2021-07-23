@@ -15,12 +15,12 @@
         <div class="card-content">
             <div class="card-body card-dashboard">
                 <div class="container">
-                <form action="{{route('shop.procces')}}" method="POST" target="_blank" class="d-inline">
+                <form action="{{route('realizar-inversion')}}" method="POST" target="_blank" class="d-inline">
                 @csrf
                         <div class="form-group">
                             <div class="range-wrap">
                                 <div class="range-container">
-                                    <input type="range" class="w-100" name="range" id="range" min="0" max="10000" step="10" value="70"/>
+                                    <input type="range" class="w-100" name="range" id="range" min="70" max="10000" step="10" value="70"/>
                                     <label for="range">70$</label>
                                 </div>
                                 <br>
