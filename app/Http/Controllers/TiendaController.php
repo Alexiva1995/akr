@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\InversionController;
+use App\Models\Wallet;
 use Hexters\CoinPayment\CoinPayment;
 use Hexters\CoinPayment\Helpers\CoinPaymentHelper;
 
@@ -268,13 +269,39 @@ class TiendaController extends Controller
         $orden->status = $request->status;
         $orden->save();
 
-        $this->registeInversion($request->id);
+        // $this->registeInversion($request->id);
+        if($orden->status == '1'){
+            $this->registerDirectBonus($request->id);
+        }
 
         $user = User::findOrFail($orden->iduser);
         $user->status = '1';
         $user->save();
 
         return redirect()->back()->with('msj-success', 'Orden actualizada exitosamente');
+    }
+
+    public function registerDirectBonus($id)
+    {
+        $orden = OrdenPurchases::findOrFail($id);
+
+        $user = User::findOrFail($orden->iduser);
+        $user_ref = User::findOrFail($user->referred_id);
+
+        $data = [
+            'iduser' => $user_ref->id,
+            'referred_id' => $user_ref->referred_id,
+            'monto' => ($orden->total)*0.10,
+            'descripcion' => 'Bono Directo por compra del referido '.$user->fullname,
+        ];
+
+        // dd($data);
+
+        $bonoDirecto = Wallet::create($data);
+
+        $bonoDirecto->save();
+
+        // return $bonoDirecto;
     }
 
 
