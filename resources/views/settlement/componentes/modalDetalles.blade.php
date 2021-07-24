@@ -56,13 +56,13 @@
                             </tfoot>
                         </table>
                     </div>
-                    {{-- @if($day == 'Friday') --}}
+                    @if($day == 'Friday')
                         @if ($all)
                             <div class="form-group text-center">
                                 <button class="btn btn-primary">Generar Liquidacion</button>
                             </div>
                         @endif
-                    {{-- @endif --}}
+                    @endif
                 </form>
             </div>
             <div class="modal-footer">

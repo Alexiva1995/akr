@@ -74,11 +74,11 @@
                         </table>
                     </div>
 
-                    {{-- @if($day == 'Friday') --}}
+                    @if($day == 'Friday')
                         <div class="form-group text-center">
                             <button class="btn btn-primary">Generar Liquidacion</button>
                         </div>
-                    {{-- @endif --}}
+                    @endif
                     </form>
                 </div>
             </div>
