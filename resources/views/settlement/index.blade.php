@@ -74,9 +74,11 @@
                         </table>
                     </div>
 
-                    <div class="form-group text-center">
-                        <button class="btn btn-primary">Generar Liquidacion</button>
-                    </div>
+                    {{-- @if($day == 'Friday') --}}
+                        <div class="form-group text-center">
+                            <button class="btn btn-primary">Generar Liquidacion</button>
+                        </div>
+                    {{-- @endif --}}
                     </form>
                 </div>
             </div>
