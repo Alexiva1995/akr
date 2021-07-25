@@ -11,8 +11,8 @@
                 <div class="col-md-4 col-12">
                         <span class="font-weight-bold text-white">Saldo:</span>
                     </div>
-                    <div class="col-md-4 col-12">
-                        $ {{number_format($saldoDisponible,2)}}
+                    <div class="col-md-4 col-12 mb-2">
+                         {{number_format($saldoDisponible,2)}} $
                     </div>
                     <div class="col-12 col-md-4">
                         <form action="{{route('liquidation.store')}}" method="post">
@@ -27,6 +27,7 @@
                         <br>
                     </div>
                 </div>
+            
                 <div class="table-responsive"> 
                     @include('wallet.component.tableWallet')
                 </div>
