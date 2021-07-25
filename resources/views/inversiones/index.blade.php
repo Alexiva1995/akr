@@ -30,7 +30,7 @@
                                 <tr class="text-center text-white bg-purple-alt2">                                
                                     <th>ID</th>
                                     <th>Correo</th>
-                                    <th>Paquete</th>
+                                    {{-- <th>Paquete</th> --}}
                                     <th>Ganancia</th>
                                     <th>Progreso</th>
                                     <th>Fecha</th>
@@ -50,7 +50,7 @@
                                 
                                     <td>{{$inversion->id}}</td>
                                     <td>{{$inversion->correo}}</td>
-                                    <td>{{$inversion->getPackageOrden->name}}</td>
+                                    {{-- <td>{{$inversion->getPackageOrden->name}}</td> --}}
                                     <td>$ {{number_format($inversion->ganacia, 2, ',', '.')}}</td>
                                     <td>{{number_format($inversion->progreso, 2, ',', '.')}}</td>
                                     <td>{{date('Y-M-d', strtotime($inversion->fecha_vencimiento))}}</td>
