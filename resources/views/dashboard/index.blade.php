@@ -14,6 +14,7 @@
 @push('page_css')
 <link rel="stylesheet" type="text/css" href="{{asset('assets/app-assets/css/pages/dashboard-analytics.css')}}">
 <link rel="stylesheet" type="text/css" href="{{asset('assets/app-assets/css/pages/card-analytics.css')}}">
+{{-- <link rel="stylesheet" href="{{asset('assets/css/tree.css')}}"> --}}
 @endpush
 
 {{-- custom css --}}

@@ -28,7 +28,6 @@ class WalletController extends Controller
     {
         $this->inversionController = new InversionController;
         $this->treeController = new TreeController;
-        $this->middleware('kyc')->only('payments', 'index');
         View::share('titleq', 'Billetera');
     }
 
@@ -42,7 +41,7 @@ class WalletController extends Controller
         if (Auth::user()->admin == 1) {
             $wallets = Wallet::all()->where('iduser', Auth::user()->id)->where('tipo_transaction', 0);
         }else{
-            $wallets = Auth::user()->getWallet->where('tipo_transaction', 0);
+            $wallets = Auth::user()->getWallet->whereIn('tipo_transaction', ['0','1']);
         }
 
         //$saldoDisponible = $wallets->where('status', 0)->sum('monto');

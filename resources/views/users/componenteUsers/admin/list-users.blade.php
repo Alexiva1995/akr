@@ -37,12 +37,12 @@
                             <thead class="">
                                 <tr class="text-center text-white bg-purple-alt2">
                                     <th>ID</th>
-                                    <th>Perfil</th>
-                                    <th>Email</th>
-                                    <th>Kyc</th>
-                                    <th>Rol</th>
+                                    <th>Nombre</th>
+                                    <th>Correo</th>
+                                    {{-- <th>Kyc</th>
+                                    <th>Rol</th> --}}
                                     <th>Estado</th>
-                                    <th>Fecha de Creacion</th>
+                                    {{-- <th>Fecha de Creacion</th> --}}
                                     <th>Accion</th>
                                 </tr>
                             </thead>
@@ -54,19 +54,19 @@
                                     <td>{{ $item->fullname}}</td>
                                     <td>{{ $item->email}}</td>
 
-                                    @if ($item->dni != NULL && $item->status == '0')
+                                    {{-- @if ($item->dni != NULL && $item->status == '0')
                                     <td><span class="text-primary">Verificar</span></td>
                                     @elseif ($item->dni == NULL)
                                     <td>No Disponible</td>
                                     @elseif ($item->dni != NULL && $item->status == '1')
                                     <td>Verificado</td>
-                                    @endif
+                                    @endif --}}
 
-                                    @if ($item->admin == '1')
+                                    {{-- @if ($item->admin == '1')
                                     <td>Administrador</td>
                                     @else
                                     <td>Normal</td>
-                                    @endif
+                                    @endif --}}
                                     
 
                                     @if ($item->status == '0')
@@ -82,7 +82,8 @@
                                     @elseif($item->status == '5')
                                     <td>Eliminado</td>
                                     @endif
-                                    <td>{{ $item->created_at}}</td>
+                                    {{-- <td>{{ $item->created_at}}</td> --}}
+                                    
                                     <td>
                                     
                                     @if ($item->dni != NULL && $item->status == 0)

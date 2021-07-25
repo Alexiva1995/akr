@@ -9,3 +9,54 @@ NOTE:
 ------
 PLACE HERE YOUR OWN SCSS CODES AND IF NEEDED, OVERRIDE THE STYLES FROM THE OTHER STYLESHEETS.
 WE WILL RELEASE FUTURE UPDATES SO IN ORDER TO NOT OVERWRITE YOUR STYLES IT'S BETTER LIKE THIS.  */
+
+
+/*////////////////////
+
+/* INPUT DE RANGO DE PAQUETES DE INVERCIONES*/
+
+/*///////////////////*/
+.range-container {
+  position: relative;
+  top: 17px;
+}
+
+input[type="range"] {
+  width: 300px;
+  margin: 18px 0;
+}
+
+input[type="range"]:focus {
+  outline: none;
+}
+
+input[type="range"] + label {
+  background-color: rgb(255, 255, 255);
+  position: absolute;
+  top: -25px;
+  left: 110px;
+  width: 80px;
+  padding: 5px 0;
+  text-align: center;
+  border-radius: 4px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+input[type="range"]::-moz-range-track {
+  background: rgb(0, 0, 0);
+  border-radius: 4px;
+  height: 7px;
+  cursor: pointer;
+}
+
+
+input[type="range"]::-moz-range-thumb {
+  -webkit-appearance: none;
+  height: 24px;
+  width: 24px;
+  background: #fff;
+  border-radius: 50%;
+  border: 1px solid rgb(0, 0, 0);
+  margin-top: -7px;
+  cursor: pointer;
+}

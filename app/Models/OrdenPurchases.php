@@ -10,7 +10,7 @@ class OrdenPurchases extends Model
     protected $table = 'orden_purchases';
 
     protected $fillable = [
-        'iduser', 'group_id', 'package_id', 
+        'iduser','group_id', 'package_id', 
         'cantidad', 'total', 'idtransacion',
         'status'
     ];

@@ -29,10 +29,13 @@ class LiquidactionController extends Controller
      */
     public function index()
     {
+
+        $day = Carbon::now()->format('l');
+        
         try {
             View::share('titleg', 'General Liquidaciones');
             $comisiones = $this->getTotalComisiones([], null);
-            return view('settlement.index', compact('comisiones'));
+            return view('settlement.index', compact('comisiones', 'day'));
         } catch (\Throwable $th) {
             Log::error('Liquidaction - index -> Error: '.$th);
             abort(403, "Ocurrio un error, contacte con el administrador");
@@ -312,7 +315,7 @@ class LiquidactionController extends Controller
             }
             
             $bruto = $comisiones->sum('monto');
-            $feed = ($bruto * 0.025);
+            $feed = ($bruto * 0.10);
             $total = ($bruto - $feed);
 
             $arrayLiquidation = [

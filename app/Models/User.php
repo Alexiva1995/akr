@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Models;
-
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -22,8 +21,15 @@ class User extends Authenticatable
     protected $fillable = [
         'name', 'last_name', 'email', 'password', 'whatsapp',
         'fullname', 'referred_id', 'binary_id', 'admin', 'balance', 'status',
-        'wallet', 'address', 'binary_side', 'binary_side_register', 'dni', 'photoDB', 'wallet_address'
+        'wallet', 'address', 'binary_side', 'binary_side_register', 'dni', 'photoDB', 
+        'wallet_address', 'phone', 'city', 
+        'country_id', 'age'
     ];
+
+    // public function country()
+    // {
+    //     return $this->belongsTo('App\Models\Country', 'country_id', 'id');
+    // }
 
     /**
      * The attributes that should be hidden for arrays.

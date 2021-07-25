@@ -22,22 +22,7 @@
                             {{-- ¿Qué tal recargar tu saldo? --}}
                         </p>
                         
-                        <br>
-                        
-                        @if (Auth::user()->dni == NULL)
-                        <p class="m-auto w-75">
-                            KYC: Sin verificar <span class="text-danger h3">◉</span><br>
-                        </p>
-                        @elseif (Auth::user()->dni != NULL && Auth::user()->verify == 0)
-                        <p class="m-auto w-75">
-                            KYC: En Revision <span class="text-warning h3">◉</span><br>
-                        </p>
-                        @elseif (Auth::user()->dni != NULL && Auth::user()->verify == 1)
-                        <p class="m-auto w-75">
-                            KYC: Verificada <span class="text-success h3">◉</span><br>
-                        </p>
-                        @endif
-
+                        <br>                    
                         
                         @if (Auth::user()->status == 0)
                         <p class="m-auto w-75">
@@ -59,13 +44,7 @@
                         <p class="m-auto w-75">
                             Estado: caducado <span class="text-warning h3">◉</span><br>
                         </p>
-                        @endif
-                  
-                        @if (Auth::user()->dni == NULL)
-                        <p class="card-text">
-                            <a class="btn btn-flat-primary padding-button-short bg-white mt-1 waves-effect waves-light" href="{{ route('kyc') }}">Verificación KYC <i class="far fa-copy"></i></a>
-                        </p>    
-                        @endif
+                        @endif                
 
                     </div>
                 </div>
@@ -84,6 +63,44 @@
                     </p>
                     <h4 class="card-title text-white">¡Todo es mejor con amigos!</h4>
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-6 col-md-12 col-12 mt-1">
+        <div class="card text-white bg-gradient-danger bg-red-alt h-100">
+            <div class="card-content">
+                <div class="card-body pb-0">
+                    <div class="card-header d-flex align-items-center text-right pb-0 pt-0 white">
+                        <h5 class="mt-1 mb-0 text-white"><b>Lado Binario</b></h5>
+                    </div>
+                </div>
+
+                <div class="card-sub ml-3">
+                    <h1 class="text-warning text-bold-700">
+                        @if (Auth::user()->binary_side_register == 'I')
+                        IZQUIERDA
+                        @else
+                        DERECHA
+                        @endif
+                    </h1>
+                </div>
+
+                <div class="mt-4">
+                    @if (Auth::user()->binary_side_register == 'I')                    
+                        <div class="d-flex justify-content-center">
+                            <a href="#" class="btn bg-white text-black text-bold-600 mr-1" v-on:click="updateBinarySide('D')">Derecha</a> 
+                            <a href="#" class="btn bg-black text-white text-bold-600 ml-1 disabled"  >Izquierda</a> 
+                        </div>                 
+                    @else
+                        <div class="d-flex justify-content-center">
+                            <a href="#" class="btn bg-white text-black  text-bold-600 mr-1 disabled">Derecha</a> 
+                            <a href="#" class="btn bg-black text-white text-bold-600 ml-1"  v-on:click="updateBinarySide('I')">Izquierda</a> 
+                        </div>                    
+                    @endif    
+                </div>
+                </div>                
+
             </div>
         </div>
     </div>

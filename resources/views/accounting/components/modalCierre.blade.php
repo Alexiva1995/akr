@@ -4,7 +4,7 @@
     <div class="modal-dialog modal-dialog-centered modal-dialog-centered modal-dialog-scrollable" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="modalCierreComisionTitle">Cierre del (@{{DataCierre.group}})</h5>
+                <h5 class="modal-title" id="modalCierreComisionTitle">Cierre del (@{{DataCierre.paquete}})</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -14,7 +14,7 @@
                     <div class="form-body">
                         @csrf
                         <div class="row">
-                            <input type="hidden" name="group_id" :value="DataCierre.group_id">
+                            <input type="hidden" name="package_id" :value="DataCierre.package_id">
                             <div class="col-12">
                                 <fieldset class="form-group">
                                     <label for="">Saldo Final Anterior</label>
