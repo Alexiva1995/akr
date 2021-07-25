@@ -19,7 +19,10 @@
                             @csrf
                             <input type="hidden" name="listUsers[]" value="{{Auth::user()->id}}">
                             <input type="hidden" name="tipo" value="user">
+                          
+                            @if(\Carbon\Carbon::now()->isFriday())
                             <button type="submit" class="btn btn-primary">Retirar</button>
+                            @endif
                         </form>
                         <br>
                     </div>
