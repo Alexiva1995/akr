@@ -7,10 +7,16 @@
             <th>Usuario</th>
             <th>Descripcion</th>
             <th>Monto</th>
-            <th>Estado</th>
+            <th>tipo</th>
+           @if(\Carbon\Carbon::now()->isFriday())
+            <th>Accion</th>
+            @endif
+
         </tr>
     </thead>
     <tbody>
+       
+        </form>
         @foreach ($wallets as $wallet)
         <tr class="text-center ">
             <td>{{$wallet->id}}</td>
@@ -25,15 +31,19 @@
                 }
             @endphp--}}
             <td>$ {{number_format($wallet->monto,2)}}</td>
+
             <td>
-                @if ($wallet->status == 1)
-                    Pagado
-                @elseif ($wallet->status == 2)
-                    Cancelado
-                @else
-                    En Espera
+                @if ($wallet->tipo_transaction == 0)
+                    Comision
+                @elseif ($wallet->tipo_transaction == 1)
+                    Retiro
                 @endif
             </td>
+            @if(\Carbon\Carbon::now()->isFriday())
+            <td>
+        <button type="submit" class="btn btn-primary">Retirar</button>
+            </td>
+            @endif
         </tr>
         @endforeach
     </tbody>
