@@ -21,6 +21,7 @@ class CreateUsersTable extends Migration
             $table->longtext('dni')->nullable();
             $table->bigInteger('country_id')->unsigned();
             $table->foreign('country_id')->references('id')->on('countries');
+            $table->string('state')->nullable();
             $table->string('city')->nullable();
             $table->string('phone')->nullable();      
             $table->date('age')->nullable();             

@@ -23,7 +23,7 @@ class User extends Authenticatable
         'fullname', 'referred_id', 'binary_id', 'admin', 'balance', 'status',
         'wallet', 'address', 'binary_side', 'binary_side_register', 'dni', 'photoDB', 
         'wallet_address', 'phone', 'city', 
-        'country_id', 'age'
+        'country_id', 'age', 'state'
     ];
 
     // public function country()

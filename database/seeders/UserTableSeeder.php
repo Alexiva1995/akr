@@ -87,19 +87,6 @@ class UserTableSeeder extends Seeder
                 'status' => '1'
             ]);
 
-            // for($i = 0; $i<50; $i++)
-            // {
-            //     OrdenPurchases::create([
-            //         'iduser' => random_int(2,5),
-            //         // 'package_id' => random_int(1,3),
-            //         'cantidad' => 1,
-            //         'total' => random_int(1000,10000),
-            //         'status' => '0',
-            //         'created_at' => Carbon::now(),
-            //         'updated_at' => Carbon::now()
-            //     ]);
-            // }
-
 
         } catch (\Throwable $th) {
             dd($th);

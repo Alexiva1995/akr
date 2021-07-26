@@ -18,7 +18,7 @@ class OrdersTableSeeder extends Seeder
         for($i = 0; $i<40; $i++)
         {
             OrdenPurchases::create([
-                'iduser' => random_int(2,5),
+                'iduser' => random_int(3,5),
                 // 'package_id' => random_int(1,3),
                 'cantidad' => 1,
                 'total' => random_int(1000,10000),
