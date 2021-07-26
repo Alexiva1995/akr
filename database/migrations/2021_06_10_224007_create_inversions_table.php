@@ -17,10 +17,10 @@ class CreateInversionsTable extends Migration
             $table->id();
             $table->bigInteger('iduser')->unsigned();;
             $table->foreign('iduser')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
-            $table->bigInteger('package_id')->unsigned();
-            $table->foreign('package_id')->references('id')->on('packages')->onUpdate('cascade')->onDelete('cascade');
-            //$table->bigInteger('orden_id')->unsigned();
-            //$table->foreign('orden_id')->references('id')->on('orden_purchases')->onUpdate('cascade')->onDelete('cascade');
+            // $table->bigInteger('package_id')->unsigned();
+            // $table->foreign('package_id')->references('id')->on('packages')->onUpdate('cascade')->onDelete('cascade');
+            $table->bigInteger('orden_id')->unsigned();
+            $table->foreign('orden_id')->references('id')->on('orden_purchases')->onUpdate('cascade')->onDelete('cascade');
             $table->double('invertido');
             $table->double('ganacia');
             $table->double('retiro');

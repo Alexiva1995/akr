@@ -44,25 +44,27 @@ class InversionController extends Controller
         }
     }
 
-    public function saveInversion(int $paquete, int $orden, float $invertido, string $vencimiento, int $iduser)
+    // Asi estaba Anteriormente
+    // public function saveInversion(int $paquete, int $orden, float $invertido, string $vencimiento, int $iduser)
+    public function saveInversion(int $orden, $invertido, int $iduser)
     {
         try {
             $check = Inversion::where([
                 ['iduser', '=', $iduser],
-                ['package_id', '=', $paquete],
+                // ['package_id', '=', $paquete],
                 ['orden_id', '=', $orden],
             ])->first();
             if ($check == null) {
                 $data = [
                     'iduser' => $iduser,
-                    'package_id' => $paquete,
+                    // 'package_id' => $paquete,
                     'orden_id' => $orden,
                     'invertido' => $invertido,
                     'ganacia' => 0,
                     'retiro' => 0,
                     'capital' => $invertido,
                     'progreso' => 0,
-                    'fecha_vencimiento' => $vencimiento,
+                    // 'fecha_vencimiento' => $vencimiento,
                 ];
                 Inversion::create($data);
             }

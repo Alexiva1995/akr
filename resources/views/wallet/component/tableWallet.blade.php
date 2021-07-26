@@ -8,9 +8,8 @@
             <th>Descripcion</th>
             <th>Monto</th>
             <th>tipo</th>
-           @if(\Carbon\Carbon::now()->isFriday())
-            <th>Accion</th>
-            @endif
+            <th>estado</th>
+            
 
         </tr>
     </thead>
@@ -39,12 +38,19 @@
                     Retiro
                 @endif
             </td>
-            @if(\Carbon\Carbon::now()->isFriday())
+          
             <td>
-        <button type="submit" class="btn btn-primary">Retirar</button>
+            @if ($wallet->status == 1)
+                    Pagado
+                @elseif ($wallet->status == 2)
+                    Cancelado
+                @else
+                    En Espera
+                @endif
             </td>
-            @endif
+            
         </tr>
         @endforeach
     </tbody>
 </table>
+

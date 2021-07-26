@@ -188,8 +188,11 @@ class TiendaController extends Controller
     private function registeInversion($idorden)
     {
         $orden = OrdenPurchases::find($idorden);
-        $paquete = $orden->getPackageOrden;
-        $this->inversionController->saveInversion($paquete->id, $idorden, $orden->cantidad, $paquete->expired, $orden->iduser);
+        
+        // Asi estaba Anteriormente        
+        // $paquete = $orden->getPackageOrden;
+        // $this->inversionController->saveInversion($paquete->id, $idorden, $orden->cantidad, $paquete->expired, $orden->iduser);
+        $this->inversionController->saveInversion($idorden, $orden->total, $orden->iduser);
     }
 
     /**
@@ -269,8 +272,8 @@ class TiendaController extends Controller
         $orden->status = $request->status;
         $orden->save();
 
-        // $this->registeInversion($request->id);
-        if($orden->status == '1'){
+        $this->registeInversion($request->id);
+        if($request->status == '1'){
             $this->registerDirectBonus($request->id);
         }
 
@@ -278,7 +281,7 @@ class TiendaController extends Controller
         $user->status = '1';
         $user->save();
 
-        return redirect()->back()->with('msj-success', 'Orden actualizada exitosamente');
+        return redirect('/dashboard/admin/reports/purchase')->with('msj-success', 'Orden actualizada exitosamente');
     }
 
     public function registerDirectBonus($id)
