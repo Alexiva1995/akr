@@ -64,7 +64,8 @@ class RegisterController extends Controller
                 'phone' => ['required', 'string', 'min:8'],
                 'country' => ['required'],
                 'dni' => ['required'],
-                'city' => ['required'],
+                'city' => ['string'],
+                'state' => ['string'],
                 'age' => ['required', 'before_or_equal:'. \Carbon\Carbon::now()->subYears(18)->format("Y-m-d")],
                 'g-recaptcha-response' => ['required', 'captcha'],
                 'term' => ['required']
@@ -106,6 +107,7 @@ class RegisterController extends Controller
                 'dni' => $data['dni'],
                 'phone' => $data['phone'],
                 'city' => $data['city'],
+                'state' => $data['state'],
                 'country_id' => $data['country'],
                 'age' => $data['age'],
             ]);

@@ -45,7 +45,7 @@
                             </button>
                         </div>
                         <br>
-                        <form method="POST" action="{{route('RetirarFondo')}}">                            
+                        <form method="POST" action="">                            
                         @csrf
                              <input type="hidden" name="id" value="{{Auth::id()}}">
 
