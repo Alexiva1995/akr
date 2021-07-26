@@ -93,10 +93,9 @@ $referred = null;
 
                         <div class="row">
                             <div class="form-group col-md-6">
-                                {{-- value="{{ old('name') }}" --}}
                                 <input id="name" type="text" class="form-control @error('name') is-invalid @enderror"
                                     name="name"  required autocomplete="name" autofocus
-                                    placeholder="Nombre y Apellido" value="Leonardo Guilarte">
+                                    placeholder="Nombre y Apellido" value="{{ old('name') }}">
 
                                 @error('name')
                                 <span class="invalid-feedback" role="alert">
@@ -105,10 +104,9 @@ $referred = null;
                                 @enderror
                             </div> 
                             <div class="form-group col-md-6">
-                                {{-- value="{{ old('dni') }}" --}}
                                 <input id="dni" type="text" class="form-control @error('dni') is-invalid @enderror"
                                     name="dni"  required autocomplete="dni" autofocus
-                                    placeholder="Número de Identificación" value="26842756">
+                                    placeholder="Número de Identificación" value="{{ old('dni') }}">
 
                                 @error('dni')
                                 <span class="invalid-feedback" role="alert">
@@ -120,10 +118,9 @@ $referred = null;
 
                         <div class="row"> 
                             <div class="form-group col-md-6">
-                                {{-- value="{{ old('phone') }}" --}}
                                 <input id="phone" type="text" class="form-control @error('phone') is-invalid @enderror"
                                     name="phone"  required autocomplete="phone" autofocus
-                                    placeholder="Teléfono" value="04120950165">
+                                    placeholder="Teléfono" value="{{ old('phone') }}">
 
                                 @error('phone')
                                 <span class="invalid-feedback" role="alert">
@@ -133,10 +130,9 @@ $referred = null;
                             </div>
 
                             <div class="form-group col-md-6">
-                                {{-- value="{{ old('email') }}" --}}
                                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror"
                                     name="email" required autocomplete="email"
-                                    placeholder="Correo Electronico" value="lguilarte1907@gmail.com">
+                                    placeholder="Correo Electronico" value="{{ old('email') }}">
 
                                 @error('email')
                                 <span class="invalid-feedback" role="alert">
@@ -153,7 +149,7 @@ $referred = null;
                                     >
                                     <option selected disabled readonly>Escoge tu país</option>
                                     @foreach($countries as $country)
-                                        <option value="{{237}}">{{$country->name}}</option>
+                                        <option value="{{$country->id}}">{{$country->name}}</option>
                                     @endforeach
                                 </select>
 
@@ -165,10 +161,9 @@ $referred = null;
                             </div> 
 
                             <div class="form-group col-md-6">
-                                {{-- value="{{ old('state') }}" --}}
                                 <input id="state" type="text" class="form-control @error('state') is-invalid @enderror"
                                     name="state"  required autocomplete="state" autofocus
-                                    placeholder="Ciudad" value="Nueva Esparta">
+                                    placeholder="Ciudad" value="{{ old('state') }}">
 
                                 @error('state')
                                 <span class="invalid-feedback" role="alert">
@@ -180,10 +175,9 @@ $referred = null;
 
                         <div class="row">   
                             <div class="form-group col-md-6">
-                                {{-- value="{{ old('city') }}" --}}
                                 <input id="city" type="text" class="form-control @error('city') is-invalid @enderror"
                                     name="city"  required autocomplete="city" autofocus
-                                    placeholder="Ciudad" value="Porlamar">
+                                    placeholder="Ciudad" value="{{ old('city') }}">
 
                                 @error('city')
                                 <span class="invalid-feedback" role="alert">
@@ -193,10 +187,9 @@ $referred = null;
                             </div>
 
                             <div class="form-group col-md-6">
-                                {{-- value="{{ old('age') }}" --}}
                                 <input id="age" type="text" onfocus="(this.type='date')" class="form-control @error('age') is-invalid @enderror"
                                     name="age"  required autocomplete="age" autofocus
-                                    placeholder="Fecha de Nacimiento" value="1998/07/19">
+                                    placeholder="Fecha de Nacimiento" value="{{ old('age') }}">
 
                                 @error('age')
                                 <span class="invalid-feedback" role="alert">
@@ -210,7 +203,7 @@ $referred = null;
                             <div class="form-group col-md-6">
                                 <input id="password" type="password"
                                     class="form-control @error('password') is-invalid @enderror" name="password"
-                                    required autocomplete="new-password" placeholder="Ingrese una contraseña" value="12password">
+                                    required autocomplete="new-password" placeholder="Ingrese una contraseña" >
 
                                 @error('password')
                                 <span class="invalid-feedback" role="alert">
@@ -222,7 +215,7 @@ $referred = null;
                             <div class="form-group col-md-6">
                                 <input id="password-confirm" type="password" class="form-control"
                                     name="password_confirmation" required autocomplete="new-password"
-                                    placeholder="confirme su contraseña" value="12password">
+                                    placeholder="confirme su contraseña">
                             </div>                                                                                
                         </div>
 
