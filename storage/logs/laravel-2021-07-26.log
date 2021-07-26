@@ -1,0 +1,22 @@
+[2021-07-26 10:10:20] local.ERROR: Uncaught ErrorException: include(/home/abraham/Documents/coding/akr/vendor/composer/../../app/Http/Middleware/verificacionKYC.php): failed to open stream: No such file or directory in /home/abraham/Documents/coding/akr/vendor/composer/ClassLoader.php:480
+Stack trace:
+#0 /home/abraham/Documents/coding/akr/vendor/composer/ClassLoader.php(480): Illuminate\Foundation\Bootstrap\HandleExceptions->handleError(2, 'include(/home/a...', '/home/abraham/D...', 480, Array)
+#1 /home/abraham/Documents/coding/akr/vendor/composer/ClassLoader.php(480): include()
+#2 /home/abraham/Documents/coding/akr/vendor/composer/ClassLoader.php(346): Composer\Autoload\includeFile('/home/abraham/D...')
+#3 [internal function]: Composer\Autoload\ClassLoader->loadClass('App\\Http\\Middle...')
+#4 [internal function]: spl_autoload_call('App\\Http\\Middle...')
+#5 Command line code(1): ReflectionMethod->__construct('App\\Http\\Middle...', 'handle')
+#6 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught ErrorException: include(/home/abraham/Documents/coding/akr/vendor/composer/../../app/Http/Middleware/verificacionKYC.php): failed to open stream: No such file or directory in /home/abraham/Documents/coding/akr/vendor/composer/ClassLoader.php:480
+Stack trace:
+#0 /home/abraham/Documents/coding/akr/vendor/composer/ClassLoader.php(480): Illuminate\\Foundation\\Bootstrap\\HandleExceptions->handleError(2, 'include(/home/a...', '/home/abraham/D...', 480, Array)
+#1 /home/abraham/Documents/coding/akr/vendor/composer/ClassLoader.php(480): include()
+#2 /home/abraham/Documents/coding/akr/vendor/composer/ClassLoader.php(346): Composer\\Autoload\\includeFile('/home/abraham/D...')
+#3 [internal function]: Composer\\Autoload\\ClassLoader->loadClass('App\\\\Http\\\\Middle...')
+#4 [internal function]: spl_autoload_call('App\\\\Http\\\\Middle...')
+#5 Command line code(1): ReflectionMethod->__construct('App\\\\Http\\\\Middle...', 'handle')
+#6 {main}
+  thrown at /home/abraham/Documents/coding/akr/vendor/composer/ClassLoader.php:480)
+[stacktrace]
+#0 {main}
+"} 
