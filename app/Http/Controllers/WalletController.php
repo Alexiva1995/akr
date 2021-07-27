@@ -363,7 +363,7 @@ class WalletController extends Controller
                 'referred_id' => null,
                 'cierre_comision_id' => null,
                 'monto' => $cantidad,
-                'descripcion' => 'Profit de '.($porcentaje->porcentaje_utilidad * 100). ' %',
+                'descripcion' => 'Profit de '.($porcentaje * 100). ' %',
                 'status' => 0,
                 'tipo_transaction' => 0,
                 'orden_purchases_id' => $inversion->orden_id
