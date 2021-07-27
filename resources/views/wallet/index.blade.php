@@ -15,15 +15,6 @@
                     {{--@if(\Carbon\Carbon::now()->isFriday())--}}
                     <button type="submit" class="btn btn-primary mb-2" id="retiro" data-toggle="modal" data-target="#modalSaldo">Retirar</button>
                     {{--@endif--}}
-
-
-                    <div class="col-12 col-md-4">
-                        <form action="{{route('liquidation.store')}}" method="post">
-                            @csrf
-                            <input type="hidden" name="listUsers[]" value="{{Auth::user()->id}}">
-                            <input type="hidden" name="tipo" value="user">
-
-                    </div>
                 </div>
 
                 <div class="table-responsive">

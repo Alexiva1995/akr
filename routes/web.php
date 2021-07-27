@@ -112,7 +112,7 @@ Route::prefix('dashboard')->middleware('menu', 'auth')->group(function ()
 
         Route::get('UserOrders', 'ReporteController@UserOrders')->name('UserOrders');
 
-        
+        Route::get('/settlement/wallet', 'LiquidactionController@wallet')->name('settlement.wallet');        
     });
 
     Route::prefix('inversiones')->group(function ()

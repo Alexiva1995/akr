@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\View;
 use App\Http\Controllers\WalletController;
+use Illuminate\Support\Facades\Auth;
 
 class LiquidactionController extends Controller
 {
@@ -458,5 +459,56 @@ class LiquidactionController extends Controller
 
         $liquidacion->status = 2;
         $liquidacion->save();
+    }
+
+
+    public function wallet()
+    {
+        try {
+            $user = Auth::user();
+
+            $comisiones = Wallet::where([
+                ['iduser', '=', $user->id],
+                ['status', '=', 0],
+                ['tipo_transaction', '=', 0],
+            ])->get();
+
+            if(count($comisiones) == 0){
+                return redirect()->back()->with('msj-warning', 'No tienes comisiones disponibles para retirar');            
+            }else{
+                $bruto = $comisiones->sum('monto');
+                $feed = ($bruto * 0.10);
+                $total = ($bruto - $feed);
+    
+    
+                $arrayLiquidation = [
+                    'iduser' => $user->id,
+                    'total' => $total,
+                    'monto_bruto' => $bruto,
+                    'feed' => $feed,
+                    'hash',
+                    'wallet_used' => $user->wallet_address,
+                    'status' => 0,
+                ];
+            
+                $idLiquidation = $this->saveLiquidation($arrayLiquidation);
+    
+                $concepto = 'Liquidacion del usuario '.$user->fullname.' por un monto de '.$bruto;    
+    
+                if (!empty($idLiquidation)) {
+                    $listComi = $comisiones->pluck('id');
+                    Wallet::whereIn('id', $listComi)->update([
+                        'status' => 1,
+                        'liquidation_id' => $idLiquidation
+                    ]);
+                }   
+                
+                return redirect()->back()->with('msj-success', 'Liquidaciones Generadas Exitosamente');            
+            }
+
+        }catch (\Throwable $th) {
+            Log::error('Liquidaction - generarLiquidation -> Error: '.$th);
+            abort(403, "Ocurrio un error, contacte con el administrador");
+        }
     }
 }
