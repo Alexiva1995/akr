@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 
 use App\Models\OrdenPurchases;
+use App\Models\PorcentajeUtilidad;
 use App\Models\Wallet;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
@@ -347,6 +348,8 @@ class WalletController extends Controller
         }
     }
 
+
+
     public function pagarUtilidad()
     {
         $inversiones = Inversion::where('status', 1)->get();
@@ -357,7 +360,7 @@ class WalletController extends Controller
                 $inversion->max_ganancia = $inversion->invertido * 2;
                 $inversion->restante = $inversion->max_ganancia;
             }
-            $porcentaje = PorcentajeUtilida::orderBy('id', 'desc')->first();
+            $porcentaje = PorcentajeUtilidad::orderBy('id', 'desc')->first();
             $cantidad = $inversion->invertido * $porcentaje->porcentaje_utilidad;
             $resta = $inversion->restante - $cantidad;
             

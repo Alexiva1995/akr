@@ -180,5 +180,8 @@ Route::prefix('dashboard')->middleware('menu', 'auth')->group(function ()
             Route::get('commission', 'ReporteController@indexComision')->name('reports.comision');
         });
 
+        Route::get('pagarUtilidad', 'WalletController@pagarUtilidad')->name('pagarUtilidad');
+        Route::put('updatePorcentajeGanancia', 'InversionController@updatePorcentajeGanancia')->name('updatePorcentajeGanancia');
+
     });
 });

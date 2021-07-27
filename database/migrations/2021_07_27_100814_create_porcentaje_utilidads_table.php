@@ -1,4 +1,3 @@
-```html
 <?php
 
 use Illuminate\Database\Migrations\Migration;
@@ -31,4 +30,3 @@ class CreatePorcentajeUtilidadsTable extends Migration
         Schema::dropIfExists('porcentaje_utilidads');
     }
 }
-```
