@@ -11,9 +11,9 @@
                             </button>
                         </div>
                         <br>
-                        <form method="post" action="{{route('RetirarFondo')}}">                         
+                        <form method="post" action="">                         
                         @csrf
-                             <input type="hidden" name="id" value="(Auth::user()->admin == 1)">
+                             <input type="hidden" name="id" value="">
 
                             <div class="modal-body ">
                                 <p>¿Seguro Que Desea Retirar Lo Fondos?</p>

@@ -58,8 +58,7 @@ Route::prefix('dashboard')->middleware('menu', 'auth')->group(function ()
     Route::prefix('wallet')->group(function ()
     {
         Route::get('/', 'WalletController@index')->name('wallet.index');
-        Route::post('wallet/RetirarFondo', 'WalletController@RetirarFondo')->name('RetirarFondo');
-        Route::post('liquidation/retirarSaldo', 'LiquidactionController@retirarSaldo')->name('retirarSaldo');
+       
     });
 
     // Ruta para la pagos
@@ -112,7 +111,7 @@ Route::prefix('dashboard')->middleware('menu', 'auth')->group(function ()
 
         Route::get('UserOrders', 'ReporteController@UserOrders')->name('UserOrders');
 
-        Route::post('liquidation/retirarSaldo', 'LiquidactionController@retirarSaldo')->name('retirarSaldo');
+        
     });
 
     Route::prefix('inversiones')->group(function ()
