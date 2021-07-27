@@ -12,9 +12,9 @@
                         <span class="font-weight-bold mb-2">Saldo: {{number_format($saldoDisponible,2)}}$</span>
                     </div>
 
-                    {{--@if(\Carbon\Carbon::now()->isFriday())--}}
+                    @if(\Carbon\Carbon::now()->isFriday())
                     <button type="submit" class="btn btn-primary mb-2" id="retiro" data-toggle="modal" data-target="#modalSaldo">Retirar</button>
-                    {{--@endif--}}
+                    @endif
                 </div>
 
                 <div class="table-responsive">
