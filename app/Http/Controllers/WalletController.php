@@ -355,8 +355,9 @@ class WalletController extends Controller
                 $inversion->max_ganancia = $inversion->invertido * 2;
                 $inversion->restante = $inversion->max_ganancia;
             }
-            $porcentaje = PorcentajeUtilidad::orderBy('id', 'desc')->first();
-            $cantidad = $inversion->invertido * $porcentaje->porcentaje_utilidad;
+
+            $porcentaje = 0.0111;
+            $cantidad = $inversion->invertido * $porcentaje;
             $resta = $inversion->restante - $cantidad;
 
             if ($resta < 0) { //comparamos si se pasa de lo que puede ganar
@@ -374,7 +375,6 @@ class WalletController extends Controller
                 'referred_id' => null,
                 'cierre_comision_id' => null,
                 'monto' => $cantidad,
-                'descripcion' => 'Profit de ' . ($porcentaje->porcentaje_utilidad * 100) . ' %',
                 'status' => 0,
                 'tipo_transaction' => 0,
                 'orden_purchases_id' => $inversion->orden_id
