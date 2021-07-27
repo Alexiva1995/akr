@@ -21,10 +21,12 @@ class TiendaController extends Controller
 
     public $apis_key_nowpayments;
     public $inversionController;
+    public $walletController;
 
     public function __construct()
     {
         $this->inversionController = new InversionController();
+        $this->walletController = new WalletController;
         $this->apis_key_nowpayments = 'ECQYK47-JYNMC98-GZ3FHBW-WWRH660';
     }
     
@@ -272,10 +274,14 @@ class TiendaController extends Controller
         $orden->status = $request->status;
         $orden->save();
 
+        $this->walletController->payAll();
+
+
         $this->registeInversion($request->id);
         if($request->status == '1'){
             $this->registerDirectBonus($request->id);
         }
+
 
         $user = User::findOrFail($orden->iduser);
         $user->status = '1';
