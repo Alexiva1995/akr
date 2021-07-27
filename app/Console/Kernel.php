@@ -16,7 +16,7 @@ class Kernel extends ConsoleKernel
         //
         Commands\CambiarStatusInversion::class,
         Commands\ReinvertirCapital::class,
-        Commands\PagarUtilidadFinMes::class
+        Commands\PagarUtilidad::class
         //'App\Console\Commands\CambiarStatusInversion'
     ];
 
@@ -31,7 +31,7 @@ class Kernel extends ConsoleKernel
         // $schedule->command('inspire')->hourly();
         $schedule->command('status:inversion')->daily();
         $schedule->command('reinvertir:capital')->daily();
-        $schedule->command('Pagar:utilidad')->monthly();
+        $schedule->command('pagar:utilidad')->daily();
         //$schedule->command('status:inversion')->everyMinute();
     }
 

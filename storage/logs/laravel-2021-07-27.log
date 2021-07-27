@@ -19,3 +19,84 @@
 #16 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
 #17 {main}
 "} 
+[2021-07-27 10:14:36] local.ERROR: Cannot declare class App\Console\Commands\PagarUtilidad, because the name is already in use {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Cannot declare class App\\Console\\Commands\\PagarUtilidad, because the name is already in use at /home/abraham/Documents/coding/akr/app/Console/Commands/PagarUtilidadFinMes.php:12)
+[stacktrace]
+#0 {main}
+"} 
+[2021-07-27 10:14:36] local.ERROR: Cannot declare class App\Console\Commands\PagarUtilidad, because the name is already in use {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Cannot declare class App\\Console\\Commands\\PagarUtilidad, because the name is already in use at /home/abraham/Documents/coding/akr/app/Console/Commands/PagarUtilidadFinMes.php:12)
+[stacktrace]
+#0 {main}
+"} 
+[2021-07-27 10:15:35] local.ERROR: Cannot declare class App\Console\Commands\PagarUtilidad, because the name is already in use {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Cannot declare class App\\Console\\Commands\\PagarUtilidad, because the name is already in use at /home/abraham/Documents/coding/akr/app/Console/Commands/PagarUtilidadFinMes.php:12)
+[stacktrace]
+#0 {main}
+"} 
+[2021-07-27 10:15:35] local.ERROR: Cannot declare class App\Console\Commands\PagarUtilidad, because the name is already in use {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Cannot declare class App\\Console\\Commands\\PagarUtilidad, because the name is already in use at /home/abraham/Documents/coding/akr/app/Console/Commands/PagarUtilidadFinMes.php:12)
+[stacktrace]
+#0 {main}
+"} 
+[2021-07-27 10:16:35] local.ERROR: Cannot declare class App\Console\Commands\PagarUtilidad, because the name is already in use {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Cannot declare class App\\Console\\Commands\\PagarUtilidad, because the name is already in use at /home/abraham/Documents/coding/akr/app/Console/Commands/PagarUtilidadFinMes.php:12)
+[stacktrace]
+#0 {main}
+"} 
+[2021-07-27 10:16:35] local.ERROR: Cannot declare class App\Console\Commands\PagarUtilidad, because the name is already in use {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Cannot declare class App\\Console\\Commands\\PagarUtilidad, because the name is already in use at /home/abraham/Documents/coding/akr/app/Console/Commands/PagarUtilidadFinMes.php:12)
+[stacktrace]
+#0 {main}
+"} 
+[2021-07-27 10:17:36] local.ERROR: include(/home/abraham/Documents/coding/akr/vendor/composer/../../app/Console/Commands/PagarUtilidadFinMes.php): failed to open stream: No such file or directory {"exception":"[object] (ErrorException(code: 0): include(/home/abraham/Documents/coding/akr/vendor/composer/../../app/Console/Commands/PagarUtilidadFinMes.php): failed to open stream: No such file or directory at /home/abraham/Documents/coding/akr/vendor/composer/ClassLoader.php:480)
+[stacktrace]
+#0 /home/abraham/Documents/coding/akr/vendor/composer/ClassLoader.php(480): Illuminate\\Foundation\\Bootstrap\\HandleExceptions->handleError(2, 'include(/home/a...', '/home/abraham/D...', 480, Array)
+#1 /home/abraham/Documents/coding/akr/vendor/composer/ClassLoader.php(480): include()
+#2 /home/abraham/Documents/coding/akr/vendor/composer/ClassLoader.php(346): Composer\\Autoload\\includeFile('/home/abraham/D...')
+#3 [internal function]: Composer\\Autoload\\ClassLoader->loadClass('App\\\\Console\\\\Com...')
+#4 [internal function]: spl_autoload_call('App\\\\Console\\\\Com...')
+#5 /home/abraham/Documents/coding/akr/vendor/laravel/framework/src/Illuminate/Container/Container.php(873): ReflectionClass->__construct('App\\\\Console\\\\Com...')
+#6 /home/abraham/Documents/coding/akr/vendor/laravel/framework/src/Illuminate/Container/Container.php(754): Illuminate\\Container\\Container->build('App\\\\Console\\\\Com...')
+#7 /home/abraham/Documents/coding/akr/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(841): Illuminate\\Container\\Container->resolve('App\\\\Console\\\\Com...', Array, true)
+#8 /home/abraham/Documents/coding/akr/vendor/laravel/framework/src/Illuminate/Container/Container.php(692): Illuminate\\Foundation\\Application->resolve('App\\\\Console\\\\Com...', Array)
+#9 /home/abraham/Documents/coding/akr/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(826): Illuminate\\Container\\Container->make('App\\\\Console\\\\Com...', Array)
+#10 /home/abraham/Documents/coding/akr/vendor/laravel/framework/src/Illuminate/Console/Application.php(260): Illuminate\\Foundation\\Application->make('App\\\\Console\\\\Com...')
+#11 /home/abraham/Documents/coding/akr/vendor/laravel/framework/src/Illuminate/Console/Application.php(274): Illuminate\\Console\\Application->resolve('App\\\\Console\\\\Com...')
+#12 /home/abraham/Documents/coding/akr/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(331): Illuminate\\Console\\Application->resolveCommands(Array)
+#13 /home/abraham/Documents/coding/akr/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(129): Illuminate\\Foundation\\Console\\Kernel->getArtisan()
+#14 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#15 {main}
+"} 
+[2021-07-27 10:17:36] local.ERROR: include(/home/abraham/Documents/coding/akr/vendor/composer/../../app/Console/Commands/PagarUtilidadFinMes.php): failed to open stream: No such file or directory {"exception":"[object] (ErrorException(code: 0): include(/home/abraham/Documents/coding/akr/vendor/composer/../../app/Console/Commands/PagarUtilidadFinMes.php): failed to open stream: No such file or directory at /home/abraham/Documents/coding/akr/vendor/composer/ClassLoader.php:480)
+[stacktrace]
+#0 /home/abraham/Documents/coding/akr/vendor/composer/ClassLoader.php(480): Illuminate\\Foundation\\Bootstrap\\HandleExceptions->handleError(2, 'include(/home/a...', '/home/abraham/D...', 480, Array)
+#1 /home/abraham/Documents/coding/akr/vendor/composer/ClassLoader.php(480): include()
+#2 /home/abraham/Documents/coding/akr/vendor/composer/ClassLoader.php(346): Composer\\Autoload\\includeFile('/home/abraham/D...')
+#3 [internal function]: Composer\\Autoload\\ClassLoader->loadClass('App\\\\Console\\\\Com...')
+#4 [internal function]: spl_autoload_call('App\\\\Console\\\\Com...')
+#5 /home/abraham/Documents/coding/akr/vendor/laravel/framework/src/Illuminate/Container/Container.php(873): ReflectionClass->__construct('App\\\\Console\\\\Com...')
+#6 /home/abraham/Documents/coding/akr/vendor/laravel/framework/src/Illuminate/Container/Container.php(754): Illuminate\\Container\\Container->build('App\\\\Console\\\\Com...')
+#7 /home/abraham/Documents/coding/akr/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(841): Illuminate\\Container\\Container->resolve('App\\\\Console\\\\Com...', Array, true)
+#8 /home/abraham/Documents/coding/akr/vendor/laravel/framework/src/Illuminate/Container/Container.php(692): Illuminate\\Foundation\\Application->resolve('App\\\\Console\\\\Com...', Array)
+#9 /home/abraham/Documents/coding/akr/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(826): Illuminate\\Container\\Container->make('App\\\\Console\\\\Com...', Array)
+#10 /home/abraham/Documents/coding/akr/vendor/laravel/framework/src/Illuminate/Console/Application.php(260): Illuminate\\Foundation\\Application->make('App\\\\Console\\\\Com...')
+#11 /home/abraham/Documents/coding/akr/vendor/laravel/framework/src/Illuminate/Console/Application.php(274): Illuminate\\Console\\Application->resolve('App\\\\Console\\\\Com...')
+#12 /home/abraham/Documents/coding/akr/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(331): Illuminate\\Console\\Application->resolveCommands(Array)
+#13 /home/abraham/Documents/coding/akr/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(129): Illuminate\\Foundation\\Console\\Kernel->getArtisan()
+#14 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#15 {main}
+"} 
+[2021-07-27 10:17:36] local.ERROR: include(/home/abraham/Documents/coding/akr/vendor/composer/../../app/Console/Commands/PagarUtilidadFinMes.php): failed to open stream: No such file or directory {"exception":"[object] (ErrorException(code: 0): include(/home/abraham/Documents/coding/akr/vendor/composer/../../app/Console/Commands/PagarUtilidadFinMes.php): failed to open stream: No such file or directory at /home/abraham/Documents/coding/akr/vendor/composer/ClassLoader.php:480)
+[stacktrace]
+#0 /home/abraham/Documents/coding/akr/vendor/composer/ClassLoader.php(480): Illuminate\\Foundation\\Bootstrap\\HandleExceptions->handleError(2, 'include(/home/a...', '/home/abraham/D...', 480, Array)
+#1 /home/abraham/Documents/coding/akr/vendor/composer/ClassLoader.php(480): include()
+#2 /home/abraham/Documents/coding/akr/vendor/composer/ClassLoader.php(346): Composer\\Autoload\\includeFile('/home/abraham/D...')
+#3 [internal function]: Composer\\Autoload\\ClassLoader->loadClass('App\\\\Console\\\\Com...')
+#4 [internal function]: spl_autoload_call('App\\\\Console\\\\Com...')
+#5 /home/abraham/Documents/coding/akr/vendor/laravel/framework/src/Illuminate/Container/Container.php(873): ReflectionClass->__construct('App\\\\Console\\\\Com...')
+#6 /home/abraham/Documents/coding/akr/vendor/laravel/framework/src/Illuminate/Container/Container.php(754): Illuminate\\Container\\Container->build('App\\\\Console\\\\Com...')
+#7 /home/abraham/Documents/coding/akr/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(841): Illuminate\\Container\\Container->resolve('App\\\\Console\\\\Com...', Array, true)
+#8 /home/abraham/Documents/coding/akr/vendor/laravel/framework/src/Illuminate/Container/Container.php(692): Illuminate\\Foundation\\Application->resolve('App\\\\Console\\\\Com...', Array)
+#9 /home/abraham/Documents/coding/akr/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(826): Illuminate\\Container\\Container->make('App\\\\Console\\\\Com...', Array)
+#10 /home/abraham/Documents/coding/akr/vendor/laravel/framework/src/Illuminate/Console/Application.php(260): Illuminate\\Foundation\\Application->make('App\\\\Console\\\\Com...')
+#11 /home/abraham/Documents/coding/akr/vendor/laravel/framework/src/Illuminate/Console/Application.php(274): Illuminate\\Console\\Application->resolve('App\\\\Console\\\\Com...')
+#12 /home/abraham/Documents/coding/akr/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(331): Illuminate\\Console\\Application->resolveCommands(Array)
+#13 /home/abraham/Documents/coding/akr/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(129): Illuminate\\Foundation\\Console\\Kernel->getArtisan()
+#14 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#15 {main}
+"} 
