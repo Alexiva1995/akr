@@ -74,7 +74,7 @@
                         </table>
                     </div>
 
-                    @if($day == 'Friday')
+                    @if(\Carbon\Carbon::now()->format('l') == 'Friday')
                         <div class="form-group text-center">
                             <button class="btn btn-primary">Generar Liquidacion</button>
                         </div>

@@ -25,7 +25,7 @@
                         <div class="col-md-12">
                             <div class=" d-flex white mt-2">
                                 <button class="btn-tree text-left" style="width: 247px;">Puntos Por la
-                                    Derecha:</button>
+                                    Derecha: <b>{{$binario['totald']}}</b></button>
                             </div>
                         </div>
                     </div>
@@ -35,7 +35,7 @@
                         <div class="col-md-12">
                             <div class=" d-flex white mt-2">
                                 <button class="btn-tree text-left" style="width: 247px;">Puntos por la
-                                    Izquierda:</button>
+                                    Izquierda: <b>{{$binario['totali']}}</b></button>
                             </div>
                         </div>
                     </div>

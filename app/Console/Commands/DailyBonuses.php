@@ -7,21 +7,21 @@ use Carbon\Carbon;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Log;
 
-class PagarUtilidad extends Command
+class DailyBonuses extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'pagar:utilidad';
+    protected $signature = 'daily:bonuses';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Paga las utilidades a las inversiones hasta llegar a un 200% de ganancia';
+    protected $description = 'Permite agregar el sistema de puntos binarios y el Bono directo cada diez minutos';
 
     /**
      * Create a new command instance.
@@ -41,11 +41,12 @@ class PagarUtilidad extends Command
     public function handle()
     {
         try {
-            Log::info('Inicio pagar utilidad diaria- '.Carbon::now());
-            $wallet = new WalletController();
-            $wallet->pagarUtilidad();
-            Log::info('Fin de pagar utilidad diaria - '.Carbon::now());
+            Log::info('Inicio de los puntos y comisiones diarias - '.Carbon::now());
+            $walletControler = new WalletController();
+            $walletControler->payAll();
+            Log::info('Fin de los puntos y comisiones diarias - '.Carbon::now());
         } catch (\Throwable $th) {
-            Log::error('Error Cron Pagar utilidad 200% -> '.$th);
-        }    }
+            Log::error('Error Cron Binario -> '.$th);
+        }
+    }
 }

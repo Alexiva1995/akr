@@ -18,6 +18,7 @@ use App\Models\CierreComision;
 use App\Models\Inversion;
 use App\Models\User;
 use App\Models\Liquidaction;
+use App\Models\WalletBinary;
 
 class WalletController extends Controller
 {
@@ -168,38 +169,22 @@ class WalletController extends Controller
      * @param string $concepto
      * @return void
      */
-    private function preSaveWallet(int $iduser, int $idreferido, int $cierre_id=null,  float $monto, string $concepto, $nivel, $name, $porcentaje=null, $reinvertir_comision=null)
+    private function preSaveWallet(int $iduser, int $idreferido, int $cierre_id=null,  float $monto, string $concepto)
     {
         $data = [
             'iduser' => $iduser,
             'referred_id' => $idreferido,
-            'cierre_comision_id' => $cierre_id,
+            'orden_purchases_id' => $cierre_id,
             'monto' => $monto,
             'descripcion' => $concepto,
             'status' => 0,
             'tipo_transaction' => 0,
-            'nivel' => $nivel,
-            'name' => $name,
-            'porcentaje' => $porcentaje,
-            'reinvertir_comision' => $reinvertir_comision
         ];
 
-        //SI TIENE ACTIVADO LA OPCION REINVERTIR COMISION
-        if($reinvertir_comision){
-            $inversion = Inversion::where('iduser', $iduser)->where('status', 1)->whereDate('fecha_vencimiento', '>=', Carbon::now())->orderBy('fecha_vencimiento', 'asc')->first();
-            if(isset($inversion)){
-                $inversion->invertido+= $monto;
-                $inversion->capital+= $monto;
-                $inversion->save();
-                $data['status'] = 1;
-                dump("inversion");
-                dump($inversion);
-            }
+        $aceleracion = $this->saveWallet($data);
+        if ($aceleracion) {
+            $this->aceleracion($iduser, $idreferido, $monto, $concepto);
         }
-
-        dump($data);
-        $this->saveWallet($data);
-      
     }
 
     /**
@@ -229,12 +214,12 @@ class WalletController extends Controller
             $fecha = Carbon::now();
             if ($iduser == null) {
                 $saldos = OrdenPurchases::where([
-                    ['estado', '=', 1]
+                    ['status', '=', 1]
                 ])->whereDate('created_at', '>=', $fecha->subDay(5))->get();
             }else{
                 $saldos = OrdenPurchases::where([
                     ['iduser', '=', $iduser],
-                    ['estado', '=', 1]
+                    ['status', '=', 1]
                 ])->whereDate('created_at', '>=', $fecha->subDay(5))->get();
             }
             return $saldos;
@@ -396,4 +381,175 @@ class WalletController extends Controller
     }
 
     
+    /**
+     * Permite pagar el bono directo
+     *
+     * @return void
+     */
+    public function bonoDirecto()
+    {
+        try {
+            $ordenes = $this->getOrdens(null);
+            // dd($ordenes);
+            foreach ($ordenes as $orden) {
+                $comision = ($orden->total * 0.1);
+                $sponsor = User::find($orden->getOrdenUser->referred_id);
+                if ($sponsor->status == '1') {
+                    $concepto = 'Bono directo del Usuario '.$orden->getOrdenUser->fullname;
+                    $this->preSaveWallet($sponsor->id, $orden->iduser, $orden->id, $comision, $concepto);
+                }else{
+                    $concepto = 'Bono directo del Usuario '.$orden->getOrdenUser->fullname;
+                    $this->preSaveWallet($sponsor->id, $orden->iduser, $orden->id, 0, $concepto);
+                }
+            }
+        } catch (\Throwable $th) {
+            Log::error('Wallet - bonoDirecto -> Error: '.$th);
+            abort(403, "Ocurrio un error, contacte con el administrador");
+        }
+    }
+
+    // Metodos para los puntos binarios
+
+    /**
+     * Permite pagar los puntos binarios
+     *
+     * @return void
+     */
+    public function payPointsBinary()
+    {
+        try {
+            $ordenes = $this->getOrdens(null);
+            foreach ($ordenes as $orden) {
+                $sponsors = $this->treeController->getSponsor($orden->iduser, [], 0, 'id', 'binary_id');
+                $side = $orden->getOrdenUser->binary_side;
+                foreach ($sponsors as $sponsor) {
+                    if ($sponsor->id != $orden->iduser) {
+                       if ($sponsor->id != 1) {
+
+                                $check = WalletBinary::where([
+                                    ['iduser', '=', $sponsor->id],
+                                    ['referred_id', '=', $orden->iduser],
+                                    ['orden_purchase_id', '=', $orden->id]
+                                ])->first();
+                                if (empty($check)) {
+                                    $concepto = 'Puntos binarios del Usuario '.$orden->getOrdenUser->fullname;
+                                    $puntosD = $puntosI = 0;
+                                    if ($sponsor->status == '1') {
+                                        if ($side == 'I') {
+                                            $puntosI = $orden->total;
+                                        }elseif($side == 'D'){
+                                            $puntosD = $orden->total;
+                                        }
+                                    }
+                                    $dataWalletPoints = [
+                                        'iduser' => $sponsor->id,
+                                        'referred_id' => $orden->iduser,
+                                        'orden_purchase_id' => $orden->id,
+                                        'puntos_d' => $puntosD,
+                                        'puntos_i' => $puntosI,
+                                        'side' => $side,
+                                        'status' => 0,
+                                        'descripcion' => $concepto
+                                    ];
+                                    
+                                    WalletBinary::create($dataWalletPoints);
+                            }
+                       }                    
+                    }
+                    $side = $sponsor->binary_side;
+                }
+            }
+        } catch (\Throwable $th) {
+            Log::error('Wallet - payPointsBinary -> Error: '.$th);
+            abort(403, "Ocurrio un error, contacte con el administrador");
+        }
+    }
+ 
+     /**
+     * Permite pagar el bono binario
+     *
+     * @return void
+     */
+    public function bonoBinario()
+    {
+        $binarios = WalletBinary::where([
+            ['status', '=', 0],
+            ['puntos_d', '>', 0],
+        ])->orWhere([
+            ['status', '=', 0],
+            ['puntos_i', '>', 0],
+        ])->selectRaw('iduser, SUM(puntos_d) as totald, SUM(puntos_i) as totali')->groupBy('iduser')->get();
+
+        foreach ($binarios as $binario) {
+            $puntos = 0;
+            $side_mayor = $side_menor = '';
+            if ($binario->totald >= $binario->totali) {
+                $puntos = $binario->totali;
+                $side_mayor = 'D';
+                $side_menor = 'I';
+            }else{
+                $puntos = $binario->totald;
+                $side_mayor = 'I';
+                $side_menor = 'D';
+            }
+            if ($puntos > 0) {
+                $comision = ($puntos * 0.1);
+                $sponsor = User::find($binario->iduser);
+                $sponsor->point_rank += $puntos;
+                $concepto = 'Bono Binario - '.$puntos;
+                $idcomision = $binario->iduser.Carbon::now()->format('Ymd');
+                $this->setPointBinaryPaid($puntos, $side_menor, $binario->iduser, $side_mayor);
+                $this->preSaveWallet($sponsor->id, $sponsor->id, null, $comision, $concepto);
+                $sponsor->save();
+            }
+        }
+    }
+
+    /**
+     * Permite descontar los puntos ya pagados
+     *
+     * @param float $pagar
+     * @param string $ladomenor
+     * @param integer $iduser
+     * @param string $ladomayor
+     * @return void
+     */
+    private function setPointBinaryPaid(float $pagar, string $ladomenor, int $iduser, string $ladomayor)
+    {
+        $lisComision = [];
+        $binarios = WalletBinary::where([
+            ['side', '=', $ladomayor],
+            ['iduser', '=', $iduser],
+            ['status', '=', 0]
+        ])->get();
+        $field_side = ($ladomayor == 'D') ? 'puntos_d' : 'puntos_i';
+        $sum = 0;
+        foreach ($binarios as $binario) {
+            $sum += $binario->$field_side;
+            if ($sum <= $pagar) {
+                $lisComision[] = $binario->id;
+            }elseif($sum > $pagar){
+                $sum -= $binario->$field_side;
+            }
+        }
+
+        WalletBinary::where([
+            ['side', '=', $ladomenor],
+            ['iduser', '=', $iduser],
+            ['status', '=', 0]
+        ])->update(['status' => '1']);
+
+        WalletBinary::whereIn('id', $lisComision)->update(['status' => '1']);
+    }
+
+    public function payAll()
+    {
+        // $this->bonoDirecto();
+        // Log::info('Bono Directo Pagado');
+        $this->payPointsBinary();
+        Log::info('Puntos Binarios Pagado');
+        if (env('APP_ENV' != 'local')) {
+            $this->bonoBinario();
+        }
+    }
 }

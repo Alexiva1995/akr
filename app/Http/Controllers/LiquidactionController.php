@@ -28,14 +28,11 @@ class LiquidactionController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-
-        $day = Carbon::now()->format('l');
-        
+    {        
         try {
             View::share('titleg', 'General Liquidaciones');
             $comisiones = $this->getTotalComisiones([], null);
-            return view('settlement.index', compact('comisiones', 'day'));
+            return view('settlement.index', compact('comisiones'));
         } catch (\Throwable $th) {
             Log::error('Liquidaction - index -> Error: '.$th);
             abort(403, "Ocurrio un error, contacte con el administrador");
