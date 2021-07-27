@@ -19,10 +19,10 @@
                     <div class="text-center">
                         <h1 class="mb-2 text-white">Bienvenido {{$data['usuario']}}</h1>
                         <p class="m-auto w-75">
-                            <a href="{{route('package.index')}}" target=""
+                            {{-- <a href="{{route('package.index')}}" target=""
                                 class="btn btn-flat-primary padding-button-short bg-white mt-1 waves-effect waves-light">
                                 Agregar Paquete
-                            </a>
+                            </a> --}}
                         </p>
                     </div>
                 </div>

@@ -95,6 +95,7 @@ Route::prefix('dashboard')->middleware('menu', 'auth')->group(function ()
         Route::get('user-list', 'UserController@listUser')->name('users.list-user')->middleware('auth', 'checkrole:1');
         Route::get('user-edit/{id}', 'UserController@editUser')->name('users.edit-user');
         Route::get('user-show/{id}', 'UserController@showUser')->name('users.show-user');
+        Route::get('user-verify/{id}', 'UserController@verificarUser')->name('users.verificar-user');
         Route::patch('user-verify/{id}', 'UserController@verifyUser')->name('users.verify-user');
         Route::patch('user-update/{id}', 'UserController@updateUser')->name('users.update-user');
         Route::delete('user/delete/{id}','UserController@destroyUser')->name('users.destroy-user');
