@@ -29,6 +29,7 @@ class UserTableSeeder extends Seeder
                 'referred_id' => '0',
                 'country_id' => '237',
                 'status' => '1',
+                'email_verified_at' => Carbon::now(),
                 'binary_id' => '0',
             ]);
             User::create([
@@ -43,6 +44,7 @@ class UserTableSeeder extends Seeder
                 'referred_id' => '1',
                 'country_id' => '237',
                 'status' => '1',
+                'email_verified_at' => Carbon::now(),
                 'binary_side' => 'I'
             ]);
             User::create([
@@ -58,6 +60,7 @@ class UserTableSeeder extends Seeder
                 'country_id' => '237',
                 'binary_id' => '2',
                 'status' => '0',
+                'email_verified_at' => Carbon::now(),
                 'binary_side' => 'I'
             ]);            
             User::create([
@@ -71,7 +74,8 @@ class UserTableSeeder extends Seeder
                 'whatsapp' => '23423423423432',
                 'referred_id' => '2',
                 'country_id' => '237',
-                'status' => '0'
+                'status' => '0',
+                'email_verified_at' => Carbon::now(),
             ]);
             User::create([
                 // ID => 5
@@ -84,7 +88,8 @@ class UserTableSeeder extends Seeder
                 'whatsapp' => '23423423423432',
                 'referred_id' => '0',
                 'country_id' => '237',
-                'status' => '0'
+                'status' => '0',
+                'email_verified_at' => Carbon::now(),
             ]);
 
 
