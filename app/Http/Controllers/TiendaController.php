@@ -296,10 +296,11 @@ class TiendaController extends Controller
 
         $user = User::findOrFail($orden->iduser);
         $user_ref = User::findOrFail($user->referred_id);
+        $ref_ref = $user_ref->referred_id == 0 ? 1 : $user_ref->referred_id;
 
         $data = [
             'iduser' => $user_ref->id,
-            'referred_id' => $user_ref->referred_id,
+            'referred_id' => $ref_ref,
             'monto' => ($orden->total)*0.10,
             'descripcion' => 'Bono Directo por compra del referido '.$user->fullname,
         ];
