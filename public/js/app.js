@@ -115,8 +115,13 @@ throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
+<<<<<<< HEAD
+__webpack_require__(/*! /home/abraham/Documents/coding/akr/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /home/abraham/Documents/coding/akr/resources/sass/app.scss */"./resources/sass/app.scss");
+=======
 __webpack_require__(/*! C:\laragon\www\akr\resources\js\app.js */"./resources/js/app.js");
 module.exports = __webpack_require__(/*! C:\laragon\www\akr\resources\sass\app.scss */"./resources/sass/app.scss");
+>>>>>>> d887b75fdd40740dabdb093e10dcb765909dda03
 
 
 /***/ })
