@@ -6,7 +6,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
 
-class User extends Authenticatable implements MustVerifyEmail
+class User extends Authenticatable /*implements MustVerifyEmail*/
 
 {
     use Notifiable;
@@ -111,5 +111,9 @@ class User extends Authenticatable implements MustVerifyEmail
     public function inversionReinvertir()
     {
         return $this->belongsTo('App\Models\Inversion', 'reinvertir_capital_inversion_id');
-    }
+    }/*
+    public function sendPasswordResetNotification($token)
+    {
+        return $this->notify(new UserResetPassword($token));
+    }*/
 }
