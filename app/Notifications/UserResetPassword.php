@@ -46,11 +46,11 @@ class UserResetPassword extends Notification
 
         
         ->subject('Reinicio de contraseña')
-        ->greeting('Hola!')
-        ->line('Hemos resivido una peticion para el reinicio de contraseña.')
+        ->greeting('Restablecer su contraseña ')
+        ->line('No podemos simplemente enviarle su contraseña anterior. Se ha generado un enlace único para restablecer su contraseña. Para restablecer su contraseña, siga las instrucciones. ')
         ->action('Reiniciar contraseña', url('/password/reset/'.$this->token))
-        ->line('Si uste no ha echo esta peticion Solo ignore esto')
-        ->salutation('Gracias');
+        ->line('Si usted no ha realizado esta peticion Solo ignora esto')
+        ->salutation('Gracias.');
     }
 
     /**
