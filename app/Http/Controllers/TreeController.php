@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Http\Controllers\Controller;
+use App\Models\WalletBinary;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\View;
@@ -18,23 +19,18 @@ class TreeController extends Controller
      * @param string $type
      * @return void
      */
-    public function __construct()
-    {
-        $this->middleware('kyc')->only('index', 'indexNewtwork');
-    }
     public function index($type)
     {
         try {
             //Titulo
-            View::share('titleg', 'Arbol');
             $trees = $this->getDataEstructura(Auth::id(), $type);
-
             $type = ucfirst($type);
             $base = Auth::user();
             $base->logoarbol = asset('assets/img/sistema/favicon.png');
-            return view('genealogy.tree', compact('trees', 'type', 'base'));
+            $binario = $this->getBinaryPoints(Auth::user()->id);
+            return view('genealogy.tree', compact('trees', 'type', 'base', 'binario'));
         } catch (\Throwable $th) {
-            Log::error('Tree - index -> Error: '.$th);
+            Log::error('Tree - indexNewtwork -> Error: '.$th);
             abort(403, "Ocurrio un error, contacte con el administrador");
         }
     }
@@ -49,15 +45,42 @@ class TreeController extends Controller
     {
         try {
             $allNetwork = ($network == 'direct') ? 1 : 0;
-            $users = $this->getChidrenHasta5(Auth::id(), [], 1, 'referred_id', $allNetwork);
+            $users = $this->getChidrens2(Auth::id(), [], 1, 'referred_id', $allNetwork);
             $title = ($network == 'direct') ? 'Directo' : ' En Red';
             //Titulo
-            View::share('titleg', 'Referidos '.$title);
             return view('genealogy.listNetwork', compact('users', 'title', 'allNetwork'));
         } catch (\Throwable $th) {
             Log::error('Tree - indexNewtwork -> Error: '.$th);
             abort(403, "Ocurrio un error, contacte con el administrador");
         }
+    }
+
+    /**
+     * Permite obtener los puntos binarios de un usuario
+     *
+     * @param integer $iduser
+     * @return void
+     */
+    public function getBinaryPoints($iduser)
+    {
+        $binario = WalletBinary::where([
+            ['status', '=', 0],
+            ['puntos_d', '>', 0],
+            ['iduser', '=', $iduser]
+        ])->orWhere([
+            ['status', '=', 0],
+            ['puntos_i', '>', 0],
+            ['iduser', '=', $iduser]
+        ])->selectRaw('iduser, SUM(puntos_d) as totald, SUM(puntos_i) as totali')->groupBy('iduser')->first();
+
+        $data = collect(['totald' => 0, 'totali' => 0]);
+        if ($binario) {
+            $data = collect([
+                'totald' => $binario->totald,
+                'totali' => $binario->totali
+            ]);
+        }
+        return $data;
     }
 
     /**
@@ -117,13 +140,13 @@ class TreeController extends Controller
     {
         try {
             // titulo
-            View::share('titleg', 'Arbol');
             $id = base64_decode($id);
             $trees = $this->getDataEstructura($id, $type);
             $type = ucfirst($type);
             $base = User::find($id);
             $base->logoarbol = asset('assets/img/sistema/favicon.png');
-            return view('genealogy.tree', compact('trees', 'type', 'base'));
+            $binario = $this->getBinaryPoints(Auth::user()->id);
+            return view('genealogy.tree', compact('trees', 'type', 'base', 'binario'));
         } catch (\Throwable $th) {
             Log::error('Tree - moretree -> Error: '.$th);
             abort(403, "Ocurrio un error, contacte con el administrador");
@@ -167,13 +190,10 @@ class TreeController extends Controller
     private function getData($id, $nivel, $typeTree)
     {
         try {
-            $resul = User::with('getUserInversiones')->where($typeTree, '=', $id)->get();
-
+            $resul = User::where($typeTree, '=', $id)->get();
             foreach ($resul as $user) {
                 $user->nivel = $nivel;
                 $user->logoarbol = asset('assets/img/sistema/favicon.png');
-                $user->inversion = $user->montoInvertido();
-            
             }
             return $resul;
         } catch (\Throwable $th) {
@@ -228,37 +248,6 @@ class TreeController extends Controller
                     foreach($data as $user){
                         $array_tree_user [] = $user;
                         $array_tree_user = $this->getChidrens2($user->id, $array_tree_user, ($nivel+1), $typeTree, $allNetwork);
-                    }
-                }
-            }
-            return $array_tree_user;
-        } catch (\Throwable $th) {
-            Log::error('Tree - getChildrens2 -> Error: '.$th);
-            abort(403, "Ocurrio un error, contacte con el administrador");
-        }
-    }
-
-    public function getChidrenHasta5($parent, $array_tree_user, $nivel, $typeTree, $allNetwork)
-    {   
-        try {
-            if (!is_array($array_tree_user))
-            $array_tree_user = [];
-        
-            $data = $this->getData($parent, $nivel, $typeTree);
-            
-            if (count($data) > 0) {
-                if ($allNetwork == 1) {
-                    foreach($data as $user){
-                        if ($user->nivel == 1) {
-                            $array_tree_user [] = $user;
-                        }
-                    }
-                }else{
-                    foreach($data as $user){
-                        if ($user->nivel < 5) {
-                            $array_tree_user [] = $user;
-                            $array_tree_user = $this->getChidrenHasta5($user->id, $array_tree_user, ($nivel+1), $typeTree, $allNetwork);
-                        }
                     }
                 }
             }

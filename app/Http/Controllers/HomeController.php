@@ -48,9 +48,9 @@ class HomeController extends Controller
     {
         try {
             View::share('titleg', '');
-            $this->activacionController->activarUser();
-            $this->activacionController->deleteUser();
-            $this->tiendaController->getOrdenes();
+            // $this->activacionController->activarUser();
+            // $this->activacionController->deleteUser();
+            // $this->tiendaController->getOrdenes();
             $data = $this->dataDashboard(Auth::id());
             return view('dashboard.index', compact('data'));
         } catch (\Throwable $th) {

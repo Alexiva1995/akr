@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {return view('welcome');})->name('mantenimiento');
 
-Auth::routes();
+Auth::routes(['verify' => true]);
 
 Route::get('/storage-link', function() {
 $exitCode = Artisan::call('storage:link');
@@ -33,7 +33,7 @@ $exitCode = Artisan::call('storage:link');
 return 'DONE'; //Return anything
 });
 
-Route::prefix('dashboard')->middleware('menu', 'auth')->group(function ()
+Route::prefix('dashboard')->middleware('menu', 'auth', 'verified')->group(function ()
 {
 
     // Inicio
@@ -58,6 +58,7 @@ Route::prefix('dashboard')->middleware('menu', 'auth')->group(function ()
     Route::prefix('wallet')->group(function ()
     {
         Route::get('/', 'WalletController@index')->name('wallet.index');
+       
     });
 
     // Ruta para la pagos
@@ -76,6 +77,7 @@ Route::prefix('dashboard')->middleware('menu', 'auth')->group(function ()
         Route::get('{orden}/{status}/estado', 'TiendaController@statusProcess')->name('shop.proceso.status');
         Route::get('orden-history', 'TiendaController@ordenHistory')->name('shop.orden.history');
         Route::post('cambiarStatus', 'TiendaController@cambiar_status')->name('cambiarStatus');
+        Route::post('makeInversion', 'TiendaController@makeInversion')->name('realizar-inversion');
     });
 
     // Ruta para las funciones por alla que no correspondan a otra seccion
@@ -86,21 +88,19 @@ Route::prefix('dashboard')->middleware('menu', 'auth')->group(function ()
 
     
     //Ruta para los usuarios
-    Route::prefix('user')->group(function(){
-    
-        Route::get('kyc', 'UserController@kyc')->name('kyc');
-
+    Route::prefix('user')->group(function()
+    {
         Route::get('profile', 'UserController@editProfile')->name('profile');
 
         Route::get('user-list', 'UserController@listUser')->name('users.list-user')->middleware('auth', 'checkrole:1');
         Route::get('user-edit/{id}', 'UserController@editUser')->name('users.edit-user');
         Route::get('user-show/{id}', 'UserController@showUser')->name('users.show-user');
+        Route::get('user-verify/{id}', 'UserController@verificarUser')->name('users.verificar-user');
         Route::patch('user-verify/{id}', 'UserController@verifyUser')->name('users.verify-user');
         Route::patch('user-update/{id}', 'UserController@updateUser')->name('users.update-user');
         Route::delete('user/delete/{id}','UserController@destroyUser')->name('users.destroy-user');
 
         Route::patch('profile-update', 'UserController@updateProfile')->name('profile.update');
-        Route::patch('profile-update-kyc', 'UserController@updateProfileKYC')->name('profile.update.kyc');
 
         Route::post('updateEstadoReinvertir', 'UserController@updateEstadoReinvertir')->name('updateEstadoReinvertir');
 
@@ -109,6 +109,10 @@ Route::prefix('dashboard')->middleware('menu', 'auth')->group(function ()
 
         Route::get('/impersonate/stop', 'ImpersonateController@stop')->name('impersonate.stop');
         Route::post('/impersonate/{user}/start', 'ImpersonateController@start')->name('impersonate.start');
+
+        Route::get('UserOrders', 'ReporteController@UserOrders')->name('UserOrders');
+
+        Route::get('/settlement/wallet', 'LiquidactionController@wallet')->name('settlement.wallet');        
     });
 
     Route::prefix('inversiones')->group(function ()
@@ -117,6 +121,27 @@ Route::prefix('dashboard')->middleware('menu', 'auth')->group(function ()
         Route::get('/cambiarStatus', 'InversionController@checkStatus')->name('inversiones.checkStatus');
         Route::get('/reinvertirCapital', 'InversionController@reinvertirCapital')->name('inversiones.reinvertirCapital');
     });
+
+
+     //Ruta de los Tickets
+     Route::prefix('tickets')->group(function(){
+        Route::get('ticket-create','TicketsController@create')->name('ticket.create');
+        Route::post('ticket-store','TicketsController@store')->name('ticket.store');
+
+        // Para el usuario
+        Route::get('ticket-edit-user/{id}','TicketsController@editUser')->name('ticket.edit-user');
+        Route::patch('ticket-update-user/{id}','TicketsController@updateUser')->name('ticket.update-user');
+        Route::get('ticket-list-user','TicketsController@listUser')->name('ticket.list-user');
+        Route::get('ticket-show-user/{id}','TicketsController@showUser')->name('ticket.show-user');
+
+        // Para el Admin
+        Route::get('ticket-edit-admin/{id}','TicketsController@editAdmin')->name('ticket.edit-admin');
+        Route::patch('ticket-update-admin/{id}','TicketsController@updateAdmin')->name('ticket.update-admin');
+        Route::get('ticket-list-admin','TicketsController@listAdmin')->name('ticket.list-admin');
+        Route::get('ticket-show-admin/{id}','TicketsController@showAdmin')->name('ticket.show-admin');
+    });
+
+
 
     /**
      * Seccion del sistema para el admin
@@ -145,17 +170,19 @@ Route::prefix('dashboard')->middleware('menu', 'auth')->group(function ()
         });
 
         //Rutas para el cierre de productos
-        Route::prefix('accounting')->group(function(){
-            Route::resource('commission_closing', 'CierreComisionController');
-            Route::get('pagarComisiones', 'CierreComisionController@pagarUtilidadFinDeMes')->name('pagarComisiones');
-        });
+        // Route::prefix('accounting')->group(function(){
+        //     Route::resource('commission_closing', 'CierreComisionController');
+        //     Route::get('pagarComisiones', 'CierreComisionController@pagarUtilidadFinDeMes')->name('pagarComisiones');
+        // });
 
         //Rutas para los reportes
         Route::prefix('reports')->group(function(){
             Route::get('purchase', 'ReporteController@indexPedidos')->name('reports.pedidos');
             Route::get('commission', 'ReporteController@indexComision')->name('reports.comision');
-
         });
+
+        Route::get('pagarUtilidad', 'WalletController@pagarUtilidad')->name('pagarUtilidad');
+        Route::put('updatePorcentajeGanancia', 'InversionController@updatePorcentajeGanancia')->name('updatePorcentajeGanancia');
 
     });
 });

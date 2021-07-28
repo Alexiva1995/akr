@@ -11,6 +11,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\InversionController;
+use App\Models\Wallet;
+use Hexters\CoinPayment\CoinPayment;
+use Hexters\CoinPayment\Helpers\CoinPaymentHelper;
 
 
 class TiendaController extends Controller
@@ -18,12 +21,13 @@ class TiendaController extends Controller
 
     public $apis_key_nowpayments;
     public $inversionController;
+    public $walletController;
 
     public function __construct()
     {
         $this->inversionController = new InversionController();
-        $this->apis_key_nowpayments = 'J9KX1AC-8BE4VYV-MQ51VMT-QVWVZTW';
-        $this->middleware('kyc')->only('index', 'ordenHistory');
+        $this->walletController = new WalletController;
+        $this->apis_key_nowpayments = 'ECQYK47-JYNMC98-GZ3FHBW-WWRH660';
     }
     
     /**
@@ -35,11 +39,11 @@ class TiendaController extends Controller
     {
         try {
             // title
-            View::share('titleg', 'Tienda - Grupos');
+            View::share('titleg', 'Paquetes de Inversión');
 
-            $categories = Groups::all()->where('status', 1);
+            // $categories = Groups::all()->where('status', 1);
 
-            return view('shop.index', compact('categories'));
+            return view('shop.index');
         } catch (\Throwable $th) {
             Log::error('Tienda - Index -> Error: '.$th);
             abort(403, "Ocurrio un error, contacte con el administrador");
@@ -186,8 +190,11 @@ class TiendaController extends Controller
     private function registeInversion($idorden)
     {
         $orden = OrdenPurchases::find($idorden);
-        $paquete = $orden->getPackageOrden;
-        $this->inversionController->saveInversion($paquete->id, $idorden, $orden->cantidad, $paquete->expired, $orden->iduser);
+        
+        // Asi estaba Anteriormente        
+        // $paquete = $orden->getPackageOrden;
+        // $this->inversionController->saveInversion($paquete->id, $idorden, $orden->cantidad, $paquete->expired, $orden->iduser);
+        $this->inversionController->saveInversion($idorden, $orden->total, $orden->iduser);
     }
 
     /**
@@ -267,12 +274,110 @@ class TiendaController extends Controller
         $orden->status = $request->status;
         $orden->save();
 
+        $this->walletController->payAll();
+
+
         $this->registeInversion($request->id);
+        if($request->status == '1'){
+            $this->registerDirectBonus($request->id);
+        }
+
 
         $user = User::findOrFail($orden->iduser);
         $user->status = '1';
         $user->save();
 
-        return redirect()->back()->with('msj-success', 'Orden actualizada exitosamente');
+        return redirect('/dashboard/admin/reports/purchase')->with('msj-success', 'Orden actualizada exitosamente');
+    }
+
+    public function registerDirectBonus($id)
+    {
+        $orden = OrdenPurchases::findOrFail($id);
+
+        $user = User::findOrFail($orden->iduser);
+        $user_ref = User::findOrFail($user->referred_id);
+
+        $data = [
+            'iduser' => $user_ref->id,
+            'referred_id' => $user_ref->referred_id,
+            'monto' => ($orden->total)*0.10,
+            'descripcion' => 'Bono Directo por compra del referido '.$user->fullname,
+        ];
+
+        // dd($data);
+
+        $bonoDirecto = Wallet::create($data);
+
+        $bonoDirecto->save();
+
+        // return $bonoDirecto;
+    }
+
+    public function makeInversion(Request $request)
+    {
+
+        $validate = $request->validate([
+            'range' => 'required|numeric|min:70|max:10000',
+        ]);
+
+        try{
+            if($validate){
+                $data = OrdenPurchases::latest('id')->first();
+
+                $usuario = [];
+
+                if(isset($request->user)){
+                    $usuario = User::findOrFail($request->user);     
+                    // $usuario->update(['status'=>'1']);
+                }
+
+                $name = $usuario ? $usuario->fullname : Auth::user()->fullname;
+                $email = $usuario ? $usuario->email : Auth::user()->email;
+                
+                $transacion = [
+                    'amountTotal' => (INT)$request->range +10,
+                    'note' => 'Inversión realizada por un precio de $'.(INT)$request->range,
+                    // 'order_id' => $this->guardarOrden($infoOrden),
+                    'order_id' => 1,
+                    'tipo' => 'Compra de un paquete',
+                    'tipo_transacion' => 3,
+                    'buyer_name' =>  $name,
+                    'buyer_email' => $email,
+                    'redirect_url' => url('/dashboard/home'),
+                    'cancel_url' => url('/dashboard/home')
+                ];
+                $transacion['items'][] = [
+                    'itemDescription' => 'Inversión de  $'.(INT)$request->range,
+                    'itemPrice' => (INT)$request->range, // USD
+                    'itemQty' => (INT) 1,
+                    'itemSubtotalAmount' => (INT)$request->range + 10 // USD
+                ];
+                $ruta = \CoinPayment::generatelink($transacion);
+                return redirect($ruta);
+            }
+        } catch (\Throwable $th) {
+            Log::error('Tienda - MakeInversion -> Error: '.$th);
+            abort(403, "Ocurrio un error, contacte con el administrador");
+        }
+    
+
+        // $product = ProductWarehouse::find($id);
+        // $user = Auth::user()->id;
+        // $hayData = $data? $data->id+1 : 1;
+
+        // $infoOrden = [
+        //     'user_id' => Auth::user()->id,
+        //     // 'product_id' => $product->id,
+        //     // 'amount' => $product->price,
+        //     'status' => '0'
+        // ];
+    }
+
+    public function guardarOrden($infoOrden)
+    {
+        $orden = OrdenPurchases::create($infoOrden);
+
+        return $orden->id;
+
     }
 }

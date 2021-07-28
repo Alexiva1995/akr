@@ -6,21 +6,35 @@
         <div class="card">
             <div class="card-content">
                 <div class="card-body card-dashboard">
+                    @if($tipo == 1)
+
+                        <div class="d-flex float-right">
+                            <a href="{{ route('inversiones.index',1) }}" style="background-color: green;" class="btn text-white  text-bold-600 mr-1 "> Activas</a> 
+
+                            <a href="{{ route('inversiones.index',2) }}" style="background-color: red;"  class="btn text-white text-bold-600 ml-1"> Culminadas</a> 
+                        </div>
+                    @else
+                       
+                        <div class="d-flex float-right">
+                            <a href="{{ route('inversiones.index',1) }}" style="background-color: green;"  class="btn text-white text-bold-600 mr-1"> Activas</a> 
+
+                            <a href="{{ route('inversiones.index',2) }}" style="background-color: red;"  class="btn text-white  text-bold-600 ml-1 "> Culminadas</a> 
+                        </div>
+                    @endif
                     <div class="table-responsive">
                         <table class="table w-100 nowrap scroll-horizontal-vertical myTable table-striped">
                             <thead class="">
 
+                            <!-- #, correo, Paquete, Estado, Fecha, Progreso, Ganancia -->
+
                                 <tr class="text-center text-white bg-purple-alt2">                                
                                     <th>ID</th>
                                     <th>Correo</th>
-                                    <th>Paquete</th>
-                                    <th>Ahorro</th>
+                                    {{-- <th>Paquete</th> --}}
                                     <th>Ganancia</th>
-                                    <th>Capital</th>
-                                    <th>% Ganancia</th>
-                                    <th>Ganancia acumulada</th>
-                                    <th>Porcentaje fondo</th>
-                                    <th>Fecha Vencimiento</th>
+                                    <th>Progreso</th>
+                                    <th>Fecha</th>
+                                    <th>Estado</th>
                                 </tr>
 
                             </thead>
@@ -33,21 +47,20 @@
                                 $porcentaje = ($ganancia / $inversion->invertido) * 100;
                                 @endphp
                                 <tr class="text-center">
+                                
                                     <td>{{$inversion->id}}</td>
                                     <td>{{$inversion->correo}}</td>
-                                    <td>{{$inversion->getPackageOrden->getGroup->name }} - {{$inversion->getPackageOrden->name}}</td>
-                                    <td>$ {{number_format($inversion->invertido, 2, ',', '.')}}</td>
+                                    {{-- <td>{{$inversion->getPackageOrden->name}}</td> --}}
                                     <td>$ {{number_format($inversion->ganacia, 2, ',', '.')}}</td>
-                                    <td>$ {{number_format($inversion->capital, 2, ',', '.')}}</td>
-                                    <td>{{number_format($porcentaje,2, ',', '.')}} %</td>
-                                    <td>$ {{number_format($inversion->ganancia_acumulada,2, ',', '.')}}</td>
-                                    <td>{{number_format($inversion->porcentaje_fondo,2, ',', '.')}} %</td>
+                                    <td>{{number_format($inversion->progreso, 2, ',', '.')}}</td>
                                     <td>{{date('Y-M-d', strtotime($inversion->fecha_vencimiento))}}</td>
+                                    <td>{{$inversion->status}}</td>
                                 </tr>
                                 @endforeach
                             </tbody>
                         </table>
                     </div>
+                    
                 </div>
             </div>
         </div>

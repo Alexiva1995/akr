@@ -3,24 +3,22 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
-use App\Http\Controllers\CierreComisionController;
 
-class PagarUtilidadFinMes extends Command
+class BinaryBonus extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'Pagar:utilidad';
-    public $CierreComisionController;
+    protected $signature = 'binary:bonus';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Command description';
+    protected $description = 'Permite agregar los diferentes bonos binarios cada día a la 00:00';
 
     /**
      * Create a new command instance.
@@ -30,7 +28,6 @@ class PagarUtilidadFinMes extends Command
     public function __construct()
     {
         parent::__construct();
-        $this->CierreComisionController = new CierreComisionController();
     }
 
     /**
@@ -40,7 +37,6 @@ class PagarUtilidadFinMes extends Command
      */
     public function handle()
     {
-        $this->CierreComisionController->pagarUtilidadFinDeMes();
         return 0;
     }
 }

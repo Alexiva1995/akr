@@ -49,9 +49,7 @@
                                     </td>
                                     <td>
                                         @if ($orden->cerrada == 0)
-                                        <button class="btn btn-info" onclick="vm_cierreComision.cerrarComisionProducto({{$orden->group_id}})">Cerrar Compras</button>
-                                        @else
-                                        <button class="btn btn-danger" onclick="vm_cierreComision.abrirModalCierreRealizado({{$orden->group_id}})">Cierre realizado</button>
+                                        <button class="btn btn-info" onclick="vm_cierreComision.cerrarComisionProducto({{$orden->package_id}})">Cerrar Compras</button>
                                         @endif
                                     </td>
                                 </tr>

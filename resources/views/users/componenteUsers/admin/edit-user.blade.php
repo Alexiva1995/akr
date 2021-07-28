@@ -153,24 +153,7 @@
                                                     </div>
                                                 </div>
 
-                                                <div class="col-12">
-                                                    <div class="form-group">
-                                                        <div class="controls">
-                                                            <label class="required" for="address">Dirección</label>
-                                                            <textarea type="text"
-                                                                class="form-control @error('address') is-invalid @enderror"
-                                                                id="address"
-                                                                name="address">{{ $user->address}}</textarea>
-                                                            @error('address')
-                                                            <span class="invalid-feedback" role="alert">
-                                                                <strong>{{ $message }}</strong>
-                                                            </span>
-                                                            @enderror
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-
+                                              
                                                 <div class="col-12">
                                                     <div class="form-group">
                                                         <div class="controls">
@@ -245,7 +228,7 @@
                                                     </div>
                                                 </div>
 
-                                                <div class="col-4">
+                                                {{-- <div class="col-4">
                                                     <div class="form-group">
                                                         <div class="controls">
                                                             <label class="required">Estado de la Cuenta</label>
@@ -266,7 +249,7 @@
                                                             @enderror
                                                         </div>
                                                     </div>
-                                                </div>
+                                                </div> --}}
 
                                                 {{-- <div class="col-4">
                                                     <div class="form-group">
