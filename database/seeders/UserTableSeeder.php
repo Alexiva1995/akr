@@ -57,7 +57,7 @@ class UserTableSeeder extends Seeder
                 'referred_id' => '2',
                 'country_id' => '237',
                 'binary_id' => '2',
-                'status' => '1',
+                'status' => '0',
                 'binary_side' => 'I'
             ]);            
             User::create([
@@ -71,7 +71,7 @@ class UserTableSeeder extends Seeder
                 'whatsapp' => '23423423423432',
                 'referred_id' => '2',
                 'country_id' => '237',
-                'status' => '1'
+                'status' => '0'
             ]);
             User::create([
                 // ID => 5
@@ -82,9 +82,9 @@ class UserTableSeeder extends Seeder
                 'admin' => '0',
                 'password' => Hash::make('12345678'),
                 'whatsapp' => '23423423423432',
-                'referred_id' => '2',
+                'referred_id' => '0',
                 'country_id' => '237',
-                'status' => '1'
+                'status' => '0'
             ]);
 
 

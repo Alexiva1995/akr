@@ -313,7 +313,6 @@ class TiendaController extends Controller
         // return $bonoDirecto;
     }
 
-
     public function makeInversion(Request $request)
     {
 
@@ -324,16 +323,26 @@ class TiendaController extends Controller
         try{
             if($validate){
                 $data = OrdenPurchases::latest('id')->first();
+
+                $usuario = [];
+
+                if(isset($request->user)){
+                    $usuario = User::findOrFail($request->user);     
+                    // $usuario->update(['status'=>'1']);
+                }
+
+                $name = $usuario ? $usuario->fullname : Auth::user()->fullname;
+                $email = $usuario ? $usuario->email : Auth::user()->email;
                 
                 $transacion = [
-                    'amountTotal' => (INT)$request->range,
+                    'amountTotal' => (INT)$request->range +10,
                     'note' => 'Inversión realizada por un precio de $'.(INT)$request->range,
                     // 'order_id' => $this->guardarOrden($infoOrden),
                     'order_id' => 1,
                     'tipo' => 'Compra de un paquete',
                     'tipo_transacion' => 3,
-                    'buyer_name' => Auth::user()->fullname,
-                    'buyer_email' => Auth::user()->email,
+                    'buyer_name' =>  $name,
+                    'buyer_email' => $email,
                     'redirect_url' => url('/dashboard/home'),
                     'cancel_url' => url('/dashboard/home')
                 ];
@@ -353,15 +362,15 @@ class TiendaController extends Controller
     
 
         // $product = ProductWarehouse::find($id);
-        $user = Auth::user()->id;
-        $hayData = $data? $data->id+1 : 1;
+        // $user = Auth::user()->id;
+        // $hayData = $data? $data->id+1 : 1;
 
-        $infoOrden = [
-            'user_id' => Auth::user()->id,
-            // 'product_id' => $product->id,
-            // 'amount' => $product->price,
-            'status' => '0'
-        ];
+        // $infoOrden = [
+        //     'user_id' => Auth::user()->id,
+        //     // 'product_id' => $product->id,
+        //     // 'amount' => $product->price,
+        //     'status' => '0'
+        // ];
     }
 
     public function guardarOrden($infoOrden)

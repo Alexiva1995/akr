@@ -12,18 +12,9 @@
                         <span class="font-weight-bold mb-2">Saldo: {{number_format($saldoDisponible,2)}}$</span>
                     </div>
 
-                    {{--@if(\Carbon\Carbon::now()->isFriday())--}}
+                    @if(\Carbon\Carbon::now()->isFriday())
                     <button type="submit" class="btn btn-primary mb-2" id="retiro" data-toggle="modal" data-target="#modalSaldo">Retirar</button>
-                    {{--@endif--}}
-
-
-                    <div class="col-12 col-md-4">
-                        <form action="{{route('liquidation.store')}}" method="post">
-                            @csrf
-                            <input type="hidden" name="listUsers[]" value="{{Auth::user()->id}}">
-                            <input type="hidden" name="tipo" value="user">
-
-                    </div>
+                    @endif
                 </div>
 
                 <div class="table-responsive">

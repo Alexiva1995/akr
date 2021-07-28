@@ -76,7 +76,7 @@
                                     @elseif($item->status == '2')
                                     <td>Suspendido</td>
                                     @elseif($item->status == '3')
-                                    <td>Bloquiado</td>
+                                    <td>Bloqueado</td>
                                     @elseif($item->status == '4')
                                     <td>Caducado</td>
                                     @elseif($item->status == '5')
@@ -113,6 +113,30 @@
                                         <i class="fa fa-trash"></i>
                                     </button> --}}
                                     @endif
+
+                                    @if($item->status == 0)
+                                        <a href="{{ route('users.verify-user',$item->id) }}" class="btn btn-success text-bold-600"><i class="fa fa-check"></i></a>                                
+                                    @endif
+
+                                        {{-- <div class="modal fade" id="verifiedModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title">Verificar al usuario #{{$item->id.' '.$item->fullname}}</h5>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <p>Para verificar a este usuario tienes que crear una inversión </p>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                                        <button type="button" class="btn btn-primary">Continuar</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div> --}}
                                     </td>
                                 </tr>
                                 @endforeach

@@ -223,6 +223,14 @@ class UserController extends Controller
 
     }
 
+    public function verificarUser($id)
+    {
+        $user = User::find($id);
+
+        return view('users.componenteUsers.admin.verify-user')
+        ->with('user',$user);    
+    }
+
     /**
      * Funcion para eliminar un usuario
      *
