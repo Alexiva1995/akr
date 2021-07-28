@@ -1,6 +1,5 @@
 <?php
 
-use App\Models\OrdenPurchases;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Support\Str;
@@ -28,7 +27,7 @@ class UserTableSeeder extends Seeder
                 'whatsapp' => '23423423423432',
                 'referred_id' => '0',
                 'country_id' => '237',
-                'status' => '1',
+                'status' => '',
                 'email_verified_at' => Carbon::now(),
                 'binary_id' => '0',
             ]);

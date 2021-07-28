@@ -163,7 +163,7 @@ $referred = null;
                             <div class="form-group col-md-6">
                                 <input id="state" type="text" class="form-control @error('state') is-invalid @enderror"
                                     name="state"  required autocomplete="state" autofocus
-                                    placeholder="Ciudad" value="{{ old('state') }}">
+                                    placeholder="Estado o Provincia" value="{{ old('state') }}">
 
                                 @error('state')
                                 <span class="invalid-feedback" role="alert">
