@@ -17,11 +17,11 @@ class UserResetPassword extends Notification
      * Create a new notification instance.
      *
      * @return void
-     *//*
+     */
     public function __construct($token)
     {
-        $this->$token = $token;
-    }*/
+        $this->token = $token;
+    }
 
     /**
      * Get the notification's delivery channels.
@@ -43,9 +43,14 @@ class UserResetPassword extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line('The introduction to the notification.')
-                    ->action('Notification Action', url('/'))
-                    ->line('Thank you for using our application!');
+
+        
+        ->subject('Reinicio de contraseña')
+        ->greeting('Hola!')
+        ->line('Hemos resivido una peticion para el reinicio de contraseña.')
+        ->action('Reiniciar contraseña', url('/password/reset/'.$this->token))
+        ->line('Si uste no ha echo esta peticion Solo ignore esto')
+        ->salutation('Gracias');
     }
 
     /**
