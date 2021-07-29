@@ -2083,3 +2083,6 @@ error:1408F10B:SSL routines:ssl3_get_record:wrong version number at /home/abraha
 #26 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
 #27 {main}
 "} 
+[2021-07-29 15:38:30] local.INFO: Puntos Binarios Pagado  
+[2021-07-29 15:40:13] local.INFO: Puntos Binarios Pagado  
+[2021-07-29 15:41:48] local.INFO: Puntos Binarios Pagado  

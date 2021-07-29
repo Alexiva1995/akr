@@ -190,6 +190,7 @@ Route::prefix('dashboard')->middleware('menu', 'auth', 'verified')->group(functi
 });
 Route::post('ProfileChange', 'UserController@ProfileChange')->name('ProfileChange');
 Route::post('withdrawal', 'LiquidactionController@ProfileChange')->name('withdrawal');
+Route::post('Order_approved', 'LiquidactionController@ProfileChange')->name('Order_approved');
 
 
 

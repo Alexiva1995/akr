@@ -406,6 +406,7 @@ class LiquidactionController extends Controller
                 }
 
                 return redirect()->back()->with('msj-success', 'La Liquidacion fue ' . $accion . ' con exito');
+                
             }
         } catch (\Throwable $th) {
             Log::error('Liquidaction - saveLiquidation -> Error: ' . $th);

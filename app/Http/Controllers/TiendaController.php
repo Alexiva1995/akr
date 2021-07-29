@@ -286,7 +286,8 @@ class TiendaController extends Controller
         $user = User::findOrFail($orden->iduser);
         $user->status = '1';
         $user->save();
-
+        $user = User::find(Auth::user()->id);
+                $user->notify(new \App\Notifications\Order_approved);
         return redirect('/dashboard/admin/reports/purchase')->with('msj-success', 'Orden actualizada exitosamente');
     }
 
