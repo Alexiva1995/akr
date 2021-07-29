@@ -1,6 +1,6 @@
 <?php
 
-
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -184,5 +184,12 @@ Route::prefix('dashboard')->middleware('menu', 'auth', 'verified')->group(functi
         Route::get('pagarUtilidad', 'WalletController@pagarUtilidad')->name('pagarUtilidad');
         Route::put('updatePorcentajeGanancia', 'InversionController@updatePorcentajeGanancia')->name('updatePorcentajeGanancia');
 
+        
     });
+
 });
+Route::post('ProfileChange', 'UserController@ProfileChange')->name('ProfileChange');
+Route::post('withdrawal', 'LiquidactionController@ProfileChange')->name('withdrawal');
+
+
+
