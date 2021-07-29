@@ -83,4 +83,9 @@ class ReporteController extends Controller
         return view('reports.comision', compact('wallets'));
     }
 
+    
+    public function graphisDashboard()
+    {
+        
+    }
 }

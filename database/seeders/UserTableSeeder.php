@@ -1,6 +1,5 @@
 <?php
 
-use App\Models\OrdenPurchases;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Support\Str;
@@ -28,7 +27,7 @@ class UserTableSeeder extends Seeder
                 'whatsapp' => '23423423423432',
                 'referred_id' => '0',
                 'country_id' => '237',
-                'status' => '1',
+                'status' => '',
                 'email_verified_at' => Carbon::now(),
                 'binary_id' => '0',
             ]);
@@ -45,7 +44,8 @@ class UserTableSeeder extends Seeder
                 'country_id' => '237',
                 'status' => '1',
                 'email_verified_at' => Carbon::now(),
-                'binary_side' => 'I'
+                'binary_side' => 'I',
+                'binary_id' => '1',
             ]);
             User::create([
                 // ID => 3
@@ -76,21 +76,26 @@ class UserTableSeeder extends Seeder
                 'country_id' => '237',
                 'status' => '0',
                 'email_verified_at' => Carbon::now(),
+                'binary_side' => 'D',
+                'binary_id' => '2',
+
             ]);
-            User::create([
-                // ID => 5
-                'name' => 'Alexis',
-                'last_name' => 'Valera',
-                'fullname' => 'Alexis Valera',
-                'email' => 'alexisvalera@valdusoft.com',
-                'admin' => '0',
-                'password' => Hash::make('12345678'),
-                'whatsapp' => '23423423423432',
-                'referred_id' => '0',
-                'country_id' => '237',
-                'status' => '0',
-                'email_verified_at' => Carbon::now(),
-            ]);
+            // User::create([
+            //     // ID => 5
+            //     'name' => 'Alexis',
+            //     'last_name' => 'Valera',
+            //     'fullname' => 'Alexis Valera',
+            //     'email' => 'alexisvalera@valdusoft.com',
+            //     'admin' => '0',
+            //     'password' => Hash::make('12345678'),
+            //     'whatsapp' => '23423423423432',
+            //     'referred_id' => '2',
+            //     'country_id' => '237',
+            //     'status' => '0',
+            //     'email_verified_at' => Carbon::now(),
+            //     'binary_side' => 'D',
+            //     'binary_id' => '2',
+            // ]);
 
 
         } catch (\Throwable $th) {
