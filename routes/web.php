@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {return view('welcome');})->name('mantenimiento');
 
-Auth::routes(['verify' => true]);
+Auth::routes(/*['verify' => true]*/);
 
 Route::get('/storage-link', function() {
 $exitCode = Artisan::call('storage:link');
@@ -33,7 +33,7 @@ $exitCode = Artisan::call('storage:link');
 return 'DONE'; //Return anything
 });
 
-Route::prefix('dashboard')->middleware('menu', 'auth', 'verified')->group(function ()
+Route::prefix('dashboard')->middleware('menu', 'auth', /*'verified'*/)->group(function ()
 {
 
     // Inicio
