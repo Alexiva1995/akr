@@ -25,11 +25,11 @@ class UserTableSeeder extends Seeder
                 'admin' => '1',
                 'password' => Hash::make('12password'),
                 'whatsapp' => '23423423423432',
-                'referred_id' => '0',
                 'country_id' => '237',
-                'status' => '',
+                'status' => '1',
                 'email_verified_at' => Carbon::now(),
-                'binary_id' => '0',
+                'referred_id' => 0,
+                'binary_id' => 0,
             ]);
             User::create([
                 // ID => 2
@@ -40,12 +40,12 @@ class UserTableSeeder extends Seeder
                 'admin' => '0',
                 'password' => Hash::make('12password'),
                 'whatsapp' => '23423423423432',
-                'referred_id' => '1',
                 'country_id' => '237',
-                'status' => '1',
+                'status' => '0',
                 'email_verified_at' => Carbon::now(),
+                'referred_id' => 1,
+                'binary_id' => 1,
                 'binary_side' => 'I',
-                'binary_id' => '1',
             ]);
             User::create([
                 // ID => 3
@@ -56,12 +56,12 @@ class UserTableSeeder extends Seeder
                 'admin' => '0',
                 'password' => Hash::make('12password'),
                 'whatsapp' => '23423423423432',
-                'referred_id' => '2',
                 'country_id' => '237',
-                'binary_id' => '2',
                 'status' => '0',
                 'email_verified_at' => Carbon::now(),
-                'binary_side' => 'I'
+                'referred_id' => 2,
+                'binary_id' => 2,
+                'binary_side' => 'I',
             ]);            
             User::create([
                 // ID => 4
@@ -72,12 +72,12 @@ class UserTableSeeder extends Seeder
                 'admin' => '0',
                 'password' => Hash::make('12345678'),
                 'whatsapp' => '23423423423432',
-                'referred_id' => '2',
                 'country_id' => '237',
                 'status' => '0',
                 'email_verified_at' => Carbon::now(),
-                'binary_side' => 'D',
-                'binary_id' => '2',
+                'referred_id' => 2,
+                'binary_id' => 3,
+                'binary_side' => 'I',
 
             ]);
             // User::create([
