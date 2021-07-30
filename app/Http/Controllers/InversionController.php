@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use App\Models\User;
+use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Storage;
 
 class InversionController extends Controller
@@ -37,6 +38,11 @@ class InversionController extends Controller
                 $inversion->correo = $inversion->getInversionesUser->email;
             }
             
+            if($tipo == 1){
+                View::share('titleg', 'Inversiones Activas');        
+            }elseif($tipo == 2){
+                View::share('titleg', 'Inversiones Culminadas');        
+            }
             return view('inversiones.index', compact('inversiones', 'tipo'));
         } catch (\Throwable $th) {
             Log::error('InversionController - index -> Error: '.$th);

@@ -30,32 +30,29 @@
                                 <tr class="text-center text-white bg-purple-alt2">                                
                                     <th>ID</th>
                                     <th>Correo</th>
-                                    {{-- <th>Paquete</th> --}}
+                                    <th>Monto</th>
                                     <th>Ganancia</th>
                                     <th>Progreso</th>
                                     <th>Fecha</th>
-                                    <th>Estado</th>
+                                    {{-- <th>Estado</th> --}}
                                 </tr>
 
                             </thead>
                             <tbody>
                                 @foreach ($inversiones as $inversion)
-
-                                @php
-                                $ganancia = $inversion->capital - $inversion->invertido;
-
-                                $porcentaje = ($ganancia / $inversion->invertido) * 100;
-                                @endphp
-                                <tr class="text-center">
-                                
-                                    <td>{{$inversion->id}}</td>
-                                    <td>{{$inversion->correo}}</td>
-                                    {{-- <td>{{$inversion->getPackageOrden->name}}</td> --}}
-                                    <td>$ {{number_format($inversion->ganacia, 2, ',', '.')}}</td>
-                                    <td>{{number_format($inversion->progreso, 2, ',', '.')}}</td>
-                                    <td>{{date('Y-M-d', strtotime($inversion->fecha_vencimiento))}}</td>
-                                    <td>{{$inversion->status}}</td>
-                                </tr>
+                                    @php
+                                        $ganancia = $inversion->capital - $inversion->invertido;
+                                        $porcentaje = ($ganancia / $inversion->invertido) * 100;
+                                    @endphp
+                                    <tr class="text-center">                                
+                                        <td>{{$inversion->id}}</td>
+                                        <td>{{$inversion->correo}}</td>
+                                        <td>{{number_format($inversion->capital,2,',','.')}}</td>
+                                        <td>$ {{number_format($inversion->ganacia, 2, ',', '.')}}</td>
+                                        <td>{{number_format($inversion->progreso, 2, ',', '.')}}</td>
+                                        <td>{{date('Y-M-d', strtotime($inversion->created_at))}}</td>
+                                        {{-- <td>{{$inversion->status}}</td> --}}
+                                    </tr>
                                 @endforeach
                             </tbody>
                         </table>

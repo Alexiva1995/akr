@@ -274,7 +274,7 @@ class TiendaController extends Controller
         $orden->status = $request->status;
         $orden->save();
 
-        $this->walletController->payAll();
+        // $this->walletController->payAll();
 
 
         $this->registeInversion($request->id);
@@ -287,7 +287,7 @@ class TiendaController extends Controller
         $user->status = '1';
         $user->save();
 
-        return redirect('/dashboard/admin/reports/purchase')->with('msj-success', 'Orden actualizada exitosamente');
+        return redirect('/dashboard/reports/purchase')->with('msj-success', 'Orden actualizada exitosamente');
     }
 
     public function registerDirectBonus($id)

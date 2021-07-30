@@ -31,7 +31,7 @@ class LiquidactionController extends Controller
     public function index()
     {        
         try {
-            View::share('titleg', 'General Liquidaciones');
+            View::share('titleg', 'Generar Liquidaciones');
             $comisiones = $this->getTotalComisiones([], null);
             return view('settlement.index', compact('comisiones'));
         } catch (\Throwable $th) {
