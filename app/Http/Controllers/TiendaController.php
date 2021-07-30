@@ -205,7 +205,7 @@ class TiendaController extends Controller
      */
     public function ipn(Request $resquet)
     { 
-        Log::info('ipn prueba ->', $resquet);
+        Log::info('ipn prueba ->', $resquet); 
     }
 
     /**
@@ -278,9 +278,9 @@ class TiendaController extends Controller
 
 
         $this->registeInversion($request->id);
-        if($request->status == '1'){
-            $this->registerDirectBonus($request->id);
-        }
+        // if($request->status == '1'){
+        //     $this->registerDirectBonus($request->id);
+        // }
 
 
         $user = User::findOrFail($orden->iduser);

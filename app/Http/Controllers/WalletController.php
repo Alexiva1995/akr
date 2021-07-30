@@ -178,10 +178,11 @@ class WalletController extends Controller
             'tipo_transaction' => 0,
         ];
 
-        $aceleracion = $this->saveWallet($data);
-        if ($aceleracion) {
-            $this->aceleracion($iduser, $idreferido, $monto, $concepto);
-        }
+        $this->saveWallet($data);
+        // $aceleracion = $this->saveWallet($data);
+        // if ($aceleracion) {
+        //     $this->aceleracion($iduser, $idreferido, $monto, $concepto);
+        // }
     }
 
     /**
@@ -242,13 +243,13 @@ class WalletController extends Controller
                 $wallet->getWalletUser->update(['wallet' => $saldoAcumulado]);
                 //$wallet->update(['balance' => $saldoAcumulado]);
             } else {
-                if ($data['cierre_comision_id'] != null) {
+                if ($data['orden_purchases_id'] != null) {
                     if ($data['iduser'] == 2) {
                         $wallet = Wallet::create($data);
                     } elseif ($data['iduser'] > 2) {
                         $check = Wallet::where([
                             ['iduser', '=', $data['iduser']],
-                            ['cierre_comision_id', '=', $data['cierre_comision_id']]
+                            ['orden_purchases_id', '=', $data['orden_purchases_id']]
                         ])->first();
                         if ($check == null) {
                             $wallet = Wallet::create($data);
@@ -359,7 +360,7 @@ class WalletController extends Controller
             $data = [
                 'iduser' => $inversion->iduser,
                 'referred_id' => null,
-                'cierre_comision_id' => null,
+                'orden_purchases_id' => null,
                 'monto' => $cantidad,
                 'descripcion' => 'Profit de '.($porcentaje * 100). ' %',
                 'status' => 0,
@@ -477,7 +478,10 @@ class WalletController extends Controller
             ['puntos_i', '>', 0],
         ])->selectRaw('iduser, SUM(puntos_d) as totald, SUM(puntos_i) as totali')->groupBy('iduser')->get();
 
+
         foreach ($binarios as $binario) {
+        // dd('Puntos por la izquierda: '.$binario->totali.'   ||   Puntos por la derecha: '.$binario->totald);
+
             $puntos = 0;
             $side_mayor = $side_menor = '';
             if ($binario->totald >= $binario->totali) {
@@ -489,12 +493,25 @@ class WalletController extends Controller
                 $side_mayor = 'I';
                 $side_menor = 'D';
             }
+            // dd($puntos);
             if ($puntos > 0) {
-                $comision = ($puntos * 0.1);
+                if($puntos >= 70 && $puntos <= 509 ){
+                    $por = '5%';
+                    $porcentaje = 0.05;
+                }else if($puntos >= 510 && $puntos <= 1009){
+                    $por = '8%';
+                    $porcentaje = 0.08;
+                }else if($puntos >= 1010){
+                    $por = '10%';
+                    $porcentaje = 0.10;
+                }
+                $comision = ($puntos * $porcentaje);
+                dd('Porcentaje: '.$por.' monto: '.$comision);
+
                 $sponsor = User::find($binario->iduser);
-                $sponsor->point_rank += $puntos;
+                // $sponsor->point_rank += $puntos;
                 $concepto = 'Bono Binario - '.$puntos;
-                $idcomision = $binario->iduser.Carbon::now()->format('Ymd');
+                // $idcomision = $binario->iduser.Carbon::now()->format('Ymd');
                 $this->setPointBinaryPaid($puntos, $side_menor, $binario->iduser, $side_mayor);
                 $this->preSaveWallet($sponsor->id, $sponsor->id, null, $comision, $concepto);
                 $sponsor->save();
@@ -526,7 +543,7 @@ class WalletController extends Controller
             if ($sum <= $pagar) {
                 $lisComision[] = $binario->id;
             }elseif($sum > $pagar){
-                $sum -= $binario->$field_side;
+                $sum -= $binario->$field_side;  
             }
         }
 
@@ -545,8 +562,8 @@ class WalletController extends Controller
         // Log::info('Bono Directo Pagado');
         $this->payPointsBinary();
         Log::info('Puntos Binarios Pagado');
-        if (env('APP_ENV' != 'local')) {
+        // if (env('APP_ENV' != 'local')) {
             $this->bonoBinario();
-        }
+        // }
     }
 }

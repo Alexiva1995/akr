@@ -474,14 +474,14 @@ class LiquidactionController extends Controller
             ])->get();
 
             if(count($comisiones) == 0){
-                return redirect()->back()->with('msj-warning', 'No tienes comisiones disponibles para retirar');            
+                return redirect()->back()->with('msj-warning', 'No tienes comisiones disponibles para retirar');           
             }else{
                 $bruto = $comisiones->sum('monto');
                 $feed = ($bruto * 0.10);
                 $total = ($bruto - $feed);
     
     
-                $arrayLiquidation = [
+                $arrayLiquidation = [ 
                     'iduser' => $user->id,
                     'total' => $total,
                     'monto_bruto' => $bruto,
