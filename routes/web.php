@@ -122,6 +122,10 @@ Route::prefix('dashboard')->middleware('menu', 'auth', /*'verified'*/)->group(fu
         Route::get('/reinvertirCapital', 'InversionController@reinvertirCapital')->name('inversiones.reinvertirCapital');
     });
 
+    //Rutas para los reportes
+    Route::prefix('reports')->group(function(){
+        Route::get('purchase', 'ReporteController@indexPedidos')->name('reports.pedidos');
+    });
 
      //Ruta de los Tickets
      Route::prefix('tickets')->group(function(){
@@ -177,7 +181,7 @@ Route::prefix('dashboard')->middleware('menu', 'auth', /*'verified'*/)->group(fu
 
         //Rutas para los reportes
         Route::prefix('reports')->group(function(){
-            Route::get('purchase', 'ReporteController@indexPedidos')->name('reports.pedidos');
+            // Route::get('purchase', 'ReporteController@indexPedidos')->name('reports.pedidos');
             Route::get('commission', 'ReporteController@indexComision')->name('reports.comision');
         });
 

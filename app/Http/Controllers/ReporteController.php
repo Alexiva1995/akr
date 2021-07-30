@@ -20,12 +20,20 @@ class ReporteController extends Controller
      */
     public function indexPedidos()
     {
-        $ordenes = OrdenPurchases::all();
+
+        if($this->isAdmin()){
+            // dd('Eres administrador');
+            $ordenes = OrdenPurchases::all();
+        }else{
+            // dd('No eres administrador');
+            $id = Auth::user()->id;
+            // dd($id);
+            $ordenes = OrdenPurchases::where('iduser',$id)->get();
+        }
 
         foreach ($ordenes as $orden) {
             $orden->name = $orden->getOrdenUser->fullname;
-            // $orden->grupo = $orden->getGroupOrden->name;
-            // $orden->paquete = $orden->getPackageOrden->name;
+            $orden->admin = $orden->getOrdenUser->admin;
         }        
         return view('reports.perdido', compact('ordenes'));
     }
@@ -87,5 +95,13 @@ class ReporteController extends Controller
     public function graphisDashboard()
     {
         
+    }
+
+    public function isAdmin(){
+        if(Auth::user()->admin == 1){
+            return 1;
+        }else{
+            return 0;
+        }
     }
 }
