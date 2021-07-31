@@ -6,9 +6,11 @@
                 <div class="container">
                     @if(isset($user))
                         <h1 class="text-center mt-1 mb-4">Verificar Usuario #{{ $user->id.' - '.$user->fullname }}</h1>
+                        <form action="{{route('realizar-inversion')}}" method="POST" class="d-inline">                                            
+                    @else
+                        <form action="{{route('realizar-inversion')}}" method="POST" target="_blank" class="d-inline">                        
                     @endif
 
-                <form action="{{route('realizar-inversion')}}" method="POST" target="_blank" class="d-inline">
                 @csrf
                         <div class="form-group">
                             <div class="range-wrap">

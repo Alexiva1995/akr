@@ -330,31 +330,52 @@ class TiendaController extends Controller
                 if(isset($request->user)){
                     $usuario = User::findOrFail($request->user);     
                     // $usuario->update(['status'=>'1']);
+
+                    $infoOrden = [
+                        'iduser' => $usuario->id,
+                        'cantidad' => 1,
+                        'total' => $request->range+10,
+                        'status' => 1,
+                    ];
+
+                    // dd($infoOrden);
+                    $saveOrden = $this->guardarOrden($infoOrden);
+
+                    if($saveOrden){
+                        $usuario->update(['status'=>'1']);
+                        return redirect('/dashboard/user/user-list')->with('msj-success', 'Orden creada - Cliente verificado');
+                    }
+
+                }else{
+                    // $infoOrden = [
+                    //     'user_id' => Auth::user()->id,
+                    //     'status' => 1,
+                    //     'cantidad' => 1,
+                    //     'total' => $request->range+10,
+                    // ];
+                    
+                    $transacion = [
+                        'amountTotal' => (INT)$request->range +10,
+                        'note' => 'Inversión realizada por un precio de $'.(INT)$request->range,
+                        // 'order_id' => $this->guardarOrden($infoOrden),
+                        'order_id' => 1,
+                        'tipo' => 'Compra de un paquete',
+                        'tipo_transacion' => 3,
+                        'buyer_name' =>  Auth::user()->fullname,
+                        'buyer_email' => Auth::user()->email,
+                        'redirect_url' => url('/dashboard/home'),
+                        'cancel_url' => url('/dashboard/home')
+                    ];
+                    $transacion['items'][] = [
+                        'itemDescription' => 'Inversión de  $'.(INT)$request->range,
+                        'itemPrice' => (INT)$request->range, // USD
+                        'itemQty' => (INT) 1,
+                        'itemSubtotalAmount' => (INT)$request->range + 10 // USD
+                    ];
+                    $ruta = \CoinPayment::generatelink($transacion);
+                    return redirect($ruta);
                 }
 
-                $name = $usuario ? $usuario->fullname : Auth::user()->fullname;
-                $email = $usuario ? $usuario->email : Auth::user()->email;
-                
-                $transacion = [
-                    'amountTotal' => (INT)$request->range +10,
-                    'note' => 'Inversión realizada por un precio de $'.(INT)$request->range,
-                    // 'order_id' => $this->guardarOrden($infoOrden),
-                    'order_id' => 1,
-                    'tipo' => 'Compra de un paquete',
-                    'tipo_transacion' => 3,
-                    'buyer_name' =>  $name,
-                    'buyer_email' => $email,
-                    'redirect_url' => url('/dashboard/home'),
-                    'cancel_url' => url('/dashboard/home')
-                ];
-                $transacion['items'][] = [
-                    'itemDescription' => 'Inversión de  $'.(INT)$request->range,
-                    'itemPrice' => (INT)$request->range, // USD
-                    'itemQty' => (INT) 1,
-                    'itemSubtotalAmount' => (INT)$request->range + 10 // USD
-                ];
-                $ruta = \CoinPayment::generatelink($transacion);
-                return redirect($ruta);
             }
         } catch (\Throwable $th) {
             Log::error('Tienda - MakeInversion -> Error: '.$th);
@@ -379,6 +400,5 @@ class TiendaController extends Controller
         $orden = OrdenPurchases::create($infoOrden);
 
         return $orden->id;
-
     }
 }
