@@ -29,13 +29,13 @@ class LiquidactionController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {        
+    {
         try {
             View::share('titleg', 'Generar Liquidaciones');
             $comisiones = $this->getTotalComisiones([], null);
             return view('settlement.index', compact('comisiones'));
         } catch (\Throwable $th) {
-            Log::error('Liquidaction - index -> Error: '.$th);
+            Log::error('Liquidaction - index -> Error: ' . $th);
             abort(403, "Ocurrio un error, contacte con el administrador");
         }
     }
@@ -55,7 +55,7 @@ class LiquidactionController extends Controller
             }
             return view('settlement.pending', compact('liquidaciones'));
         } catch (\Throwable $th) {
-            Log::error('Liquidaction - indexPendientes -> Error: '.$th);
+            Log::error('Liquidaction - indexPendientes -> Error: ' . $th);
             abort(403, "Ocurrio un error, contacte con el administrador");
         }
     }
@@ -69,7 +69,7 @@ class LiquidactionController extends Controller
     public function indexHistory($status)
     {
         try {
-            View::share('titleg', 'Liquidaciones '.$status);
+            View::share('titleg', 'Liquidaciones ' . $status);
             $estado = ($status == 'Reservadas') ? 2 : 1;
             $liquidaciones = Liquidaction::where('status', $estado)->get();
             foreach ($liquidaciones as $liqui) {
@@ -77,7 +77,7 @@ class LiquidactionController extends Controller
             }
             return view('settlement.history', compact('liquidaciones', 'estado'));
         } catch (\Throwable $th) {
-            Log::error('Liquidaction - indexHistory -> Error: '.$th);
+            Log::error('Liquidaction - indexHistory -> Error: ' . $th);
             abort(403, "Ocurrio un error, contacte con el administrador");
         }
     }
@@ -100,13 +100,13 @@ class LiquidactionController extends Controller
      */
     public function store(Request $request)
     {
-        if ($request->tipo == 'detallada'){
-            
+        if ($request->tipo == 'detallada') {
+
             $validate = $request->validate([
                 'listComisiones' => ['required', 'array'],
                 'iduser' => ['required']
             ]);
-        }else{
+        } else {
             $validate = $request->validate([
                 'listUsers' => ['required', 'array']
             ]);
@@ -114,9 +114,9 @@ class LiquidactionController extends Controller
 
         try {
             if ($validate) {
-                if ($request->tipo == 'detallada'){
+                if ($request->tipo == 'detallada') {
                     $this->generarLiquidation($request->iduser, $request->listComisiones);
-                }else{
+                } else {
                     foreach ($request->listUsers as $iduser) {
                         $this->generarLiquidation($iduser, []);
                     }
@@ -124,7 +124,7 @@ class LiquidactionController extends Controller
                 return redirect()->back()->with('msj-success', 'Liquidaciones Generada Exitoxamente');
             }
         } catch (\Throwable $th) {
-            Log::error('Liquidaction - store -> Error: '.$th);
+            Log::error('Liquidaction - store -> Error: ' . $th);
             abort(403, "Ocurrio un error, contacte con el administrador");
         }
     }
@@ -143,27 +143,27 @@ class LiquidactionController extends Controller
                 ['tipo_transaction', '=', 0],
                 ['iduser', '=', $id]
             ])->get();
-    
+
             foreach ($comiciones as $comi) {
                 $fecha = new Carbon($comi->created_at);
                 $comi->fecha = $fecha->format('Y-m-d');
                 $comi->referido = User::find($comi->referred_id)->only('fullname');
             }
-            
+
             $user = User::find($id);
-    
+
             $detalles = [
                 'iduser' => $id,
                 'fullname' => $user->fullname,
                 'comisiones' => $comiciones,
                 'total' => number_format($comiciones->sum('monto'), 2, ',', '.')
             ];
-    
-            return json_encode($detalles);  
+
+            return json_encode($detalles);
         } catch (\Throwable $th) {
-            Log::error('Liquidaction - show -> Error: '.$th);
+            Log::error('Liquidaction - show -> Error: ' . $th);
             abort(403, "Ocurrio un error, contacte con el administrador");
-        }   
+        }
     }
 
     /**
@@ -174,7 +174,7 @@ class LiquidactionController extends Controller
      */
     public function edit($id)
     {
-       try {
+        try {
             $comiciones = Wallet::where([
                 ['liquidation_id', '=', $id],
             ])->get();
@@ -196,7 +196,7 @@ class LiquidactionController extends Controller
 
             return json_encode($detalles);
         } catch (\Throwable $th) {
-            Log::error('Liquidaction - edit -> Error: '.$th);
+            Log::error('Liquidaction - edit -> Error: ' . $th);
             abort(403, "Ocurrio un error, contacte con el administrador");
         }
     }
@@ -242,15 +242,17 @@ class LiquidactionController extends Controller
                     ['tipo_transaction', '=', 0],
                     ['iduser', '=', $iduser]
                 ])->select(
-                    DB::raw('sum(monto) as total'), 'iduser'
+                    DB::raw('sum(monto) as total'),
+                    'iduser'
                 )->groupBy('iduser')->get();
-            }else{
+            } else {
                 $comisionestmp = Wallet::where([
                     ['status', '=', 0],
                     ['liquidation_id', '=', null],
                     ['tipo_transaction', '=', 0],
                 ])->select(
-                    DB::raw('sum(monto) as total'), 'iduser'
+                    DB::raw('sum(monto) as total'),
+                    'iduser'
                 )->groupBy('iduser')->get();
             }
 
@@ -259,7 +261,7 @@ class LiquidactionController extends Controller
                 if ($comision->getWalletUser != null) {
                     if ($filtros == []) {
                         $comisiones[] = $comision;
-                    }else{
+                    } else {
                         if (!empty($filtros['activo'])) {
                             if ($comision->status == 1) {
                                 if (!empty($filtros['mayorque'])) {
@@ -270,7 +272,7 @@ class LiquidactionController extends Controller
                                     $comisiones[] = $comision;
                                 }
                             }
-                        }else{
+                        } else {
                             if (!empty($filtros['mayorque'])) {
                                 if ($comision->total >= $filtros['mayorque']) {
                                     $comisiones[] = $comision;
@@ -284,7 +286,7 @@ class LiquidactionController extends Controller
             }
             return $comisiones;
         } catch (\Throwable $th) {
-            Log::error('Liquidaction - getTotalComisiones -> Error: '.$th);
+            Log::error('Liquidaction - getTotalComisiones -> Error: ' . $th);
             abort(403, "Ocurrio un error, contacte con el administrador");
         }
     }
@@ -308,10 +310,10 @@ class LiquidactionController extends Controller
                     ['status', '=', 0],
                     ['tipo_transaction', '=', 0],
                 ])->get();
-            }else {
+            } else {
                 $comisiones = Wallet::whereIn('id', $listComision)->get();
             }
-            
+
             $bruto = $comisiones->sum('monto');
             $feed = ($bruto * 0.10);
             $total = ($bruto - $feed);
@@ -325,11 +327,11 @@ class LiquidactionController extends Controller
                 'wallet_used' => $user->wallet_address,
                 'status' => 0,
             ];
-          
+
             $idLiquidation = $this->saveLiquidation($arrayLiquidation);
 
-            $concepto = 'Liquidacion del usuario '.$user->fullname.' por un monto de '.$bruto;
-            $arrayWallet =[
+            $concepto = 'Liquidacion del usuario ' . $user->fullname . ' por un monto de ' . $bruto;
+            $arrayWallet = [
                 'iduser' => $user->id,
                 'referred_id' => $user->id,
                 'monto' => $bruto,
@@ -339,7 +341,7 @@ class LiquidactionController extends Controller
             ];
 
             //$this->walletController->saveWallet($arrayWallet);
-           
+
             if (!empty($idLiquidation)) {
                 $listComi = $comisiones->pluck('id');
                 Wallet::whereIn('id', $listComi)->update([
@@ -347,8 +349,8 @@ class LiquidactionController extends Controller
                     'liquidation_id' => $idLiquidation
                 ]);
             }
-        }catch (\Throwable $th) {
-            Log::error('Liquidaction - generarLiquidation -> Error: '.$th);
+        } catch (\Throwable $th) {
+            Log::error('Liquidaction - generarLiquidation -> Error: ' . $th);
             abort(403, "Ocurrio un error, contacte con el administrador");
         }
     }
@@ -377,7 +379,7 @@ class LiquidactionController extends Controller
             $validate = $request->validate([
                 'hash' => ['required'],
             ]);
-        }else{
+        } else {
             $validate = $request->validate([
                 'comentario' => ['required'],
             ]);
@@ -389,11 +391,11 @@ class LiquidactionController extends Controller
                 if ($request->action == 'reverse') {
                     $accion = 'Reversada';
                     $this->reversarLiquidacion($idliquidation, $request->comentario);
-                }elseif ($request->action == 'aproved') {
+                } elseif ($request->action == 'aproved') {
                     $accion = 'Aprobada';
                     $this->aprovarLiquidacion($idliquidation, $request->hash);
                 }
-    
+
                 if ($accion != 'No Procesada') {
                     $arrayLog = [
                         'idliquidation' => $idliquidation,
@@ -402,11 +404,12 @@ class LiquidactionController extends Controller
                     ];
                     DB::table('log_liquidations')->insert($arrayLog);
                 }
+
+                return redirect()->back()->with('msj-success', 'La Liquidacion fue ' . $accion . ' con exito');
                 
-                return redirect()->back()->with('msj-success', 'La Liquidacion fue '.$accion.' con exito');
             }
         } catch (\Throwable $th) {
-            Log::error('Liquidaction - saveLiquidation -> Error: '.$th);
+            Log::error('Liquidaction - saveLiquidation -> Error: ' . $th);
             abort(403, "Ocurrio un error, contacte con el administrador");
         }
     }
@@ -438,14 +441,14 @@ class LiquidactionController extends Controller
     public function reversarLiquidacion($idliquidation, $comentario)
     {
         $liquidacion = Liquidaction::find($idliquidation);
-        
+
         Wallet::where('liquidation_id', $idliquidation)->update([
             'status' => 2,
             'liquidation_id' => null,
         ]);
 
-        $concepto = 'Liquidacion Reservada - Motivo: '.$comentario;
-        $arrayWallet =[
+        $concepto = 'Liquidacion Reservada - Motivo: ' . $comentario;
+        $arrayWallet = [
             'iduser' => $liquidacion->iduser,
             'cierre_comision_id' => null,
             'referred_id' => $liquidacion->iduser,
@@ -454,7 +457,7 @@ class LiquidactionController extends Controller
             'status' => 3,
             'tipo_transaction' => 0,
         ];
-        
+
         //$this->walletController->saveWallet($arrayWallet);
 
         $liquidacion->status = 2;
@@ -464,6 +467,7 @@ class LiquidactionController extends Controller
 
     public function wallet()
     {
+
         try {
             $user = Auth::user();
 
@@ -473,15 +477,15 @@ class LiquidactionController extends Controller
                 ['tipo_transaction', '=', 0],
             ])->get();
 
-            if(count($comisiones) == 0){
-                return redirect()->back()->with('msj-warning', 'No tienes comisiones disponibles para retirar');           
-            }else{
+            if (count($comisiones) == 0) {
+                return redirect()->back()->with('msj-warning', 'No tienes comisiones disponibles para retirar');
+            } else {
                 $bruto = $comisiones->sum('monto');
                 $feed = ($bruto * 0.10);
                 $total = ($bruto - $feed);
-    
-    
-                $arrayLiquidation = [ 
+
+
+                $arrayLiquidation = [
                     'iduser' => $user->id,
                     'total' => $total,
                     'monto_bruto' => $bruto,
@@ -490,24 +494,25 @@ class LiquidactionController extends Controller
                     'wallet_used' => $user->wallet_address,
                     'status' => 0,
                 ];
-            
+
                 $idLiquidation = $this->saveLiquidation($arrayLiquidation);
-    
-                $concepto = 'Liquidacion del usuario '.$user->fullname.' por un monto de '.$bruto;    
-    
+
+                $concepto = 'Liquidacion del usuario ' . $user->fullname . ' por un monto de ' . $bruto;
+
                 if (!empty($idLiquidation)) {
                     $listComi = $comisiones->pluck('id');
                     Wallet::whereIn('id', $listComi)->update([
                         'status' => 1,
                         'liquidation_id' => $idLiquidation
                     ]);
-                }   
-                
-                return redirect()->back()->with('msj-success', 'Liquidaciones Generadas Exitosamente');            
+                }
+                    
+                $user = User::find(Auth::user()->id);
+                $user->notify(new \App\Notifications\withdrawal);
+                return redirect()->back()->with('msj-success', 'Liquidaciones Generadas Exitosamente');
             }
-
-        }catch (\Throwable $th) {
-            Log::error('Liquidaction - generarLiquidation -> Error: '.$th);
+        } catch (\Throwable $th) {
+            Log::error('Liquidaction - generarLiquidation -> Error: ' . $th);
             abort(403, "Ocurrio un error, contacte con el administrador");
         }
     }

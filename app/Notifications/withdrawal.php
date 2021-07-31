@@ -7,20 +7,18 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class UserResetPassword extends Notification
+class withdrawal extends Notification
 {
     use Queueable;
-
-    protected $token;
 
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct($token)
+    public function __construct()
     {
-        $this->token = $token;
+        //
     }
 
     /**
@@ -43,14 +41,11 @@ class UserResetPassword extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-
-        
-        ->subject('Reinicio de contraseña')
-        ->greeting('Restablecer su contraseña ')
-        ->line('No podemos simplemente enviarle su contraseña anterior. Se ha generado un enlace único para restablecer su contraseña. Para restablecer su contraseña, siga las instrucciones. ')
-        ->action('Reiniciar contraseña', url('/password/reset/'.$this->token))
-        ->line('Si usted no ha realizado esta peticion Solo ignora esto')
-        ->salutation('Gracias.');
+        ->subject('retiro exitoso')
+        ->greeting('Retiro')
+        ->line('Hola. Su retiro se a Realizado  Correctamente')
+        ->line('¡Gracias por usar nuestra web!')
+        ->salutation('Akr');
     }
 
     /**

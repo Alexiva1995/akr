@@ -169,8 +169,8 @@ class UserController extends Controller
     public function updateProfile(Request $request)
     {
         $user = User::find(Auth::user()->id);
-
-        
+        $user->notify(new \App\Notifications\ProfileChange);
+         
 
         $msj = [
 
