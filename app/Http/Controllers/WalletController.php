@@ -166,7 +166,7 @@ class WalletController extends Controller
      * @param string $concepto
      * @return void
      */
-    private function preSaveWallet(int $iduser, int $idreferido, int $cierre_id=null,  float $monto, string $concepto)
+    public function preSaveWallet(int $iduser, int $idreferido, int $cierre_id=null,  float $monto, string $concepto)
     {
         $data = [
             'iduser' => $iduser,
@@ -184,6 +184,25 @@ class WalletController extends Controller
         //     $this->aceleracion($iduser, $idreferido, $monto, $concepto);
         // }
     }
+
+    public function preSaveWallet2(int $iduser, int $idreferido, int $cierre_id=null,  float $monto, string $concepto)
+    {
+        $data = [
+            'iduser' => $iduser,
+            'referred_id' => $idreferido,
+            'orden_purchases_id' => $cierre_id,
+            'monto' => $monto,
+            'descripcion' => $concepto,
+            'status' => 0,
+            'tipo_transaction' => 0,
+        ];
+
+        $this->saveWallet($data);
+        // $aceleracion = $this->saveWallet($data);
+        // if ($aceleracion) {
+        //     $this->aceleracion($iduser, $idreferido, $monto, $concepto);
+        // }
+    }    
 
     /**
      * Permite obtener el porcentaje a pagar

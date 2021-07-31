@@ -65,10 +65,10 @@ class InversionController extends Controller
                     'iduser' => $iduser,
                     // 'package_id' => $paquete,
                     'orden_id' => $orden,
-                    'invertido' => $invertido,
+                    'invertido' => $invertido-10,
                     'ganacia' => 0,
                     'retiro' => 0,
-                    'capital' => $invertido,
+                    'capital' => $invertido-10,
                     'progreso' => 0,
                     // 'fecha_vencimiento' => $vencimiento,
                 ];

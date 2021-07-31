@@ -278,9 +278,9 @@ class TiendaController extends Controller
 
 
         $this->registeInversion($request->id);
-        // if($request->status == '1'){
-        //     $this->registerDirectBonus($request->id);
-        // }
+        if($request->status == '1'){
+            $this->registerDirectBonus($request->id);
+        }
 
 
         $user = User::findOrFail($orden->iduser);
@@ -289,32 +289,22 @@ class TiendaController extends Controller
 
         // return redirect('/dashboard/reports/purchase')->with('msj-success', 'Orden actualizada exitosamente');
         $user = User::find(Auth::user()->id);
-                $user->notify(new \App\Notifications\Order_approved);
+        $user->notify(new \App\Notifications\Order_approved);
         return redirect('/dashboard/reports/purchase')->with('msj-success', 'Orden actualizada exitosamente');
     }
 
     public function registerDirectBonus($id)
     {
         $orden = OrdenPurchases::findOrFail($id);
-
-        $user = User::findOrFail($orden->iduser);
-        $user_ref = User::findOrFail($user->referred_id);
-        $ref_ref = $user_ref->referred_id == 0 ? 1 : $user_ref->referred_id;
-
-        $data = [
-            'iduser' => $user_ref->id,
-            'referred_id' => $ref_ref,
-            'monto' => ($orden->total)*0.10,
-            'descripcion' => 'Bono Directo por compra del referido '.$user->fullname,
-        ];
-
-        // dd($data);
-
-        $bonoDirecto = Wallet::create($data);
-
-        $bonoDirecto->save();
-
-        // return $bonoDirecto;
+        $comision = ($orden->total * 0.1);
+        $sponsor = User::find($orden->getOrdenUser->referred_id);
+        if ($sponsor->status == '1') {
+            $concepto = 'Bono directo del Usuario '.$orden->getOrdenUser->fullname;
+            $this->walletController->preSaveWallet2($sponsor->id, $orden->iduser, $orden->id, $comision, $concepto);
+        }else{
+            $concepto = 'Bono directo del Usuario '.$orden->getOrdenUser->fullname;
+            $this->walletController->preSaveWallet2($sponsor->id, $orden->iduser, $orden->id, 0, $concepto);
+        }
     }
 
     public function makeInversion(Request $request)
@@ -326,13 +316,10 @@ class TiendaController extends Controller
 
         try{
             if($validate){
-                $data = OrdenPurchases::latest('id')->first();
-
+                
                 $usuario = [];
-
                 if(isset($request->user)){
                     $usuario = User::findOrFail($request->user);     
-                    // $usuario->update(['status'=>'1']);
 
                     $infoOrden = [
                         'iduser' => $usuario->id,
@@ -341,18 +328,25 @@ class TiendaController extends Controller
                         'status' => 1,
                     ];
 
-                    // dd($infoOrden);
                     $saveOrden = $this->guardarOrden($infoOrden);
 
                     if($saveOrden){
                         $usuario->update(['status'=>'1']);
+
+                        $orden = OrdenPurchases::findOrFail($saveOrden);
+                        $orden->status = "1";
+                        $orden->save();
+
+                        $this->registeInversion($saveOrden);
+                        // $this->registerDirectBonus($saveOrden);
+
                         return redirect('/dashboard/user/user-list')->with('msj-success', 'Orden creada - Cliente verificado');
                     }
 
                 }else{
                     // $infoOrden = [
                     //     'user_id' => Auth::user()->id,
-                    //     'status' => 1,
+                    //     'status' => 0,
                     //     'cantidad' => 1,
                     //     'total' => $request->range+10,
                     // ];
@@ -361,7 +355,7 @@ class TiendaController extends Controller
                         'amountTotal' => (INT)$request->range +10,
                         'note' => 'Inversión realizada por un precio de $'.(INT)$request->range,
                         // 'order_id' => $this->guardarOrden($infoOrden),
-                        'order_id' => 1,
+                        'order_id' => 2,
                         'tipo' => 'Compra de un paquete',
                         'tipo_transacion' => 3,
                         'buyer_name' =>  Auth::user()->fullname,

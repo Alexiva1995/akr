@@ -21,7 +21,7 @@ class OrdersTableSeeder extends Seeder
                 'iduser' => random_int(2,4),
                 // 'package_id' => random_int(1,3),
                 'cantidad' => 1,
-                'total' => random_int(1000,10000),
+                'total' => random_int(70,10000),
                 'status' => '0',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()

@@ -41,7 +41,7 @@ class UserTableSeeder extends Seeder
                 'password' => Hash::make('12password'),
                 'whatsapp' => '23423423423432',
                 'country_id' => '237',
-                'status' => '0',
+                'status' => '1',
                 'email_verified_at' => Carbon::now(),
                 'referred_id' => 1,
                 'binary_id' => 1,
