@@ -74,11 +74,11 @@
                         </table>
                     </div>
 
-                    @if(\Carbon\Carbon::now()->format('l') == 'Friday')
+                    {{-- @if(\Carbon\Carbon::now()->format('l') == 'Friday') --}}
                         <div class="form-group text-center">
                             <button class="btn btn-primary">Generar Liquidacion</button>
                         </div>
-                    @endif
+                    {{-- @endif --}}
                     </form>
                 </div>
             </div>

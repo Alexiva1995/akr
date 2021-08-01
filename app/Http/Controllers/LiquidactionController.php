@@ -508,7 +508,7 @@ class LiquidactionController extends Controller
                 }
                     
                 $user = User::find(Auth::user()->id);
-                $user->notify(new \App\Notifications\withdrawal);
+                // $user->notify(new \App\Notifications\withdrawal);
                 return redirect()->back()->with('msj-success', 'Liquidaciones Generadas Exitosamente');
             }
         } catch (\Throwable $th) {

@@ -276,20 +276,20 @@ class TiendaController extends Controller
 
         // $this->walletController->payAll();
 
+        $user = User::findOrFail($orden->iduser);
 
         $this->registeInversion($request->id);
         if($request->status == '1'){
             $this->registerDirectBonus($request->id);
+            if($user->status == '0'){
+                $user->status = '1';
+                $user->save();
+            }
         }
 
 
-        $user = User::findOrFail($orden->iduser);
-        $user->status = '1';
-        $user->save();
-
         // return redirect('/dashboard/reports/purchase')->with('msj-success', 'Orden actualizada exitosamente');
-        $user = User::find(Auth::user()->id);
-        $user->notify(new \App\Notifications\Order_approved);
+        // $user->notify(new \App\Notifications\Order_approved);
         return redirect('/dashboard/reports/purchase')->with('msj-success', 'Orden actualizada exitosamente');
     }
 

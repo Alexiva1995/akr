@@ -263,7 +263,7 @@ class WalletController extends Controller
                 //$wallet->update(['balance' => $saldoAcumulado]);
             } else {
                 if ($data['orden_purchases_id'] != null) {
-                    if ($data['iduser'] == 2) {
+                    if ($data['iduser'] == 2 || $data['iduser'] == 1) {
                         $wallet = Wallet::create($data);
                     } elseif ($data['iduser'] > 2) {
                         $check = Wallet::where([
@@ -277,6 +277,8 @@ class WalletController extends Controller
                 } else {
                     $wallet = Wallet::create($data);
                 }
+
+                // dd($wallet->getWalletUser->wallet);
                 $saldoAcumulado = ($wallet->getWalletUser->wallet + $data['monto']);
                 $wallet->getWalletUser->update(['wallet' => $saldoAcumulado]);
                 //$wallet->update(['balance' => $saldoAcumulado]);
