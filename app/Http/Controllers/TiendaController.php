@@ -316,7 +316,7 @@ class TiendaController extends Controller
 
         try{
             if($validate){
-                
+            
                 $usuario = [];
                 if(isset($request->user)){
                     $usuario = User::findOrFail($request->user);     
@@ -338,7 +338,10 @@ class TiendaController extends Controller
                         $orden->save();
 
                         $this->registeInversion($saveOrden);
-                        // $this->registerDirectBonus($saveOrden);
+
+                        if(isset($request->comision)){
+                            $this->registerDirectBonus($saveOrden);
+                        }
 
                         return redirect('/dashboard/user/user-list')->with('msj-success', 'Orden creada - Cliente verificado');
                     }

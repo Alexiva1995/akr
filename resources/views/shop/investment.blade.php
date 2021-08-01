@@ -11,21 +11,31 @@
                         <form action="{{route('realizar-inversion')}}" method="POST" target="_blank" class="d-inline">                        
                     @endif
 
-                @csrf
+                    @csrf
                         <div class="form-group">
                             <div class="range-wrap">
                                 <div class="range-container">
                                     <input type="range" class="w-100" name="range" id="range" min="70" max="10000" step="10" value="70"/>
                                     <label for="range">70$</label>
                                     @if(isset($user))
-                                        <input type="hidden" class="w-100" name="user" id="user" value="{{$user->id}}"/>
+                                        <input type="hidden" class="w-100" name="user" id="user" value="{{$user->id}}"/>  
+                                        <div class="custom-control custom-switch mt-1">
+                                            <input type="checkbox" class="custom-control-input" id="customSwitch1" name="comision" value="comision">
+                                            <label class="custom-control-label" for="customSwitch1"></label>
+                                            Generar Comisiones
+                                        </div>                                        
                                     @endif
                                 </div>
                                 <br>
 
                             </div>
-                            <button type="submit" class="btn btn-primary">Comprar Paquete</button>
-                            
+                            <div class="d-flex justify-content-center mb-2 mt-4">
+                                @if(isset($user))
+                                    <a href="{{route('users.list-user')}}" type="btn" class="btn btn-danger mr-2">Regresar</a>
+                                @endif
+                                <button type="submit" class="btn btn-primary float-right">Comprar Paquete</button>
+                            </div>
+                        </div>
                     </form>
                 </div>
             </div>
