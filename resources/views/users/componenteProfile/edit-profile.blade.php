@@ -106,6 +106,16 @@
                 </div>
             </div>
         </div>
+
+        <div class="col-12">
+            <div class="form-group">
+                <label for="account-api">Billetera</label>
+                <input type="text" id="account-api" class="form-control"
+                    placeholder="wallet_address" name="wallet_address"
+                    value="{{ $user->wallet_address }}">
+            </div>
+        </div>
+    </div>
      
         </div>
     </div>
