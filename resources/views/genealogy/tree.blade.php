@@ -1,7 +1,5 @@
 @extends('layouts.dashboard')
-
 @section('title', $type)
-
 @push('custom_css')
 {{-- <link rel="stylesheet" href="{{asset('assets/css/tree2.css')}}"> --}}
 <link rel="stylesheet" href="{{asset('assets/css/tree.css')}}">
@@ -11,10 +9,8 @@
     }
 </style>
 @endpush
-
 @section('content')
-
-
+<h1 class="text-black mt-3 mb-1 ml-4">Arbol Binario</h1>
 {{-- <body style="background: #141414;"> --}}
 <div class="container">
     <div class="row">
@@ -61,24 +57,20 @@
                     </div>
                 </div>
             </div>
-
             <div class="d-flex white mb-2" style="margin-left: 66px;margin-right: 63px;">
-                <a class="white btn-tree text-center" style="width: 175px;background: #1b1b1b;margin-left: 72px;"
+                <a class="white btn-tree text-center" style="width: 175px;background: #1B1B1B;margin-left: 72px;"
                     id="ver_arbol" href=> Ver Arbol</a>
             </div>
-
         </div>
     </div>
 </div>
-
-
 <div class="col-12">
     <div class="padre">
         <ul>
             <li class="baseli">
                 <a class="base" href="#">
                     @if (empty($base->photoDB))
-                    <img src="{{asset('assets/img/HDLRS--vertical-color.png')}}" alt="{{$base->name}}" title="{{$base->name}}"
+                    <img src="{{asset('assets/img/sistema/favicon.png')}}" alt="{{$base->name}}" title="{{$base->name}}"
                         class="pt-1 rounded-circle" style="width: 95%;height: 107%;margin-left: 0px;margin-top: -8px;">
                     @else
                     <img src="{{asset('storage/photo/'.$base->photoDB)}}" alt="{{$base->name}}" title="{{$base->name}}"
@@ -97,7 +89,7 @@
                         <ul>
                             @foreach ($child->children as $child2)
                             {{-- genera el lado binario derecho haciendo vacio --}}
-                            @include('genealogy.component.sideEmpty', ['side' => 'D', 'cant' => count($child->children),'ladouser' => $child->binary_side])
+                            @include('genealogy.component.sideEmpty', ['side' => 'D', 'cant' => count($child->children),'ladouser' => $child2->binary_side])
                             <li>
                                 @include('genealogy.component.subniveles', ['data' => $child2])
                                 @if (!empty($child2->children))
@@ -105,10 +97,10 @@
                                 <ul>
                                         @foreach ($child2->children as $child3)
                                         {{-- genera el lado binario derecho haciendo vacio --}}
-                                        @include('genealogy.component.sideEmpty', ['side' => 'D', 'cant' => count($child2->children),'ladouser' => $child2->binary_side])
+                                        @include('genealogy.component.sideEmpty', ['side' => 'D', 'cant' => count($child2->children),'ladouser' => $child3->binary_side])
                                         <li>
                                             @include('genealogy.component.subniveles', ['data' => $child3])
-                                            @if (!empty($child->children))
+                                            {{-- @if (!empty($child->children)) --}}
                                              {{-- nivel 4 
                                             <ul>
                                                 @foreach ($child->children as $child)
@@ -129,17 +121,17 @@
                                                 @endforeach
                                             </ul>
                                              fin nivel 4  --}}
-                                            @endif
+                                            {{-- @endif --}}
                                         </li>
                                         {{-- genera el lado binario izquierdo haciendo vacio --}}
-                                        @include('genealogy.component.sideEmpty', ['side' => 'I', 'cant' => count($child2->children),'ladouser' => $child2->binary_side])
+                                        @include('genealogy.component.sideEmpty', ['side' => 'I', 'cant' => count($child2->children),'ladouser' => $child3->binary_side])
                                         @endforeach 
                                     </ul>
                                 {{-- fin nivel 3 --}}
                                 @endif
                             </li>
                             {{-- genera el lado binario izquierdo haciendo vacio --}}
-                            @include('genealogy.component.sideEmpty', ['side' => 'I', 'cant' => count($child->children),'ladouser' => $child->binary_side])
+                            @include('genealogy.component.sideEmpty', ['side' => 'I', 'cant' => count($child->children),'ladouser' => $child2->binary_side])
                             @endforeach
                         </ul>
                         {{-- fin nivel 2 --}}
@@ -165,11 +157,10 @@
         //console.log('assets/img/sistema/favicon.png');
         $('#nombre').text(data.fullname);
         if (data.photoDB == null) {
-            $('#imagen').attr('src', "{{asset('assets/img/HDLRS--vertical-color.png')}}");
+            $('#imagen').attr('src', "{{asset('assets/img/sistema/favicon.png')}}");
         } else {
             $('#imagen').attr('src', '/storage/photo/' + data.photoDB);
         }
-
         $('#ver_arbol').attr('href', url);
         $('#inversion').text(data.inversion);
         if (data.status == 0) {
@@ -179,11 +170,8 @@
         } else if (data.status == 2) {
             $('#estado').html('<span class="badge badge-danger">Eliminado</span>');
         }
-
         $('#tarjeta').removeClass('d-none');
     }
-
 </script>
 {{-- </body> --}}
-
 @endsection
