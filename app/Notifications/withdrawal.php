@@ -42,9 +42,7 @@ class withdrawal extends Notification
     {
         return (new MailMessage)
         ->subject('retiro exitoso')
-        ->greeting('Retiro')
-        ->line('Hola. Su retiro se a Realizado  Correctamente')
-        ->line('¡Gracias por usar nuestra web!')
+        ->view('Mails.withdrawal')
         ->salutation('Akr');
     }
 

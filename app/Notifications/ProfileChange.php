@@ -42,9 +42,7 @@ class ProfileChange extends Notification
     {
         return (new MailMessage)
                     ->subject('Actualizacion de perfil')
-                    ->greeting('Actualización del perfil')
-                    ->line('Hola. Su perfil a sido actializado Correctamente')
-                    ->line('¡Gracias por usar nuestra web!')
+                   ->view('Mails.ProfileChange')
                     ->salutation('Akr');
     }
 
