@@ -5,7 +5,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title text-xl-center text-bold-600" id="exampleModalLabel">Retiro</h5>
-                <button type="button" class="close " data-dismiss="modal" aria-label="Close">
+                <button type="" class="close mr-1 " data-dismiss="modal" aria-label="Close" style="margin-top:2px;">
                     &times;
                 </button>
             </div>
@@ -16,11 +16,12 @@
 
                 <div class="modal-body ">
 
-                    <div class="row">
-                        <div class="col-12 mb-1">
+                    <div class="row text-center">
+                        <div class="col-12 mb-1 ">
                             <div class="row mb-0 justify-content-center" style="font-size: 1.5em;">
                                 <div class="col-2">
                                     <label for="" class="font-weight-bold  mr-6">Monto:</label>
+                                    
                                 </div>
                                 <div class="col-8">
                                     <input disabled class="col form-control w-50 d-inline" type="text" value="{{number_format    ($saldoDisponible)}}">
@@ -36,7 +37,7 @@
                                     <label for="" class="col font-weight-bold  mr-6">Fee:</label>
                                 </div>
                                 <div class="col-8">
-                                    <input disabled style="backoground: #5f5f5f5f;" class="col form-control w-50 d-inline" type="text" value="{{ number_format(floatval($saldoDisponible) * 0.1) }}">
+                                    <input disabled  class="col form-control w-50 d-inline" type="text" value="{{ number_format(floatval($saldoDisponible) * 0.1) }}">
                                     
                                 </div>
                             </div>
@@ -48,7 +49,7 @@
                                     <label for="" class="font-weight-bold"> recibir:</label>
                                 </div>
                                 <div class="col-8">
-                                    <input disabled style="backoground: #5f5f5f5f;" class="form-control w-50 d-inline" type="text" value="{{($saldoDisponible) - (floatval($saldoDisponible) * 0.1) }}">
+                                    <input disabled class="form-control w-50 d-inline" type="text" value="{{($saldoDisponible) - (floatval($saldoDisponible) * 0.1) }}">
                                 </div>
                             </div>
                         </div>

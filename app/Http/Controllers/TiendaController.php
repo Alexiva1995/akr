@@ -289,7 +289,7 @@ class TiendaController extends Controller
 
 
         // return redirect('/dashboard/reports/purchase')->with('msj-success', 'Orden actualizada exitosamente');
-        // $user->notify(new \App\Notifications\Order_approved);
+         $user->notify(new \App\Notifications\Order_approved);
         return redirect('/dashboard/reports/purchase')->with('msj-success', 'Orden actualizada exitosamente');
     }
 
