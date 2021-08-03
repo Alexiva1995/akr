@@ -386,23 +386,23 @@ class Menu
                 ],                
                  'submenus' => [
                      [
-                         'name' => 'Generar',
-                         'blank' => '', // si es para una pagina diferente del sistema solo coloquen _blank
-                         'ruta' => (''),
-                         'complementoruta' => ''
-                     ],
-                     [
-                         'name' => 'Pendientes',
-                         'blank' => '', // si es para una pagina diferente del sistema solo coloquen _blank
-                         'ruta' => ('.'),
-                         'complementoruta' => ''
-                     ],
-                     [
-                         'name' => 'Realizados',
-                         'blank' => '',  //si es para una pagina diferente del sistema solo coloquen _blank
-                         'ruta' => (''),
-                         'complementoruta' => ''
-                     ],
+                        'name' => 'Generacion',
+                        'blank' => '', // si es para una pagina diferente del sistema solo coloquen _blank
+                        'ruta' => route('settlement'),
+                        'complementoruta' => ''
+                    ],
+                    [
+                        'name' => 'Pendientes',
+                        'blank' => '', // si es para una pagina diferente del sistema solo coloquen _blank
+                        'ruta' => route('settlement.pending'),
+                        'complementoruta' => ''
+                    ],
+                    [
+                        'name' => 'Realizadas',
+                        'blank' => '', // si es para una pagina diferente del sistema solo coloquen _blank
+                        'ruta' => route('settlement.history.status', 'Pagadas'),
+                        'complementoruta' => ''
+                    ]
                  ],
             ],
         ];
