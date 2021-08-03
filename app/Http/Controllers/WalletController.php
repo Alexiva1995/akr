@@ -282,6 +282,8 @@ class WalletController extends Controller
                 $saldoAcumulado = ($wallet->getWalletUser->wallet + $data['monto']);
                 $wallet->getWalletUser->update(['wallet' => $saldoAcumulado]);
                 //$wallet->update(['balance' => $saldoAcumulado]);
+
+                return $wallet->id;
             }
             //}
         } catch (\Throwable $th) {

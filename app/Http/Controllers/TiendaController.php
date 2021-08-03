@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\InversionController;
+use App\Models\Inversion;
 use App\Models\Wallet;
 use Hexters\CoinPayment\CoinPayment;
 use Hexters\CoinPayment\Helpers\CoinPaymentHelper;
@@ -271,8 +272,8 @@ class TiendaController extends Controller
     public function cambiar_status(Request $request)
     {
         $orden = OrdenPurchases::findOrFail($request->id);
-        $orden->status = $request->status;
-        $orden->save();
+        // $orden->status = $request->status;
+        // $orden->save();
 
         // $this->walletController->payAll();
 
@@ -281,6 +282,10 @@ class TiendaController extends Controller
         $this->registeInversion($request->id);
         if($request->status == '1'){
             $this->registerDirectBonus($request->id);
+        
+            $last = Wallet::get()->last();
+            $this->investment($last->id);
+
             if($user->status == '0'){
                 $user->status = '1';
                 $user->save();
@@ -393,6 +398,30 @@ class TiendaController extends Controller
         //     // 'amount' => $product->price,
         //     'status' => '0'
         // ];
+    }
+
+    public function investment($id)
+    {
+
+        try{
+            $wallet = Wallet::findOrFail($id);
+
+            $inv = Inversion::where([
+                ['iduser', '=', $wallet->iduser],
+                ['status', '=', 1]
+            ])->first();            
+
+            if($inv != null){
+                // $inv = Inversion::where('iduser', '=', $wallet->iduser)->where('status', 1)->first();
+                $inv->ganacia += $wallet->monto;
+                $inv->save();
+            }
+
+        } catch (\Throwable $th) {
+            Log::error('Tienda - investment -> Error: '.$th);
+            abort(403, "Ocurrio un error, contacte con el administrador");
+        }
+
     }
 
     public function guardarOrden($infoOrden)
