@@ -84,7 +84,7 @@
             <table border="0" cellpadding="0" cellspacing="0" width="480" >
                 <tr>
                     <td bgcolor="#ffffff" align="center" valign="top" style="padding: 40px 20px 20px 20px; border-radius: 4px 4px 0px 0px; color: #111111; font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 48px; font-weight: 400; letter-spacing: 4px; line-height: 48px;">
-                      <h1 style="font-size: 32px; font-weight: 400; margin: 0;">Usted a retirada sus fondos con exito</h1>
+                      <h1 style="font-size: 32px; font-weight: 400; margin: 0;">Verifique su Email</h1>
                     </td>
                 </tr>
             </table>
@@ -97,7 +97,7 @@
               <!-- COPY -->
               <tr>
                 <td bgcolor="#ffffff" align="left" style="padding: 20px 30px 40px 30px; color: #666666; font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400; line-height: 25px;" >
-                  <p style="margin: 0;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti corrupti labore pariatur impedit doloribus quam cupiditate, laborum atque itaque. Cupiditate, nisi quaerat? Libero laudantium, nam magnam fuga optio error repudiandae. </p>
+                  <p style="margin: 0;">Resetting your password is easy. Just press the button below and follow the instructions. We'll have you up and running in no time. </p>
                 </td>
               </tr>
               <!-- BULLETPROOF BUTTON -->
@@ -107,7 +107,9 @@
                     <tr>
                       <td bgcolor="#ffffff" align="center" style="padding: 20px 30px 60px 30px;">
                         <table border="0" cellspacing="0" cellpadding="0">
-                          
+                          <tr>
+                              <td align="center" style="border-radius: 3px;" bgcolor="#000"><a href="{{ $actionUrl }}" target="_blank" style="font-size: 20px; font-family: Helvetica, Arial, sans-serif; color: #ffffff; text-decoration: none; color: #ffffff; text-decoration: none; padding: 15px 25px; border-radius: 2px; border: 1px solid #7c72dc; display: inline-block;">Reset Password</a></td>
+                          </tr>
                         </table>
                       </td>
                     </tr>
