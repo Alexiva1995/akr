@@ -5,12 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Cryptos extends Model
+class cryptos extends Model
 {
-    protected $table = 'Cryptos';
+    protected $table = 'cryptos';
 
-    
     protected $fillable = [
-        'id', 'iduser', '% de monedas',
+        'porcentaje_de_monedas'
     ];
+
 }

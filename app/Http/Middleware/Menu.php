@@ -388,7 +388,7 @@ class Menu
                      [
                         'name' => 'Generacion',
                         'blank' => '', // si es para una pagina diferente del sistema solo coloquen _blank
-                        'ruta' => route('settlement'),
+                        'ruta' => route('Generacion'),
                         'complementoruta' => ''
                     ],
                     [

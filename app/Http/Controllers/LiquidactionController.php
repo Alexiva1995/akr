@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\View;
 use App\Http\Controllers\WalletController;
 use Illuminate\Support\Facades\Auth;
+use App\Models\cryptos;
 
 class LiquidactionController extends Controller
 {
@@ -28,6 +29,31 @@ class LiquidactionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function Generacion(){
+        try {
+            View::share('titleg', 'Generar Liquidaciones');
+            $comisiones = $this->getTotalComisiones([], null);
+            return view('VTR.Generacion', compact('comisiones'));
+        } catch (\Throwable $th) {
+            Log::error('Liquidaction - index -> Error: ' . $th);
+            abort(403, "Ocurrio un error, contacte con el administrador");
+        }
+    }
+
+    public function cryptos(Request $request)
+    {
+        $validate = $request->validate([
+            'porcentaje_de_monedas' => ['required']
+        ]);
+        try {
+            if ($validate) {
+                cryptos::create($request->all());
+            }
+        } catch (\Throwable $th) {
+            dd($th);
+        }
+    }
+    
     public function index()
     {
         try {

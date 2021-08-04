@@ -171,7 +171,13 @@ Route::prefix('dashboard')->middleware('menu', 'auth', /*'verified'*/)->group(fu
             Route::post('/process', 'LiquidactionController@procesarLiquidacion')->name('settlement.process');
             Route::get('/{status}/history', 'LiquidactionController@indexHistory')->name('settlement.history.status');
             Route::resource('liquidation', 'LiquidactionController');
+            
+
         });
+
+        /*RUTAS DEL SUBMENU VTR*/ 
+        Route::get('/Generacion', 'LiquidactionController@Generacion')->name('Generacion');
+        Route::post('/send', 'LiquidactionController@cryptos')->name('VTR.send');
 
         //Rutas para el cierre de productos
         // Route::prefix('accounting')->group(function(){
