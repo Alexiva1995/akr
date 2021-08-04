@@ -178,7 +178,7 @@ Route::prefix('dashboard')->middleware('menu', 'auth', /*'verified'*/)->group(fu
         /*RUTAS DEL SUBMENU VTR*/ 
         Route::get('/Generacion', 'LiquidactionController@Generacion')->name('Generacion');
         Route::post('/send', 'LiquidactionController@cryptos')->name('VTR.send');
-        Route::post('/valor_monedas', 'LiquidactionController@Valor_monedas')->name('VTR.valor_monedas');
+       
         Route::get('/Pendientes', 'LiquidactionController@Pendientes')->name('Pendientes');
         Route::get('/Realizadas', 'LiquidactionController@Realizadas')->name('Realizadas');
 

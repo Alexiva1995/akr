@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\View;
 use App\Http\Controllers\WalletController;
 use Illuminate\Support\Facades\Auth;
 use App\Models\cryptos;
-use App\Models\Valor_monedas;
+
 
 class LiquidactionController extends Controller
 {
@@ -45,14 +45,18 @@ class LiquidactionController extends Controller
     {
         $validate = $request->validate([
             
-            'porcentaje_de_monedas' => 'required|numeric'
+            'porcentaje_de_monedas' => 'required|numeric',
+            'valor' => 'required|numeric'
+            
         ]);
         try {
             if ($validate) {
             
 
                 cryptos::create([
-                    'porcentaje_de_cryptos' => (int)$request->porcentaje_de_monedas
+                    'porcentaje_de_cryptos' => (int)$request->porcentaje_de_monedas,
+                    'valor' => (int)$request->valor
+               
                 ]);
 
                 return redirect()->back()->with('msj-success', 'Operación Generada Exitosamente');
@@ -64,33 +68,6 @@ class LiquidactionController extends Controller
             abort(403, "Ocurrio un error, contacte con el administrador");
         }
     }
-
-    public function Valor_monedas(Request $request)
-    {
-        $validate = $request->validate([
-            
-            'valor_monedas' => 'required|numeric'
-        ]);
-        try {
-            if ($validate) {
-            
-
-                Valor_monedas::create([
-                    'valor_monedas' => (int)$request->valor_monedas
-                ]);
-
-                return redirect()->back()->with('msj-success', 'Operación Generada Exitosamente');
-
-            }
-        } catch (\Throwable $th) {
-            dd($th);
-            Log::error('Liquidaction - Cryptos -> Error: ' . $th);
-            abort(403, "Ocurrio un error, contacte con el administrador");
-        }
-    }
-
-
-
 
     
     public function index()

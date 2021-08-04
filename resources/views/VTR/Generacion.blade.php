@@ -86,14 +86,12 @@
                 </button>
             </div>
 
-            <div class="form-group text-center">
-                <button class="btn btn-primary" data-toggle="modal" data-target="#valor">Valor de moneda</button>
-            </div>
+           
         </div>
     </div>
     @include('settlement.componentes.modalDetalles', ['all' => true])
     @include('VTR.component.modal%')
-    @include('VTR.component.modalValor')
+    
 </div>
 
 @endsection
