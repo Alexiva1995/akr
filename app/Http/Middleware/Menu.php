@@ -170,6 +170,9 @@ class Menu
     }
 
 
+
+
+
     public function menuAdmin()
     {
         return [
@@ -368,6 +371,41 @@ class Menu
                 'complementoruta' => '',
             ],
             // Fin Soporte
+
+
+              //7- VTR
+              'VTR' => [
+
+                'submenu' => 1,
+                'ruta' =>  (''),
+                'blank' => '', // si es para una pagina diferente del sistema solo coloquen _blank
+                'icon' => 'feather icon-dollar-sign',
+                'complementoruta' => '',                
+                'submenus' => [
+                   
+                ],                
+                 'submenus' => [
+                     [
+                        'name' => 'Generacion',
+                        'blank' => '', // si es para una pagina diferente del sistema solo coloquen _blank
+                        'ruta' => route('Generacion'),
+                        'complementoruta' => ''
+                    ],
+                    [
+                        'name' => 'Pendientes',
+                        'blank' => '', // si es para una pagina diferente del sistema solo coloquen _blank
+                        'ruta' => route('settlement.pending'),
+                        'complementoruta' => ''
+                    ],
+                    [
+                        'name' => 'Realizadas',
+                        'blank' => '', // si es para una pagina diferente del sistema solo coloquen _blank
+                        'ruta' => route('settlement.history.status', 'Pagadas'),
+                        'complementoruta' => ''
+                    ]
+                 ],
+            ],
         ];
+        
     }
 }
