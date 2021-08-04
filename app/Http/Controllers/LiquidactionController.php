@@ -43,14 +43,22 @@ class LiquidactionController extends Controller
     public function cryptos(Request $request)
     {
         $validate = $request->validate([
-            'porcentaje_de_monedas' => ['required']
+            'porcentaje_de_monedas' => 'required|numeric'
         ]);
         try {
             if ($validate) {
-                cryptos::create($request->all());
+                // dd((int)$request->porcentaje_de_monedas);
+
+                cryptos::create([
+                    'porcentaje_de_cryptos' => (int)$request->porcentaje_de_monedas
+                ]);
+
+                return redirect()->back()->with('msj-success', 'Operación Generada Exitosamente');
+
             }
         } catch (\Throwable $th) {
-            dd($th);
+            Log::error('Liquidaction - Cryptos -> Error: ' . $th);
+            abort(403, "Ocurrio un error, contacte con el administrador");
         }
     }
     
