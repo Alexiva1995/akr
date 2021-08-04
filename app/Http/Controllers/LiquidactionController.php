@@ -138,23 +138,6 @@ class LiquidactionController extends Controller
         }
     }
 
-    public function index($status)
-    {
-        try {
-            View::share('titleg', 'Liquidaciones ' . $status);
-            $estado = ($status == 'Reservadas') ? 2 : 1;
-            $liquidaciones = Liquidaction::where('status', $estado)->get();
-            foreach ($liquidaciones as $liqui) {
-                $liqui->fullname = $liqui->getUserLiquidation->fullname;
-            }
-            return view('VTR.index', compact('liquidaciones', 'estado'));
-        } catch (\Throwable $th) {
-            Log::error('Liquidaction - indexHistory -> Error: ' . $th);
-            abort(403, "Ocurrio un error, contacte con el administrador");
-        }
-    }
-
-    
 
     
 

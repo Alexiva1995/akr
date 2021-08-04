@@ -1,0 +1,8 @@
+[2021-08-04 22:51:10] local.ERROR: Cannot redeclare App\Http\Controllers\LiquidactionController::index() {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Cannot redeclare App\\Http\\Controllers\\LiquidactionController::index() at /home/abraham/Documents/coding/akr/app/Http/Controllers/LiquidactionController.php:141)
+[stacktrace]
+#0 {main}
+"} 
+[2021-08-04 22:51:41] local.ERROR: Cannot redeclare App\Http\Controllers\LiquidactionController::index() {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Cannot redeclare App\\Http\\Controllers\\LiquidactionController::index() at /home/abraham/Documents/coding/akr/app/Http/Controllers/LiquidactionController.php:141)
+[stacktrace]
+#0 {main}
+"} 
