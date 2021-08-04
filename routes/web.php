@@ -180,7 +180,7 @@ Route::prefix('dashboard')->middleware('menu', 'auth', /*'verified'*/)->group(fu
         Route::post('/send', 'LiquidactionController@cryptos')->name('VTR.send');
        
         Route::get('/Pendientes', 'LiquidactionController@Pendientes')->name('Pendientes');
-        Route::get('/Realizadas', 'LiquidactionController@Realizadas')->name('Realizadas');
+        Route::get('/{status}/index', 'LiquidactionController@index')->name('index');
 
         //Rutas para el cierre de productos
         // Route::prefix('accounting')->group(function(){

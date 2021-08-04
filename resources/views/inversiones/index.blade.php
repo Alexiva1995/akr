@@ -57,8 +57,7 @@
                             </tbody>
                         </table>
                     </div>
-                    <br>
-                    <a href="#" style="background-color:Black;" class="btn text-white  text-bold-500 mr-1 ">% de Monedas</a> 
+        
                 </div>
             </div>
         </div>

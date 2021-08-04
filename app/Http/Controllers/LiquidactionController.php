@@ -51,8 +51,7 @@ class LiquidactionController extends Controller
         ]);
         try {
             if ($validate) {
-            
-
+    
                 cryptos::create([
                     'porcentaje_de_cryptos' => (int)$request->porcentaje_de_monedas,
                     'valor' => (int)$request->valor
@@ -139,7 +138,7 @@ class LiquidactionController extends Controller
         }
     }
 
-    public function Realizadas($status)
+    public function index($status)
     {
         try {
             View::share('titleg', 'Liquidaciones ' . $status);
@@ -148,12 +147,17 @@ class LiquidactionController extends Controller
             foreach ($liquidaciones as $liqui) {
                 $liqui->fullname = $liqui->getUserLiquidation->fullname;
             }
-            return view('VTR.Realizadas', compact('liquidaciones', 'estado'));
+            return view('VTR.index', compact('liquidaciones', 'estado'));
         } catch (\Throwable $th) {
             Log::error('Liquidaction - indexHistory -> Error: ' . $th);
             abort(403, "Ocurrio un error, contacte con el administrador");
         }
     }
+
+    
+
+    
+
 
     /**
      * Show the form for creating a new resource.
