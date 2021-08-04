@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\View;
 use App\Http\Controllers\WalletController;
 use Illuminate\Support\Facades\Auth;
 use App\Models\cryptos;
+use App\Models\Valor_monedas;
 
 class LiquidactionController extends Controller
 {
@@ -43,16 +44,54 @@ class LiquidactionController extends Controller
     public function cryptos(Request $request)
     {
         $validate = $request->validate([
-            'porcentaje_de_monedas' => ['required']
+            
+            'porcentaje_de_monedas' => 'required|numeric'
         ]);
         try {
             if ($validate) {
-                cryptos::create($request->all());
+            
+
+                cryptos::create([
+                    'porcentaje_de_cryptos' => (int)$request->porcentaje_de_monedas
+                ]);
+
+                return redirect()->back()->with('msj-success', 'Operación Generada Exitosamente');
+
             }
         } catch (\Throwable $th) {
             dd($th);
+            Log::error('Liquidaction - Cryptos -> Error: ' . $th);
+            abort(403, "Ocurrio un error, contacte con el administrador");
         }
     }
+
+    public function Valor_monedas(Request $request)
+    {
+        $validate = $request->validate([
+            
+            'valor_monedas' => 'required|numeric'
+        ]);
+        try {
+            if ($validate) {
+            
+
+                Valor_monedas::create([
+                    'valor_monedas' => (int)$request->valor_monedas
+                ]);
+
+                return redirect()->back()->with('msj-success', 'Operación Generada Exitosamente');
+
+            }
+        } catch (\Throwable $th) {
+            dd($th);
+            Log::error('Liquidaction - Cryptos -> Error: ' . $th);
+            abort(403, "Ocurrio un error, contacte con el administrador");
+        }
+    }
+
+
+
+
     
     public function index()
     {
@@ -86,6 +125,21 @@ class LiquidactionController extends Controller
         }
     }
 
+    public function Pendientes()
+    {
+        try {
+            View::share('titleg', 'Liquidaciones Pendientes');
+            $liquidaciones = Liquidaction::where('status', 0)->get();
+            foreach ($liquidaciones as $liqui) {
+                $liqui->fullname = $liqui->getUserLiquidation->fullname;
+            }
+            return view('VTR.Pendientes', compact('liquidaciones'));
+        } catch (\Throwable $th) {
+            Log::error('Liquidaction - indexPendientes -> Error: ' . $th);
+            abort(403, "Ocurrio un error, contacte con el administrador");
+        }
+    }
+
     /**
      * LLeva a la vistas de las liquidaciones reservadas o aprobadas
      *
@@ -102,6 +156,22 @@ class LiquidactionController extends Controller
                 $liqui->fullname = $liqui->getUserLiquidation->fullname;
             }
             return view('settlement.history', compact('liquidaciones', 'estado'));
+        } catch (\Throwable $th) {
+            Log::error('Liquidaction - indexHistory -> Error: ' . $th);
+            abort(403, "Ocurrio un error, contacte con el administrador");
+        }
+    }
+
+    public function Realizadas($status)
+    {
+        try {
+            View::share('titleg', 'Liquidaciones ' . $status);
+            $estado = ($status == 'Reservadas') ? 2 : 1;
+            $liquidaciones = Liquidaction::where('status', $estado)->get();
+            foreach ($liquidaciones as $liqui) {
+                $liqui->fullname = $liqui->getUserLiquidation->fullname;
+            }
+            return view('VTR.Realizadas', compact('liquidaciones', 'estado'));
         } catch (\Throwable $th) {
             Log::error('Liquidaction - indexHistory -> Error: ' . $th);
             abort(403, "Ocurrio un error, contacte con el administrador");

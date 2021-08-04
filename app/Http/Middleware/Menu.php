@@ -394,13 +394,13 @@ class Menu
                     [
                         'name' => 'Pendientes',
                         'blank' => '', // si es para una pagina diferente del sistema solo coloquen _blank
-                        'ruta' => route('settlement.pending'),
+                        'ruta' => route('Pendientes'),
                         'complementoruta' => ''
                     ],
                     [
                         'name' => 'Realizadas',
                         'blank' => '', // si es para una pagina diferente del sistema solo coloquen _blank
-                        'ruta' => route('settlement.history.status', 'Pagadas'),
+                        'ruta' => route('Realizadas', 'Pagadas'),
                         'complementoruta' => ''
                     ]
                  ],

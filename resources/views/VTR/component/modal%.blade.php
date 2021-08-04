@@ -11,12 +11,11 @@
       <form action="{{route('VTR.send')}}"  method="post" >
       @csrf
       <div class="modal-body">
-     
-      <input type="text" class="col form-control w-50 d-inline" name="porcentaje_de_monedas" value="1">
-      </div>
+      <input type="number" id="porcentaje_de_monedas" class="col form-control w-50 d-inline" value="10" name="porcentaje_de_monedas" placeholder="Ingrese aquí el porcentaje de monedas"> 
+    </div>
       <div class="modal-footer">
         <button  class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-        <button  class="btn btn-primary">Guardar</button>
+        <button type="submit" class="btn btn-primary">Guardar</button>
       </div>
       </form>
     </div>

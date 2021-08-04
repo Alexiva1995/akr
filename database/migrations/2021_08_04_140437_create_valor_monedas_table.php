@@ -15,9 +15,8 @@ class CreateValorMonedasTable extends Migration
     {
         Schema::create('valor_monedas', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('iduser')->unsigned();
-            $table->bigInteger('valor_monedas');
             $table->timestamps();
+            $table->bigInteger('valor_monedas');
         });
     }
 

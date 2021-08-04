@@ -10,7 +10,7 @@ class cryptos extends Model
     protected $table = 'cryptos';
 
     protected $fillable = [
-        'porcentaje_de_monedas'
-    ];
+        'porcentaje_de_cryptos' 
+       ];
 
 }
