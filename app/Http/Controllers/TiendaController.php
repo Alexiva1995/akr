@@ -275,8 +275,6 @@ class TiendaController extends Controller
         $orden->status = $request->status;
         $orden->save();
 
-        $this->walletController->payAll();
-
         $user = User::findOrFail($orden->iduser);
 
         $this->registeInversion($request->id);
