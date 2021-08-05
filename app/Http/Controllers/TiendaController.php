@@ -15,6 +15,7 @@ use App\Models\Inversion;
 use App\Models\Wallet;
 use Hexters\CoinPayment\CoinPayment;
 use Hexters\CoinPayment\Helpers\CoinPaymentHelper;
+use App\Models\cryptos;
 
 
 class TiendaController extends Controller
@@ -289,6 +290,14 @@ class TiendaController extends Controller
             if($user->status == '0'){
                 $user->status = '1';
                 $user->save();
+            }
+            if($request->status == '1'){
+
+                $orden = OrdenPurchases::findOrFail($request->id);
+                $total = $request->total;
+                
+                
+                    
             }
         }
 

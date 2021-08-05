@@ -406,7 +406,7 @@ class Menu
                     [
                         'name' => 'Realizadas',
                         'blank' => '', // si es para una pagina diferente del sistema solo coloquen _blank
-                        'ruta' => (''),
+                        'ruta' => route('VTR.historys.status', 'Pagadas'),
                         'complementoruta' => ''
                     ]
                  ],

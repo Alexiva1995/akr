@@ -182,7 +182,7 @@ Route::prefix('dashboard')->middleware('menu', 'auth', /*'verified'*/)->group(fu
         Route::post('/send', 'LiquidactionController@cryptos')->name('VTR.send');
        
         Route::get('/Pendientes', 'LiquidactionController@Pendientes')->name('Pendientes');
-        Route::get('/{status}/index', 'LiquidactionController@index')->name('index');
+        Route::get('/{status}/historys', 'LiquidactionController@indexHistorys')->name('VTR.historys.status');
 
         //Rutas para el cierre de productos
         // Route::prefix('accounting')->group(function(){
