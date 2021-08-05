@@ -24,7 +24,7 @@
                                     
                                 </div>
                                 <div class="col-8">
-                                    <input disabled class="col form-control w-50 d-inline" type="text" value="{{number_format    ($saldoDisponible)}} $">
+                                    <input disabled class="col form-control w-50 d-inline" type="text" value="{{number_format($saldoDisponible,2)}} $">
 
                                 </div>
                             </div>
