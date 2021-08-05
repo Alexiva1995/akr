@@ -46,7 +46,7 @@
                             <tr class="text-center text-white bg-purple-alt2">
                                 <th>ID</th>
                                 <th>Tipo de Transaccion</th>
-                                {{-- <th>Correo del usuario al que pertenece</th> --}}
+                                <th>Correo del usuario al que pertenece</th>
                                 <th>Monto</th>                                
                             </tr>
                         </thead>
@@ -54,13 +54,13 @@
                         @foreach ($profit as $val => $item)
                             <tr class="text-center">
                                 <td>{{$item->id}}</td>
-                                @if ($item->type_transaction == '0')
+                                @if ($item->liquidado == '0')
                                 <td> <a class=" badge badge-info text-white">Comision</a></td>
                                 @else
                                 <td> <a class=" badge badge-success text-white">Retiro</a></td>
                                 @endif
-                                {{-- <td>{{$correos[$val]}}</td> --}}
-                                <td> {{$item->amount}} </td>
+                                <td>{{$item->getWalletUser->email}}</td>
+                                <td> {{$item->monto}} </td>
                             </tr>
                         @endforeach
                         </tbody>
