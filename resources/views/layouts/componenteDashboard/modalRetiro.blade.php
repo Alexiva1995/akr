@@ -20,11 +20,11 @@
                         <div class="col-12 mb-1 ">
                             <div class="row mb-0 justify-content-center" style="font-size: 1.5em;">
                                 <div class="col-2">
-                                    <label for="" class="font-weight-bold  mr-6">Monto:</label>
+                                    <label for="" class="font-weight-bold  mr-6">Monto: </label>
                                     
                                 </div>
                                 <div class="col-8">
-                                    <input disabled class="col form-control w-50 d-inline" type="text" value="{{number_format    ($saldoDisponible)}}">
+                                    <input disabled class="col form-control w-50 d-inline" type="text" value="{{number_format    ($saldoDisponible)}} $">
 
                                 </div>
                             </div>
@@ -37,7 +37,7 @@
                                     <label for="" class="col font-weight-bold  mr-6">Fee:</label>
                                 </div>
                                 <div class="col-8">
-                                    <input disabled  class="col form-control w-50 d-inline" type="text" value="{{ number_format(floatval($saldoDisponible) * 0.1) }}">
+                                    <input disabled  class="col form-control w-50 d-inline" type="text" value="{{ number_format(floatval($saldoDisponible) * 0.01,2) }} $">
                                     
                                 </div>
                             </div>
@@ -49,7 +49,7 @@
                                     <label for="" class="font-weight-bold"> recibir:</label>
                                 </div>
                                 <div class="col-8">
-                                    <input disabled class="form-control w-50 d-inline" type="text" value="{{($saldoDisponible) - (floatval($saldoDisponible) * 0.1) }}">
+                                    <input disabled class="form-control w-50 d-inline" type="text" value="{{($saldoDisponible) - number_format(floatval($saldoDisponible) * 0.01,2) }} $">
                                 </div>
                             </div>
                         </div>
