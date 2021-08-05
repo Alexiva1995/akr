@@ -240,6 +240,8 @@ class WalletController extends Controller
                 ])->whereDate('created_at', '>=', $fecha->subDay(5))->get();
             }
             return $saldos;
+
+            dd($saldos);
         } catch (\Throwable $th) {
             Log::error('Wallet - getOrdes -> Error: ' . $th);
             abort(403, "Ocurrio un error, contacte con el administrador");
@@ -392,7 +394,7 @@ class WalletController extends Controller
             ];
 
             if ($data['monto'] > 0) {
-                $wallet = Wallet::create($data);
+                $wallet = Wallet::create($data); 
                 $saldoAcumulado = ($wallet->getWalletUser->wallet - $data['monto']);
                 $wallet->getWalletUser->update(['wallet' => $saldoAcumulado]);
             }
@@ -445,7 +447,7 @@ class WalletController extends Controller
                 $side = $orden->getOrdenUser->binary_side;
                 foreach ($sponsors as $sponsor) {
                     if ($sponsor->id != $orden->iduser) {
-                       if ($sponsor->id != 1) {
+                        if ($sponsor->id != 1) {
 
                                 $check = WalletBinary::where([
                                     ['iduser', '=', $sponsor->id],
@@ -470,12 +472,12 @@ class WalletController extends Controller
                                         'puntos_i' => $puntosI,
                                         'side' => $side,
                                         'status' => 0,
-                                        'descripcion' => $concepto
+                                          'descripcion' => $concepto
                                     ];
                                     
                                     WalletBinary::create($dataWalletPoints);
                             }
-                       }                    
+                        }                    
                     }
                     $side = $sponsor->binary_side;
                 }
@@ -493,6 +495,13 @@ class WalletController extends Controller
      */
     public function bonoBinario()
     {
+
+        // $users = User::all();
+
+
+        // foreach($users as $user) {
+        //     dd($user->id);
+        // }        
         $binarios = WalletBinary::where([
             ['status', '=', 0],
             ['puntos_d', '>', 0],
@@ -586,7 +595,7 @@ class WalletController extends Controller
         $this->payPointsBinary();
         Log::info('Puntos Binarios Pagado');
         // if (env('APP_ENV' != 'local')) {
-            $this->bonoBinario();
+            // $this->bonoBinario();
         // }
     }
 
@@ -599,6 +608,5 @@ class WalletController extends Controller
                     ->with('profit', $profit)
                     ->with('comision', $comision)
                     ->with('retiro', $retiro);
-                    // ->with('correos', $correos);
     }
 }
