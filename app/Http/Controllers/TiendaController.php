@@ -307,7 +307,7 @@ class TiendaController extends Controller
                       Crypto_Value::create([
                           'iduser' => $orden->iduser,
                            'cantidad' => $resultDivision,
-                           'status' => 0,
+                           'status' => $user->status,
                           
                        ]);}
                       
