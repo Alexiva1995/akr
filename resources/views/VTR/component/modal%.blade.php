@@ -13,11 +13,11 @@
 
 
         <div class="input-group  mb-3">
-<input type="text" id="porcentaje_de_monedas" class="col form-control w-50 d-inline  " value="Porcentaje de la moneda" name="porcentaje_de_monedas" placeholder="Ingrese aquí el porcentaje de monedas">
+<input type="text" id="porcentaje_de_monedas" class="col form-control w-50 d-inline  " value="" name="porcentaje_de_monedas" placeholder="Ingrese aquí el porcentaje de monedas">
 </div>
 
 <div class="input-group mb-3">
-<input type="text" id="valor" class="col form-control w-50 d-inline" value="Valor de la moneda" name="valor" placeholder="Ingrese aquí el Valor de la moneda">
+<input type="text" id="valor" class="col form-control w-50 d-inline" value="" name="valor" placeholder="Ingrese aquí el Valor de la moneda">
 </div>
 
     <div class="modal-footer">
