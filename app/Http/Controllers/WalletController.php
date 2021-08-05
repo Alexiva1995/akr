@@ -589,4 +589,16 @@ class WalletController extends Controller
             $this->bonoBinario();
         // }
     }
+
+    public function flujoDeGanancia(){
+        $comision = Wallet::all()->where('liquidado', '0')->sum('monto');
+        $retiro = Wallet::all()->where('liquidado', '1')->sum('monto');
+        $profit = Wallet::all();
+
+        return view('profit.index')
+                    ->with('profit', $profit)
+                    ->with('comision', $comision)
+                    ->with('retiro', $retiro);
+                    // ->with('correos', $correos);
+    }
 }

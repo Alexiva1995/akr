@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\WalletController;
 use App\Models\User;
+use App\Models\Wallet;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -194,7 +196,9 @@ Route::prefix('dashboard')->middleware('menu', 'auth', /*'verified'*/)->group(fu
         Route::get('pagarUtilidad', 'WalletController@pagarUtilidad')->name('pagarUtilidad');
         Route::put('updatePorcentajeGanancia', 'InversionController@updatePorcentajeGanancia')->name('updatePorcentajeGanancia');
 
-        
+        Route::prefix('profit')->group(function(){
+            Route::get('index', 'WalletController@flujoDeGanancia')->name('flujo-de-ganancia');
+        });
     });
 
 });

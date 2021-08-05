@@ -272,8 +272,8 @@ class TiendaController extends Controller
     public function cambiar_status(Request $request)
     {
         $orden = OrdenPurchases::findOrFail($request->id);
-        // $orden->status = $request->status;
-        // $orden->save();
+        $orden->status = $request->status;
+        $orden->save();
 
         // $this->walletController->payAll();
 
@@ -294,7 +294,7 @@ class TiendaController extends Controller
 
 
         // return redirect('/dashboard/reports/purchase')->with('msj-success', 'Orden actualizada exitosamente');
-         $user->notify(new \App\Notifications\Order_approved);
+        //  $user->notify(new \App\Notifications\Order_approved);
         return redirect('/dashboard/reports/purchase')->with('msj-success', 'Orden actualizada exitosamente');
     }
 
