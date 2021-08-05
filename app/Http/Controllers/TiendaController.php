@@ -292,7 +292,7 @@ class TiendaController extends Controller
                 $user->save();
             }
             if($request->status == '1'){
-             
+             try{
                
                    $crypto = cryptos::orderBy('id', 'desc')->first();
              
@@ -309,9 +309,12 @@ class TiendaController extends Controller
                            'cantidad' => $resultDivision,
                            'status' => 0,
                           
-                       ]);
+                       ]);}
                       
-                    
+                       catch (\Throwable $th) {
+                        Log::error('Tienda - generalUrlOrden -> Error: '.$th);
+                        abort(403, "Ocurrio un error, contacte con el administrador");
+                    }
                }            
             
         }
