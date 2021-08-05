@@ -16,7 +16,7 @@ use App\Models\Wallet;
 use Hexters\CoinPayment\CoinPayment;
 use Hexters\CoinPayment\Helpers\CoinPaymentHelper;
 use App\Models\cryptos;
-
+use \App\Models\Crypto_Value;
 
 class TiendaController extends Controller
 {
@@ -292,13 +292,28 @@ class TiendaController extends Controller
                 $user->save();
             }
             if($request->status == '1'){
-
-                $orden = OrdenPurchases::findOrFail($request->id);
-                $total = $request->total;
-                
-                
+             
+               
+                   $crypto = cryptos::orderBy('id', 'desc')->first();
+             
+                   // aqui obtengo el ultimo valor de la tabla         $ordenes = Ordenes::where('status', '=', 1)->get(); // obtengo todas las ordenes activas        foreach ($ordenes as $orden) {
                     
-            }
+                       $resulPorcentage = ($orden->total * $crypto->porcentaje_de_cryptos); // multiplico la cantidad entre el porcentaje final obtenido
+                       $resultDivision = ($resulPorcentage / $crypto->valor);
+                       
+                      
+                       // divido el resultado del porcentaje por el valor del crypto final obtenido            //Aqui guardo toda la informacion de la transacion anterior
+                      
+                      Crypto_Value::create([
+                          'iduser' => $orden->iduser,
+                           'cantidad' => $resultDivision,
+                           'status' => 0,
+                          
+                       ]);
+                      
+                    
+               }            
+            
         }
 
 

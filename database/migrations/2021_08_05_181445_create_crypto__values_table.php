@@ -13,7 +13,7 @@ class CreateCryptoValuesTable extends Migration
      */
     public function up()
     {
-        Schema::create('crypto__values', function (Blueprint $table) {
+        Schema::create('Crypto_Value', function (Blueprint $table) {
             $table->bigIncrements('id')->unsigned();
             $table->bigInteger('iduser')->unsigned();
             $table->integer('cantidad');
@@ -30,6 +30,6 @@ class CreateCryptoValuesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('crypto__values');
+        Schema::dropIfExists('Crypto_Value');
     }
 }
