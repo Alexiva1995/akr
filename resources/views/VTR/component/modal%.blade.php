@@ -5,7 +5,17 @@
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">Porcentaje de la moneda</h5>
         <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close">&times;</button>
-
+       
+      </div>
+      <form action="{{route('VTR.send')}}"  method="post" >
+      @csrf
+      <div class="modal-body">
+     
+      <input type="number" id="porcentaje_de_monedas" class="col form-control w-50 d-inline" value="10" name="porcentaje_de_monedas" placeholder="Ingrese aquí el porcentaje de monedas">
+      </div>
+      <div class="modal-footer">
+        <button  class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        <button type="submit" class="btn btn-primary">Guardar</button>
       </div>
       <form action="{{route('VTR.send')}}" method="post">
         @csrf

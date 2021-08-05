@@ -282,6 +282,8 @@ class WalletController extends Controller
                 $saldoAcumulado = ($wallet->getWalletUser->wallet + $data['monto']);
                 $wallet->getWalletUser->update(['wallet' => $saldoAcumulado]);
                 //$wallet->update(['balance' => $saldoAcumulado]);
+
+                return $wallet->id;
             }
             //}
         } catch (\Throwable $th) {
@@ -586,5 +588,17 @@ class WalletController extends Controller
         // if (env('APP_ENV' != 'local')) {
             $this->bonoBinario();
         // }
+    }
+
+    public function flujoDeGanancia(){
+        $comision = Wallet::all()->where('liquidado', '0')->sum('monto');
+        $retiro = Wallet::all()->where('liquidado', '1')->sum('monto');
+        $profit = Wallet::all();
+
+        return view('profit.index')
+                    ->with('profit', $profit)
+                    ->with('comision', $comision)
+                    ->with('retiro', $retiro);
+                    // ->with('correos', $correos);
     }
 }

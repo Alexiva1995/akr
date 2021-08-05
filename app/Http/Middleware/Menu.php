@@ -245,33 +245,33 @@ class Menu
             ],
             
             // 4- Informes
-            'Informes' => [
-                'submenu' => 1,
-                'ruta' => 'javascript:;',
-                'blank' => '', // si es para una pagina diferente del sistema solo coloquen _blank
-                'icon' => 'feather icon-file-text',
-                'complementoruta' => '',
-                'submenus' => [
-                    [
-                        'name' => 'Ordenes',
-                        'blank' => '', // si es para una pagina diferente del sistema solo coloquen _blank
-                        'ruta' => route('reports.pedidos'),
-                        'complementoruta' => ''
-                    ],
-                    [
-                        'name' => 'Comisiones',
-                        'blank' => '', // si es para una pagina diferente del sistema solo coloquen _blank
-                        'ruta' => route('reports.comision'),
-                        'complementoruta' => ''
-                    ],
-                    [
-                        'name' => 'Billetera',
-                        'blank' => '', // si es para una pagina diferente del sistema solo coloquen _blank
-                        'ruta' => route('wallet.index'),
-                        'complementoruta' => ''
-                    ],
-                ],
-            ],
+            // 'Informes' => [
+            //     'submenu' => 1,
+            //     'ruta' => 'javascript:;',
+            //     'blank' => '', // si es para una pagina diferente del sistema solo coloquen _blank
+            //     'icon' => 'feather icon-file-text',
+            //     'complementoruta' => '',
+            //     'submenus' => [
+            //         [
+            //             'name' => 'Ordenes',
+            //             'blank' => '', // si es para una pagina diferente del sistema solo coloquen _blank
+            //             'ruta' => route('reports.pedidos'),
+            //             'complementoruta' => ''
+            //         ],
+            //         [
+            //             'name' => 'Comisionesssss',
+            //             'blank' => '', // si es para una pagina diferente del sistema solo coloquen _blank
+            //             'ruta' => route('reports.comision'),
+            //             'complementoruta' => ''
+            //         ],
+            //         [
+            //             'name' => 'Flujo de ganancia',
+            //             'blank' => '', // si es para una pagina diferente del sistema solo coloquen _blank
+            //             'ruta' => route('flujo-de-ganancia'),
+            //             'complementoruta' => ''
+            //         ],
+            //     ],
+            // ],
             // Fin Informes
 
             //5- Liquidaciones
@@ -354,6 +354,12 @@ class Menu
                         'name' => 'Comisiones',
                         'blank' => '', // si es para una pagina diferente del sistema solo coloquen _blank
                         'ruta' => route('reports.comision'),
+                        'complementoruta' => ''
+                    ],
+                    [
+                        'name' => 'Flujo de ganancia',
+                        'blank' => '', // si es para una pagina diferente del sistema solo coloquen _blank
+                        'ruta' => route('flujo-de-ganancia'),
                         'complementoruta' => ''
                     ],
                   

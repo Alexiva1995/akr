@@ -57,13 +57,12 @@ class InversionController extends Controller
         try {
             $check = Inversion::where([
                 ['iduser', '=', $iduser],
-                // ['package_id', '=', $paquete],
-                ['orden_id', '=', $orden],
+                ['status', '=', 1],
             ])->first();
             if ($check == null) {
+                // dd('No hay inversion');
                 $data = [
                     'iduser' => $iduser,
-                    // 'package_id' => $paquete,
                     'orden_id' => $orden,
                     'invertido' => $invertido-10,
                     'ganacia' => 0,
@@ -73,6 +72,11 @@ class InversionController extends Controller
                     // 'fecha_vencimiento' => $vencimiento,
                 ];
                 Inversion::create($data);
+            }else{
+                $check->invertido += $invertido-10;
+                $check->capital += $invertido-10;
+                $check->save();
+                // dd("Al parecer todo salio bien, revisa");
             }
         } catch (\Throwable $th) {
             Log::error('InversionController - saveInversion -> Error: '.$th);
