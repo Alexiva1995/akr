@@ -15,8 +15,10 @@ class CreateCryptosTable extends Migration
     {
         Schema::create('cryptos', function (Blueprint $table) {
             $table->id();
+            $table->bigInteger('iduser')->unsigned();;
             $table->timestamps();
             $table->bigInteger('porcentaje_de_cryptos');
+            $table->bigInteger('valor');
         });
     }
 

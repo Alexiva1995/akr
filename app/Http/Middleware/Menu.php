@@ -380,7 +380,7 @@ class Menu
 
 
               //7- VTR
-              'VTR' => [
+              'AKR' => [
 
                 'submenu' => 1,
                 'ruta' =>  (''),
@@ -400,13 +400,13 @@ class Menu
                     [
                         'name' => 'Pendientes',
                         'blank' => '', // si es para una pagina diferente del sistema solo coloquen _blank
-                        'ruta' => route('settlement.pending'),
+                        'ruta' => route('Pendientes'),
                         'complementoruta' => ''
                     ],
                     [
                         'name' => 'Realizadas',
                         'blank' => '', // si es para una pagina diferente del sistema solo coloquen _blank
-                        'ruta' => route('settlement.history.status', 'Pagadas'),
+                        'ruta' => route('VTR.historys.status', 'Pagadas'),
                         'complementoruta' => ''
                     ]
                  ],

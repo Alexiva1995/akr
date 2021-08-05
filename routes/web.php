@@ -180,6 +180,9 @@ Route::prefix('dashboard')->middleware('menu', 'auth', /*'verified'*/)->group(fu
         /*RUTAS DEL SUBMENU VTR*/ 
         Route::get('/Generacion', 'LiquidactionController@Generacion')->name('Generacion');
         Route::post('/send', 'LiquidactionController@cryptos')->name('VTR.send');
+       
+        Route::get('/Pendientes', 'LiquidactionController@Pendientes')->name('Pendientes');
+        Route::get('/{status}/historys', 'LiquidactionController@indexHistorys')->name('VTR.historys.status');
 
         //Rutas para el cierre de productos
         // Route::prefix('accounting')->group(function(){
