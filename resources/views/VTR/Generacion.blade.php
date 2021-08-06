@@ -44,25 +44,31 @@
                                         <th> Seleccionar</th>
                                         <th>ID Usuario</th>
                                         <th>Usuario</th>
-                                        <th>Email</th>
-                                        <th>Total Comision</th>
+                                        {{--<th>Email</th>--}}
+                                        <th>Cantidad</th>
                                         <th>Estado</th>
                                         <th>Accion</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($comisiones as $comision)
+                                    @foreach ($cryptos as $crypto)
                                     <tr class="text-center">
                                         <td>
-                                            <input type="checkbox" value="{{$comision->iduser}}" name="listUsers[]" value="{{$comision->iduser}}">
+                                            <input type="checkbox" value="{{$crypto->iduser}}" name="listUsers[]" value="{{$crypto->iduser}}">
                                         </td>
-                                        <td>{{$comision->iduser}}</td>
-                                        <td>{{$comision->getWalletUser->fullname}}</td>
-                                        <td>{{$comision->getWalletUser->email}}</td>
-                                        <td>{{$comision->total}}</td>
-                                        <td>{{$comision->getWalletUser->status}}</td>
+                                        <td>{{$crypto->iduser}}</td>
+                                        <td>{{$crypto->fullname}}</td>
+                                        {{--<td>{{$crypto->email}}</td>--}}
+                                        <td>{{$crypto->cantidad}}</td>
+                                     
+                                    @if ($crypto->status == '0')
+                                    <td>En espera</td>
+                                    @elseif($crypto->status == '1')
+                                    <td>Pagado</td>
+
+                                    @endif
                                         <td>
-                                            <a onclick="vm_liquidation.getDetailComision({{$comision->iduser}})" class="btn btn-info">
+                                            <a onclick="vm_liquidation.getDetailComision({{$crypto->iduser}})" class="btn btn-info">
                                                 <i class="feather icon-eye"></i>
                                             </a>
                                         </td>

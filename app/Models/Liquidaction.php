@@ -24,6 +24,7 @@ class Liquidaction extends Model
         return $this->belongsTo('App\Models\User', 'iduser', 'id');
     }
 
+
     /**
      * Permite obtener la informacion de obtener los comentarios sobre la liquidacion
      *
