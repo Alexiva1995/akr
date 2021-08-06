@@ -44,7 +44,7 @@
                                         <th> Seleccionar</th>
                                         <th>ID Usuario</th>
                                         <th>Usuario</th>
-                                        {{--<th>Email</th>--}}
+                                        <th>Email</th>
                                         <th>Cantidad</th>
                                         <th>Estado</th>
                                         <th>Accion</th>
@@ -57,8 +57,8 @@
                                             <input type="checkbox" value="{{$crypto->iduser}}" name="listUsers[]" value="{{$crypto->iduser}}">
                                         </td>
                                         <td>{{$crypto->iduser}}</td>
-                                        <td>{{$crypto->fullname}}</td>
-                                        {{--<td>{{$crypto->email}}</td>--}}
+                                        <td>{{$crypto->user->fullname}}</td>
+                                        <td>{{$crypto->user->email}}</td>
                                         <td>{{$crypto->cantidad}}</td>
                                      
                                     @if ($crypto->status == '0')
