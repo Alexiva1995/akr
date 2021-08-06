@@ -284,6 +284,8 @@ class TiendaController extends Controller
         
             $last = Wallet::get()->last();
             $this->investment($last->id);
+            
+            $this->walletController->payPointsBinary();
 
             if($user->status == '0'){
                 $user->status = '1';
@@ -371,6 +373,10 @@ class TiendaController extends Controller
 
                         if(isset($request->comision)){
                             $this->registerDirectBonus($saveOrden);
+                            $last = Wallet::get()->last();
+                            $this->investment($last->id);
+                            
+                            $this->walletController->payPointsBinary();
                         }
 
                         return redirect('/dashboard/user/user-list')->with('msj-success', 'Orden creada - Cliente verificado');
