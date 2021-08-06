@@ -230,9 +230,10 @@ class WalletController extends Controller
         try {
             $fecha = Carbon::now();
             if ($iduser == null) {
-                $saldos = OrdenPurchases::where([
-                    ['status', '=', 1]
-                ])->whereDate('created_at', '>=', $fecha->subDay(5))->get();
+                // $saldos = OrdenPurchases::where([
+                //     ['status', '=', 1]
+                // ])->whereDate('created_at', '>=', $fecha->subDay(5))->get();
+                $saldos = OrdenPurchases::get()->where('status', 1);
             } else {
                 $saldos = OrdenPurchases::where([
                     ['iduser', '=', $iduser],
@@ -392,7 +393,7 @@ class WalletController extends Controller
             ];
 
             if ($data['monto'] > 0) {
-                $wallet = Wallet::create($data);
+                $wallet = Wallet::create($data); 
                 $saldoAcumulado = ($wallet->getWalletUser->wallet - $data['monto']);
                 $wallet->getWalletUser->update(['wallet' => $saldoAcumulado]);
             }
@@ -445,7 +446,7 @@ class WalletController extends Controller
                 $side = $orden->getOrdenUser->binary_side;
                 foreach ($sponsors as $sponsor) {
                     if ($sponsor->id != $orden->iduser) {
-                       if ($sponsor->id != 1) {
+                        if ($sponsor->id != 1) {
 
                                 $check = WalletBinary::where([
                                     ['iduser', '=', $sponsor->id],
@@ -470,12 +471,12 @@ class WalletController extends Controller
                                         'puntos_i' => $puntosI,
                                         'side' => $side,
                                         'status' => 0,
-                                        'descripcion' => $concepto
+                                          'descripcion' => $concepto
                                     ];
                                     
                                     WalletBinary::create($dataWalletPoints);
                             }
-                       }                    
+                        }                    
                     }
                     $side = $sponsor->binary_side;
                 }
@@ -492,7 +493,7 @@ class WalletController extends Controller
      * @return void
      */
     public function bonoBinario()
-    {
+    {      
         $binarios = WalletBinary::where([
             ['status', '=', 0],
             ['puntos_d', '>', 0],
@@ -501,6 +502,7 @@ class WalletController extends Controller
             ['puntos_i', '>', 0],
         ])->selectRaw('iduser, SUM(puntos_d) as totald, SUM(puntos_i) as totali')->groupBy('iduser')->get();
 
+        // dd($binarios);
 
         foreach ($binarios as $binario) {
         // dd('Puntos por la izquierda: '.$binario->totali.'   ||   Puntos por la derecha: '.$binario->totald);
@@ -511,17 +513,20 @@ class WalletController extends Controller
                 $puntos = $binario->totali;
                 $side_mayor = 'D';
                 $side_menor = 'I';
+                $restante = $binario->totald - $binario->totali;
             }else{
                 $puntos = $binario->totald;
                 $side_mayor = 'I';
                 $side_menor = 'D';
+                $restante = $binario->totali - $binario->totald;
+
             }
             // dd($puntos);
             if ($puntos > 0) {
                 if($puntos >= 70 && $puntos <= 509 ){
                     $por = '5%';
                     $porcentaje = 0.05;
-                }else if($puntos >= 510 && $puntos <= 1009){
+                }else if($puntos >= 510 && $puntos <= 1009){ 
                     $por = '8%';
                     $porcentaje = 0.08;
                 }else if($puntos >= 1010){
@@ -529,16 +534,49 @@ class WalletController extends Controller
                     $porcentaje = 0.10;
                 }
                 $comision = ($puntos * $porcentaje);
-                dd('Porcentaje: '.$por.' monto: '.$comision);
+                // dd('Porcentaje: '.$por.' monto: '.$comision);
 
                 $sponsor = User::find($binario->iduser);
-                // $sponsor->point_rank += $puntos;
                 $concepto = 'Bono Binario - '.$puntos;
                 // $idcomision = $binario->iduser.Carbon::now()->format('Ymd');
                 $this->setPointBinaryPaid($puntos, $side_menor, $binario->iduser, $side_mayor);
                 $this->preSaveWallet($sponsor->id, $sponsor->id, null, $comision, $concepto);
-                $sponsor->save();
+
+                $this->restante($sponsor->id, $restante, $side_mayor, $comision);
+                // $sponsor->save();
             }
+        }
+    }
+
+    public function restante(int $iduser, $restante, string $ladomayor, float $monto){
+
+        if($ladomayor == 'I'){
+            $puntosD = 0.00;
+            $puntosI = $restante;
+        }else{
+            $puntosI = 0.00;
+            $puntosD = $restante;
+        }
+        $fecha = Carbon::now()->subDay(1);
+        WalletBinary::create([
+            'iduser' => $iduser,
+            'referred_id' => $iduser,
+            'puntos_d' => $puntosD,
+            'puntos_i' => $puntosI,
+            'side' => $ladomayor,
+            'status' => 0,
+            'descripcion' => 'Puntos restantes del dia '.$fecha        
+        ]);
+
+        $inv = Inversion::where([
+            ['iduser', '=', $iduser],
+            ['status', '=', 1]
+        ])->first();            
+
+        if($inv != null){
+            // $inv = Inversion::where('iduser', '=', $wallet->iduser)->where('status', 1)->first();
+            $inv->ganacia += $monto;
+            $inv->save();
         }
     }
 
@@ -553,30 +591,32 @@ class WalletController extends Controller
      */
     private function setPointBinaryPaid(float $pagar, string $ladomenor, int $iduser, string $ladomayor)
     {
-        $lisComision = [];
-        $binarios = WalletBinary::where([
-            ['side', '=', $ladomayor],
-            ['iduser', '=', $iduser],
-            ['status', '=', 0]
-        ])->get();
-        $field_side = ($ladomayor == 'D') ? 'puntos_d' : 'puntos_i';
-        $sum = 0;
-        foreach ($binarios as $binario) {
-            $sum += $binario->$field_side;
-            if ($sum <= $pagar) {
-                $lisComision[] = $binario->id;
-            }elseif($sum > $pagar){
-                $sum -= $binario->$field_side;  
-            }
-        }
+        WalletBinary::where('iduser',$iduser)->update(['status' => '1']);
+        
+        // $lisComision = [];
+        // $binarios = WalletBinary::where([
+        //     ['side', '=', $ladomayor],
+        //     ['iduser', '=', $iduser],
+        //     ['status', '=', 0]
+        // ])->get();
+        // $field_side = ($ladomayor == 'D') ? 'puntos_d' : 'puntos_i';
+        // $sum = 0;
+        // foreach ($binarios as $binario) {
+        //     $sum += $binario->$field_side;
+        //     if ($sum <= $pagar) {
+        //         $lisComision[] = $binario->id;
+        //     }elseif($sum > $pagar){
+        //         $sum -= $binario->$field_side;  
+        //     }
+        // }
 
-        WalletBinary::where([
-            ['side', '=', $ladomenor],
-            ['iduser', '=', $iduser],
-            ['status', '=', 0]
-        ])->update(['status' => '1']);
+        // WalletBinary::where([
+        //     ['side', '=', $ladomenor],
+        //     ['iduser', '=', $iduser],
+        //     ['status', '=', 0]
+        // ])->update(['status' => '1']);
 
-        WalletBinary::whereIn('id', $lisComision)->update(['status' => '1']);
+        // WalletBinary::whereIn('id', $lisComision)->update(['status' => '1']);
     }
 
     public function payAll()
@@ -586,7 +626,7 @@ class WalletController extends Controller
         $this->payPointsBinary();
         Log::info('Puntos Binarios Pagado');
         // if (env('APP_ENV' != 'local')) {
-            $this->bonoBinario();
+        $this->bonoBinario();
         // }
     }
 
@@ -599,6 +639,5 @@ class WalletController extends Controller
                     ->with('profit', $profit)
                     ->with('comision', $comision)
                     ->with('retiro', $retiro);
-                    // ->with('correos', $correos);
     }
 }

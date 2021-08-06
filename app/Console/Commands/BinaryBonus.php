@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\Http\Controllers\WalletController;
 use Illuminate\Console\Command;
 
 class BinaryBonus extends Command
@@ -37,6 +38,7 @@ class BinaryBonus extends Command
      */
     public function handle()
     {
-        return 0;
+        $walletControler = new WalletController();
+        $walletControler->payPointsBinary();
     }
 }

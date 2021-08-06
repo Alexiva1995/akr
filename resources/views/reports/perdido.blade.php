@@ -14,6 +14,7 @@
                                     <th>ID</th>
                                     <th>Usuario</th>
                                     <th>Monto</th>
+                                    <th>Fee</th>
                                     <th>Estado</th>
                                     <th>Fecha</th>
                                 </tr>
@@ -26,6 +27,7 @@
                                     <td>{{$orden->id}}</td>
                                     <td>{{$orden->name}}</td>
                                     <td>{{$orden->total}}</td>
+                                    <td>{{$orden->fee}}</td>
 
                                     @if(Auth::user()->admin == '1')
                                         @if ($orden->status == '0')

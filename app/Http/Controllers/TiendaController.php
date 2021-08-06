@@ -276,8 +276,6 @@ class TiendaController extends Controller
         $orden->status = $request->status;
         $orden->save();
 
-        // $this->walletController->payAll();
-
         $user = User::findOrFail($orden->iduser);
 
         $this->registeInversion($request->id);
@@ -383,14 +381,13 @@ class TiendaController extends Controller
                          'iduser' => Auth::user()->id,
                         //  'status' => 0,
                          'cantidad' => 1,
-                         'total' => $request->range+10,
+                         'total' => $request->range,
                      ];
                     
                     $transacion = [
                         'amountTotal' => (INT)$request->range +10,
                         'note' => 'Inversión realizada por un precio de $'.(INT)$request->range,
                         'order_id' => $this->guardarOrden($infoOrden),
-                        // 'order_id' => 2,
                         'tipo' => 'Compra de un paquete',
                         'tipo_transacion' => 3,
                         'buyer_name' =>  Auth::user()->fullname,

@@ -57,7 +57,7 @@ class UserTableSeeder extends Seeder
                 'password' => Hash::make('12password'),
                 'whatsapp' => '23423423423432',
                 'country_id' => '237',
-                'status' => '0',
+                'status' => '1',
                 'email_verified_at' => Carbon::now(),
                 'referred_id' => 2,
                 'binary_id' => 2,
@@ -73,29 +73,29 @@ class UserTableSeeder extends Seeder
                 'password' => Hash::make('12345678'),
                 'whatsapp' => '23423423423432',
                 'country_id' => '237',
-                'status' => '0',
+                'status' => '1',
                 'email_verified_at' => Carbon::now(),
                 'referred_id' => 2,
-                'binary_id' => 3,
-                'binary_side' => 'I',
+                'binary_id' => 2,
+                'binary_side' => 'D',
 
             ]);
-            // User::create([
-            //     // ID => 5
-            //     'name' => 'Alexis',
-            //     'last_name' => 'Valera',
-            //     'fullname' => 'Alexis Valera',
-            //     'email' => 'alexisvalera@valdusoft.com',
-            //     'admin' => '0',
-            //     'password' => Hash::make('12345678'),
-            //     'whatsapp' => '23423423423432',
-            //     'referred_id' => '2',
-            //     'country_id' => '237',
-            //     'status' => '0',
-            //     'email_verified_at' => Carbon::now(),
-            //     'binary_side' => 'D',
-            //     'binary_id' => '2',
-            // ]);
+            User::create([
+                // ID => 5
+                'name' => 'Alexis',
+                'last_name' => 'Valera',
+                'fullname' => 'Alexis Valera',
+                'email' => 'alexisvalera@valdusoft.com',
+                'admin' => '0',
+                'password' => Hash::make('12345678'),
+                'whatsapp' => '23423423423432',
+                'country_id' => '237',
+                'status' => '1',
+                'email_verified_at' => Carbon::now(),
+                'referred_id' => '2',
+                'binary_id' => '3',
+                'binary_side' => 'D',
+            ]);
 
 
         } catch (\Throwable $th) {
