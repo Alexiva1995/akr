@@ -631,8 +631,8 @@ class WalletController extends Controller
     }
 
     public function flujoDeGanancia(){
-        $comision = Wallet::all()->where('liquidado', '0')->sum('monto');
-        $retiro = Wallet::all()->where('liquidado', '1')->sum('monto');
+        $comision = Wallet::all()->where('tipo_transaction', '0')->sum('monto');
+        $retiro = Wallet::all()->where('tipo_transaction', '1')->sum('monto');
         $profit = Wallet::all();
 
         return view('profit.index')

@@ -418,7 +418,7 @@ class LiquidactionController extends Controller
                 'tipo_transaction' => 1,
             ];
 
-            //$this->walletController->saveWallet($arrayWallet);
+            $this->walletController->saveWallet($arrayWallet);
 
             if (!empty($idLiquidation)) {
                 $listComi = $comisiones->pluck('id');
