@@ -16,6 +16,17 @@
         white-space: nowrap;
     }
 
+    .colu{
+        width: 18%;
+    }
+
+    @media only screen and (max-width: 768px){
+        .colu{
+        width: 100%;
+    }
+    }
+
+
 </style>
 @endpush
 
@@ -24,33 +35,39 @@
 <div id="record">
     <div class="card col-12">
 
-        <div class="row match-height mx-1">
+        <div class="row match-height d-flex justify-content-around  mx-2">
             
-            <div class="col-md-3 col-12 mt-2">
+            <div class="colu mt-2">
                 <div class="card btn-warning text-center">
                     <p class="card-title my-2">Ganancia Total</p>
                     <span class="font-large-1 font-weight-bolder">{{number_format($ingreso - $comision-$retiro,2,".",",")}}</span>
                 </div>
             </div>
             
-            <div class="col-md-3 col-12 mt-2">
+            <div class="colu mt-2">
                 <div class="card btn-primary text-center">
                     <p class="card-title my-2">Ingreso</p>
                     <span class="font-large-1 font-weight-bold">{{number_format($ingreso, 2, ".",",")}}</span>
                 </div>
             </div>
 
-            <div class="col-md-3 col-12 mt-2">
+            <div class="colu mt-2">
                 <div class="card btn-primary text-center">
                     <p class="card-title my-2">Comisión</p>
                     <span class="font-large-1 font-weight-bold">{{number_format($comision, 2, ".",",")}}</span>
                 </div>
             </div>
 
-            <div class="col-md-3 col-12 mt-2">
+            <div class="colu mt-2">
                 <div class="card btn-primary text-center">
                     <p class="card-title my-2">Retiro</p>
                     <span class="font-large-1 font-weight-bold">{{number_format($retiro,2,".",",")}}</span>
+                </div>
+            </div>
+            <div class="colu mt-2">
+                <div class="card btn-primary text-center">
+                    <p class="card-title my-2">Fee</p>
+                    <span class="font-large-1 font-weight-bold">{{number_format($fee,2,".",",")}}</span>
                 </div>
             </div>
         </div>
