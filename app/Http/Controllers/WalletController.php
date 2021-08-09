@@ -522,29 +522,37 @@ class WalletController extends Controller
 
             }
             // dd($puntos);
-            if ($puntos > 0) {
-                if($puntos >= 70 && $puntos <= 509 ){
-                    $por = '5%';
-                    $porcentaje = 0.05;
-                }else if($puntos >= 510 && $puntos <= 1009){ 
-                    $por = '8%';
-                    $porcentaje = 0.08;
-                }else if($puntos >= 1010){
-                    $por = '10%';
-                    $porcentaje = 0.10;
+            $sponsor = User::find($binario->iduser);
+            $inv = Inversion::where([
+                ['iduser', '=', $binario->iduser],
+                ['status', '=', 1]
+            ])->first();            
+
+            if($inv != null){                
+                if ($puntos > 0) {
+                    if($inv->invertido >= 70 && $inv->invertido <= 509 ){
+                        $por = '5%';
+                        $porcentaje = 0.05;
+                    }else if($inv->invertido >= 510 && $inv->invertido <= 1009){ 
+                        $por = '8%';
+                        $porcentaje = 0.08;
+                    }else if($inv->invertido >= 1010){
+                        $por = '10%';
+                        $porcentaje = 0.10;
+                    }
+                    $comision = ($puntos * $porcentaje);
+                    // dd('Porcentaje: '.$por.' monto: '.$comision);
+    
+                    $concepto = 'Bono Binario - '.$puntos;
+                    // $idcomision = $binario->iduser.Carbon::now()->format('Ymd');
+                    $this->setPointBinaryPaid($puntos, $side_menor, $binario->iduser, $side_mayor);
+                    $this->preSaveWallet($sponsor->id, $sponsor->id, null, $comision, $concepto);
+    
+                    $this->restante($sponsor->id, $restante, $side_mayor, $comision);
+                    // $sponsor->save();
                 }
-                $comision = ($puntos * $porcentaje);
-                // dd('Porcentaje: '.$por.' monto: '.$comision);
-
-                $sponsor = User::find($binario->iduser);
-                $concepto = 'Bono Binario - '.$puntos;
-                // $idcomision = $binario->iduser.Carbon::now()->format('Ymd');
-                $this->setPointBinaryPaid($puntos, $side_menor, $binario->iduser, $side_mayor);
-                $this->preSaveWallet($sponsor->id, $sponsor->id, null, $comision, $concepto);
-
-                $this->restante($sponsor->id, $restante, $side_mayor, $comision);
-                // $sponsor->save();
             }
+
         }
     }
 
