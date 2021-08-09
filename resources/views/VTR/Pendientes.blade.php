@@ -30,35 +30,35 @@
                             <thead class="">
                                 <tr class="text-center text-white bg-purple-alt2">
                                     <th>ID</th>
-                                    <th>Name</th>
-                                    <th>Total </th>
-                                    <th>Monto Bruto</th>
-                                    <th>Feed</th>
-                                    <th>Billetera</th>
+                                    <th>Nombre</th>
+                                    <th>Cantidad </th>
+                                    {{--<th>Monto Bruto</th>--}}
+                                    {{--<th>Feed</th>--}}
+                                    {{--<th>Billetera</th>--}}
                                     <th>Status</th>
                                     <th>Fecha</th>
                                     <th>Accion</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($liquidaciones as $liqui)
+                                @foreach ($cryptos as $crypto)
                                 <tr class="text-center">
-                                    <td>{{$liqui->id}}</td>
-                                    <td>{{$liqui->fullname}}</td>
-                                    <td>{{$liqui->total}}</td>
-                                    <td>{{$liqui->monto_bruto}}</td>
-                                    <td>{{$liqui->feed}}</td>
-                                    <td>{{$liqui->wallet_used}}</td>
-                                    <td>{{$liqui->status}}</td>
-                                    <td>{{date('Y-M-d', strtotime($liqui->created_at))}}</td>
+                                    <td>{{$crypto->id}}</td>
+                                    <td></td>
+                                    <td>{{$crypto->cantidad}}</td>
+                                    {{--<td>{{$liqui->monto_bruto}}</td>--}}
+                                    {{--<td>{{$liqui->feed}}</td>--}}
+                                    {{--<td>{{$liqui->wallet_used}}</td>--}}
+                                    <td>{{$crypto->status}}</td>
+                                    <td>{{date('Y-M-d', strtotime($crypto->created_at))}}</td>
                                     <td>
-                                        <button class="btn btn-info" onclick="vm_liquidation.getDetailComisionLiquidation({{$liqui->id}})">
+                                        <button class="btn btn-info" onclick="vm_liquidation.getDetailComisionLiquidation({{$crypto->id}})">
                                             <i class="fa fa-eye"></i>
                                         </button>
-                                        <button class="btn btn-success" onclick="vm_liquidation.getDetailComisionLiquidationStatus({{$liqui->id}}, 'aproved')">
+                                        <button class="btn btn-success" onclick="vm_liquidation.getDetailComisionLiquidationStatus({{$crypto->id}}, 'aproved')">
                                             <i class="fa fa-check"></i>
                                         </button>
-                                        <button class="btn btn-danger" onclick="vm_liquidation.getDetailComisionLiquidationStatus({{$liqui->id}}, 'reverse')">
+                                        <button class="btn btn-danger" onclick="vm_liquidation.getDetailComisionLiquidationStatus({{$crypto->id}}, 'reverse')">
                                             <i class="fa fa-reply"></i>
                                         </button>
                                     </td>

@@ -383,7 +383,7 @@ class WalletController extends Controller
             
             $data = [
                 'iduser' => $inversion->iduser,
-                'referred_id' => null,
+                'referred_id' => $inversion->iduser,
                 'orden_purchases_id' => null,
                 'monto' => $cantidad,
                 'descripcion' => 'Profit de '.($porcentaje * 100). ' %',
