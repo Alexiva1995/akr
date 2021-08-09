@@ -31,18 +31,7 @@ class LiquidactionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function Generacion(){
-        try {
-         
-            $cryptos = Crypto_Value::all();
-            View::share('titleg', 'Generar Liquidaciones');
-             $crypto = $this->getTotalComisiones([], null);
-            return view('VTR.Generacion', compact('cryptos' ))->with('cryptos', $cryptos);
-        } catch (\Throwable $th) {
-            Log::error('Liquidaction - index -> Error: ' . $th);
-            abort(403, "Ocurrio un error, contacte con el administrador");
-        }
-    }
+  
 
     public function cryptos(Request $request)
     {
@@ -83,6 +72,19 @@ class LiquidactionController extends Controller
         }
     }
 
+    public function Generacion(){
+        try {
+         
+            $cryptos = Crypto_Value::all();
+            View::share('titleg', 'Generar Liquidaciones');
+             $crypto = $this->getTotalComisiones([], null);
+            return view('VTR.Generacion', compact('cryptos' ))->with('cryptos', $cryptos);
+        } catch (\Throwable $th) {
+            Log::error('Liquidaction - index -> Error: ' . $th);
+            abort(403, "Ocurrio un error, contacte con el administrador");
+        }
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -105,17 +107,14 @@ class LiquidactionController extends Controller
 
     public function Pendientes()
     {
-        try {
+        //try {
+            $cryptos = Crypto_Value::all();
             View::share('titleg', 'Liquidaciones Pendientes');
-            $liquidaciones = Liquidaction::where('status', 0)->get();
-            foreach ($liquidaciones as $liqui) {
-                $liqui->fullname = $liqui->getUserLiquidation->fullname;
-            }
-            return view('VTR.Pendientes', compact('liquidaciones'));
-        } catch (\Throwable $th) {
-            Log::error('Liquidaction - indexPendientes -> Error: ' . $th);
-            abort(403, "Ocurrio un error, contacte con el administrador");
-        }
+            return view('VTR.Pendientes', compact('cryptos'))->with('cryptos', $cryptos);
+     //   } catch (\Throwable $th) {
+         //   Log::error('Liquidaction - indexPendientes -> Error: ' . $th);
+           // abort(403, "Ocurrio un error, contacte con el administrador");
+       // }
     }
 
     /**
