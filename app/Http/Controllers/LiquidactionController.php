@@ -36,8 +36,8 @@ class LiquidactionController extends Controller
          
             $cryptos = Crypto_Value::all();
             View::share('titleg', 'Generar Liquidaciones');
-            $crypto = $this->getTotalComisiones([], null);
-            return view('VTR.Generacion', compact('cryptos'))->with('cryptos', $cryptos);
+             $crypto = $this->getTotalComisiones([], null);
+            return view('VTR.Generacion', compact('cryptos' ))->with('cryptos', $cryptos);
         } catch (\Throwable $th) {
             Log::error('Liquidaction - index -> Error: ' . $th);
             abort(403, "Ocurrio un error, contacte con el administrador");
