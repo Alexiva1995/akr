@@ -72,7 +72,7 @@
                         @foreach ($profit as $val => $item)
                             <tr class="text-center">
                                 <td>{{$item->id}}</td>
-                                @if ($item->liquidado == '0')
+                                @if ($item->tipo_transaction == '0')
                                 <td> <a class=" badge badge-info text-white">Comision</a></td>
                                 @else
                                 <td> <a class=" badge badge-success text-white">Retiro</a></td>
