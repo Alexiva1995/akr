@@ -40,7 +40,7 @@
             <div class="colu mt-2">
                 <div class="card btn-warning text-center">
                     <p class="card-title my-2">Ganancia Total</p>
-                    <span class="font-large-1 font-weight-bolder">{{number_format($ingreso - $comision-$retiro,2,".",",")}}</span>
+                    <span class="font-large-1 font-weight-bolder">{{number_format($ingreso+$fee - $comision-$retiro,2,".",",")}}</span>
                 </div>
             </div>
             

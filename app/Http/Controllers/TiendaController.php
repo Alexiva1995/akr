@@ -271,11 +271,7 @@ class TiendaController extends Controller
     }
 
     public function cambiar_status(Request $request)
-    {
-        
-           $this->walletController->pagarUtilidad();
-      
-        
+    {       
         $orden = OrdenPurchases::findOrFail($request->id);
         $orden->status = $request->status;
         $orden->save();

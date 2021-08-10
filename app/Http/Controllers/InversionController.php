@@ -64,17 +64,17 @@ class InversionController extends Controller
                 $data = [
                     'iduser' => $iduser,
                     'orden_id' => $orden,
-                    'invertido' => $invertido-10,
+                    'invertido' => $invertido,
                     'ganacia' => 0,
                     'retiro' => 0,
-                    'capital' => $invertido-10,
+                    'capital' => $invertido,
                     'progreso' => 0,
                     // 'fecha_vencimiento' => $vencimiento,
                 ];
                 Inversion::create($data);
             }else{
-                $check->invertido += $invertido-10;
-                $check->capital += $invertido-10;
+                $check->invertido += $invertido;
+                $check->capital += $invertido;
                 $check->save();
                 // dd("Al parecer todo salio bien, revisa");
             }
