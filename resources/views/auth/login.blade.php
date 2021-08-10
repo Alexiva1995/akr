@@ -31,8 +31,28 @@
     #email::placeholder { color: #FFFFFF; font-weight: bold; }
     #password::placeholder { color: #FFFFFF; font-weight: bold; }
 
+    .email::-webkit-input-placeholder{
+overflow: visible;
+    }
+
 </style>
 @endpush
+
+
+
+<header>
+<nav class="navbar fixed-top">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#"><img src="{{asset('asset/Diseño/DreamsBlue.svg')}}" alt="hola"></a>
+  </div>
+  
+</nav>
+
+</header>
+
+<body>
+
+
 <div class="container login">
     <div class="row">
         <div class="col-md-6 col-sm-12 col-12">
@@ -59,9 +79,7 @@
 
                             <div class="col-md-12">
                                 <label>Correo Electronico</label>
-                                <input id="email" type="text" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus placeholder="tucorreo@email.com">
-
-                                
+                                <input id="email" type="text" class="email form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus placeholder="&#61475;tucorreo@email.com">
 
                                 @error('email')
                                 <span class="invalid-feedback" role="alert">
@@ -187,4 +205,5 @@
 </div> --}}
 </div>
 </div>
+</body>
 @endsection
