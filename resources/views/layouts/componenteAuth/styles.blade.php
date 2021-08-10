@@ -34,9 +34,17 @@
         height: 100%;
         left: 0px;
         top: 0px;
-        /* background: linear-gradient(90.09deg, #000000 27.58%, rgba(0, 227, 242, 0.77372) 134.97%, rgba(0, 246, 225, 0.77) 134.98%); */
         background: url("{{asset('assets/img/sistema/fondo.jpg')}}");
+
+        background: linear-gradient(90.09deg, #000000 27.58%, rgba(0, 227, 242, 0.77372) 134.97%, rgba(0, 246, 225, 0.77) 134.98%);
+    opacity: 0.93;
+       
+
     }
+    
+
+    
+
     /* @media screen and (max-width: 600px){
         .card-margin{
             margin: 0px 30px;
