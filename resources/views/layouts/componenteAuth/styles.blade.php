@@ -10,6 +10,8 @@
 <link rel="stylesheet" type="text/css" href="{{asset('assets/app-assets/css/components.css')}}">
 <link rel="stylesheet" type="text/css" href="{{asset('assets/app-assets/css/themes/dark-layout.css')}}">
 <link rel="stylesheet" type="text/css" href="{{asset('assets/app-assets/css/themes/semi-dark-layout.css')}}">
+<link rel="stylesheet" type="text/css" href="{{asset('assets/css/estilos.css')}}">
+
 @stack('theme_css')
 
 <!-- BEGIN: Page CSS-->
@@ -24,11 +26,18 @@
 @stack('custom_css')
 <style>
     .bg-full-screen-image-alt{
-        background: url("{{asset('assets/img/sistema/fondo-iniciar-sesion.png')}}");
-        background-size: 100% 60%;
-        background-repeat: no-repeat;
+        /* background: url("{{asset('assets/img/sistema/fondo-iniciar-sesion.png')}}"); */
+        /* background-size: 100% 60%;
+        background-repeat: no-repeat; */
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        left: 0px;
+        top: 0px;
+        /* background: linear-gradient(90.09deg, #000000 27.58%, rgba(0, 227, 242, 0.77372) 134.97%, rgba(0, 246, 225, 0.77) 134.98%); */
+        background: url("{{asset('assets/img/sistema/fondo.jpg')}}");
     }
-    @media screen and (max-width: 600px){
+    /* @media screen and (max-width: 600px){
         .card-margin{
             margin: 0px 30px;
         }
@@ -36,6 +45,6 @@
 
     .app-content.content{
         overflow-y: scroll !important;
-    }
+    } */
 </style>
 <!-- END: Custom CSS-->
