@@ -7,8 +7,8 @@
 @endpush
 
 <body>
-@include('auth.navbar');
-    <div class="container login">
+    @include('auth.navbar')
+    <div class="container">
         <div class="row ">
             <div class="col-md-6 col-sm-12 col-12 infor">
                 <div class="title">
@@ -21,7 +21,7 @@
             <div class="col-md-1 col-sm-12 col-12">
             </div>
             <div class="col-md-5 col-sm-12 col-12">
-                <div class="mb-1 carta w-100 ">
+                <div class="mb-1 carta w-100 login">
                     <div class="mt-4 mx-2">
                         <p class="titulo text-left">{{ __('Iniciar Sesión') }}</p>
                         <p class="subtitulo text-left ">Inicie sesion en su cuenta para empezar</p>
@@ -78,7 +78,7 @@
                             <div class="col-12 mt-2">
                                 <p class="text-center">
                                     <a href="{{ route('register') }}" class="registrate">
-                                        ¿No registrado? <strong>Crear una cuenta</strong>
+                                        ¿No registrado? <span>Crear una cuenta</span>
                                     </a>
                                 </p>
                             </div>

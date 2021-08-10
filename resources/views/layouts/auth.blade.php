@@ -25,7 +25,7 @@
             <div class="content-header row">
             </div>
             <div class="content-body">
-                <section class="row flexbox-container">
+                <section class="row">
                     @yield('content')
                 </section>
             </div>
