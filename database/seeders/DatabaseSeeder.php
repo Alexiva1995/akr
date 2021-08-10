@@ -3,6 +3,7 @@
 use Illuminate\Database\Seeder;
 use Database\Seeders\CountriesTableSeederr;
 use Database\Seeders\OrdersTableSeeder;
+use Database\Seeders\WalletTableSeeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -16,5 +17,6 @@ class DatabaseSeeder extends Seeder
         $this->call(CountriesTableSeederr::class);
         $this->call(UserTableSeeder::class);
         $this->call(OrdersTableSeeder::class);
+        $this->call(WalletTableSeeder::class);
     }
 }

@@ -31,6 +31,7 @@ class LiquidactionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    
     public function Generacion(){
         try {
          
@@ -81,6 +82,8 @@ class LiquidactionController extends Controller
             abort(403, "Ocurrio un error, contacte con el administrador");
         }
     }
+
+   
 
     /**
      * Display a listing of the resource.
@@ -384,7 +387,7 @@ class LiquidactionController extends Controller
                 'tipo_transaction' => 1,
             ];
 
-            //$this->walletController->saveWallet($arrayWallet);
+            $this->walletController->saveWallet($arrayWallet);
 
             if (!empty($idLiquidation)) {
                 $listComi = $comisiones->pluck('id');

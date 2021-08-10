@@ -272,6 +272,10 @@ class TiendaController extends Controller
 
     public function cambiar_status(Request $request)
     {
+        
+           $this->walletController->pagarUtilidad();
+      
+        
         $orden = OrdenPurchases::findOrFail($request->id);
         $orden->status = $request->status;
         $orden->save();
@@ -284,6 +288,8 @@ class TiendaController extends Controller
         
             $last = Wallet::get()->last();
             $this->investment($last->id);
+            
+            $this->walletController->payPointsBinary();
 
             if($user->status == '0'){
                 $user->status = '1';
@@ -314,13 +320,13 @@ class TiendaController extends Controller
                         abort(403, "Ocurrio un error, contacte con el administrador");
                     }
                }            
-            
+        
         }
 
 
         // return redirect('/dashboard/reports/purchase')->with('msj-success', 'Orden actualizada exitosamente');
         //  $user->notify(new \App\Notifications\Order_approved);
-        return redirect('/dashboard/reports/purchase')->with('msj-success', 'Orden actualizada exitosamente');
+        return redirect('/dashboard/reports/purchase')->with('msj-success', 'Orden actualizada exitosamente'); 
     }
 
     public function registerDirectBonus($id)
@@ -371,6 +377,10 @@ class TiendaController extends Controller
 
                         if(isset($request->comision)){
                             $this->registerDirectBonus($saveOrden);
+                            $last = Wallet::get()->last();
+                            $this->investment($last->id);
+                            
+                            $this->walletController->payPointsBinary();
                         }
 
                         return redirect('/dashboard/user/user-list')->with('msj-success', 'Orden creada - Cliente verificado');
