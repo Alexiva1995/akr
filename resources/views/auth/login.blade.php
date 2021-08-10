@@ -3,7 +3,7 @@
 @section('content')
 @push('custom_css')
 <style>
-    .bg-fucsia {
+    /* .bg-fucsia {
         background: transparent linear-gradient(180deg, #13192E 0%, #13192E 100%) 0% 0% no-repeat padding-box;
     }
 
@@ -23,18 +23,95 @@
 
     .card{
         border-radius: 1.5rem;
+    } */
+    strong{
+        color: #059CBD
     }
 </style>
 @endpush
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-4 col-sm-8 col-12">
-            {{-- header --}}
-            <div class="col-12 text-center">
-                <img src="{{asset('assets/img/HDLRS-side.png')}}" alt="logo" height="140" width="190">
-                <h5 class="text-white">Bienvenido a HDLRS</h5>
+<div class="container login">
+    <div class="row">
+        <div class="col-md-6 col-sm-12 col-12">
+            <div class="title">
+                Bienvenido de nuevo!
             </div>
-            {{-- cuerpo login --}}
+            <div class="subtitle">
+                Manten tu rostro siempre hacia la luz del sol, y las sombras caeran detrás de ti.
+            </div>
+        </div>
+        <div class="col-md-1 col-sm-12 col-12">
+        </div>
+        <div class="col-md-5 col-sm-12 col-12 ">
+            <div class="mb-1 carta w-100">
+                <div class="mt-4 mx-2 my-2">
+                    <p class="titulo text-left">{{ __('Iniciar Sesión') }}</p>
+                    <p class="subtitulo text-left ">Inicie sesion en su cuenta para empezar</p>
+                </div>
+                <div class="card-body">
+                    <form method="POST" action="{{ route('login') }}">
+                        @csrf
+
+                        <div class="form-group row">
+
+                            <div class="col-md-12">
+                                <label>Correo Electronico</label>
+                                <input id="email" type="email"
+                                    class="form-control @error('email') is-invalid @enderror"
+                                    name="email" value="{{ old('email') }}" required autocomplete="email" autofocus
+                                    placeholder="tucorreo@email.com" style="color: #FFFFFF">
+
+                                @error('email')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror 
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <label>Contraseña</label>
+                                <input id="password" type="password"
+                                    class="form-control text-input-holder @error('password') is-invalid @enderror"
+                                    name="password" required autocomplete="current-password"
+                                    placeholder="Ingresa tu contraseña">
+                                @error('password')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+
+                                @if (Route::has('password.request'))
+                                <div class="col-12 d-flex justify-content-center mt-2">
+                                    <a class="forgot-password" href="{{ route('password.request') }}">
+                                        Se te olvido tu contraseña?
+                                    </a>
+                                </div>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group row mb-0">
+                            <div class="col-12 d-flex justify-content-center">
+                                <button type="submit" class="btn-login w-100">
+                                    Iniciar sesión
+                                </button>
+                            </div>
+                        </div>
+                        <div class="col-12 mt-2">
+                            <p class="text-center">              
+                                <a href="{{ route('register') }}" class="registrate">
+                                    ¿No registrado? <strong>Crear una cuenta</strong>
+                                </a>
+                            </p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+
+        {{-- <div class="col-md-4 col-sm-8 col-12">
             <div class="card mb-1 card-margin">
                 <div class="card-header">
                     <h5 class="card-title text-center col-12 text-input-holder">{{ __('Iniciar Sesión') }}</h5>
@@ -114,7 +191,7 @@
                     </small>
                 </p>
             </div>
-        </div>
+        </div> --}}
     </div>
 </div>
 @endsection
