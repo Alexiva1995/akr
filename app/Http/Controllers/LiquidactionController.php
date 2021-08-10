@@ -34,10 +34,9 @@ class LiquidactionController extends Controller
     public function Generacion(){
         try {
          
-            $cryptos = Crypto_Value::all();
             View::share('titleg', 'Generar Liquidaciones');
-            $crypto = $this->getTotalComisiones([], null);
-            return view('VTR.Generacion', compact('cryptos'))->with('cryptos', $cryptos);
+            $comisiones = $this->getTotalComisiones([], null);
+            return view('VTR.Generacion', compact('comisiones'));
         } catch (\Throwable $th) {
             Log::error('Liquidaction - index -> Error: ' . $th);
             abort(403, "Ocurrio un error, contacte con el administrador");
@@ -103,21 +102,7 @@ class LiquidactionController extends Controller
         }
     }
 
-    public function Pendientes()
-    {
-        try {
-            View::share('titleg', 'Liquidaciones Pendientes');
-            $liquidaciones = Liquidaction::where('status', 0)->get();
-            foreach ($liquidaciones as $liqui) {
-                $liqui->fullname = $liqui->getUserLiquidation->fullname;
-            }
-            return view('VTR.Pendientes', compact('liquidaciones'));
-        } catch (\Throwable $th) {
-            Log::error('Liquidaction - indexPendientes -> Error: ' . $th);
-            abort(403, "Ocurrio un error, contacte con el administrador");
-        }
-    }
-
+ 
     /**
      * LLeva a la vistas de las liquidaciones reservadas o aprobadas
      *
@@ -139,25 +124,6 @@ class LiquidactionController extends Controller
             abort(403, "Ocurrio un error, contacte con el administrador");
         }
     }
-
-    public function indexHistorys($status)
-    {
-        try {
-            View::share('titleg', 'Liquidaciones ' . $status);
-            $estado = ($status == 'Reservadas') ? 2 : 1;
-            $liquidaciones = Liquidaction::where('status', $estado)->get();
-            foreach ($liquidaciones as $liqui) {
-                $liqui->fullname = $liqui->getUserLiquidation->fullname;
-            }
-            return view('VTR.historys', compact('liquidaciones', 'estado'));
-        } catch (\Throwable $th) {
-            Log::error('Liquidaction - indexHistory -> Error: ' . $th);
-            abort(403, "Ocurrio un error, contacte con el administrador");
-        }
-    }
-
-
-    
 
 
     /**

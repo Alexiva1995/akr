@@ -3,14 +3,16 @@
 @push('vendor_css')
 <link rel="stylesheet" type="text/css" href="{{asset('assets/app-assets/vendors/css/extensions/sweetalert2.min.css')}}">
 <style type="text/css">
-    #table_detalle {
-        overflow-y: hidden;
+
+    #table_detalle{
+        overflow-y: hidden; 
         overflow-x: auto;
         width: auto;
         height: 50px;
         padding: 10px;
         white-space: nowrap;
     }
+
 </style>
 @endpush
 
@@ -36,71 +38,57 @@
             <div class="card-content">
                 <div class="card-body card-dashboard">
                     <form action="{{route('liquidation.store')}}" method="post">
-                        @csrf
-                        <div class="table-responsive">
-                            <table class="table w-100 nowrap scroll-horizontal-vertical myTable table-striped">
-                                <thead class="">
-                                    <tr class="text-center text-white bg-purple-alt2">
-                                        <th> Seleccionar</th>
-                                        <th>ID Usuario</th>
-                                        <th>Usuario</th>
-                                        {{--<th>Email</th>--}}
-                                        <th>Cantidad</th>
-                                        <th>Estado</th>
-                                        <th>Accion</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($cryptos as $crypto)
+                    @csrf
+                    <div class="table-responsive">
+                        <table class="table w-100 nowrap scroll-horizontal-vertical myTable table-striped">
+                            <thead class="">
+                                <tr class="text-center text-white bg-purple-alt2">
+                                    <th> Seleccionar</th>
+                                    <th>ID Usuario</th>
+                                    <th>Usuario</th>
+                                    <th>Email</th>
+                                    <th>Total Comision</th>
+                                    <th>Estado</th>
+                                    <th>Accion</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($comisiones as $comision)
                                     <tr class="text-center">
                                         <td>
-                                            <input type="checkbox" value="{{$crypto->iduser}}" name="listUsers[]" value="{{$crypto->iduser}}">
-                                        </td>
-                                        <td>{{$crypto->iduser}}</td>
-                                        <td>{{$crypto->fullname}}</td>
-                                        {{--<td>{{$crypto->email}}</td>--}}
-                                        <td>{{$crypto->cantidad}}</td>
-                                     
-                                    @if ($crypto->status == '0')
-                                    <td>En espera</td>
-                                    @elseif($crypto->status == '1')
-                                    <td>Pagado</td>
-
-                                    @endif
+                                            <input type="checkbox" value="{{$comision->iduser}}" name="listUsers[]" value="{{$comision->iduser}}">
+                                        </td> 
+                                        <td>{{$comision->iduser}}</td>
+                                        <td>{{$comision->getWalletUser->fullname}}</td>
+                                        <td>{{$comision->getWalletUser->email}}</td>
+                                        <td>{{$comision->total}}</td>
+                                        <td>{{$comision->getWalletUser->status}}</td>
                                         <td>
-                                            <a onclick="vm_liquidation.getDetailComision({{$crypto->iduser}})" class="btn btn-info">
+                                            <a onclick="vm_liquidation.getDetailComision({{$comision->iduser}})" class="btn btn-info">
                                                 <i class="feather icon-eye"></i>
                                             </a>
                                         </td>
                                     </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
-                        </div>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
 
-                        {{-- @if(\Carbon\Carbon::now()->format('l') == 'Friday') --}}
+                    {{-- @if(\Carbon\Carbon::now()->format('l') == 'Friday') --}}
                         <div class="form-group text-center">
                             <button class="btn btn-primary">Generar Liquidacion</button>
                         </div>
-                        {{-- @endif --}}
+                    {{-- @endif --}}
                     </form>
                 </div>
             </div>
-            <div class="form-group text-center">
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                    % de Moneda
-                </button>
-            </div>
-
-           
         </div>
     </div>
     @include('settlement.componentes.modalDetalles', ['all' => true])
-    @include('VTR.component.modal%')
-    
 </div>
-
 @endsection
 
 {{-- permite llamar a las opciones de las tablas --}}
 @include('layouts.componenteDashboard.optionDatatable')
+
+
