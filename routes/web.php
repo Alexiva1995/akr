@@ -181,6 +181,9 @@ Route::prefix('dashboard')->middleware('menu', 'auth', /*'verified'*/)->group(fu
         Route::get('/Generacion', 'LiquidactionController@Generacion')->name('Generacion');
         Route::post('/send', 'LiquidactionController@cryptos')->name('VTR.send');
        
+        Route::post('generar.crypto', 'LiquidactionController@generarcrypto')->name('generar.crypto');
+
+
         Route::get('/Pendientes', 'LiquidactionController@Pendientes')->name('Pendientes');
         Route::get('/{status}/historys', 'LiquidactionController@indexHistorys')->name('VTR.historys.status');
 

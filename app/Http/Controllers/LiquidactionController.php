@@ -32,17 +32,7 @@ class LiquidactionController extends Controller
      * @return \Illuminate\Http\Response
      */
     
-    public function Generacion(){
-        try {
-         
-            View::share('titleg', 'Generar Liquidaciones');
-            $comisiones = $this->getTotalComisiones([], null);
-            return view('VTR.Generacion', compact('comisiones'));
-        } catch (\Throwable $th) {
-            Log::error('Liquidaction - index -> Error: ' . $th);
-            abort(403, "Ocurrio un error, contacte con el administrador");
-        }
-    }
+  
 
     public function cryptos(Request $request)
     {
@@ -83,7 +73,115 @@ class LiquidactionController extends Controller
         }
     }
 
-   
+    ///////////////////
+//  PERMITE VER LA VISTA DE GENERACION EN EL SUB AKR
+    ///////////////////
+
+    public function Generacion(){
+        try {
+            $cryptos = Crypto_Value::all();
+            View::share('titleg', 'Generar Liquidaciones');
+           $total = $this->getTotalLiquidaciones([], null);
+            return view('VTR.Generacion', compact('cryptos'));
+        } catch (\Throwable $th) {
+            Log::error('Liquidaction - index -> Error: ' . $th);
+            abort(403, "Ocurrio un error, contacte con el administrador");
+        }
+    }
+
+    public function generarcrypto(Request $request)
+    {
+        if ($request->tipo == 'detallada') {
+
+            $validate = $request->validate([
+                'listComisiones' => ['required', 'array'],
+                'iduser' => ['required']
+            ]);
+        } else {
+            $validate = $request->validate([
+                'listUsers' => ['required', 'array']
+            ]);
+        }
+
+        try {
+            if ($validate) {
+                if ($request->tipo == 'detallada') {
+                    $this->generarLiquidation($request->iduser, $request->listComisiones);
+                } else {
+                    foreach ($request->listUsers as $iduser) {
+                        $this->generarLiquidation($iduser, []);
+                    }
+                }
+                return redirect()->back()->with('msj-success', 'Liquidaciones Generada Exitoxamente');
+            }
+        } catch (\Throwable $th) {
+            Log::error('Liquidaction - store -> Error: ' . $th);
+            abort(403, "Ocurrio un error, contacte con el administrador");
+        }
+    }
+
+    public function getTotalLiquidaciones(array $filtros, int $iduser = null): array
+    {
+        try {
+            $cryptos = [];
+            if ($iduser != null && $iduser != 1) {
+                $cryptostmp = Wallet::where([
+                    ['status', '=', 0],
+                    ['liquidation_id', '=', null],
+                    ['tipo_transaction', '=', 0],
+                    ['iduser', '=', $iduser]
+                ])->select(
+                    DB::raw('sum(monto) as total'),
+                    'iduser'
+                )->groupBy('iduser')->get();
+            } else {
+                $cryptostmp = Wallet::where([
+                    ['status', '=', 0],
+                    ['liquidation_id', '=', null],
+                    ['tipo_transaction', '=', 0],
+                ])->select(
+                    DB::raw('sum(monto) as total'),
+                    'iduser'
+                )->groupBy('iduser')->get();
+            }
+
+            foreach ($cryptostmp as $crypto) {
+                $crypto->getWalletUser;
+                if ($crypto->getWalletUser != null) {
+                    if ($filtros == []) {
+                        $cryptos[] = $crypto;
+                    } else {
+                        if (!empty($filtros['activo'])) {
+                            if ($crypto->status == 1) {
+                                if (!empty($filtros['mayorque'])) {
+                                    if ($crypto->total >= $filtros['mayorque']) {
+                                        $cryptos[] = $crypto;
+                                    }
+                                } else {
+                                    $cryptos[] = $crypto;
+                                }
+                            }
+                        } else {
+                            if (!empty($filtros['mayorque'])) {
+                                if ($crypto->total >= $filtros['mayorque']) {
+                                    $cryptos[] = $crypto;
+                                }
+                            } else {
+                                $cryptos[] = $crypto;
+                            }
+                        }
+                    }
+                }
+            }
+            return $cryptos;
+        } catch (\Throwable $th) {
+            Log::error('Liquidaction - getTotalComisiones -> Error: ' . $th);
+            abort(403, "Ocurrio un error, contacte con el administrador");
+        }
+    }
+
+
+
 
     /**
      * Display a listing of the resource.
