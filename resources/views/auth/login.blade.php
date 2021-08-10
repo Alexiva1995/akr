@@ -3,36 +3,22 @@
 @section('content')
 @push('custom_css')
 <style>
-    /* .bg-fucsia {
-        background: transparent linear-gradient(180deg, #13192E 0%, #13192E 100%) 0% 0% no-repeat padding-box;
-    }
-
-    .text-rosado {
-        color: #13192E;
-    }
-
-    .btn-login {
-        padding: 0.6rem 2rem;
-        border-radius: 1.429rem;
-    }
-
-    .text-input-holder {
-        font-weight: 800;
-        color: #000000;
-    }
-
-    .card{
-        border-radius: 1.5rem;
-    } */
     strong {
         color: #059CBD
     }
 
-    #email::placeholder { color: #FFFFFF; font-weight: bold; }
-    #password::placeholder { color: #FFFFFF; font-weight: bold; }
+    #email::placeholder { 
+        color: #B0B0B0; 
+        font-size: 1.2rem;
+    }
+    #password::placeholder { 
+        color: #B0B0B0; 
+        font-size: 1.2rem;
+    }
 
 </style>
 @endpush
+<div class="fondo">
 <div class="container login">
     <div class="row">
         <div class="col-md-6 col-sm-12 col-12">
@@ -109,6 +95,9 @@
                 </div>
             </div>
         </div>
+    </div>
+</div>
+</div>
 
 
         {{-- <div class="col-md-4 col-sm-8 col-12">
@@ -185,6 +174,4 @@
     </p>
 </div>
 </div> --}}
-</div>
-</div>
 @endsection
