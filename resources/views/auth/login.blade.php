@@ -3,50 +3,26 @@
 @section('content')
 @push('custom_css')
 <style>
-    strong {
-        color: #059CBD
-    }
-
-    #email::placeholder {
-        color: #B0B0B0;
-        font-size: 1.2rem;
-    }
-
-    #password::placeholder {
-        color: #B0B0B0;
-        font-size: 1.2rem;
-
-    }
-
-    .email::-webkit-input-placeholder {
-        overflow: visible;
-    }
 </style>
 @endpush
 
-
-
 <body>
-
+@include('auth.navbar');
     <div class="container login">
-
         <div class="row ">
-
-            <div class="col-md-6 col-sm-12 col-12">
-
-                <div class="title" style="margin-top:100px;">
+            <div class="col-md-6 col-sm-12 col-12 infor">
+                <div class="title">
                     Bienvenido de nuevo!
                 </div>
                 <div class="subtitle">
                     Manten tu rostro siempre hacia la luz del sol, y las sombras caeran detrás de ti.
                 </div>
             </div>
-            <div class="col-md-1 col-sm-12 col-12" style="margin-bottom:480px;">
+            <div class="col-md-1 col-sm-12 col-12">
             </div>
-
             <div class="col-md-5 col-sm-12 col-12">
                 <div class="mb-1 carta w-100 ">
-                    <div class="mt-4 mx-2 my-2">
+                    <div class="mt-4 mx-2">
                         <p class="titulo text-left">{{ __('Iniciar Sesión') }}</p>
                         <p class="subtitulo text-left ">Inicie sesion en su cuenta para empezar</p>
                     </div>
@@ -58,7 +34,8 @@
 
                                 <div class="col-md-12">
                                     <label>Correo Electronico</label>
-                                    <input id="email" type="text" class="email form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus placeholder=" tucorreo@email.com" style="font-family:FontAwesome, Arial" />
+                                    <input id="email" type="text" 
+                                    class="email form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus placeholder="  tucorreo@email.com" />
 
                                     @error('email')
                                     <span class="invalid-feedback" role="alert">
@@ -71,7 +48,8 @@
                             <div class="form-group row">
                                 <div class="col-md-12">
                                     <label>Contraseña</label>
-                                    <input id="password" type="password" class="form-control text-input-holder @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" style="font-family:FontAwesome,Arial " placeholder="&#61475; Ingresa tu contraseña">
+                                    <input id="password" type="password" 
+                                    class="form-control text-input-holder @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" style="font-family:FontAwesome,Arial " placeholder="&#61475;  Ingresa tu contraseña">
 
 
                                     @error('password')
@@ -108,32 +86,6 @@
 
                     </div>
                 </div>
-
-
-                <header>
-                    <nav class="navbar fixed-top">
-                        <div class="container-fluid">
-                            <a class="navbar-brand" href="#"><img src="{{asset('assets/Diseño/DreamsBlue.svg')}}" alt="hola"></a>
-
-                            <ul class="nav justify-content-end mr-5">
-                                <li class="nav-item">
-                                    <a class="nav-link active text-white ." aria-current="page" href="#" style="font-size:18px;">Inicio</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link text-white" href="#" style="font-size:18px;">Block</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link text-white" href="#" style="font-size:18px;">Contacto</a>
-                                </li>
-
-                            </ul>
-                    </nav>
-            </div>
-            </header>
-
-
-
-
         </div>
     </div>
     </div>
