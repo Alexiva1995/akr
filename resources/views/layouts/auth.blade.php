@@ -18,14 +18,14 @@
     class="vertical-layout vertical-menu-modern 1-column  navbar-floating footer-static bg-full-screen-image-alt blank-page"
     data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
     <!-- BEGIN: Content-->
-    <div class="app-content content">
+    <div class="app-content content fondo">
         <div class="content-overlay"></div>
         <div class="header-navbar-shadow"></div>
         <div class="content-wrapper">
             <div class="content-header row">
             </div>
             <div class="content-body">
-                <section class="row flexbox-container">
+                <section class="row">
                     @yield('content')
                 </section>
             </div>

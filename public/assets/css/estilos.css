@@ -28,6 +28,11 @@
     border: 1px solid #000000;
     box-sizing: border-box;
     border-radius: 11px;
+    margin-top: 10%;
+    margin-bottom: 10%;
+}
+.login{
+    margin-top: 20%;
 }
 
 .titulo{
@@ -37,7 +42,7 @@
 }
 
 .subtitulo{
-    font-size: 1.2rem;
+    font-size: 1rem;
 }
 
 .campos{
@@ -52,25 +57,27 @@ border-radius: 2px;
 }
 
 
-input[type="text"], input[type="password"], input[type="email"] {
+input[type="text"], input[type="password"], input[type="email"], select {
     border: 1px solid #B0B0B0;
     box-sizing: border-box;
     border-radius: 2px;
     background-color: transparent !important;
     margin-bottom: 1rem;
     color: #eee !important;   
-    font-size: 1.2rem; 
+    font-size: 1rem; 
+    font-family:FontAwesome, Arial
 }
+
 
 label{
     color: whitesmoke;
     margin-bottom: 5px;
-    font-size: 1.2rem;
+    font-size: 1rem;
 }
 
 .forgot-password{
     color: #B0B0B0;
-    font-size: 1.2rem;
+    font-size: 1rem;
 }
 .forgot-password:hover{
     color: #B0B0B0;
@@ -91,9 +98,45 @@ label{
 
 .registrate{
     color: #FFFFFF;
-    font-size: 1.2rem;
+    font-size: 1rem;
 }
 .registrate:hover{
     color: #FFFFFF;
-    font-size: 1.4rem;
+}
+
+span {
+    color: #059CBD
+}
+
+#email::placeholder, 
+#password::placeholder, 
+#name::placeholder, 
+#dni::placeholder, 
+#phone::placeholder, 
+#country::placeholder, 
+#state::placeholder, 
+#city::placeholder, 
+#age::placeholder, 
+#password-confirm::placeholder {
+    color: #B0B0B0;
+    font-size: 1rem;
+}
+
+/* #password::placeholder {
+    color: #B0B0B0;
+    font-size: 1rem;
+
+} */
+
+::placeholder{
+    color: #B0B0B0;
+    font-size: 1rem;
+}
+
+.email::-webkit-input-placeholder {
+    overflow: visible;
+}
+
+.infor{
+    margin-top: 15%
 }

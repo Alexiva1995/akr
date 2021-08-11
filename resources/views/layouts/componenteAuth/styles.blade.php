@@ -36,8 +36,8 @@
         top: 0px;
         background: url("{{asset('assets/img/sistema/fondo.jpg')}}");
 
-        background: linear-gradient(90.09deg, #000000 27.58%, rgba(0, 227, 242, 0.77372) 134.97%, rgba(0, 246, 225, 0.77) 134.98%);
-    opacity: 0.93;
+        /* background: linear-gradient(90.09deg, #000000 27.58%, rgba(0, 227, 242, 0.77372) 134.97%, rgba(0, 246, 225, 0.77) 134.98%); */
+        opacity: 0.93;
        
 
     }
