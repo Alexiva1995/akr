@@ -3,68 +3,49 @@
 
 
 
-<div class="container">
+<div class="container" id="id">
 
- 
-  <footer
-          class="text-center  text-white"
-          style="margin-top:380px;"
-          >
 
-    <section
-             class="d-flex justify-content-between "
-            
-             >
-     
+  <footer class="text-center  text-white" style="margin-top:380px;">
+
+    <section class="d-flex justify-content-between ">
+
       <div class="me-5">
         <span>Dreams Blue &copy; 2021 - All Right Reserved</span>
       </div>
-    
+
       <div>
-        <a href="" class="text-white me-4">
-        <i style="font-size:30px; color:black;" class="fab fa-telegram"></i></a></li>
+        <a href="" class="text-white ml-2">
+          <i style="font-size:30px; " class="fab fa-telegram"></i></a></li>
         </a>
-        <a href="" class="text-white me-4">
-        <i style="font-size:30px; color:black;" class="fab fa-linkedin "></i>
+        <a href="" class="text-white ml-2">
+          <i style="font-size:30px; " class="fab fa-linkedin "></i>
         </a>
-        <a href="" class="text-white me-4">
-        <i style="font-size:30px; color:black;"  class="fas fa-envelope-square"></i>
+        <a href="" class="text-white ml-2">
+          <i style="font-size:30px; " class="fas fa-envelope-square"></i>
         </a>
-       
-      </div>
-  
-    </section>
-    
 
-     
-        </div>
-     
       </div>
+
     </section>
 
-
-    
-  </footer>
 
 
 </div>
 
+</div>
+
+</footer>
 
 
+</div>
 
+<style>
 
+@media screen and (max-width: 767px){
+  #id{
+    margin-top:750px;
+  }
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+</style>

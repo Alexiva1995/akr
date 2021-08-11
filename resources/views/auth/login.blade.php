@@ -22,6 +22,13 @@ input:not(:focus):valid ~ .floating-label{
   transition: 0.2s ease all;
 }
 
+@media screen and (max-width: 600px){
+    .title,.subtitle{
+        margin-left: 10px;
+        margin-right: 6px;
+    }
+}
+
 
 </style>
 @endpush
@@ -57,10 +64,9 @@ input:not(:focus):valid ~ .floating-label{
                                 <div class="col-md-12">
                                     <label>Correo Electronico</label>
                                     <input id="email" type="text" 
-                                    class="inputText email form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus placeholder="" />
+                                    class=" email form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus placeholder=" tucorreo@email.com" />
 
-                                    <span class="floating-label text-white"><i class="fas fa-envelope"></i> tucorreo@email.com</span>
-
+                                  
 
                                     @error('email')
                                     <span class="invalid-feedback" role="alert">
@@ -74,9 +80,9 @@ input:not(:focus):valid ~ .floating-label{
                                 <div class="col-md-12">
                                     <label>Contraseña</label>
                                     <input id="password" type="password" 
-                                    class="inputText form-control text-input-holder @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" style="font-family:FontAwesome,Arial " placeholder="">
+                                    class=" form-control text-input-holder @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" style="font-family:FontAwesome,Arial " placeholder=" Ingresa tu contraseña">
 
-                                    <span class="floating-label text-white"><i class="fas fa-lock"></i> Ingresa tu contraseña</span>
+                                   
 
                                     @error('password')
                                     <span class="invalid-feedback" role="alert">
@@ -111,16 +117,9 @@ input:not(:focus):valid ~ .floating-label{
                         </form>
 
                     </div>
+                    </div>  
                 </div>
-        </div>
-    </div>
-    </div>
-    
-    </div>
-    
-    </div>
-   
-   
+                </div>
 
 </body>
 @include('auth.footer')
