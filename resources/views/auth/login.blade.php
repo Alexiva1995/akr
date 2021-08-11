@@ -6,7 +6,7 @@
 </style>
 @endpush
 
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+
 
 <body>
     @include('auth.navbar')
@@ -88,40 +88,17 @@
 
                     </div>
                 </div>
-<<<<<<< HEAD
-
-
-                <header>
-                    <nav class="navbar fixed-top">
-                        <div class="container-fluid">
-                            <a class="navbar-brand" href="#"><img src="{{asset('assets/Diseño/DreamsBlue.svg')}}" alt="hola"></a>
-
-                            <ul class="nav justify-content-end mr-5">
-                                <li class="nav-item">
-                                    <a class="nav-link active text-white ." aria-current="page" href="#" style="font-size:18px;">Inicio</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link text-white" href="#" style="font-size:18px;">Block</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link text-white" href="#" style="font-size:18px;">Contacto</a>
-                                </li>
-
-                            </ul>
-                    </nav>
-            </div>
-            </header>
-
-=======
->>>>>>> 8d94fb5ef2cd642eb32e0500fdd75fc09c79c0c5
         </div>
     </div>
     </div>
+    
     </div>
+    
     </div>
-    @include('auth.footer')
+   
+   
 
 </body>
-
+@include('auth.footer')
 
 @endsection

@@ -43,8 +43,8 @@ $referred = null;
                 </div>
             </div>
             <div class="col-md-6 col-sm-12 col-12">
-                <div class="carta w-100 mb-2">
-                    <div class="mt-4 mx-2">
+                <div class="carta w-100 ">
+                    <div class="mt-2 mx-2">
                         <p class="titulo text-left">Registrate</p>
                         <p class="subtitulo text-left ">Crea tu cuenta y se parte de nuestro ecosistema.</p>
                     </div>
@@ -238,8 +238,11 @@ $referred = null;
                 </div>
             </div>
         </div>
+        @include('auth.footer')
     </div>
 
+   
+<!--
             {{-- <div class="col-md-10 col-sm-8 col-12">
                 <div class="card mb-0 card-margin">
                     <div class="card-header">
@@ -443,7 +446,7 @@ $referred = null;
                         </small>
                     </p>
                 </div>
-            </div> --}}
+            </div> --}}-->
 </body>    
 @endsection
 
