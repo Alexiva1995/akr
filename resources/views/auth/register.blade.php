@@ -71,7 +71,7 @@ $referred = null;
                                 <div class="form-group col-md-6">
                                     <input id="name" type="text" class="form-control @error('name') is-invalid @enderror"
                                         name="name"  required autocomplete="name" autofocus
-                                        placeholder="Nombre y Apellido" value="{{ old('name') }}">
+                                        placeholder=" Nombre y Apellido" value="{{ old('name') }}">
 
                                     @error('name')
                                     <span class="invalid-feedback" role="alert">
@@ -82,7 +82,7 @@ $referred = null;
                                 <div class="form-group col-md-6">
                                     <input id="dni" type="text" class="form-control @error('dni') is-invalid @enderror"
                                         name="dni"  required autocomplete="dni" autofocus
-                                        placeholder="Número de Identificación" value="{{ old('dni') }}">
+                                        placeholder=" Número de Identificación" value="{{ old('dni') }}">
 
                                     @error('dni')
                                     <span class="invalid-feedback" role="alert">
@@ -96,7 +96,7 @@ $referred = null;
                                 <div class="form-group col-md-6">
                                     <input id="phone" type="text" class="form-control @error('phone') is-invalid @enderror"
                                         name="phone"  required autocomplete="phone" autofocus
-                                        placeholder="Teléfono" value="{{ old('phone') }}">
+                                        placeholder=" Teléfono" value="{{ old('phone') }}">
 
                                     @error('phone')
                                     <span class="invalid-feedback" role="alert">
@@ -108,7 +108,7 @@ $referred = null;
                                 <div class="form-group col-md-6">
                                     <input id="email" type="email" class="form-control @error('email') is-invalid @enderror"
                                         name="email" required autocomplete="email"
-                                        placeholder="Correo Electronico" value="{{ old('email') }}">
+                                        placeholder=" Correo Electronico" value="{{ old('email') }}">
 
                                     @error('email')
                                     <span class="invalid-feedback" role="alert">
@@ -139,7 +139,7 @@ $referred = null;
                                 <div class="form-group col-md-6">
                                     <input id="state" type="text" class="form-control @error('state') is-invalid @enderror"
                                         name="state"  required autocomplete="state" autofocus
-                                        placeholder="Estado o Provincia" value="{{ old('state') }}">
+                                        placeholder=" Estado o Provincia" value="{{ old('state') }}">
 
                                     @error('state')
                                     <span class="invalid-feedback" role="alert">
@@ -153,7 +153,7 @@ $referred = null;
                                 <div class="form-group col-md-6">
                                     <input id="city" type="text" class="form-control @error('city') is-invalid @enderror"
                                         name="city"  required autocomplete="city" autofocus
-                                        placeholder="Ciudad" value="{{ old('city') }}">
+                                        placeholder=" Ciudad" value="{{ old('city') }}">
 
                                     @error('city')
                                     <span class="invalid-feedback" role="alert">
@@ -165,7 +165,7 @@ $referred = null;
                                 <div class="form-group col-md-6">
                                     <input id="age" type="text" onfocus="(this.type='date')" class="form-control @error('age') is-invalid @enderror"
                                         name="age"  required autocomplete="age" autofocus
-                                        placeholder="Fecha de Nacimiento" value="{{ old('age') }}">
+                                        placeholder=" Fecha de Nacimiento" value="{{ old('age') }}">
 
                                     @error('age')
                                     <span class="invalid-feedback" role="alert">
@@ -179,7 +179,7 @@ $referred = null;
                                 <div class="form-group col-md-6">
                                     <input id="password" type="password"
                                         class="form-control @error('password') is-invalid @enderror" name="password"
-                                        required autocomplete="new-password" placeholder="Ingrese una contraseña" >
+                                        required autocomplete="new-password" placeholder="&#61475; Ingrese una contraseña" >
 
                                     @error('password')
                                     <span class="invalid-feedback" role="alert">
@@ -191,7 +191,7 @@ $referred = null;
                                 <div class="form-group col-md-6">
                                     <input id="password-confirm" type="password" class="form-control"
                                         name="password_confirmation" required autocomplete="new-password"
-                                        placeholder="confirme su contraseña">
+                                        placeholder="&#61475; confirme su contraseña">
                                 </div>                                                                                
                             </div>
 
@@ -213,9 +213,9 @@ $referred = null;
                                     Acepto las políticas de manejo de informacion de <span>Venture Capital Association</span>
                                 </p>
                             </fieldset>
-                            <div class="form-group row d-flex justify-content-center">
-                                <div class="col-10">
-                                    <div class="form-group">
+                            <div class="form-group row d-flex ml-5" >
+                                <div class="col-10" >
+                                    <div class="form-group ml-3">
                                         {!! NoCaptcha::renderJs('es', false, 'recaptchaCallback') !!}
                                         {!! NoCaptcha::display() !!}
                                     </div>
