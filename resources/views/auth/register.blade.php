@@ -8,32 +8,34 @@
 @section('content')
 @push('custom_css')
 <style>
-    .infor{
+    .infor {
         margin-top: 25%;
     }
-    select{
-        color: black;
+
+
+    input:focus~.floating-label,
+    input:not(:focus):valid~.floating-label {
+
+        font-size: 11px;
+        opacity: 1;
     }
 
-    input:focus ~ .floating-label,
-input:not(:focus):valid ~ .floating-label{
-  
-  font-size: 11px;
-  opacity: 1;
-}
+    .inputText {
+        font-size: 25px;
 
-.inputText {
-  font-size: 14px;
+    }
 
-}
-.floating-label {
-  position: absolute;
-  pointer-events: none;
-  left: 20px;
-  top: 10px;
-  transition: 0.2s ease all;
-}
+    .floating-label {
+        position: absolute;
+        pointer-events: none;
+        left: 20px;
+        top: 10px;
+        transition: 0.2s ease all;
+    }
 
+    #age {
+        background-color: rgba(0, 0, 0, 0.3);
+    }
 </style>
 @endpush
 
@@ -42,15 +44,15 @@ $countries = DB::table('countries')->get();
 $referred = null;
 @endphp
 @if ( request()->referred_id != null )
-    @php
-        $referred = DB::table('users')
-        ->select('fullname')
-        ->where('ID', '=', request()->referred_id)
-        ->first();
-    @endphp
+@php
+$referred = DB::table('users')
+->select('fullname')
+->where('ID', '=', request()->referred_id)
+->first();
+@endphp
 @endif
 
-<body >
+<body>
     @include('auth.navbar')
     <div class="container">
         <div class="row">
@@ -88,44 +90,38 @@ $referred = null;
                             @endif
 
                             <div class="row">
-                                <div class="form-group col-md-6">
-                                    <input id="name" type="text" class="inputText form-control @error('name') is-invalid @enderror"
-                                        name="name"  required autocomplete="name" autofocus
-                                        placeholder="" value="{{ old('name') }}">
+                                <div class="form-group col-md-6" >
+                                    <input  id="name" type="text" class="inputText form-control @error('name') is-invalid @enderror" name="name" required autocomplete="name" autofocus placeholder="" value="{{ old('name') }}">
 
 
-                                    <span class="floating-label text-white"><i class="fas fa-id-badge"></i> Nombre y Apellido</span>
+                                    <span class="floating-label text-white" style="opacity: 0.30;"><i class="fas fa-id-badge"></i> Nombre y Apellido</span>
 
                                     @error('name')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                     @enderror
-                                </div> 
+                                </div>
                                 <div class="form-group col-md-6">
-                                    <input id="dni" type="text" class="inputText form-control @error('dni') is-invalid @enderror"
-                                        name="dni"  required autocomplete="dni" autofocus
-                                        placeholder=" " value="{{ old('dni') }}">
+                                    <input id="dni" type="text" class="inputText form-control @error('dni') is-invalid @enderror" name="dni" required autocomplete="dni" autofocus placeholder=" " value="{{ old('dni') }}">
 
 
-                                    <span class="floating-label text-white"><i class="far fa-address-card"></i> Número de Identificación </span>
+                                    <span class="floating-label text-white"style="opacity: 0.30;"><i class="far fa-address-card"></i> Número de Identificación </span>
 
                                     @error('dni')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                     @enderror
-                                </div>                            
+                                </div>
                             </div>
 
-                            <div class="row"> 
+                            <div class="row">
                                 <div class="form-group col-md-6">
-                                    <input id="phone" type="text" class="inputText form-control @error('phone') is-invalid @enderror"
-                                        name="phone"  required autocomplete="phone" autofocus
-                                        placeholder="" value="{{ old('phone') }}">
+                                    <input id="phone" type="text" class="inputText form-control @error('phone') is-invalid @enderror" name="phone" required autocomplete="phone" autofocus placeholder="" value="{{ old('phone') }}">
 
 
-                                    <span class="floating-label text-white"><i class="fas fa-phone"></i> Teléfono </span>
+                                    <span class="floating-label text-white"style="opacity: 0.30;"><i class="fas fa-phone" ></i> Teléfono </span>
 
                                     @error('phone')
                                     <span class="invalid-feedback" role="alert">
@@ -135,28 +131,27 @@ $referred = null;
                                 </div>
 
                                 <div class="form-group col-md-6">
-                                    <input id="email" type="email" class="inputText form-control @error('email') is-invalid @enderror"
-                                        name="email" required autocomplete="email"
-                                        placeholder="" value="{{ old('email') }}">
+                                    <input id="email" type="email" class="inputText form-control @error('email') is-invalid @enderror" name="email" required autocomplete="email" placeholder="" value="{{ old('email') }}">
 
-                                        <span class="floating-label text-white"><i class="fas fa-envelope"></i>   Correo Electronico </span>
+                                    <span class="floating-label text-white"style="opacity: 0.30;"><i class="fas fa-envelope" ></i> Correo Electronico </span>
 
                                     @error('email')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                     @enderror
-                                </div>                                                            
+                                </div>
                             </div>
 
-                            <div class="row"> 
+
+                          
+
+                            <div class="row">
                                 <div class="form-group col-md-6">
-                                    <select id="country" type="text" class="form-control @error('country') is-invalid @enderror"
-                                        name="country" required autocomplete="country" autofocus
-                                        >
+                                    <select id="country" type="text" class="form-control @error('country') is-invalid @enderror" name="country" required autocomplete="country" autofocus>
                                         <option selected disabled readonly>País</option>
                                         @foreach($countries as $country)
-                                            <option value="{{$country->id}}">{{$country->name}}</option>
+                                        <option value="{{$country->id}}">{{$country->name}}</option>
                                         @endforeach
                                     </select>
 
@@ -165,16 +160,14 @@ $referred = null;
                                         <strong>{{ $message }}</strong>
                                     </span>
                                     @enderror
-                                </div> 
+                                </div>
 
                                 <div class="form-group col-md-6">
-                                    <input id="state" type="text" class="inputText form-control @error('state') is-invalid @enderror"
-                                        name="state"  required autocomplete="state" autofocus
-                                        placeholder="" value="{{ old('state') }}">
+                                    <input id="state" type="text" class="inputText form-control @error('state') is-invalid @enderror" name="state" required autocomplete="state" autofocus placeholder="" value="{{ old('state') }}">
 
-                                        <span class="floating-label text-white"><i class="fas fa-map-marker-alt"></i> Estado o Provincia </span>
+                                    <span class="floating-label text-white"style="opacity: 0.30;"><i class="fas fa-map-marker-alt" ></i> Estado o Provincia </span>
 
-                                         
+
 
                                     @error('state')
                                     <span class="invalid-feedback" role="alert">
@@ -184,14 +177,12 @@ $referred = null;
                                 </div>
                             </div>
 
-                            <div class="row">   
+                            <div class="row">
                                 <div class="form-group col-md-6">
-                                    <input id="city" type="text" class="inputText form-control @error('city') is-invalid @enderror"
-                                        name="city"  required autocomplete="city" autofocus
-                                        placeholder="" value="{{ old('city') }}">
+                                    <input id="city" type="text" class="inputText form-control @error('city') is-invalid @enderror" name="city" required autocomplete="city" autofocus placeholder="" value="{{ old('city') }}">
 
 
-                                        <span class="floating-label text-white"><i class="fas fa-map-marker-alt"></i> Ciudad </span>
+                                    <span class="floating-label text-white" style="opacity: 0.30;"><i class="fas fa-map-marker-alt" ></i> Ciudad </span>
 
                                     @error('city')
                                     <span class="invalid-feedback" role="alert">
@@ -200,47 +191,42 @@ $referred = null;
                                     @enderror
                                 </div>
 
-                                <div class="form-group col-md-6">
-                                    <input id="age" type="text" onfocus="(this.type='date')" class="inputText form-control @error('age') is-invalid @enderror"
-                                        name="age"  required autocomplete="age" autofocus
-                                        placeholder="" value="{{ old('age') }}">
 
-                                        <span class="floating-label text-white"><i class="far fa-calendar"></i> Fecha de Nacimiento </span>
+
+                                <div class="form-group col-md-6">
+                                    <input id="age" type="text" onfocus="(this.type='date')" class="text-white form-control @error('age') is-invalid @enderror" name="age" required autocomplete="age" autofocus placeholder=" Fecha de Nacimiento" value="{{ old('age') }}">
+
 
                                     @error('age')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                     @enderror
-                                </div>                                                                
+                                </div>
                             </div>
 
-                            <div class="row">  
+                            <div class="row">
                                 <div class="form-group col-md-6">
-                                    <input id="password" type="password"
-                                        class="inputText form-control @error('password') is-invalid @enderror" name="password"
-                                        required autocomplete="new-password" placeholder="" >
+                                    <input id="password" type="password" class="inputText form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password" placeholder="">
 
 
-                                        <span class="floating-label text-white"><i class="fas fa-lock"></i>  Ingrese una contraseña </span>
-                                        
+                                    <span class="floating-label text-white"style="opacity: 0.30;"><i class="fas fa-lock" ></i> Ingrese una contraseña </span>
+
                                     @error('password')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                     @enderror
-                                </div> 
+                                </div>
 
                                 <div class="form-group col-md-6">
-                                    <input id="password-confirm" type="password" class="inputText form-control"
-                                        name="password_confirmation" required autocomplete="new-password"
-                                        placeholder="">
+                                    <input id="password-confirm" type="password" class="inputText form-control" name="password_confirmation" required autocomplete="new-password" placeholder="">
 
 
 
-                                        <span class="floating-label text-white"><i class="fas fa-lock"></i>   confirme su contraseña </span>
+                                    <span class="floating-label text-white" style="opacity: 0.30;"><i class="fas fa-lock" ></i> confirme su contraseña </span>
 
-                                </div>                                                                                
+                                </div>
                             </div>
 
                             <fieldset class="checkbox registrate mb-1">
@@ -261,8 +247,8 @@ $referred = null;
                                     Acepto las políticas de manejo de informacion de <span>Venture Capital Association</span>
                                 </p>
                             </fieldset>
-                            <div class="form-group row d-flex ml-5" >
-                                <div class="col-10" >
+                            <div class="form-group row d-flex ml-5">
+                                <div class="col-10">
                                     <div class="form-group ml-3">
                                         {!! NoCaptcha::renderJs('es', false, 'recaptchaCallback') !!}
                                         {!! NoCaptcha::display() !!}
@@ -272,14 +258,14 @@ $referred = null;
                                         {{ __('Registrate') }}
                                     </button>
                                 </div>
-                            </div>   
+                            </div>
                             <div class="col-12 mt-2">
                                 <p class="text-center">
                                     <a href="{{ route('login') }}" class="registrate">
                                         ¿Ya tienes una cuenta? <span>Inicia sesión</span>
                                     </a>
                                 </p>
-                            </div>                        
+                            </div>
                         </form>
                     </div>
 
@@ -289,8 +275,8 @@ $referred = null;
         @include('auth.footer')
     </div>
 
-   
-<!--
+
+    <!--
             {{-- <div class="col-md-10 col-sm-8 col-12">
                 <div class="card mb-0 card-margin">
                     <div class="card-header">
@@ -495,7 +481,5 @@ $referred = null;
                     </p>
                 </div>
             </div> --}}-->
-</body>    
+</body>
 @endsection
-
-
