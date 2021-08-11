@@ -10,17 +10,6 @@ input:not(:focus):valid ~ .floating-label{
   opacity: 1;
 }
 
-.inputText {
-  font-size: 14px;
-
-}
-.floating-label {
-  position: absolute;
-  pointer-events: none;
-  left: 20px;
-  top: 35px;
-  transition: 0.2s ease all;
-}
 
 @media screen and (max-width: 600px){
     .title,.subtitle{
