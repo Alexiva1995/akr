@@ -5,13 +5,13 @@
 
             <ul class="nav justify-content-end mr-5">
                 <li class="nav-item">
-                    <a class="nav-link active text-white ." aria-current="page" href="#" style="font-size:18px;">Inicio</a>
+                    <a class="nav-link active text-white ml-2" aria-current="page" href="#" style="font-size:18px;">Inicio</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-white" href="#" style="font-size:18px;">Blog</a>
+                    <a class="nav-link text-white ml-2" href="#" style="font-size:18px;">Blog</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-white" href="#" style="font-size:18px;">Contacto</a>
+                    <a class="nav-link text-white ml-2" href="#" style="font-size:18px;">Contacto</a>
                 </li>
 
             </ul>
