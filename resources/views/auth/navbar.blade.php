@@ -1,6 +1,6 @@
 <header>
     
-<nav class="navbar  navbar-expand-sm bg-dark fixed-top">
+<nav class="navbar  navbar-expand-sm  fixed-top">
         <div class="container">
       
 
@@ -54,8 +54,14 @@
      color: #fff;
      font-size: 30px;
     }
-    
-   
+    .navbar-collapse { text-align: center;
+       
+     }
+
+     .nav-link:hover{
+         background-color: #000000;
+         border-radius:50px;
+     }
     
     
     </style>
