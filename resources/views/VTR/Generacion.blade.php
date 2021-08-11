@@ -37,7 +37,7 @@
         <div class="card">
             <div class="card-content">
                 <div class="card-body card-dashboard">
-                    <form action="{{route('generar.crypto')}}" method="post">
+                    <form action="{{route('crypto.store')}}" method="post">
                     @csrf
                     <div class="table-responsive">
                         <table class="table w-100 nowrap scroll-horizontal-vertical myTable table-striped">
@@ -81,11 +81,9 @@
                         </table>
                     </div>
 
-                    {{-- @if(\Carbon\Carbon::now()->format('l') == 'Friday') --}}
                         <div class="form-group text-center">
                             <button class="btn btn-primary">Generar Liquidacion</button>
                         </div>
-                    {{-- @endif --}}
                     </form>
                 </div>
             </div>
