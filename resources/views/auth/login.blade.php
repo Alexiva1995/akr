@@ -64,7 +64,13 @@ input:not(:focus):valid ~ .floating-label{
                                 <div class="col-md-12">
                                     <label>Correo Electronico</label>
                                     <input id="email" type="text" 
+<<<<<<< HEAD
                                     class=" email form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus placeholder=" tucorreo@email.com" />
+=======
+                                    class="inputText email form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus placeholder="" />
+
+                                    <span class="floating-label text-white" style="opacity: 0.30;"><i class="fas fa-envelope"></i> tucorreo@email.com</span>
+>>>>>>> 3a5fbf06d7eb1b4accedfb9dd418edfed91064c4
 
                                   
 
@@ -82,7 +88,11 @@ input:not(:focus):valid ~ .floating-label{
                                     <input id="password" type="password" 
                                     class=" form-control text-input-holder @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" style="font-family:FontAwesome,Arial " placeholder=" Ingresa tu contraseña">
 
+<<<<<<< HEAD
                                    
+=======
+                                    <span class="floating-label text-white" style="opacity: 0.30;"><i class="fas fa-lock"></i> Ingresa tu contraseña</span>
+>>>>>>> 3a5fbf06d7eb1b4accedfb9dd418edfed91064c4
 
                                     @error('password')
                                     <span class="invalid-feedback" role="alert">
