@@ -3,8 +3,30 @@
 @section('content')
 @push('custom_css')
 <style>
+    input:focus ~ .floating-label,
+input:not(:focus):valid ~ .floating-label{
+  
+  font-size: 11px;
+  opacity: 1;
+}
+
+.inputText {
+  font-size: 14px;
+
+}
+.floating-label {
+  position: absolute;
+  pointer-events: none;
+  left: 20px;
+  top: 35px;
+  transition: 0.2s ease all;
+}
+
+
 </style>
 @endpush
+
+
 
 <body>
     @include('auth.navbar')
@@ -35,7 +57,10 @@
                                 <div class="col-md-12">
                                     <label>Correo Electronico</label>
                                     <input id="email" type="text" 
-                                    class="email form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus placeholder="  tucorreo@email.com" />
+                                    class="inputText email form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus placeholder="" />
+
+                                    <span class="floating-label text-white" style="opacity: 0.30;"><i class="fas fa-envelope"></i> tucorreo@email.com</span>
+
 
                                     @error('email')
                                     <span class="invalid-feedback" role="alert">
@@ -49,8 +74,9 @@
                                 <div class="col-md-12">
                                     <label>Contraseña</label>
                                     <input id="password" type="password" 
-                                    class="form-control text-input-holder @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" style="font-family:FontAwesome,Arial " placeholder="&#61475;  Ingresa tu contraseña">
+                                    class="inputText form-control text-input-holder @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" style="font-family:FontAwesome,Arial " placeholder="">
 
+                                    <span class="floating-label text-white" style="opacity: 0.30;"><i class="fas fa-lock"></i> Ingresa tu contraseña</span>
 
                                     @error('password')
                                     <span class="invalid-feedback" role="alert">
@@ -89,11 +115,14 @@
         </div>
     </div>
     </div>
+    
     </div>
+    
     </div>
-
+   
+   
 
 </body>
-
+@include('auth.footer')
 
 @endsection
