@@ -172,20 +172,12 @@ Route::prefix('dashboard')->middleware('menu', 'auth', /*'verified'*/)->group(fu
             Route::get('/pending', 'LiquidactionController@indexPendientes')->name('settlement.pending');
             Route::post('/process', 'LiquidactionController@procesarLiquidacion')->name('settlement.process');
             Route::get('/{status}/history', 'LiquidactionController@indexHistory')->name('settlement.history.status');
-            Route::resource('liquidation', 'LiquidactionController');
-            
-
+            Route::resource('liquidation', 'LiquidactionController');            
         });
 
         /*RUTAS DEL SUBMENU VTR*/ 
-        Route::get('/Generacion', 'LiquidactionController@Generacion')->name('Generacion');
-        Route::post('/send', 'LiquidactionController@cryptos')->name('VTR.send');
-       
-        Route::post('generar.crypto', 'LiquidactionController@generarcrypto')->name('generar.crypto');
-
-
-        Route::get('/Pendientes', 'LiquidactionController@Pendientes')->name('Pendientes');
-        Route::get('/{status}/historys', 'LiquidactionController@indexHistorys')->name('VTR.historys.status');
+        // Route::get('/Generacion', 'LiquidactionController@Generacion')->name('Generacion');
+        
 
         //Rutas para el cierre de productos
         // Route::prefix('accounting')->group(function(){
@@ -205,6 +197,21 @@ Route::prefix('dashboard')->middleware('menu', 'auth', /*'verified'*/)->group(fu
         Route::prefix('profit')->group(function(){
             Route::get('index', 'WalletController@flujoDeGanancia')->name('flujo-de-ganancia');
         });
+        
+        /*RUTAS DEL SUBMENU VTR*/ 
+        Route::prefix('VTR')->group(function(){
+            Route::resource('crypto', 'CryptoValueController');
+            Route::get('/Generacion', 'CryptoValueController@index')->name('Generacion');
+            Route::post('/send', 'CryptoValueController@cryptos')->name('VTR.send');
+       
+            Route::post('generar.crypto', 'CryptoValueController@generarcrypto')->name('generar.crypto');
+
+
+            Route::get('/Pendientes', 'CryptoValueController@Pendientes')->name('Pendientes');
+            Route::get('/{status}/historys', 'CryptoValueController@indexHistorys')->name('VTR.historys.status');
+
+        });
+        
     });
 
 });
