@@ -115,4 +115,111 @@ class LiquidationCryptoController extends Controller
         }
     }
 
+    
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        if ($request->tipo == 'detallada') {
+
+            $validate = $request->validate([
+                'listComisiones' => ['required', 'array'],
+                'iduser' => ['required']
+            ]);
+        } else {
+            $validate = $request->validate([
+                'listUsers' => ['required', 'array']
+            ]);
+        }
+
+        try {
+            if ($validate) {
+                if ($request->tipo == 'detallada') {
+                    $this->generarLiquidationCrypto($request->iduser, $request->listComisiones);
+                } else {
+                    foreach ($request->listUsers as $iduser) {
+                        $this->generarLiquidationCrypto($iduser, []);
+                    }
+                }
+                return redirect()->back()->with('msj-success', 'Liquidaciones Generada Exitoxamente');
+            }
+        } catch (\Throwable $th) {
+            Log::error('LiquidactionCrypto- store -> Error: ' . $th);
+            abort(403, "Ocurrio un error, contacte con el administrador");
+        }
+    }
+
+    public function generarLiquidationCrypto(int $iduser, array $listComision)
+    {
+        try {
+            $user = User::find($iduser);
+            $comisiones = collect();
+
+            if ($listComision == []) {
+                $comisiones = Crypto_Value::where([
+                    ['iduser', $iduser],
+                    ['status', '0'],
+                ])->get();
+            } else {
+                $comisiones = Crypto_Value::whereIn('id', $listComision)->get();
+            }
+
+            $total = $comisiones->sum('cantidad');
+            // $feed = ($bruto * 0.10);
+            // $total = ($bruto - $feed);
+
+            $arrayLiquidation = [
+                'iduser' => $iduser,
+                'total' => $total,
+                'hash',
+                'wallet_used' => $user->wallet_address,
+                'status' => 0,
+            ];
+
+            $idLiquidation = $this->saveLiquidationCrypto($arrayLiquidation);
+
+            $arrayWallet = [
+                'iduser' => $user->id,
+                'cantidad' => $total,
+                'status' => '0',
+                'liquidation_crypto_id' => $idLiquidation
+            ];
+
+            // $this->saveCryptoValue($arrayWallet);
+
+            if (!empty($idLiquidation)) {
+                $listComi = $comisiones->pluck('id');
+                Crypto_Value::whereIn('id', $listComi)->update([
+                    'status' => '1',
+                    'liquidation_crypto_id' => $idLiquidation
+                ]);
+            }
+        } catch (\Throwable $th) {
+            Log::error('LiquidactionCrypto - generarLiquidationCrypto -> Error: ' . $th);
+            abort(403, "Ocurrio un error, contacte con el administrador");
+        }
+    }
+
+    public function saveLiquidationCrypto(array $data): int
+    {
+        try{            
+            $liquidacion = LiquidationCrypto::create($data);
+            return $liquidacion->id;
+
+        } catch (\Throwable $th) {
+            Log::error('LiquidactionCrypto - saveLiquidationCrypto -> Error: ' . $th);
+            abort(403, "Ocurrio un error, contacte con el administrador");
+        }
+    }
+    
+    public function saveCryptoValue(array $data)
+    {
+        Crypto_Value::create($data);
+
+    }
+
 }

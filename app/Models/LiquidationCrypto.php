@@ -7,5 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class LiquidationCrypto extends Model
 {
-    use HasFactory;
-}
+    protected $table = 'liquidation_cryptos';
+    
+    protected $fillable = [
+        'iduser', 'total', 'hash',
+        'wallet_used', 'status'
+    ];}

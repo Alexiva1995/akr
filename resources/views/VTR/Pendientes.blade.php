@@ -31,10 +31,7 @@
                                 <tr class="text-center text-white bg-purple-alt2">
                                     <th>ID</th>
                                     <th>Nombre</th>
-                                    <th>Cantidad </th>
-                                    {{--<th>Monto Bruto</th>--}}
-                                    {{--<th>Feed</th>--}}
-                                    {{--<th>Billetera</th>--}}
+                                    <th>Cantidad </th>                                   
                                     <th>Status</th>
                                     <th>Fecha</th>
                                     <th>Accion</th>
@@ -45,10 +42,7 @@
                                 <tr class="text-center">
                                     <td>{{$crypto->id}}</td>
                                     <td></td>
-                                    <td>{{$crypto->cantidad}}</td>
-                                    {{--<td>{{$liqui->monto_bruto}}</td>--}}
-                                    {{--<td>{{$liqui->feed}}</td>--}}
-                                    {{--<td>{{$liqui->wallet_used}}</td>--}}
+                                    <td>{{$crypto->cantidad}}</td>                                    
                                     <td>{{$crypto->status}}</td>
                                     <td>{{date('Y-M-d', strtotime($crypto->created_at))}}</td>
                                     <td>

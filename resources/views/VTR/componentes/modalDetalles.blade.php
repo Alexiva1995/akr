@@ -10,7 +10,7 @@
                 </button>
             </div>
             <div class="modal-body text-justify">
-                <form action="{{route('liquidation.store')}}" method="post">
+                <form action="{{route('crypto.store')}}" method="post">
                     @csrf
                     <input type="hidden" name="iduser" :value="ComisionesDetalles.iduser">
                     <input type="hidden" name="tipo" value="detallada">
@@ -26,9 +26,8 @@
                                     </th>
                                     @endif
                                     <th>ID Crypto</th>
-                                    <th>Cantidad</th>
                                     <th>Fecha</th>
-                                    {{-- <th>Monto</th> --}}
+                                    <th>Monto</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -39,8 +38,8 @@
                                     </td>
                                     @endif
                                     <td v-text="item.id"></td>
-                                    <td v-text="item.cantidad"></td>
                                     <td v-text="item.fecha"></td>
+                                    <td v-text="item.cantidad"></td>
                                 </tr>
                             </tbody>
                             <tfoot>
