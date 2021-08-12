@@ -3,21 +3,15 @@
 @section('content')
 @push('custom_css')
 <style>
-    input:focus ~ .floating-label,
-input:not(:focus):valid ~ .floating-label{
-  
-  font-size: 11px;
-  opacity: 1;
+
+
+.cardd{
+    background: rgba(0, 0, 0, 0.75);
+    border: 1px solid #000000;
+    box-sizing: border-box;
+    border-radius: 11px;
+    margin-top: 20%;
 }
-
-
-@media screen and (max-width: 600px){
-    .title,.subtitle{
-        margin-left: 10px;
-        margin-right: 6px;
-    }
-}
-
 
 </style>
 @endpush
@@ -39,7 +33,7 @@ input:not(:focus):valid ~ .floating-label{
             <div class="col-md-1 col-sm-12 col-12 ">
             </div>
             <div class="col-md-5 col-sm-12 col-12">
-                <div class="mb-5 carta w-100 login">
+                <div class="mb-5 cardd w-100 login">
                     <div class="mt-4 mx-2">
                         <p class="titulo text-left">{{ __('Iniciar Sesión') }}</p>
                         <p class="subtitulo text-left ">Inicie sesion en su cuenta para empezar</p>
@@ -69,10 +63,11 @@ input:not(:focus):valid ~ .floating-label{
                                 <div class="col-md-12">
                                     <label>Contraseña</label>
                                     <input id="password" type="password" 
-                                    class=" form-control text-input-holder @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" style="font-family:FontAwesome,Arial " placeholder=" Ingresa tu contraseña">
-
-                                   
-
+                                    class="form-control text-input-holder @error('password') is-invalid @enderror" 
+                                    name="password" required autocomplete="current-password" style="font-family:FontAwesome,Arial" 
+                                    placeholder=" Ingresa tu contraseña"
+                                    >
+                                                                    
                                     @error('password')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -114,3 +109,20 @@ input:not(:focus):valid ~ .floating-label{
 @include('auth.footer')
 
 @endsection
+
+@push('custom_js')
+<script>
+    // eye
+    $(window).on('load', function () {
+        if (feather) {
+            feather.replace({
+                width: 14,
+                height: 14
+            });
+        }
+    })
+
+    $("#validate").validate();
+
+</script>
+@endpush

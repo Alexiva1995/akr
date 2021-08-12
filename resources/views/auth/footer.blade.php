@@ -6,23 +6,23 @@
 <div class="container" id="id">
 
 
-  <footer class="text-center  text-white" style="margin-top:380px;">
+  <footer class="text-center  text-white">
 
     <section class="d-flex justify-content-between ">
 
-      <div class="me-5">
+      <div class="">
         <span>Dreams Blue &copy; 2021 - All Right Reserved</span>
       </div>
 
-      <div>
+      <div class="mb-1">
         <a href="" class="text-white ml-2">
-          <i style="font-size:30px; " class="fab fa-telegram"></i></a></li>
+          <i class="fab fa-telegram-plane icono"></i></a></li>
         </a>
         <a href="" class="text-white ml-2">
-          <i style="font-size:30px; " class="fab fa-linkedin "></i>
+          <i class="fab fa-linkedin icono"></i>
         </a>
         <a href="" class="text-white ml-2">
-          <i style="font-size:30px; " class="fas fa-envelope-square"></i>
+          <i class="far fa-envelope icono"></i>
         </a>
 
       </div>
@@ -44,8 +44,16 @@
 
 @media screen and (max-width: 767px){
   #id{
-    margin-top:750px;
+    /* margin-top:750px; */
   }
+}
+
+.icono{
+  font-size:30px;
+  padding: 10px;
+  background-color: black;
+  color: white;
+  border-radius: 35px;
 }
 
 </style>
