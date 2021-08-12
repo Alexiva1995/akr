@@ -13,25 +13,26 @@
     }
 
 
-    input:focus~.floating-label,
-    input:not(:focus):valid~.floating-label {
 
-        font-size: 11px;
-        opacity: 1;
-    }
+    input:focus ~ .floating-label,
+input:not(:focus):valid ~ .floating-label{
+  top: 3px;
+  bottom: 100px;
+  left: 20px;
+  font-size: 11px;
+  opacity: 1;
+}
 
-    .inputText {
-        font-size: 25px;
 
-    }
 
-    .floating-label {
-        position: absolute;
-        pointer-events: none;
-        left: 20px;
-        top: 10px;
-        transition: 0.2s ease all;
-    }
+.floating-label {
+  position: absolute;
+  pointer-events: none;
+  left: 20px;
+  top: 18px;
+  transition: 0.2s ease all;
+  color: white;
+}
 
     #age {
         background-color: rgba(0, 0, 0, 0.3);
@@ -51,6 +52,14 @@
     margin-top: 10%;
     margin-bottom: 10%;
 }
+
+#country{
+    color: red;
+}
+
+  
+    
+
 </style>
 @endpush
 
@@ -71,7 +80,7 @@ $referred = DB::table('users')
     @include('auth.navbar')
     <div class="container">
         <div class="row">
-            <div class="col-md-6 col-sm-12 col-12 infor">
+            <div class=" col-md-6   infor">
                 <div class="title">
                     Crea tu cuenta!
                 </div>
@@ -81,7 +90,7 @@ $referred = DB::table('users')
             </div>
             <div class="col-md-6 col-sm-12 col-12">
                 <div class="cardd w-100 ">
-                    <div class="mt-2 mx-2">
+                    <div class="mt-1 mx-2">
                         <p class="titulo text-left">Registrate</p>
                         <p class="subtitulo text-left ">Crea tu cuenta y se parte de nuestro ecosistema.</p>
                     </div>
@@ -93,8 +102,11 @@ $referred = DB::table('users')
                             @endforeach
                         </ul>
                     </div>
+                    </div>
+                    </div>
                     @endif
-                    <div class="card-body mt-0">
+                    
+                    <div class="card-body ">
                         <form method="POST" action="{{ route('register') }}">
                             @csrf
 
@@ -106,10 +118,9 @@ $referred = DB::table('users')
 
                             <div class="row">
                                 <div class="form-group col-md-6" >
-                                    <input  id="name" type="text" class="inputText form-control @error('name') is-invalid @enderror" name="name" required autocomplete="name" autofocus placeholder="" value="{{ old('name') }}">
+                                    <input style="  margin-top: 8px;" id="name" type="text" class=" form-control @error('name') is-invalid @enderror" name="name" required autocomplete="name" autofocus placeholder="" value="{{ old('name') }}">
 
-
-                                    <span class="floating-label text-white" style="opacity: 0.30;"><i class="fas fa-id-badge"></i> Nombre y Apellido</span>
+                                    <span class="floating-label "><i class="fas fa-id-badge"></i> Nombre y Apellido</span>
 
                                     @error('name')
                                     <span class="invalid-feedback" role="alert">
@@ -118,10 +129,10 @@ $referred = DB::table('users')
                                     @enderror
                                 </div>
                                 <div class="form-group col-md-6">
-                                    <input id="dni" type="text" class="inputText form-control @error('dni') is-invalid @enderror" name="dni" required autocomplete="dni" autofocus placeholder=" " value="{{ old('dni') }}">
+                                    <input style="  margin-top: 8px;" id="dni" type="text" class=" form-control @error('dni') is-invalid @enderror" name="dni" required autocomplete="dni" autofocus placeholder=" " value="{{ old('dni') }}">
 
 
-                                    <span class="floating-label text-white"style="opacity: 0.30;"><i class="far fa-address-card"></i> Número de Identificación </span>
+                                    <span class="floating-label "><i class="far fa-address-card"></i> Número de Identificación </span>
 
                                     @error('dni')
                                     <span class="invalid-feedback" role="alert">
@@ -133,10 +144,10 @@ $referred = DB::table('users')
 
                             <div class="row">
                                 <div class="form-group col-md-6">
-                                    <input id="phone" type="text" class="inputText form-control @error('phone') is-invalid @enderror" name="phone" required autocomplete="phone" autofocus placeholder="" value="{{ old('phone') }}">
+                                    <input style="  margin-top: 8px;" id="phone" type="text" class=" form-control @error('phone') is-invalid @enderror" name="phone" required autocomplete="phone" autofocus placeholder="" value="{{ old('phone') }}">
 
 
-                                    <span class="floating-label text-white"style="opacity: 0.30;"><i class="fas fa-phone" ></i> Teléfono </span>
+                                    <span class="floating-label "><i class="fas fa-phone" ></i> Teléfono </span>
 
                                     @error('phone')
                                     <span class="invalid-feedback" role="alert">
@@ -146,9 +157,9 @@ $referred = DB::table('users')
                                 </div>
 
                                 <div class="form-group col-md-6">
-                                    <input id="email" type="email" class="inputText form-control @error('email') is-invalid @enderror" name="email" required autocomplete="email" placeholder="" value="{{ old('email') }}">
+                                    <input style="  margin-top: 8px;" id="email" type="email" class=" form-control @error('email') is-invalid @enderror" name="email" required autocomplete="email" placeholder="" value="{{ old('email') }}">
 
-                                    <span class="floating-label text-white"style="opacity: 0.30;"><i class="fas fa-envelope" ></i> Correo Electronico </span>
+                                    <span  class="floating-label "><i class="fas fa-envelope" ></i> Correo Electronico </span>
 
                                     @error('email')
                                     <span class="invalid-feedback" role="alert">
@@ -163,7 +174,7 @@ $referred = DB::table('users')
 
                             <div class="row">
                                 <div class="form-group col-md-6">
-                                    <select id="country" type="text" class="form-control @error('country') is-invalid @enderror" name="country" required autocomplete="country" autofocus>
+                                    <select style="  margin-top: 8px;" id="country" type="text" class="form-control @error('country') is-invalid @enderror" name="country" required autocomplete="country" autofocus>
                                         <option selected disabled readonly>País</option>
                                         @foreach($countries as $country)
                                         <option value="{{$country->id}}">{{$country->name}}</option>
@@ -178,9 +189,9 @@ $referred = DB::table('users')
                                 </div>
 
                                 <div class="form-group col-md-6">
-                                    <input id="state" type="text" class="inputText form-control @error('state') is-invalid @enderror" name="state" required autocomplete="state" autofocus placeholder="" value="{{ old('state') }}">
+                                    <input style="  margin-top: 8px;" id="state" type="text" class=" form-control @error('state') is-invalid @enderror" name="state" required autocomplete="state" autofocus placeholder="" value="{{ old('state') }}">
 
-                                    <span class="floating-label text-white"style="opacity: 0.30;"><i class="fas fa-map-marker-alt" ></i> Estado o Provincia </span>
+                                    <span class="floating-label "><i class="fas fa-map-marker-alt" ></i> Estado o Provincia </span>
 
 
 
@@ -194,10 +205,10 @@ $referred = DB::table('users')
 
                             <div class="row">
                                 <div class="form-group col-md-6">
-                                    <input id="city" type="text" class="inputText form-control @error('city') is-invalid @enderror" name="city" required autocomplete="city" autofocus placeholder="" value="{{ old('city') }}">
+                                    <input style="  margin-top: 8px;" id="city" type="text" class=" form-control @error('city') is-invalid @enderror" name="city" required autocomplete="city" autofocus placeholder="" value="{{ old('city') }}">
 
 
-                                    <span class="floating-label text-white" style="opacity: 0.30;"><i class="fas fa-map-marker-alt" ></i> Ciudad </span>
+                                    <span class="floating-label "><i class="fas fa-map-marker-alt" ></i> Ciudad </span>
 
                                     @error('city')
                                     <span class="invalid-feedback" role="alert">
@@ -209,7 +220,7 @@ $referred = DB::table('users')
 
 
                                 <div class="form-group col-md-6">
-                                    <input id="age" type="text" onfocus="(this.type='date')" class="text-white form-control @error('age') is-invalid @enderror" name="age" required autocomplete="age" autofocus placeholder=" Fecha de Nacimiento" value="{{ old('age') }}">
+                                    <input style="  margin-top: 8px;" id="age" type="text" onfocus="(this.type='date')" class="text-white form-control @error('age') is-invalid @enderror" name="age" required autocomplete="age" autofocus placeholder=" Fecha de Nacimiento" value="{{ old('age') }}">
 
 
                                     @error('age')
@@ -222,10 +233,10 @@ $referred = DB::table('users')
 
                             <div class="row">
                                 <div class="form-group col-md-6">
-                                    <input id="password" type="password" class="inputText form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password" placeholder="">
+                                    <input style="  margin-top: 8px;" id="password" type="password" class=" form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password" placeholder="">
 
 
-                                    <span class="floating-label text-white"style="opacity: 0.30;"><i class="fas fa-lock" ></i> Ingrese una contraseña </span>
+                                    <span class="floating-label"><i class="fas fa-lock" ></i> Ingrese una contraseña </span>
 
                                     @error('password')
                                     <span class="invalid-feedback" role="alert">
@@ -235,11 +246,11 @@ $referred = DB::table('users')
                                 </div>
 
                                 <div class="form-group col-md-6">
-                                    <input id="password-confirm" type="password" class="inputText form-control" name="password_confirmation" required autocomplete="new-password" placeholder="">
+                                    <input style="  margin-top: 8px;" id="password-confirm" type="password" class=" form-control" name="password_confirmation" required autocomplete="new-password" placeholder="">
 
 
 
-                                    <span class="floating-label text-white" style="opacity: 0.30;"><i class="fas fa-lock" ></i> confirme su contraseña </span>
+                                    <span class="floating-label "><i class="fas fa-lock" ></i> confirme su contraseña </span>
 
                                 </div>
                             </div>

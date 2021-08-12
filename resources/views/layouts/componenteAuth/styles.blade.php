@@ -31,11 +31,10 @@
 
         position: absolute;
         width: 100%;
-        height: 100%;
         left: 0px;
         top: 0px;
         background: url("{{asset('assets/img/sistema/fondo.jpg')}}");
-
+        
         -webkit-background-size: cover;
         -moz-background-size: cover;
         -o-background-size: cover;
@@ -47,7 +46,6 @@
 
 
     }
-
 
 
 

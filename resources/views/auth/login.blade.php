@@ -123,7 +123,7 @@ input:not(:focus):valid ~ .floating-label{
                                     </button>
                                 </div>
                             </div>
-                            <div class="col-12 mt-2">
+                            <div class="col-12 mt-2 ">
                                 <p class="text-center">
                                     <a href="{{ route('register') }}" class="registrate">
                                         ¿No registrado? <span>Crear una cuenta</span>
