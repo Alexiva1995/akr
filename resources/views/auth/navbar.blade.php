@@ -40,8 +40,15 @@
     
     <style>
     
+
+@media (max-width: 2000px) {
+  .navbar  ul {
+    left: -90%;
+  }
+
     .navbar .navbar-brand {
      font-size: 30px;
+     
     }
     .navbar .nav-item {
      padding: 10px 20px;
@@ -62,6 +69,6 @@
          background-color: #000000;
          border-radius:50px;
      }
-    
+}
     
     </style>

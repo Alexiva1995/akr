@@ -36,6 +36,7 @@ input:not(:focus):valid ~ .floating-label{
 
     #age {
         background-color: rgba(0, 0, 0, 0.3);
+        background-color: transparent;
     }
     @media screen and (max-width: 600px){
     .title,.subtitle{
@@ -58,6 +59,10 @@ input:not(:focus):valid ~ .floating-label{
 }
 
   
+  @media(max-width:991px) {
+    .floating-label {
+    font-size: 12px;
+  }}
     
 
 </style>
@@ -106,7 +111,7 @@ $referred = DB::table('users')
                     </div>
                     @endif
                     
-                    <div class="card-body ">
+                    <div id="id" class="card-body ">
                         <form method="POST" action="{{ route('register') }}">
                             @csrf
 
@@ -179,7 +184,11 @@ $referred = DB::table('users')
                                         @foreach($countries as $country)
                                         <option value="{{$country->id}}">{{$country->name}}</option>
                                         @endforeach
+
+                                   
                                     </select>
+
+
 
                                     @error('country')
                                     <span class="invalid-feedback" role="alert">
@@ -220,8 +229,10 @@ $referred = DB::table('users')
 
 
                                 <div class="form-group col-md-6">
-                                    <input style="  margin-top: 8px;" id="age" type="text" onfocus="(this.type='date')" class="text-white form-control @error('age') is-invalid @enderror" name="age" required autocomplete="age" autofocus placeholder=" Fecha de Nacimiento" value="{{ old('age') }}">
+                                    <input style="  margin-top: 8px;" id="age" type="text" onfocus="(this.type='date')" class="text-white form-control @error('age') is-invalid @enderror" name="age" required autocomplete="age" autofocus placeholder=" " value="{{ old('age') }}">
 
+
+                                    <span class="floating-label "><i class="fas fa-calendar" ></i> Fecha de Nacimiento </span>
 
                                     @error('age')
                                     <span class="invalid-feedback" role="alert">
