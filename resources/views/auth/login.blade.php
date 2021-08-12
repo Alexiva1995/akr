@@ -2,51 +2,15 @@
 
 @section('content')
 @push('custom_css')
-<style>
 
 
-.cardd{
-    background: rgba(0, 0, 0, 0.75);
-    border: 1px solid #000000;
-    box-sizing: border-box;
-    border-radius: 11px;
-    margin-top: 20%;
-}
-
-    .infor {
-        margin-top: 18%;
-    }
-
-    input:focus ~ .floating-label,
-input:not(:focus):valid ~ .floating-label{
-  top: 8px;
-  bottom: 10px;
-  left: 20px;
-  font-size: 11px;
-  opacity: 1;
-}
-
-
-
-.floating-label {
-  position: absolute;
-  pointer-events: none;
-  left: 20px;
-  top: 18px;
-  transition: 0.2s ease all;
-  color: white;
-}
-
-
-
-</style>
 @endpush
-
-
-
+<
 <body>
-    @include('auth.navbar')
-    <div class="container">
+    {{--@include('auth.navbar')---}}
+    <!--<div class="container">
+          
+<div id="home" class="hero route bg-image" style="background-image: url(assets/img/header.jpg)">
         <div class="row ">
             <div class="col-md-6 col-sm-12 col-12 infor">
                 <div class="title">
@@ -72,10 +36,9 @@ input:not(:focus):valid ~ .floating-label{
 
                                 <div class="col-md-12">
                                     <label>Correo Electronico</label>
-                                    <input id="email" type="text" 
-                                    class=" email form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus placeholder=" " />
+                                    <input id="email" type="text" class=" email form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus placeholder=" " />
 
-                                                           
+
                                     <span class="floating-label mt-1"><i class="fas fa-envelope"></i> tucorreo@email.com</span>
 
 
@@ -87,17 +50,13 @@ input:not(:focus):valid ~ .floating-label{
                                 </div>
                             </div>
 
-                          
+
 
                             <div class="form-group row">
                                 <div class="col-md-12">
                                     <label>Contraseña</label>
-                                    <input id="password" type="password" 
-                                    class=" form-control text-input-holder  @error('password') is-invalid @enderror" 
-                                    name="password" required autocomplete="current-password" style="font-family:FontAwesome,Arial" 
-                                    placeholder=""
-                                    >
-                                                         
+                                    <input id="password" type="password" class=" form-control text-input-holder  @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" style="font-family:FontAwesome,Arial" placeholder="">
+
                                     <span class="floating-label mt-1"><i class="fas fa-lock"></i> Ingresa tu contraseña</span>
 
                                     @error('password')
@@ -133,19 +92,20 @@ input:not(:focus):valid ~ .floating-label{
                         </form>
 
                     </div>
-                    </div>  
                 </div>
-                </div>
+            </div>
+        </div>
 
 </body>
-@include('auth.footer')
+-->
+{{--@include('auth.footer')--}}
 
 @endsection
 
 @push('custom_js')
 <script>
     // eye
-    $(window).on('load', function () {
+    $(window).on('load', function() {
         if (feather) {
             feather.replace({
                 width: 14,
@@ -155,6 +115,5 @@ input:not(:focus):valid ~ .floating-label{
     })
 
     $("#validate").validate();
-
 </script>
 @endpush

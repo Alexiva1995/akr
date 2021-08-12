@@ -11,9 +11,7 @@
     .infor {
         margin-top: 25%;
     }
-
-
-
+    
     input:focus ~ .floating-label,
 input:not(:focus):valid ~ .floating-label{
   top: 3px;
@@ -38,12 +36,7 @@ input:not(:focus):valid ~ .floating-label{
         background-color: rgba(0, 0, 0, 0.3);
         background-color: transparent;
     }
-    @media screen and (max-width: 600px){
-    .title,.subtitle{
-        margin-left: 10px;
-        margin-right: 6px;
-    }
-}
+ 
 
 .cardd{
     background: rgba(0, 0, 0, 0.75);
@@ -58,12 +51,7 @@ input:not(:focus):valid ~ .floating-label{
     color: red;
 }
 
-  
-  @media(max-width:991px) {
-    .floating-label {
-    font-size: 12px;
-  }}
-    
+ 
 
 </style>
 @endpush

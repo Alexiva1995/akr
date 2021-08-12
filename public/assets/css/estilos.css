@@ -1,4 +1,4 @@
-.container{
+/*.container{
     color: whitesmoke;
 }
 .fondo{
@@ -14,9 +14,9 @@
 .title{
     font-size: 75px;
     font-weight: 400;
-    /* font-family: "Roboto-Regular"; */
+    /* font-family: "Roboto-Regular"; *//*
     font-style: normal;
-}
+/*}
 
 .subtitle{
     color: whitesmoke;
@@ -28,12 +28,6 @@
 
 #age {
     background-color: rgba(0, 0, 0, 0.3);
-}
-@media screen and (max-width: 600px){
-.title,.subtitle{
-    margin-left: 10px;
-    margin-right: 6px;
-}
 }
 
 .cardd{
@@ -56,13 +50,7 @@ margin-bottom: 10%;
 
 
 
-@media screen and (max-width: 600px){
-    .title,.subtitle{
-        margin-left: 10px;
-        margin-right: 6px;
-    }
-}
-
+/*
 .login{
     margin-top: 20%;
 }
@@ -114,9 +102,9 @@ label{
 .forgot-password:hover{
     color: #B0B0B0;
 }
-
+/*
 .btn-login{
-    /* position: absolute; */
+    /* position: absolute; *//*
     background: rgba(3, 201, 245, 0.3);
     border: 3px solid rgba(0, 246, 225, 0.77);
     box-sizing: border-box;
@@ -126,7 +114,7 @@ label{
     text-transform: uppercase;
     padding: 5px 0 5px 0;
     color: #FFFFFF; 
-}
+}/*
 
 .registrate{
     color: #FFFFFF;
