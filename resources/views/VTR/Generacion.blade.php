@@ -28,11 +28,11 @@
 @endpush
 
 @push('custom_js')
-<script src="{{asset('assets/js/crypto.js')}}"></script>
+<script src="{{asset('assets/js/liquidaciones.js')}}"></script>
 @endpush
 
 @section('content')
-<div id="AKR">
+<div id="settlement">
     <div class="col-12">
         <div class="card">
             <div class="card-content">
@@ -61,19 +61,12 @@
                                         <td>{{$crypto->iduser}}</td>
                                         <td>{{$crypto->user->fullname}}</td>
                                         <td>{{$crypto->user->email}}</td>
-                                        <td>{{$crypto->cantidad}}</td>
+                                        <td>{{$crypto->total}}</td>
                                         <td>{{$crypto->status}}</td>
-                                        <td>
-
-                                        <a onclick="v_liquidation.getDetail({{$crypto->iduser}})" class="btn btn-info">
+                                        <td>                                            
+                                            <a onclick="vm_liquidation.getDetailCrypto({{$crypto->iduser}})" class="btn btn-info">
                                                 <i class="feather icon-eye"></i>
                                             </a>
-
-
-                                            <!--
-                                            <a onclick="vm_liquidation.getDetailComision({{$crypto->iduser}})" class="btn btn-info">
-                                                <i class="feather icon-eye"></i>
-                                            </a>-->
                                         </td>
                                     </tr>
                                 @endforeach
@@ -94,6 +87,7 @@
             </div>
         </div>
     </div>
+    @include('settlement.componentes.modalDetalles', ['all' => true])
     @include('VTR.componentes.modalDetalles', ['all' => true])
     @include('VTR.component.modal%')
 </div>

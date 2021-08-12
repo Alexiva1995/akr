@@ -23,6 +23,24 @@ var vm_liquidation = new Vue({
             })
         },
 
+        
+        /**
+         * Permite obtener la informacion de las crypto _values de un usuario
+         * @param {integer} iduser 
+         */
+         getDetailCrypto: function(iduser){
+            let url = route('crypto.show', iduser)
+            this.seleAllComision = false
+            axios.get(url).then((response) => {
+                this.ComisionesDetalles = response.data
+                $('#modalModalDetallesCrypto').modal('show')
+                 
+                console.log(this.ComisionesDetalles)
+            }).catch(function (error) {
+                toastr.error("Ocurrio un problema con la solicitud crypto", '¡Error!', { "progressBar": true });
+            })
+        },
+
         /**
          * Permite obtener la informacion de las comisiones de las liquidaciones
          * @param {integer} iduser 
@@ -53,6 +71,8 @@ var vm_liquidation = new Vue({
             }).catch(function (error) {
                 toastr.error("Ocurrio un problema con la solicitud", '¡Error!', { "progressBar": true });
             })
-        }
+        },
+
+
     }
 })

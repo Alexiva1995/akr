@@ -16,7 +16,7 @@
 @endpush
 
 @push('custom_js')
-<script src="{{asset('assets/js/liquidation.js')}}"></script>
+<script src="{{asset('assets/js/liquidaciones.js')}}"></script>
 @endpush
 
 @section('content')

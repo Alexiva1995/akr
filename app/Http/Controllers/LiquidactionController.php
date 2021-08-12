@@ -46,6 +46,37 @@ class LiquidactionController extends Controller
     }
 
 
+    public function generarcrypto(Request $request)
+    {
+        if ($request->tipo == 'detallada') {
+
+            $validate = $request->validate([
+                'listComisiones' => ['required', 'array'],
+                'iduser' => ['required']
+            ]);
+        } else {
+            $validate = $request->validate([
+                'listUsers' => ['required', 'array']
+            ]);
+        }
+
+        try {
+            if ($validate) {
+                if ($request->tipo == 'detallada') {
+                    $this->generarLiquidation($request->iduser, $request->listComisiones);
+                } else {
+                    foreach ($request->listUsers as $iduser) {
+                        $this->generarLiquidation($iduser, []);
+                    }
+                }
+                return redirect()->back()->with('msj-success', 'Liquidaciones Generada Exitoxamente');
+            }
+        } catch (\Throwable $th) {
+            Log::error('Liquidaction - store -> Error: ' . $th);
+            abort(403, "Ocurrio un error, contacte con el administrador");
+        }
+    }
+
 
     /**
      * Display a listing of the resource.
