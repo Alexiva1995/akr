@@ -22,15 +22,70 @@
     font-size: 1.5rem;
 }
 
-.carta{
+
+
+input:focus~.floating-label,
+input:not(:focus):valid~.floating-label {
+
+    font-size: 11px;
+    opacity: 1;
+}
+
+.inputText {
+    font-size: 25px;
+
+}
+
+.floating-label {
     position: absolute;
+    pointer-events: none;
+    left: 20px;
+    top: 10px;
+    transition: 0.2s ease all;
+}
+
+#age {
+    background-color: rgba(0, 0, 0, 0.3);
+}
+@media screen and (max-width: 600px){
+.title,.subtitle{
+    margin-left: 10px;
+    margin-right: 6px;
+}
+}
+
+.cardd{
+background: rgba(0, 0, 0, 0.75);
+border: 1px solid #000000;
+box-sizing: border-box;
+border-radius: 11px;
+margin-top: 10%;
+margin-bottom: 10%;
+}
+
+/* .cardd{
     background: rgba(0, 0, 0, 0.75);
     border: 1px solid #000000;
     box-sizing: border-box;
     border-radius: 11px;
     margin-top: 10%;
     margin-bottom: 10%;
+} */
+input:focus ~ .floating-label,
+input:not(:focus):valid ~ .floating-label{
+  
+  font-size: 11px;
+  opacity: 1;
 }
+
+
+@media screen and (max-width: 600px){
+    .title,.subtitle{
+        margin-left: 10px;
+        margin-right: 6px;
+    }
+}
+
 .login{
     margin-top: 20%;
 }
@@ -122,21 +177,10 @@ span {
     font-size: 1rem;
 }
 
-/* #password::placeholder {
-    color: #B0B0B0;
-    font-size: 1rem;
-
-} */
-
-::placeholder{
-    color: #B0B0B0;
-    font-size: 1rem;
-}
-
 .email::-webkit-input-placeholder {
     overflow: visible;
 }
 
-.infor{
+/* .infor{
     margin-top: 15%
-}
+} */
