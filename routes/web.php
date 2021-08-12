@@ -175,9 +175,7 @@ Route::prefix('dashboard')->middleware('menu', 'auth', /*'verified'*/)->group(fu
             Route::resource('liquidation', 'LiquidactionController');            
         });
 
-        /*RUTAS DEL SUBMENU VTR*/ 
-        // Route::get('/Generacion', 'LiquidactionController@Generacion')->name('Generacion');
-        
+
 
         //Rutas para el cierre de productos
         // Route::prefix('accounting')->group(function(){
@@ -200,7 +198,6 @@ Route::prefix('dashboard')->middleware('menu', 'auth', /*'verified'*/)->group(fu
         
         /*RUTAS DEL SUBMENU VTR*/ 
         Route::prefix('VTR')->group(function(){
-            Route::resource('crypto', 'CryptoValueController');
             Route::get('/Generacion', 'CryptoValueController@index')->name('Generacion');
             Route::post('/send', 'CryptoValueController@cryptos')->name('VTR.send');
        

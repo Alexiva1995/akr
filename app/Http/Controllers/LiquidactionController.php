@@ -11,9 +11,9 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\View;
 use App\Http\Controllers\WalletController;
-use App\Models\Crypto_Value;
+
 use Illuminate\Support\Facades\Auth;
-use App\Models\cryptos;
+
 
 
 class LiquidactionController extends Controller
@@ -32,34 +32,6 @@ class LiquidactionController extends Controller
      * @return \Illuminate\Http\Response
      */
     
-  
-
-    public function cryptos(Request $request)
-    {
-        $validate = $request->validate([
-            
-            'porcentaje_de_monedas' => 'required|numeric',
-            'valor' => 'required|numeric'
-            
-        ]);
-        try {
-            if ($validate) {
-    
-                cryptos::create([
-                    'porcentaje_de_cryptos' => (int)$request->porcentaje_de_monedas,
-                    'valor' => (int)$request->valor
-               
-                ]);
-
-                return redirect()->back()->with('msj-success', 'Operación Generada Exitosamente');
-
-            }
-        } catch (\Throwable $th) {
-            Log::error('Liquidaction - Cryptos -> Error: ' . $th);
-            abort(403, "Ocurrio un error, contacte con el administrador");
-        }
-    }
-
     
     public function index()
     {
@@ -72,67 +44,6 @@ class LiquidactionController extends Controller
             abort(403, "Ocurrio un error, contacte con el administrador");
         }
     }
-
-    public function getTotalLiquidaciones(array $filtros, int $iduser = null): array
-    {
-        try {
-            $cryptos = [];
-            if ($iduser != null && $iduser != 1) {
-                $cryptostmp = Wallet::where([
-                    ['status', '=', 0],
-                    ['liquidation_id', '=', null],
-                    ['tipo_transaction', '=', 0],
-                    ['iduser', '=', $iduser]
-                ])->select(
-                    DB::raw('sum(monto) as total'),
-                    'iduser'
-                )->groupBy('iduser')->get();
-            } else {
-                $cryptostmp = Wallet::where([
-                    ['status', '=', 0],
-                    ['liquidation_id', '=', null],
-                    ['tipo_transaction', '=', 0],
-                ])->select(
-                    DB::raw('sum(monto) as total'),
-                    'iduser'
-                )->groupBy('iduser')->get();
-            }
-
-            foreach ($cryptostmp as $crypto) {
-                $crypto->getWalletUser;
-                if ($crypto->getWalletUser != null) {
-                    if ($filtros == []) {
-                        $cryptos[] = $crypto;
-                    } else {
-                        if (!empty($filtros['activo'])) {
-                            if ($crypto->status == 1) {
-                                if (!empty($filtros['mayorque'])) {
-                                    if ($crypto->total >= $filtros['mayorque']) {
-                                        $cryptos[] = $crypto;
-                                    }
-                                } else {
-                                    $cryptos[] = $crypto;
-                                }
-                            }
-                        } else {
-                            if (!empty($filtros['mayorque'])) {
-                                if ($crypto->total >= $filtros['mayorque']) {
-                                    $cryptos[] = $crypto;
-                                }
-                            } else {
-                                $cryptos[] = $crypto;
-                            }
-                        }
-                    }
-                }
-            }
-            return $cryptos;
-        } catch (\Throwable $th) {
-            Log::error('Liquidaction - getTotalComisiones -> Error: ' . $th);
-            abort(403, "Ocurrio un error, contacte con el administrador");
-        }
-    }
-
 
 
 

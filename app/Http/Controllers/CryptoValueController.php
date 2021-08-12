@@ -8,86 +8,24 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\View;
+use App\Models\Liquidaction;
+use App\Models\User;
+use App\Models\Wallet;
+use Carbon\Carbon;
+
+use App\Http\Controllers\WalletController;
+
+use Illuminate\Support\Facades\Auth;
+
 
 class CryptoValueController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        try {
-            $cryptos = Crypto_Value::all();
-            View::share('titleg', 'Generar VTR');
-           $total = $this->getTotalLiquidaciones([], null);
-            return view('VTR.Generacion', compact('cryptos'));
-        } catch (\Throwable $th) {
-            Log::error('VTR - index -> Error: ' . $th);
-            abort(403, "Ocurrio un error, contacte con el administrador");
-        }
-    }
 
-    public function getTotalLiquidaciones(array $filtros, int $iduser = null): array
-    {
-        try {
-            $cryptos = [];
-            if ($iduser != null && $iduser != 1) {
-                $cryptostmp = Crypto_Value::where([
-                    ['status', '=', 0],
-                    ['liquidation_crypto_id', '=', null],
-                    // ['tipo_transaction', '=', 0],
-                    ['iduser', '=', $iduser]
-                ])->select(
-                    DB::raw('sum(cantidad) as total'),
-                    'iduser'
-                )->groupBy('iduser')->get();
-            } else {
-                $cryptostmp = Crypto_Value::where([
-                    ['status', '=', 0],
-                    ['liquidation_crypto_id', '=', null],
-                    // ['tipo_transaction', '=', 0],
-                ])->select(
-                    DB::raw('sum(cantidad) as total'),
-                    'iduser'
-                )->groupBy('iduser')->get();
-            }
 
-            foreach ($cryptostmp as $crypto) {
-                $crypto->user;
-                if ($crypto->user != null) {
-                    if ($filtros == []) {
-                        $cryptos[] = $crypto;
-                    } else {
-                        if (!empty($filtros['activo'])) {
-                            if ($crypto->status == 1) {
-                                if (!empty($filtros['mayorque'])) {
-                                    if ($crypto->total >= $filtros['mayorque']) {
-                                        $cryptos[] = $crypto;
-                                    }
-                                } else {
-                                    $cryptos[] = $crypto;
-                                }
-                            }
-                        } else {
-                            if (!empty($filtros['mayorque'])) {
-                                if ($crypto->total >= $filtros['mayorque']) {
-                                    $cryptos[] = $crypto;
-                                }
-                            } else {
-                                $cryptos[] = $crypto;
-                            }
-                        }
-                    }
-                }
-            }
-            return $cryptos;
-        } catch (\Throwable $th) {
-            Log::error('VTR - getTotalComisiones -> Error: ' . $th);
-            abort(403, "Ocurrio un error, contacte con el administrador");
-        }
-    }
+
+    //====================//
+    // Permite asignar un valor y un procenteje de maneda//
+    //====================//
 
     public function cryptos(Request $request)
     {
@@ -115,36 +53,59 @@ class CryptoValueController extends Controller
         }
     }
 
-    public function store(Request $request)
+
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
     {
-        if ($request->tipo == 'detallada') {
-
-            $validate = $request->validate([
-                'listComisiones' => ['required', 'array'],
-                'iduser' => ['required']
-            ]);
-        } else {
-            $validate = $request->validate([
-                'listUsers' => ['required', 'array']
-            ]);
-        }
-
         try {
-            if ($validate) {
-                if ($request->tipo == 'detallada') {
-                    $this->generarLiquidation($request->iduser, $request->listComisiones);
-                } else {
-                    foreach ($request->listUsers as $iduser) {
-                        $this->generarLiquidation($iduser, []);
-                    }
-                }
-                return redirect()->back()->with('msj-success', 'Liquidaciones Generada Exitoxamente');
-            }
+            $cryptos = Crypto_Value::all();
+            View::share('titleg', 'Generar VTR');
+           //$total = $this->getTotalComisiones([], null);
+            return view('VTR.Generacion', compact('cryptos'));
         } catch (\Throwable $th) {
-            Log::error('VTR - store -> Error: ' . $th);
+            Log::error('VTR - index -> Error: ' . $th);
+        abort(403, "Ocurrio un error, contacte con el administrador");
+        }
+    }
+
+
+    public function Pendientes()
+    {
+        try {
+            View::share('titleg', 'Liquidaciones Pendientes');
+            $indexs = Crypto_Value::where('status', 0)->get();
+            foreach ($indexs as $index) {
+                $index->fullname = $index->User->fullname;
+            }
+            return view('VTR.Pendientes', compact('indexs'));
+        } catch (\Throwable $th) {
+            Log::error('Liquidaction - indexPendientes -> Error: ' . $th);
             abort(403, "Ocurrio un error, contacte con el administrador");
         }
     }
+
+    public function indexHistorys($status)
+    {
+     try {
+            View::share('titleg', 'Liquidaciones ' . $status);
+            $estado = ($status == 'Reservadas') ? 2 : 1;
+            $liquidaciones = Crypto_Value::where('status', $estado)->get();
+            foreach ($liquidaciones as $liqui) {
+                $liqui->fullname = $liqui->getUserLiquidation->fullname;
+            }
+            return view('VTR.historys', compact('liquidaciones', 'estado'));
+       } catch (\Throwable $th) {
+           Log::error('Liquidaction - indexHistory -> Error: ' . $th);
+          abort(403, "Ocurrio un error, contacte con el administrador");
+       }
+    }
+
+
 
     /**
      * Show the form for creating a new resource.
@@ -162,10 +123,7 @@ class CryptoValueController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
-        //
-    }
+   
 
     /**
      * Show the form for editing the specified resource.
@@ -173,11 +131,7 @@ class CryptoValueController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
-        //
-    }
-
+   
     /**
      * Update the specified resource in storage.
      *
@@ -200,4 +154,6 @@ class CryptoValueController extends Controller
     {
         //
     }
+
+
 }

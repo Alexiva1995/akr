@@ -20,7 +20,7 @@
 @endpush
 
 @section('content')
-<div id="settlement">
+<div id="AKR">
     <div class="col-12">
         <div class="card">
             <div class="card-content">
@@ -41,24 +41,24 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($cryptos as $crypto)
+                                @foreach ($indexs as $index)
                                 <tr class="text-center">
-                                    <td>{{$crypto->id}}</td>
+                                    <td>{{$index->id}}</td>
                                     <td></td>
-                                    <td>{{$crypto->cantidad}}</td>
+                                    <td>{{$index->cantidad}}</td>
                                     {{--<td>{{$liqui->monto_bruto}}</td>--}}
                                     {{--<td>{{$liqui->feed}}</td>--}}
                                     {{--<td>{{$liqui->wallet_used}}</td>--}}
-                                    <td>{{$crypto->status}}</td>
-                                    <td>{{date('Y-M-d', strtotime($crypto->created_at))}}</td>
+                                    <td>{{$index->status}}</td>
+                                    <td>{{date('Y-M-d', strtotime($index->created_at))}}</td>
                                     <td>
-                                        <button class="btn btn-info" onclick="vm_liquidation.getDetailComisionLiquidation({{$crypto->id}})">
+                                        <button class="btn btn-info" onclick="v_liquidation.getDetailComisionLiquidation({{$crypto->id}})">
                                             <i class="fa fa-eye"></i>
                                         </button>
-                                        <button class="btn btn-success" onclick="vm_liquidation.getDetailComisionLiquidationStatus({{$crypto->id}}, 'aproved')">
+                                        <button class="btn btn-success" onclick="v_liquidation.getDetailComisionLiquidationStatus({{$crypto->id}}, 'aproved')">
                                             <i class="fa fa-check"></i>
                                         </button>
-                                        <button class="btn btn-danger" onclick="vm_liquidation.getDetailComisionLiquidationStatus({{$crypto->id}}, 'reverse')">
+                                        <button class="btn btn-danger" onclick="v_liquidation.getDetailComisionLiquidationStatus({{$crypto->id}}, 'reverse')">
                                             <i class="fa fa-reply"></i>
                                         </button>
                                     </td>
@@ -71,8 +71,8 @@
             </div>
         </div>
     </div>
-    @include('settlement.componentes.modalDetalles', ['all' => false])
-    @include('settlement.componentes.modalAction')
+    @include('VTR.componentes.modalDetalles', ['all' => false])
+    @include('VTR.componentes.modalAction')
 </div>
 
 
