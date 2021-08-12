@@ -2,84 +2,84 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Crypto_Value;
 use App\Models\LiquidationCrypto;
+use Illuminate\Support\Facades\View;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
 class LiquidationCryptoController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+        
     public function index()
     {
-        //
+        try {
+            View::share('titleg', 'Generar Liquidaciones');
+            $cryptos = $this->getTotalCryptos([], null);
+            return view('VTR.Generacion', compact('cryptos'));
+        } catch (\Throwable $th) {
+            Log::error('Liquidaction Crypto- index -> Error: ' . $th);
+            abort(403, "Ocurrio un error, contacte con el administrador");
+        }
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function getTotalCryptos(array $filtros, int $iduser = null): array
     {
-        //
+        try {
+            $cryptos = [];
+            if ($iduser != null && $iduser != 1) {
+                $cryptostmp = Crypto_Value::where([
+                    ['status', '0'],
+                    ['liquidation_crypto_id', null],                    
+                    ['iduser', $iduser]
+                ])->select(
+                    DB::raw('sum(cantidad) as total'),
+                    'iduser'
+                )->groupBy('iduser')->get();
+            } else {
+                $cryptostmp = Crypto_Value::where([
+                    ['status', '0'],
+                    ['liquidation_crypto_id', null],                    
+                ])->select(
+                    DB::raw('sum(cantidad) as total'),
+                    'iduser'
+                )->groupBy('iduser')->get();
+            }
+
+            foreach ($cryptostmp as $crypto) {
+                $crypto->user;
+                if ($crypto->user != null) {
+                    if ($filtros == []) {
+                        $cryptos[] = $crypto;
+                    } else {
+                        if (!empty($filtros['activo'])) {
+                            if ($crypto->status == 1) {
+                                if (!empty($filtros['mayorque'])) {
+                                    if ($crypto->total >= $filtros['mayorque']) {
+                                        $cryptos[] = $crypto;
+                                    }
+                                } else {
+                                    $cryptos[] = $crypto;
+                                }
+                            }
+                        } else {
+                            if (!empty($filtros['mayorque'])) {
+                                if ($crypto->total >= $filtros['mayorque']) {
+                                    $cryptos[] = $crypto;
+                                }
+                            } else {
+                                $cryptos[] = $crypto;
+                            }
+                        }
+                    }
+                }
+            }
+            return $cryptos;
+        } catch (\Throwable $th) {
+            Log::error('Liquidaction Crypto - getTotalCrypto -> Error: ' . $th);
+            abort(403, "Ocurrio un error, contacte con el administrador");
+        }
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\LiquidationCrypto  $liquidationCrypto
-     * @return \Illuminate\Http\Response
-     */
-    public function show(LiquidationCrypto $liquidationCrypto)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\LiquidationCrypto  $liquidationCrypto
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(LiquidationCrypto $liquidationCrypto)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\LiquidationCrypto  $liquidationCrypto
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, LiquidationCrypto $liquidationCrypto)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\LiquidationCrypto  $liquidationCrypto
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(LiquidationCrypto $liquidationCrypto)
-    {
-        //
-    }
 }

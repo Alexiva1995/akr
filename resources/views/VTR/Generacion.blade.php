@@ -61,7 +61,7 @@
                                         <td>{{$crypto->iduser}}</td>
                                         <td>{{$crypto->user->fullname}}</td>
                                         <td>{{$crypto->user->email}}</td>
-                                        <td>{{$crypto->cantidad}}</td>
+                                        <td>{{$crypto->total}}</td>
                                         <td>{{$crypto->status}}</td>
                                         <td>
 
