@@ -13,6 +13,10 @@
     margin-top: 20%;
 }
 
+    .infor {
+        margin-top: 18%;
+    }
+
 </style>
 @endpush
 

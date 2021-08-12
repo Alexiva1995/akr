@@ -18,7 +18,6 @@
 
         font-size: 11px;
         opacity: 1;
-        display: none;
     }
 
     .inputText {
