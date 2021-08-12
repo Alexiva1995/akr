@@ -200,15 +200,12 @@ Route::prefix('dashboard')->middleware('menu', 'auth', /*'verified'*/)->group(fu
         
         /*RUTAS DEL SUBMENU VTR*/ 
         Route::prefix('VTR')->group(function(){
-            Route::resource('crypto', 'LiquidationCryptoController');
             Route::get('/Generacion', 'LiquidationCryptoController@index')->name('Generacion');
-            Route::post('/send', 'LiquidationCryptoController@cryptos')->name('VTR.send');
-       
-            Route::post('generar.crypto', 'LiquidationCryptoController@generarcrypto')->name('generar.crypto');
-
-
+            Route::post('/send', 'LiquidationCryptoController@cryptos')->name('VTR.send');            
+            Route::post('generar.crypto', 'LiquidationCryptoController@generarcrypto')->name('generar.crypto');                    
             Route::get('/Pendientes', 'LiquidationCryptoController@Pendientes')->name('Pendientes');
             Route::get('/{status}/historys', 'LiquidationCryptoController@indexHistorys')->name('VTR.historys.status');
+            Route::resource('crypto', 'LiquidationCryptoController');
 
         });
         

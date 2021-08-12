@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Crypto_Value;
 use App\Models\LiquidationCrypto;
+use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\View;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -78,6 +80,37 @@ class LiquidationCryptoController extends Controller
             return $cryptos;
         } catch (\Throwable $th) {
             Log::error('Liquidaction Crypto - getTotalCrypto -> Error: ' . $th);
+            abort(403, "Ocurrio un error, contacte con el administrador");
+        }
+    }
+
+    public function show($id)
+    {
+        try {
+            $cryptos = Crypto_Value::where([
+                ['status', '0'],
+                ['liquidation_crypto_id',  null],
+                ['iduser', '=', $id]
+            ])->get();
+
+            foreach ($cryptos as $crypto) {
+                $fecha = new Carbon($crypto->created_at);
+                $crypto->fecha = $fecha->format('Y-m-d');
+                // $comi->referido = User::find($comi->referred_id)->only('fullname');
+            }
+
+            $user = User::find($id);
+
+            $detalles = [
+                'iduser' => $id,
+                'fullname' => $user->fullname,
+                'cryptos' => $cryptos,
+                'total' => number_format($cryptos->sum('cantidad'), 2, ',', '.')
+            ];
+
+            return json_encode($detalles);
+        } catch (\Throwable $th) {
+            Log::error('Liquidaction Crypto - show -> Error: ' . $th);
             abort(403, "Ocurrio un error, contacte con el administrador");
         }
     }
