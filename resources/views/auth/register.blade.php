@@ -36,6 +36,12 @@
     #age {
         background-color: rgba(0, 0, 0, 0.3);
     }
+    @media screen and (max-width: 600px){
+    .title,.subtitle{
+        margin-left: 10px;
+        margin-right: 6px;
+    }
+}
 </style>
 @endpush
 
@@ -247,7 +253,7 @@ $referred = DB::table('users')
                                     Acepto las políticas de manejo de informacion de <span>Venture Capital Association</span>
                                 </p>
                             </fieldset>
-                            <div class="form-group row d-flex ml-5">
+                            <div class="captchat form-group row d-flex ml-5">
                                 <div class="col-10">
                                     <div class="form-group ml-3">
                                         {!! NoCaptcha::renderJs('es', false, 'recaptchaCallback') !!}
