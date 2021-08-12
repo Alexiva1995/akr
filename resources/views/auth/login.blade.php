@@ -13,6 +13,32 @@
     margin-top: 20%;
 }
 
+    .infor {
+        margin-top: 18%;
+    }
+
+    input:focus ~ .floating-label,
+input:not(:focus):valid ~ .floating-label{
+  top: 8px;
+  bottom: 10px;
+  left: 20px;
+  font-size: 11px;
+  opacity: 1;
+}
+
+
+
+.floating-label {
+  position: absolute;
+  pointer-events: none;
+  left: 20px;
+  top: 18px;
+  transition: 0.2s ease all;
+  color: white;
+}
+
+
+
 </style>
 @endpush
 
@@ -47,9 +73,11 @@
                                 <div class="col-md-12">
                                     <label>Correo Electronico</label>
                                     <input id="email" type="text" 
-                                    class=" email form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus placeholder=" tucorreo@email.com" />
+                                    class=" email form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus placeholder=" " />
 
-                                  
+                                                           
+                                    <span class="floating-label mt-1"><i class="fas fa-envelope"></i> tucorreo@email.com</span>
+
 
                                     @error('email')
                                     <span class="invalid-feedback" role="alert">
@@ -59,15 +87,19 @@
                                 </div>
                             </div>
 
+                          
+
                             <div class="form-group row">
                                 <div class="col-md-12">
                                     <label>Contraseña</label>
                                     <input id="password" type="password" 
-                                    class="form-control text-input-holder @error('password') is-invalid @enderror" 
+                                    class=" form-control text-input-holder  @error('password') is-invalid @enderror" 
                                     name="password" required autocomplete="current-password" style="font-family:FontAwesome,Arial" 
-                                    placeholder=" Ingresa tu contraseña"
+                                    placeholder=""
                                     >
-                                                                    
+                                                         
+                                    <span class="floating-label mt-1"><i class="fas fa-lock"></i> Ingresa tu contraseña</span>
+
                                     @error('password')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
