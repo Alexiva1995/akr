@@ -12,6 +12,7 @@ use App\Models\Liquidaction;
 use App\Models\User;
 use App\Models\Wallet;
 use Carbon\Carbon;
+use App\Models\LiquidationCrypto;
 
 use App\Http\Controllers\WalletController;
 
@@ -62,6 +63,20 @@ class CryptoValueController extends Controller
      */
     public function index()
     {
+
+  
+        //try {
+            $cryptos = Crypto_Value::all();
+            View::share('titleg', 'Generar AKR');
+            $total = $this->getTotalComisiones([], null);
+            
+            return view('VTR.Generacion', compact('cryptos'));
+       // } catch (\Throwable $th) {
+         //   Log::error('Liquidaction - index -> Error: ' . $th);
+           // abort(403, "Ocurrio un error, contacte con el administrador");
+       // }
+    
+/*
         try {
             $cryptos = Crypto_Value::all();
             View::share('titleg', 'Generar VTR');
@@ -70,9 +85,9 @@ class CryptoValueController extends Controller
         } catch (\Throwable $th) {
             Log::error('VTR - index -> Error: ' . $th);
         abort(403, "Ocurrio un error, contacte con el administrador");
-        }
+        }*/
     }
-
+/*
 
     public function Pendientes()
     {
@@ -103,7 +118,8 @@ class CryptoValueController extends Controller
            Log::error('Liquidaction - indexHistory -> Error: ' . $th);
           abort(403, "Ocurrio un error, contacte con el administrador");
        }
-    }
+    }*/
+
 
 
 
