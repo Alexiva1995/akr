@@ -37,7 +37,7 @@
         <div class="card">
             <div class="card-content">
                 <div class="card-body card-dashboard">
-                    <form action="{{route('crypto.store')}}" method="post">
+                    <form action="{{route('generar.crypto')}}" method="post">
                     @csrf
                     <div class="table-responsive">
                         <table class="table w-100 nowrap scroll-horizontal-vertical myTable table-striped">

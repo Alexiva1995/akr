@@ -11,9 +11,9 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\View;
 use App\Http\Controllers\WalletController;
-use App\Models\Crypto_Value;
+
 use Illuminate\Support\Facades\Auth;
-use App\Models\cryptos;
+
 
 
 class LiquidactionController extends Controller
@@ -32,34 +32,6 @@ class LiquidactionController extends Controller
      * @return \Illuminate\Http\Response
      */
     
-  
-
-    public function cryptos(Request $request)
-    {
-        $validate = $request->validate([
-            
-            'porcentaje_de_monedas' => 'required|numeric',
-            'valor' => 'required|numeric'
-            
-        ]);
-        try {
-            if ($validate) {
-    
-                cryptos::create([
-                    'porcentaje_de_cryptos' => (int)$request->porcentaje_de_monedas,
-                    'valor' => (int)$request->valor
-               
-                ]);
-
-                return redirect()->back()->with('msj-success', 'Operación Generada Exitosamente');
-
-            }
-        } catch (\Throwable $th) {
-            Log::error('Liquidaction - Cryptos -> Error: ' . $th);
-            abort(403, "Ocurrio un error, contacte con el administrador");
-        }
-    }
-
     
     public function index()
     {

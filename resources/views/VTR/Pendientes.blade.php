@@ -20,7 +20,7 @@
 @endpush
 
 @section('content')
-<div id="settlement">
+<div id="AKR">
     <div class="col-12">
         <div class="card">
             <div class="card-content">
