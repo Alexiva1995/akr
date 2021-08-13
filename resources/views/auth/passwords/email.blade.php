@@ -78,7 +78,8 @@
             </div>
         </div>
         
-        
+        <br>
+        <br>
         @include('auth.footer')
 
 

@@ -30,10 +30,11 @@
 
         background-image: url("{{asset('assets/img/sistema/fondo.jpg')}}"
         );
-        background-repeat: no-repeat;
-        background-size: cover;
-        background-position: center center;
-        width: 100%;
+        -webkit-background-size: cover;
+-moz-background-size: cover;
+-o-background-size: cover;
+background-size: cover;
+
         
     }
 
