@@ -248,12 +248,11 @@ $referred = DB::table('users')
                         </p>
                     </div>
                 </form>
-                
+
             </div>
 
         </div>
-      
-        
 
 </body>
+
 @endsection

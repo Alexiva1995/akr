@@ -99,6 +99,7 @@
 
 </body>
 <br>
+<br><br>
 @include('auth.footer')
 
 @endsection
