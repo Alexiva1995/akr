@@ -87,7 +87,6 @@
             </div>
         </div>
     </div>
-    @include('settlement.componentes.modalDetalles', ['all' => true])
     @include('VTR.componentes.modalDetalles', ['all' => true])
     @include('VTR.component.modal%')
 </div>

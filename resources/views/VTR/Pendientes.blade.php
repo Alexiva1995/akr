@@ -32,7 +32,6 @@
                                     <th>ID</th>
                                     <th>Nombre</th>
                                     <th>Cantidad </th>                                   
-                                    <th>Status</th>
                                     <th>Fecha</th>
                                     <th>Accion</th>
                                 </tr>
@@ -41,22 +40,21 @@
                                 @foreach ($cryptos as $crypto)
                                 <tr class="text-center">
                                     <td>{{$crypto->id}}</td>
-                                    <td></td>
-                                    <td>{{$crypto->cantidad}}</td>                                    
-                                    <td>{{$crypto->status}}</td>
+                                    <td>{{$crypto->fullname}}</td>
+                                    <td>{{$crypto->total}}</td>                                    
                                     <td>{{date('Y-M-d', strtotime($crypto->created_at))}}</td>
                                     <td>
-                                        <button class="btn btn-info" onclick="vm_liquidation.getDetailComisionLiquidation({{$crypto->id}})">
+                                        <button class="btn btn-info" onclick="vm_liquidation.getDetailCryptoLiquidation({{$crypto->id}})">
                                             <i class="fa fa-eye"></i>
                                         </button>
-                                        <button class="btn btn-success" onclick="vm_liquidation.getDetailComisionLiquidationStatus({{$crypto->id}}, 'aproved')">
+                                        <button class="btn btn-success" onclick="vm_liquidation.getDetailCryptoLiquidationStatus({{$crypto->id}}, 'aproved')">
                                             <i class="fa fa-check"></i>
                                         </button>
-                                        <button class="btn btn-danger" onclick="vm_liquidation.getDetailComisionLiquidationStatus({{$crypto->id}}, 'reverse')">
+                                        <button class="btn btn-danger" onclick="vm_liquidation.getDetailCryptoLiquidationStatus({{$crypto->id}}, 'reverse')">
                                             <i class="fa fa-reply"></i>
                                         </button>
                                     </td>
-                                </tr>dasdsad
+                                </tr>
                                 @endforeach
                             </tbody>
                         </table>
@@ -65,8 +63,8 @@
             </div>
         </div>
     </div>
-    @include('settlement.componentes.modalDetalles', ['all' => false])
-    @include('settlement.componentes.modalAction')
+    @include('VTR.componentes.modalDetalles', ['all' => true])
+    @include('VTR.componentes.modalAction')
 </div>
 
 

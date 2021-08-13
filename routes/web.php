@@ -175,16 +175,6 @@ Route::prefix('dashboard')->middleware('menu', 'auth', /*'verified'*/)->group(fu
             Route::resource('liquidation', 'LiquidactionController');            
         });
 
-        /*RUTAS DEL SUBMENU VTR*/ 
-        // Route::get('/Generacion', 'LiquidactionController@Generacion')->name('Generacion');
-        
-
-        //Rutas para el cierre de productos
-        // Route::prefix('accounting')->group(function(){
-        //     Route::resource('commission_closing', 'CierreComisionController');
-        //     Route::get('pagarComisiones', 'CierreComisionController@pagarUtilidadFinDeMes')->name('pagarComisiones');
-        // });
-
         //Rutas para los reportes
         Route::prefix('reports')->group(function(){
             // Route::get('purchase', 'ReporteController@indexPedidos')->name('reports.pedidos');
@@ -203,7 +193,8 @@ Route::prefix('dashboard')->middleware('menu', 'auth', /*'verified'*/)->group(fu
             Route::get('/Generacion', 'LiquidationCryptoController@index')->name('Generacion');
             Route::post('/send', 'LiquidationCryptoController@cryptos')->name('VTR.send');            
             Route::post('generar.crypto', 'LiquidationCryptoController@generarcrypto')->name('generar.crypto');                    
-            Route::get('/Pendientes', 'LiquidationCryptoController@Pendientes')->name('Pendientes');
+            Route::get('/Pendientes', 'LiquidationCryptoController@pendientes')->name('Pendientes');
+            Route::post('/process', 'LiquidationCryptoController@procesarLiquidacion')->name('crypto.process');
             Route::get('/{status}/historys', 'LiquidationCryptoController@indexHistorys')->name('VTR.historys.status');
             Route::resource('crypto', 'LiquidationCryptoController');
 
