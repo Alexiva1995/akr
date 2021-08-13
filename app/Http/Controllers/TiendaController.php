@@ -273,12 +273,7 @@ class TiendaController extends Controller
     public function cambiar_status(Request $request)
 
     {  
-          $validate = $request->validate([
-        'porcentaje_de_cryptos' => 'required',
-        'valor' => 'required'
-    ]);
-    if ($validate) {
-
+         
         $orden = OrdenPurchases::findOrFail($request->id);
         $orden->status = $request->status;
         $orden->save();
@@ -326,10 +321,8 @@ class TiendaController extends Controller
         
         }
 
-    }
-        else{
-            return redirect()->back()->with('msj-error', 'Ha ocurrido un error');
-        }
+    
+      
         // return redirect('/dashboard/reports/purchase')->with('msj-success', 'Orden actualizada exitosamente');
         //  $user->notify(new \App\Notifications\Order_approved);
         return redirect('/dashboard/reports/purchase')->with('msj-success', 'Orden actualizada exitosamente'); 

@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Crypto_Value extends Model
 {
-    protected $table = 'crypto_value';
+    protected $table = 'Crypto_Value';
 
     protected $fillable = [
         'iduser','cantidad', 'status'
@@ -16,5 +16,4 @@ class Crypto_Value extends Model
     public function user(){
         return $this->belongsto('App\Models\User', 'iduser', 'id', 'email');
     }
-    
 }
