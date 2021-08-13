@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Auth;
 
 class LiquidactionController extends Controller
 {
-
+    
     public $walletController;
 
     function __construct()

@@ -222,4 +222,105 @@ class LiquidationCryptoController extends Controller
 
     }
 
+    public function pendientes()
+    {
+        try {
+            View::share('titleg', 'Liquidaciones Pendientes');
+            $cryptos = LiquidationCrypto::where('status', 0)->get();
+            foreach ($cryptos as $liqui) {
+                $liqui->fullname = $liqui->getUserLiquidation->fullname;
+            }
+            return view('VTR.Pendientes', compact('cryptos'));
+        } catch (\Throwable $th) {
+            Log::error('LiquidactionCrypto - indexPendientes -> Error: ' . $th);
+            abort(403, "Ocurrio un error, contacte con el administrador");
+        }
+    }
+
+    public function edit($id)
+    {
+        try {
+            $cryptos = Crypto_Value::where([
+                ['liquidation_crypto_id', '=', $id],
+            ])->get();
+
+            foreach ($cryptos as $crypto) {
+                $fecha = new Carbon($crypto->created_at);
+                $crypto->fecha = $fecha->format('Y-m-d');
+            }
+            $user = User::find($cryptos->pluck('iduser')[0]);
+
+            $detalles = [
+                'liquidation_crypto_id' => $id,
+                'iduser' => $user->id,
+                'fullname' => $user->fullname,
+                'cryptos' => $cryptos,
+                'total' => number_format($cryptos->sum('cantidad'), 2, ',', '.')
+            ];
+
+            return json_encode($detalles);
+        } catch (\Throwable $th) {
+            Log::error('LiquidactionCrypto - edit -> Error: ' . $th);
+            abort(403, "Ocurrio un error, contacte con el administrador");
+        }
+    }
+
+    public function procesarLiquidacion(Request $request)
+    {
+        if ($request->action == 'aproved') {
+            $validate = $request->validate([
+                'hash' => ['required'],
+            ]);
+        } else {
+            $validate = $request->validate([
+                'comentario' => ['required'],
+            ]);
+        }
+        try {
+            if ($validate) {
+                $idliquidation = $request->idliquidation;
+                $accion = 'No Procesada';
+                if ($request->action == 'reverse') {
+                    $accion = 'Reversada';
+                    $this->reversarLiquidacion($idliquidation, $request->comentario);
+                } elseif ($request->action == 'aproved') {
+                    $accion = 'Aprobada';
+                    $this->aprovarLiquidacion($idliquidation, $request->hash);
+                }
+
+                // if ($accion != 'No Procesada') {
+                //     $arrayLog = [
+                //         'idliquidation' => $idliquidation,
+                //         'comentario' => $request->comentario,
+                //         'accion' => $accion
+                //     ];
+                //     DB::table('log_liquidations')->insert($arrayLog);
+                // }
+
+                return redirect()->back()->with('msj-success', 'La Liquidacion fue ' . $accion . ' con exito');
+                
+            }
+        } catch (\Throwable $th) {
+            Log::error('Liquidaction - saveLiquidation -> Error: ' . $th);
+            abort(403, "Ocurrio un error, contacte con el administrador");
+        }
+    }
+
+    /**
+     * Permite aprobar las liquidaciones
+     *
+     * @param integer $idliquidation
+     * @param string $hash
+     * @return void
+     */
+    public function aprovarLiquidacion($idliquidation, $hash)
+    {
+        LiquidationCrypto::where('id', $idliquidation)->update([
+            'status' => '1',
+            'hash' => $hash
+        ]);
+
+        Crypto_Value::where('liquidation_crypto_id', $idliquidation)->update(['status' => '1']);
+    }
+
 }

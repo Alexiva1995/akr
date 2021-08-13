@@ -21,25 +21,7 @@ var vm_liquidation = new Vue({
             }).catch(function (error) {
                 toastr.error("Ocurrio un problema con la solicitud", '¡Error!', { "progressBar": true });
             })
-        },
-
-        
-        /**
-         * Permite obtener la informacion de las crypto _values de un usuario
-         * @param {integer} iduser 
-         */
-         getDetailCrypto: function(iduser){
-            let url = route('crypto.show', iduser)
-            this.seleAllComision = false
-            axios.get(url).then((response) => {
-                this.ComisionesDetalles = response.data
-                $('#modalModalDetallesCrypto').modal('show')
-                 
-                console.log(this.ComisionesDetalles)
-            }).catch(function (error) {
-                toastr.error("Ocurrio un problema con la solicitud crypto", '¡Error!', { "progressBar": true });
-            })
-        },
+        },    
 
         /**
          * Permite obtener la informacion de las comisiones de las liquidaciones
@@ -68,6 +50,60 @@ var vm_liquidation = new Vue({
             axios.get(url).then((response) => {
                 this.ComisionesDetalles = response.data
                 $('#modalModalAccion').modal('show')
+            }).catch(function (error) {
+                toastr.error("Ocurrio un problema con la solicitud", '¡Error!', { "progressBar": true });
+            })
+        },
+
+
+
+
+        
+        // Metodos para LiquidationCryptos
+
+        /**
+         * Permite obtener la informacion de las crypto _values de un usuario
+         * @param {integer} iduser 
+         */
+        getDetailCrypto: function(iduser){
+            let url = route('crypto.show', iduser)
+            this.seleAllComision = false
+            axios.get(url).then((response) => {
+                this.ComisionesDetalles = response.data
+                $('#modalModalDetallesCrypto').modal('show')
+                    
+                console.log(this.ComisionesDetalles)
+            }).catch(function (error) {
+                toastr.error("Ocurrio un problema con la solicitud crypto", '¡Error!', { "progressBar": true });
+            })
+        },
+        /**
+         * Permite obtener la informacion de las comisiones de las liquidaciones
+         * @param {integer} iduser 
+         */
+        getDetailCryptoLiquidation: function(iduser){
+            let url = route('crypto.edit', iduser)
+            this.seleAllComision = false
+            axios.get(url).then((response) => {
+                this.ComisionesDetalles = response.data
+                $('#modalModalDetallesCrypto').modal('show')
+            }).catch(function (error) {
+                toastr.error("Ocurrio un problema con la solicitud", '¡Error!', { "progressBar": true });
+            })
+        },
+        
+        /**
+         * Permite obtener la informacion de las comisiones de las -liquidaciones para aprobar o reversar
+         * @param {integer} iduser
+         * @param {string} status
+         */
+        getDetailCryptoLiquidationStatus: function(iduser, status){
+            this.StatusProcess = status
+            let url = route('crypto.edit', iduser)
+            this.seleAllComision = false
+            axios.get(url).then((response) => {
+                this.ComisionesDetalles = response.data
+                $('#modalModalAccionCrypto').modal('show')
             }).catch(function (error) {
                 toastr.error("Ocurrio un problema con la solicitud", '¡Error!', { "progressBar": true });
             })
