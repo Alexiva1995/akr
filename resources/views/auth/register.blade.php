@@ -251,9 +251,8 @@ $referred = DB::table('users')
 
         </div>
 
-        </div>
-
-</div>
+    </div>
+    </div>
 
 </body>
 @include('auth.footer')
