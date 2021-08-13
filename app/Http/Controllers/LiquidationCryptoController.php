@@ -251,7 +251,7 @@ class LiquidationCryptoController extends Controller
             $user = User::find($cryptos->pluck('iduser')[0]);
 
             $detalles = [
-                'liquidation_crypto_id' => $id,
+                'idliquidaction' => $id,
                 'iduser' => $user->id,
                 'fullname' => $user->fullname,
                 'cryptos' => $cryptos,
@@ -272,9 +272,7 @@ class LiquidationCryptoController extends Controller
                 'hash' => ['required'],
             ]);
         } else {
-            $validate = $request->validate([
-                'comentario' => ['required'],
-            ]);
+            $validate = 1;
         }
         try {
             if ($validate) {
@@ -282,26 +280,17 @@ class LiquidationCryptoController extends Controller
                 $accion = 'No Procesada';
                 if ($request->action == 'reverse') {
                     $accion = 'Reversada';
-                    $this->reversarLiquidacion($idliquidation, $request->comentario);
+                    $this->reversarLiquidacionCrypto($idliquidation);
                 } elseif ($request->action == 'aproved') {
                     $accion = 'Aprobada';
-                    $this->aprovarLiquidacion($idliquidation, $request->hash);
+                    $this->aprobarLiquidacionCrypto($idliquidation, $request->hash);
                 }
-
-                // if ($accion != 'No Procesada') {
-                //     $arrayLog = [
-                //         'idliquidation' => $idliquidation,
-                //         'comentario' => $request->comentario,
-                //         'accion' => $accion
-                //     ];
-                //     DB::table('log_liquidations')->insert($arrayLog);
-                // }
 
                 return redirect()->back()->with('msj-success', 'La Liquidacion fue ' . $accion . ' con exito');
                 
             }
         } catch (\Throwable $th) {
-            Log::error('Liquidaction - saveLiquidation -> Error: ' . $th);
+            Log::error('LiquidactionCrypto - procesarLiquidacion -> Error: ' . $th);
             abort(403, "Ocurrio un error, contacte con el administrador");
         }
     }
@@ -313,7 +302,7 @@ class LiquidationCryptoController extends Controller
      * @param string $hash
      * @return void
      */
-    public function aprovarLiquidacion($idliquidation, $hash)
+    public function aprobarLiquidacionCrypto($idliquidation, $hash)
     {
         LiquidationCrypto::where('id', $idliquidation)->update([
             'status' => '1',
@@ -321,6 +310,19 @@ class LiquidationCryptoController extends Controller
         ]);
 
         Crypto_Value::where('liquidation_crypto_id', $idliquidation)->update(['status' => '1']);
+    }
+
+    public function reversarLiquidacionCrypto($idliquidation)
+    {
+        $liquidacion = LiquidationCrypto::find($idliquidation);
+
+        Crypto_Value::where('liquidation_crypto_id', $idliquidation)->update([
+            'status' => '0',
+            'liquidation_crypto_id' => null,
+        ]);
+
+        $liquidacion->status = '2';
+        $liquidacion->save();
     }
 
 }
