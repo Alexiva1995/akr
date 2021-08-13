@@ -25,8 +25,6 @@
 <link rel="stylesheet" type="text/css" href="{{asset('assets/css/style.css')}}">
 @stack('custom_css')
 
-
-
 <style>
     .bg-full-screen-image-alt {
 
@@ -34,15 +32,10 @@
         );
         background-repeat: no-repeat;
         background-size: cover;
-
-
         background-position: center center;
-        height: auto;
-
         width: 100%;
 
     }
-
 
     /*===============*/
     /*ESTILOS DEL REGISTER*/
@@ -89,8 +82,6 @@
     #country {
         color: red;
     }
-
-
 
     @media (max-width: 600px) {
         .container {

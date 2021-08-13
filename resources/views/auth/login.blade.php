@@ -9,7 +9,7 @@
     @include('auth.navbar')
     <div class="container">
 
-        <div id="home" class="hero route bg-image" style="background-image: url(assets/img/header.jpg)">
+        <div id="home" class="hero route bg-image">
             <div class="row ">
                 <div class="col-md-6 col-sm-12 col-12 infor">
                     <div class="title">
@@ -23,7 +23,7 @@
                 <div class="col-md-1 col-sm-12 col-12 ">
                 </div>
                 <div class="col-md-5 col-sm-12 col-12">
-                    <div class="mb-5 cardd w-100 login">
+                    <div class="mb-5 cardd w-100 login" style="margin-top: 100px;">
                         <div class="mt-4 mx-2">
                             <p class="titulo text-left">{{ __('Iniciar Sesión') }}</p>
                             <p class="subtitulo text-left ">Inicie sesion en su cuenta para empezar</p>
@@ -98,7 +98,7 @@
             </div>
 
 </body>
-<br>
+
 
 @include('auth.footer')
 
