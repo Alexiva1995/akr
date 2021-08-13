@@ -188,10 +188,12 @@ Route::prefix('dashboard')->middleware('menu', 'auth', /*'verified'*/)->group(fu
             Route::get('index', 'WalletController@flujoDeGanancia')->name('flujo-de-ganancia');
         });
         
+        Route::post('/send', 'LiquidactionController@cryptos')->name('VTR.send');   
+        
         /*RUTAS DEL SUBMENU VTR*/ 
         Route::prefix('VTR')->group(function(){
             Route::get('/Generacion', 'LiquidationCryptoController@index')->name('Generacion');
-            Route::post('/send', 'LiquidationCryptoController@cryptos')->name('VTR.send');            
+                     
             Route::post('generar.crypto', 'LiquidationCryptoController@generarcrypto')->name('generar.crypto');                    
             Route::get('/Pendientes', 'LiquidationCryptoController@pendientes')->name('Pendientes');
             Route::post('/process', 'LiquidationCryptoController@procesarLiquidacion')->name('crypto.process');
