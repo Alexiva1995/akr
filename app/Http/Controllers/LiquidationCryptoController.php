@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Log;
 
 class LiquidationCryptoController extends Controller
 {
-        
+   
     public function index()
     {
         try {

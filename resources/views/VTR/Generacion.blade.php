@@ -30,6 +30,7 @@
 @endpush
 
 @section('content')
+
 <div id="settlement">
     <div class="col-12">
         <div class="card">
@@ -60,7 +61,14 @@
                                         <td>{{$crypto->user->fullname}}</td>
                                         <td>{{$crypto->user->email}}</td>
                                         <td>{{$crypto->total}}</td>
-                                        <td>{{$crypto->status}}</td>
+                                     
+                                        @if ($crypto->user->status == '0')
+                                    <td>En espera</td>
+                                    @elseif($crypto->user->status == '1')
+                                    <td>Pagado</td>
+                                    @endif
+                                  
+                                  
                                         <td>                                            
                                             <a onclick="vm_liquidation.getDetailCrypto({{$crypto->iduser}})" class="btn btn-info">
                                                 <i class="feather icon-eye"></i>
