@@ -195,7 +195,7 @@ Route::prefix('dashboard')->middleware('menu', 'auth', /*'verified'*/)->group(fu
             Route::post('generar.crypto', 'LiquidationCryptoController@generarcrypto')->name('generar.crypto');                    
             Route::get('/Pendientes', 'LiquidationCryptoController@pendientes')->name('Pendientes');
             Route::post('/process', 'LiquidationCryptoController@procesarLiquidacion')->name('crypto.process');
-            Route::get('/{status}/historys', 'LiquidationCryptoController@indexHistorys')->name('VTR.historys.status');
+            Route::get('/{status}/historys', 'LiquidationCryptoController@indexHistory')->name('VTR.historys.status');
             Route::resource('crypto', 'LiquidationCryptoController');
 
         });

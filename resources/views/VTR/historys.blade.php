@@ -32,7 +32,6 @@
                                     <th>ID</th>
                                     <th>Name</th>
                                     <th>Total </th>
-                                    <th>Feed</th>
                                     <th>Hash</th>
                                     <th>Billetera</th>
                                     <th>Status</th>
