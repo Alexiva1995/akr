@@ -34,12 +34,18 @@
         );
         background-repeat: no-repeat;
         background-size: cover;
+
+
         background-position: center center;
+        height: auto;
+
+        width: 100%;
+
     }
 
 
     /*===============*/
-    /*ESTILOS DEL REGISTER*/ 
+    /*ESTILOS DEL REGISTER*/
     /*================*/
     .infor {
         margin-top: 25%;
@@ -110,55 +116,55 @@
         width: 50%;
     }
 
-    #Captcha{
+    #Captcha {
         display: flex;
         flex-flow: row wrap;
         justify-content: center;
         align-content: space-around;
         width: 80%;
-    
+
     }
 
 
-@media (max-width: 800px) {
-   #Captcha {
-    max-width: 75%;
-    flex: 0 1 30%;
+    @media (max-width: 800px) {
+        #Captcha {
+            max-width: 75%;
+            flex: 0 1 30%;
+        }
     }
-}
 
 
-@media (max-width: 380px) {
-   #Captcha {
-    max-width: 35%;
-    flex: 0 1 30%;
-    
+    @media (max-width: 380px) {
+        #Captcha {
+            max-width: 35%;
+            flex: 0 1 30%;
+
+        }
     }
-}
 
-@media (max-width: 330px) {
-   #Captcha {
-    max-width: 20%;
-    flex: 0 1 30%;
+    @media (max-width: 330px) {
+        #Captcha {
+            max-width: 20%;
+            flex: 0 1 30%;
+        }
     }
-}
 
 
-@media (max-width: 335px) {
-   #Captcha {
-    max-width: 35%;
-    flex: 0 1 30%;
-    margin: 0px 10px 0px 10px;
+    @media (max-width: 335px) {
+        #Captcha {
+            max-width: 35%;
+            flex: 0 1 30%;
+            margin: 0px 10px 0px 10px;
+        }
     }
-}
 
-.container{
-    
-  width: 100%;
-  padding-right: 15px;
-  padding-left: 15px;
-  margin-right: auto;
-  margin-left: auto;
-}
+    .container {
+
+        width: 100%;
+        padding-right: 15px;
+        padding-left: 15px;
+        margin-right: auto;
+        margin-left: auto;
+    }
 </style>
 <!-- END: Custom CSS-->

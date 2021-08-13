@@ -170,8 +170,6 @@ $referred = DB::table('users')
                             @enderror
                         </div>
 
-
-
                         <div class="form-group col-md-6">
                             <input style="  margin-top: 8px;" id="age" type="text" onfocus="(this.type='date')" class="text-white form-control @error('age') is-invalid @enderror" name="age" required autocomplete="age" autofocus placeholder=" " value="{{ old('age') }}">
 
@@ -253,6 +251,10 @@ $referred = DB::table('users')
 
         </div>
 
-</body>
+        </div>
 
+</div>
+
+</body>
+@include('auth.footer')
 @endsection
