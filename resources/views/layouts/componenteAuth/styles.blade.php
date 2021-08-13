@@ -29,16 +29,12 @@
 
 <style>
     .bg-full-screen-image-alt {
-        
-        
-        background: url("{{asset('assets/img/sistema/fondo.jpg')}}" );
-        -webkit-background-size: cover;
-        -moz-background-size: cover;
-        -o-background-size: cover;
-        background-size: cover;
-        width: 100%;
 
+        background-image: url("{{asset('assets/img/sistema/fondo.jpg')}}"
+        );
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center center;
     }
- 
 </style>
 <!-- END: Custom CSS-->

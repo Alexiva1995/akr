@@ -1,6 +1,10 @@
 @extends('layouts.auth')
 
 
+@section('content')
+
+
+
 {{-- @push('custom_js')
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 @endpush --}}

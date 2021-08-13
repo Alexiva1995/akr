@@ -1,6 +1,6 @@
 <body class="hero-anime">
 
-    <div class="navigation-wrap  start-header start-style">
+    <div class="navigation-wrap  start-header  start-style">
         <div class="container">
             <div class="row">
                 <div class="col-12">
@@ -8,9 +8,10 @@
 
                         <a class="navbar-brand" href="#"><img src="{{asset('assets/Diseño/DreamsBlue.svg')}}" alt="hola"></a>
 
-                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                            <span class="navbar-toggler-icon"><i class="fas fa-bars"></i></span>
+                        <button class="navbar-toggler text-center" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" >
+                            <span class="navbar-toggler-icon"><i style="color:white;"  class="fas fa-bars"></i></span>
                         </button>
+                        
 
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul class="navbar-nav ml-auto py-4 py-md-0">
@@ -35,4 +36,7 @@
 
 
 <style>
+
+
+
 </style>
