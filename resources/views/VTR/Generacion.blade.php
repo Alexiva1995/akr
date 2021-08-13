@@ -3,7 +3,6 @@
 @push('vendor_css')
 <link rel="stylesheet" type="text/css" href="{{asset('assets/app-assets/vendors/css/extensions/sweetalert2.min.css')}}">
 <style type="text/css">
-
     #table_detalle{
         overflow-y: hidden; 
         overflow-x: auto;
@@ -12,7 +11,6 @@
         padding: 10px;
         white-space: nowrap;
     }
-
 </style>
 @endpush
 
@@ -37,7 +35,7 @@
         <div class="card">
             <div class="card-content">
                 <div class="card-body card-dashboard">
-                    <form action="{{route('generar.crypto')}}" method="post">
+                    <form action="{{route('crypto.store')}}" method="post">
                     @csrf
                     <div class="table-responsive">
                         <table class="table w-100 nowrap scroll-horizontal-vertical myTable table-striped">
@@ -88,11 +86,10 @@
         </div>
     </div>
     @include('VTR.componentes.modalDetalles', ['all' => true])
-    @include('VTR.component.modal%')
+    @include('VTR.component.modal%') 
 </div>
 @endsection
 
 {{-- permite llamar a las opciones de las tablas --}}
 @include('layouts.componenteDashboard.optionDatatable')
-
 

@@ -1,6 +1,6 @@
 <body class="hero-anime">
 
-    <div class="navigation-wrap  start-header  start-style">
+    <div class="navigation-wrap  start-header  start-style navbart" id="navbar">
         <div class="container">
             <div class="row">
                 <div class="col-12">
@@ -34,9 +34,24 @@
     </div>
 </body>
 
-
 <style>
-
-
+.navbart {transition: top 0.1s;}
 
 </style>
+
+<script>
+
+let scroll = window.pageYOffset;
+window.onscroll = function() {
+let scrolling = window.pageYOffset;
+  if (scroll > scrolling) {
+    document.getElementById("navbar").style.top = "0";
+  } else {
+    document.getElementById("navbar").style.top = "-80px";
+  }
+  scroll = scrolling;
+}
+
+
+
+</script>

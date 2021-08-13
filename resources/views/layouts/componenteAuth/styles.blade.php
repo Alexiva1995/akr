@@ -34,7 +34,7 @@
         background-size: cover;
         background-position: center center;
         width: 100%;
-
+        
     }
 
 

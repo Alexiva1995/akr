@@ -20,7 +20,7 @@
 @endpush
 
 @section('content')
-<div id="AKR">
+<div id="settlement">
     <div class="col-12">
         <div class="card">
             <div class="card-content">
@@ -37,7 +37,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($indexs as $index)
+                                @foreach ($cryptos as $crypto)
                                 <tr class="text-center">
                                     <td>{{$crypto->id}}</td>
                                     <td>{{$crypto->fullname}}</td>
