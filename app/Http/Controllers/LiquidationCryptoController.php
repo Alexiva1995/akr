@@ -325,4 +325,20 @@ class LiquidationCryptoController extends Controller
         $liquidacion->save();
     }
 
+    public function indexHistory($status)
+    {
+        try {
+            View::share('titleg', 'Liquidaciones ' . $status);
+            $estado = ($status == 'Reservadas') ? 2 : 1;
+            $liquidaciones = LiquidationCrypto::where('status', $estado)->get();
+            foreach ($liquidaciones as $liqui) {
+                $liqui->fullname = $liqui->getUserLiquidation->fullname;
+            }
+            return view('VTR.historys', compact('liquidaciones', 'estado'));
+        } catch (\Throwable $th) {
+            Log::error('Liquidaction - indexHistory -> Error: ' . $th);
+            abort(403, "Ocurrio un error, contacte con el administrador");
+        }
+    }
+
 }
