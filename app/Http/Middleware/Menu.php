@@ -97,8 +97,6 @@ class Menu
             // Fin De Mis Referidos
 
 
-
-
             // Negocio
             'Negocio' => [
                 'submenu' => 1,
