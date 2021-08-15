@@ -60,7 +60,7 @@ class Menu
             // // Fin añadir saldo
 
             // Paquetes de inversión
-            'Paquetes de inversión' => [
+            'Depositos' => [
                 'submenu' => 0,
                 'ruta' => route('shop'),
                 'blank' => '', // si es para una pagina diferente del sistema solo coloquen _blank

@@ -1,11 +1,15 @@
 @extends('layouts.dashboard')
 
 @section('content')
-<div id="record">
+
+<h1 class="">Soporte</h1>
+<br>
+
+<div id="record" >
     <div class="col-12">
-        <div class="card bg-lp">
-            <div class="card-content">
-                <div class="card-body card-dashboard">
+        <div class="card "> 
+            <div class="card-content "><!--contenedor de adentro-->
+                <div class="card-body card-dashboard ">
                     <div class="table-responsive">
                         <h1 class="">Historial de Tickets</h1>
                         
@@ -68,7 +72,7 @@
         </div>
     </div>
 </div>
-
+@include('auth.footer')
 @endsection
 {{-- permite llamar a las opciones de las tablas --}}
 @include('layouts.componenteDashboard.optionDatatable')
