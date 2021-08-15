@@ -317,7 +317,8 @@ class TiendaController extends Controller
                         Log::error('Tienda - generalUrlOrden -> Error: '.$th);
                         abort(403, "Ocurrio un error, contacte con el administrador");
                     }
-               }            
+               }        
+              
         
         }
 

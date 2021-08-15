@@ -1227,3 +1227,13 @@ Stack trace:
 #51 /home/abraham/Documents/coding/akr/public/index.php(55): Illuminate\Foundation\Http\Kernel->handle(Object(Illuminate\Http\Request))
 #52 /home/abraham/Documents/coding/akr/server.php(21): require_once('/home/abraham/D...')
 #53 {main}  
+[2021-08-15 15:50:26] local.INFO: Inicio de los puntos y comisiones diarias - 2021-08-15 15:50:26  
+[2021-08-15 15:50:26] local.INFO: Puntos Binarios Pagado  
+[2021-08-15 15:50:26] local.INFO: Fin de los puntos y comisiones diarias - 2021-08-15 15:50:26  
+[2021-08-15 15:50:26] local.INFO: Inicio pagar utilidad diaria- 2021-08-15 15:50:26  
+[2021-08-15 15:50:27] local.INFO: Fin de pagar utilidad diaria - 2021-08-15 15:50:27  
+[2021-08-15 15:51:03] local.INFO: Inicio de los puntos y comisiones diarias - 2021-08-15 15:51:03  
+[2021-08-15 15:51:03] local.INFO: Puntos Binarios Pagado  
+[2021-08-15 15:51:03] local.INFO: Fin de los puntos y comisiones diarias - 2021-08-15 15:51:03  
+[2021-08-15 15:51:03] local.INFO: Inicio pagar utilidad diaria- 2021-08-15 15:51:03  
+[2021-08-15 15:51:03] local.INFO: Fin de pagar utilidad diaria - 2021-08-15 15:51:03  

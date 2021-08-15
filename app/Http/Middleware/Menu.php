@@ -69,6 +69,36 @@ class Menu
             ],
             // Fin Paquetes de inversión
 
+            // Mis Referidos
+            'Mis Referidos' => [
+                'submenu' => 1,
+                'ruta' => 'javascript:;',
+                'blank' => '', // si es para una pagina diferente del sistema solo coloquen _blank
+                'icon' => 'feather icon-users',
+                'complementoruta' => '',
+                'submenus' => [
+                    [
+                        'name' => 'Arbol De Referidos',
+                        'blank' => '', // si es para una pagina diferente del sistema solo coloquen _blank
+                        'ruta' => (''),
+                        'complementoruta' => ''
+                    ],
+
+                    [
+                        'name' => 'Lista De Referidos',
+                        'blank' => '', // si es para una pagina diferente del sistema solo coloquen _blank
+                        'ruta' => (''),
+                        'complementoruta' => ''
+                    ],
+                 
+                   
+                ],
+            ],
+            // Fin De Mis Referidos
+
+
+
+
             // Negocio
             'Negocio' => [
                 'submenu' => 1,
@@ -112,7 +142,7 @@ class Menu
                 'blank' => '', // si es para una pagina diferente del sistema solo coloquen _blank
                 'icon' => 'feather icon-activity',
                 'complementoruta' => '',
-               
+
             ],
             // Fin Inverisones
 
@@ -156,12 +186,12 @@ class Menu
             // Fin Financiero
 
 
-          
+
             // Soporte
             'Soporte' => [
                 'submenu' => 0,
                 'ruta' => route('ticket.list-user'),
-                'blank'=> '', // si es para una pagina diferente del sistema solo coloquen _blank
+                'blank' => '', // si es para una pagina diferente del sistema solo coloquen _blank
                 'icon' => 'feather icon-help-circle',
                 'complementoruta' => '',
             ],
@@ -218,10 +248,8 @@ class Menu
                 'ruta' =>  route('inversiones.index', 1),
                 'blank' => '', // si es para una pagina diferente del sistema solo coloquen _blank
                 'icon' => 'feather icon-shopping-cart',
-                'complementoruta' => '',                
-                'submenus' => [
-                   
-                ],                
+                'complementoruta' => '',
+                'submenus' => [],
                 // 'submenus' => [
                 //     [
                 //         'name' => 'Grupos',
@@ -243,7 +271,7 @@ class Menu
                 //     ],
                 // ],
             ],
-            
+
             // 4- Informes
             // 'Informes' => [
             //     'submenu' => 1,
@@ -362,36 +390,34 @@ class Menu
                         'ruta' => route('flujo-de-ganancia'),
                         'complementoruta' => ''
                     ],
-                  
+
                 ],
             ],
             // Fin Informes
 
 
-             // Soporte
-             'Soporte' => [
+            // Soporte
+            'Soporte' => [
                 'submenu' => 0,
                 'ruta' => route('ticket.list-admin'),
-                'blank'=> '', // si es para una pagina diferente del sistema solo coloquen _blank
+                'blank' => '', // si es para una pagina diferente del sistema solo coloquen _blank
                 'icon' => 'feather icon-help-circle',
                 'complementoruta' => '',
             ],
             // Fin Soporte
 
 
-              //7- VTR
-              'AKR' => [
+            //7- VTR
+            'AKR' => [
 
                 'submenu' => 1,
-                'ruta' =>  (''),
+                'ruta' => (''),
                 'blank' => '', // si es para una pagina diferente del sistema solo coloquen _blank
                 'icon' => 'feather icon-dollar-sign',
-                'complementoruta' => '',                
+                'complementoruta' => '',
+                'submenus' => [],
                 'submenus' => [
-                   
-                ],                
-                 'submenus' => [
-                     [
+                    [
                         'name' => 'Generacion',
                         'blank' => '', // si es para una pagina diferente del sistema solo coloquen _blank
                         'ruta' => route('Generacion'),
@@ -409,9 +435,8 @@ class Menu
                         'ruta' => route('VTR.historys.status', 'Pagadas'),
                         'complementoruta' => ''
                     ]
-                 ],
+                ],
             ],
         ];
-        
     }
 }
