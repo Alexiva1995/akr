@@ -41,7 +41,7 @@ class TiendaController extends Controller
     {
         try {
             // title
-            View::share('titleg', 'Paquetes de Inversión');
+            
 
             // $categories = Groups::all()->where('status', 1);
 
