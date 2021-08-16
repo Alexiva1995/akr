@@ -26,7 +26,7 @@ WE WILL RELEASE FUTURE UPDATES SO IN ORDER TO NOT OVERWRITE YOUR STYLES IT'S BET
   border: none;
   padding: 0;
   background: none;
-  width: 90%;
+  width: 85%;
 }
 
 
@@ -91,4 +91,6 @@ output {
   padding: .4em .6em;
   border-radius: 5px;
   font-weight: bold;
+  align-items: center;
+  top:100px;
 }

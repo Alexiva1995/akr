@@ -26,7 +26,7 @@
     }
     </style>
     
-<body class="vertical-layout vertical-menu-modern 2-columns  navbar-floating footer-static  " data-open="click"
+<body class="bg-dark vertical-layout vertical-menu-modern 2-columns  navbar-floating footer-static  " data-open="click"
     data-menu="vertical-menu-modern" data-col="2-columns">
     {{-- Notificaciones del sistema --}}
     @include('layouts.componenteDashboard.messageSystem')
@@ -41,7 +41,7 @@
     <!-- BEGIN: Content-->
     <div class="app-content content">
         <div class="content-overlay"></div>
-        <div class="header-navbar-shadow"></div>
+        <div class="bg-dark"></div>
         <div class="content-wrapper">
             <div class="content-header row">
                 {{-- Migaja de pan --}}
