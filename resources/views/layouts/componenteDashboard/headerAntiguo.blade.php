@@ -1,42 +1,3 @@
-
-<style>
-    .navbar{
-        background-color: #121212
-    }
-</style>
-
-<nav class="navbar navbar-expand-lg ">
-    <a class="navbar-brand ml-4" href="#"><img src="{{asset('assets/Diseño/DreamsBlue.svg')}}" alt="hola"></a>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav ml-auto">
-            {{-- <li class="dropdown dropdown-user nav-item">
-                <a class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown">
-                    <div class="user-nav d-sm-flex d-none">
-                        @if (Auth()->user()->admin == '1')
-                            <span class="user-name text-bold-600 text-white">{{Auth::user()->fullname}} <span class="text-white">ADMIN</span></span>
-                        @else
-                            <span class="user-name text-bold-600">{{Auth::user()->fullname}}</span>
-                        @endif
-                    </div>    
-                </a>
-                <div class="dropdown-menu dropdown-menu-right">
-                    <a class="dropdown-item" href="{{ route('profile') }}" >
-                        <i class="feather icon-user"></i> Editar Perfil
-                    </a>
-                    @if (session('impersonated_by'))
-                    <a class="dropdown-item" href="{{ route('impersonate.stop') }}">
-                        <i class="feather icon-log-in"></i> Volver a mi Usuario
-                    </a>    
-                    @endif
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
-                        <i class="feather icon-log-out"></i> Logout
-                    </a>            
-                </div>
-            </li> --}}
-        </ul>
-    </div>
-</nav>
 <!-- BEGIN: Header-->
 <nav class="header-navbar navbar-expand-lg navbar navbar-with-menu floating-nav navbar-light navbar-shadow">
     <div class="navbar-wrapper">
@@ -63,7 +24,7 @@
                             <span class="user-status headerBalance">Saldo Disponible: {{Auth::user()->balance}} $</span>
                         </div>
                     </li> --}}
-                    <li class="dropdown dropdown-user nav-item">
+                        <li class="dropdown dropdown-user nav-item">
                         <a class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown">
                             <div class="user-nav d-sm-flex d-none">
                                 @if (Auth()->user()->admin == '1')

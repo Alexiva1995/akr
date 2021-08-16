@@ -26,26 +26,17 @@
 @stack('custom_css')
 <style>
     .bg-full-screen-image-alt {
-        /* background: url("{{asset('assets/img/sistema/fondo-iniciar-sesion.png')}}"); */
-        /* background-size: 100% 60%;*/
-
+        background: url("{{asset('assets/img/sistema/fondo.jpg')}}");
         position: absolute;
         width: 100%;
         height: 100%;
         left: 0px;
         top: 0px;
-        background: url("{{asset('assets/img/sistema/fondo.jpg')}}");
-
         -webkit-background-size: cover;
         -moz-background-size: cover;
         -o-background-size: cover;
         background-size: cover;
-
-
-        /* background: linear-gradient(90.09deg, #000000 27.58%, rgba(0, 227, 242, 0.77372) 134.97%, rgba(0, 246, 225, 0.77) 134.98%); */
         opacity: 0.93;
-
-
     }
 
 

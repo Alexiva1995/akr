@@ -8,7 +8,7 @@ html {
 }
 html body {
   height : 100%;
-  background-color : #F8F8F8;
+  background-color : #171717;
   direction : ltr;
   /*
         * Blank page
@@ -360,10 +360,13 @@ body.fixed-footer footer.footer-dark {
   display : table-cell;
   height : 100%;
   overflow : hidden;
+  /* background: linear-gradient(90.09deg, #000000 27.58%, rgba(0, 227, 242, 0.77) 134.98%);
+  opacity: 0.93; */
 }
 .main-menu.menu-light {
   color : #626262;
-  background : #FFFFFF;
+  /* background: linear-gradient(90.09deg, #000000 27.58%, rgba(0, 227, 242, 0.77) 134.98%);
+  opacity: 0.93; */
 }
 .main-menu.menu-light .main-menu-header {
   padding : 20px;
@@ -377,7 +380,7 @@ body.fixed-footer footer.footer-dark {
   border-color : #D9D9D9;
 }
 .main-menu.menu-light .navigation {
-  background : #FFFFFF;
+  background : transparent;
 }
 .main-menu.menu-light .navigation .navigation-header {
   color : #999999;

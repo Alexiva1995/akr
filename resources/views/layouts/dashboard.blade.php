@@ -39,22 +39,22 @@
     {{-- Fin Sidebar --}}
     {{-- Cuerpo --}}
     <!-- BEGIN: Content-->
-    <div class="app-content content">
+    {{-- <div class="app-content content">
         <div class="content-overlay"></div>
         <div class="header-navbar-shadow"></div>
         <div class="content-wrapper">
-            <div class="content-header row">
+            <div class="content-header row"> --}}
                 {{-- Migaja de pan --}}
-                @if (!empty($titleg))
+                {{-- @if (!empty($titleg))
                 @include('layouts.componenteDashboard.breadcrumb')
-                @endif
+                @endif --}}
                 {{-- Fin Migaja de pan --}}
-            </div>
+            {{-- </div>
             <div class="content-body">
                 @yield('content')
             </div>
         </div>
-    </div>
+    </div> --}}
     {{-- Fin Cuerpo --}}
 
     {{-- formulario de salir --}}
