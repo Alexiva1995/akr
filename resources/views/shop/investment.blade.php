@@ -61,16 +61,11 @@ color: white;
                     </div>
         </div>
 
-        <script>
-                $(document).ready(function()){
-                  $(input#range).on()  
-                };
-
-            </script>
+     
 
         <div class="card-body" id="card">
 
-            <h2 class="text-center mt-3 text-white" >Total a Pagar : $ 8.000 USD</h2>
+            <h2 class="text-center mt-3 text-white" >Total a Pagar : $ <span id="texto">70</span>  USD</h2>
             <p class="text-center mt-1" style="color: #00F6E1;">Debes realizar un pago de 8.000 USD para <br> poder activar tu plan.</p>
 
             @if(isset($user))
@@ -91,9 +86,18 @@ color: white;
                     <button type="submit" class="btn text-dark float-right" style="background-color:#08C5B9;font-weight:600;">PAGAR VÍA COINPAYMENTS</button>
                 </div>
             </div>
-            
+
         </div>
+        
+        <script>
+
+
+        </script>
         </form>
 
+        <script>
+                
+
+        </script>
         
         @endsection
