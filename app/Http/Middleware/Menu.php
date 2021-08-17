@@ -90,8 +90,8 @@ class Menu
                         'ruta' => route('genealogy_list_network', 'direct'),
                         'complementoruta' => ''
                     ],
-                 
-                   
+
+
                 ],
             ],
             // Fin De Mis Referidos
@@ -111,7 +111,7 @@ class Menu
                         'ruta' => route('genealogy_type', 'matriz'),
                         'complementoruta' => ''
                     ],
-                   
+
                     [
                         'name' => 'Ordenes',
                         'blank' => '', // si es para una pagina diferente del sistema solo coloquen _blank
@@ -127,6 +127,38 @@ class Menu
                 ],
             ],
             // Fin Negocio
+
+
+
+            // Retiros
+            'Retiros' => [
+                'submenu' => 1,
+                'ruta' => 'javascript:;',
+                'blank' => '', // si es para una pagina diferente del sistema solo coloquen _blank
+                'icon' => 'feather icon-users',
+                'complementoruta' => '',
+                'submenus' => [
+                    [
+                        'name' => 'Comisiones',
+                        'blank' => '', // si es para una pagina diferente del sistema solo coloquen _blank
+                        'ruta' => (''),
+                        'complementoruta' => ''
+                    ],
+
+                    [
+                        'name' => 'AKR',
+                        'blank' => '', // si es para una pagina diferente del sistema solo coloquen _blank
+                        'ruta' => (''),
+                        'complementoruta' => ''
+                    ],
+
+
+                ],
+            ],
+            // Fin De Retiros
+
+
+
 
             //U-4 Inverisones
             'Inversiones' => [

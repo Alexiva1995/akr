@@ -10,87 +10,90 @@ NOTE:
 PLACE HERE YOUR OWN SCSS CODES AND IF NEEDED, OVERRIDE THE STYLES FROM THE OTHER STYLESHEETS.
 WE WILL RELEASE FUTURE UPDATES SO IN ORDER TO NOT OVERWRITE YOUR STYLES IT'S BETTER LIKE THIS.  */
 
-
 /*////////////////////
 
 /* INPUT DE RANGO DE PAQUETES DE INVERCIONES*/
 
 /*///////////////////*/
 
-
-
 .range {
-  -webkit-appearance: none;
-  vertical-align: middle;
-  outline: none;
-  border: none;
-  padding: 0;
-  background: none;
-  width: 85%;
+    -webkit-appearance: none;
+    vertical-align: middle;
+    outline: none;
+    border: none;
+    padding: 0;
+    background: none;
+    width: 82.5%;
 }
 
-
 .range::-moz-range-track {
-  background-color: #ffffff;
-  height: 6px;
-  border-radius: 3px;
-  border: none;
+    background-color: #ffffff;
+    height: 6px;
+    border-radius: 3px;
+    border: none;
 }
 
 .range::-ms-track {
-  color: transparent;
-  border: none;
-  background: none;
-  height: 6px;
+    color: transparent;
+    border: none;
+    background: none;
+    height: 6px;
 }
 
-.range::-ms-fill-lower { 
-  background-color: #d7dbdd;
-  border-radius: 3px;
+.range::-ms-fill-lower {
+    background-color: #d7dbdd;
+    border-radius: 3px;
 }
 
-.range::-ms-fill-upper { 
-  background-color: #d7dbdd;
-  border-radius: 3px;
+.range::-ms-fill-upper {
+    background-color: #d7dbdd;
+    border-radius: 3px;
 }
 
-.range::-ms-tooltip { display: none; /* display and visibility only */ }
+.range::-ms-tooltip {
+    display: none; /* display and visibility only */
+}
 
 .range::-moz-range-thumb {
-  border-radius: 20px;
-  height: 18px;
-  width: 18px;
-  border: none;
-  background: none;
-  background-color: #ffffff;
+    border-radius: 20px;
+    height: 18px;
+    width: 18px;
+    border: none;
+    background: none;
+    background-color: #ffffff;
 }
 
 .range:active::-moz-range-thumb {
-  outline: none;
+    outline: none;
 }
 
 .range::-webkit-slider-thumb {
-  -webkit-appearance: none !important;
-  border-radius: 100%;
-  background-color: #606670;
-  height: 18px;
-  width: 18px;
-  margin-top: -7px;
+    -webkit-appearance: none !important;
+    border-radius: 100%;
+    background-color: #606670;
+    height: 18px;
+    width: 18px;
+    margin-top: -7px;
 }
 
 .range:active::-ms-thumb {
-  border: none;
+    border: none;
 }
 
 output {
-  border: 1px solid #00C8F4;
-  color: #fff;
-  background: rgba(0, 0, 0, 0.5);
-  font-family: 'Lato', sans-serif;
-  font-size: 12px;
-  padding: .4em .6em;
-  border-radius: 5px;
-  font-weight: bold;
-  align-items: center;
-  top:100px;
+    border: 1px solid #00c8f4;
+    color: #fff;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 0.4em 0.6em;
+    border-radius: 5px;
+    align-items: center;
+    text-align: center;
+    height: 33px;
+    left: 1218px;
+    top: 366px;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 21px;
 }
