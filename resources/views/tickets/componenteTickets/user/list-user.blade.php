@@ -2,6 +2,18 @@
 
 @section('content')
 
+<style>
+    #boton-ticket {
+        background: #BD3900;
+        border-radius: 5px;
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 15px;
+        line-height: 15px;
+        color: #fff;;
+    }
+</style>
 <div class="container">
     <!-- Stack the columns on mobile by making one full-width and the other half-width -->
     <div class="row">
@@ -9,37 +21,35 @@
             <h1 class="text-white">Soporte</h1>
         </div>
         <div class="col-6 col-md-4">
-            <a href="{{ route('ticket.create')}}" style="color:#F0F0F0;background-color : #BD3900;border-radius: 5px;" class="btn  mb-2 waves-effect waves-light"><i class="feather icon-plus"></i> Crear Ticket</a>
+            <a id="boton-ticket" href="{{ route('ticket.create')}}" class="btn  mb-2 waves-effect waves-light"> Nuevo Ticket <i class="fas fa-ticket-alt"></i></a>
         </div>
     </div>
-
 
 
     <br>
 
     <div id="record">
         <div class="col-12">
-            <div class="card " style="background: #0F1522;
-border-radius: 8px;">
+            <div class="card">
                 <div class="card-content ">
                     <!--contenedor de adentro-->
                     <div class="card-body card-dashboard ">
                         <div class="table-responsive">
 
-                            <table class="table nowrap scroll-horizontal-vertical myTable table-striped w-100" >
+                            <table class="table nowrap scroll-horizontal-vertical myTable table-striped w-100">
                                 <thead class="">
 
-                                    <tr class="text-center text-white" style="background: rgba(0, 200, 244, 0.4);">
-                                        <th>ID</th>
-                                        <th>Usuario</th>
+                                    <tr class="text-center text-white">
+                                        <th>SL</th>
+                                        <th>Sijeto</th>
                                         <th>Estado</th>
-                                        <th>Prioridad</th>
+                                        <th>Ultima Respuesta</th>
                                         <th>Accion</th>
                                     </tr>
 
                                 </thead>
 
-                                <tbody >
+                                <tbody>
 
                                     @foreach ($ticket as $item)
                                     <tr class="text-center">
