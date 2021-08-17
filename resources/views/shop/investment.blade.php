@@ -62,8 +62,6 @@ color: white;
                     </div>
         </div>
 
-
-    
     
         <div class="card-body" id="card">
 
