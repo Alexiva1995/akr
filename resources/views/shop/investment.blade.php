@@ -72,7 +72,7 @@
 
     slider.oninput = function() {
         outputEl.textContent = `${decimalSeparator(this.value)}`;
-        output.textContent = `${decimalSeparator(this.value)}`;
+        output.textContent = `${decimalSeparator(this.value)} USD`;
     };
 </script>
 
