@@ -13,6 +13,7 @@ use App\Http\Controllers\WalletController;
 use App\Http\Controllers\ActivacionController;
 use App\Http\Controllers\TiendaController;
 use App\Models\Inversion;
+use Carbon\Carbon;
 
 class HomeController extends Controller
 {
@@ -42,7 +43,7 @@ class HomeController extends Controller
     /**
      * Show the application dashboard.
      *
-     * @return \Illuminate\Contracts\Support\Renderable
+     * @return \Illuminate\Contracts\Support\Renderable 
      */
     public function index()
     {
@@ -82,6 +83,7 @@ class HomeController extends Controller
     {
         $cantUsers = $this->treeController->getTotalUser($iduser);
         $data = [
+            'id' => Auth::user()->id,
             'directos' => $cantUsers['directos'],
             'indirectos' => $cantUsers['indirectos'],
             'wallet' => Auth::user()->getWallet->where('status', 0)->sum('monto'),
@@ -145,5 +147,40 @@ class HomeController extends Controller
     {
         View::share('titleg', 'Terminos y Condiciones');
         return view('terminos_condiciones.index');
+    }
+    public function dataGrafica()
+    {
+        $anno = Carbon::now()->format('Y');
+        $fecha_ini = Carbon::createFromDate($anno,1,1)->startOfDay();
+        $fecha_fin = Carbon::createFromDate($anno, 12,1)->endOfMonth()->endOfDay();
+
+        $ordenes = OrdenPurchases::where('iduser', Auth::id())->where('status', '1')
+                    ->select(
+                        
+                        DB::raw('date_format(created_at,"%m/%Y") as created'),
+                        DB::raw('SUM(monto) as montos'),
+                    )
+                    ->whereBetween('created_at', [$fecha_ini, $fecha_fin])
+                    ->groupBy('created')
+                    ->get()
+                    ->toArray();
+        $valores = [];
+      
+        for ( $date = $fecha_ini->copy(); $date->lt( $fecha_fin) ; $date->addMonth(1) ) {
+
+            $valores[$date->format('m/Y')] = 0;
+     
+        }
+        
+        foreach($ordenes as $key => $orden){
+            $valores[$orden['created']] = $orden['montos'];
+        }
+        //arreglado
+        $data = [];
+        foreach($valores as $valor){
+            $data[] = floatVal($valor);
+        }
+     
+        return response()->json(['valores' => $data]);
     }
 }

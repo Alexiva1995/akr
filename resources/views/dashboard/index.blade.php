@@ -14,6 +14,7 @@
 @push('page_css')
 <link rel="stylesheet" type="text/css" href="{{asset('assets/app-assets/css/pages/dashboard-analytics.css')}}">
 <link rel="stylesheet" type="text/css" href="{{asset('assets/app-assets/css/pages/card-analytics.css')}}">
+<link rel="stylesheet" type="text/css" href="{{asset('assets/app-assets/css/pages/custom-dashboard.css')}}">
 {{-- <link rel="stylesheet" href="{{asset('assets/css/tree.css')}}"> --}}
 @endpush
 
@@ -58,10 +59,10 @@
     @include('dashboard.componente.firstsection')
     {{-- Fin Primera Seccion --}}
     {{-- Segundo Seccion --}}
-    @include('dashboard.componente.secondsection')
+    {{-- @include('dashboard.componente.secondsection') --}}
     {{-- Fin Segundo Seccion --}}
     {{-- Tercera Seccion --}}
-    @include('dashboard.componente.thirdsection')
+    {{-- @include('dashboard.componente.thirdsection') --}}
     {{-- Fin Tercera Seccion --}}
     @endif
 
