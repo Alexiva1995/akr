@@ -3,16 +3,7 @@
 @section('content')
 
 <style>
-    #boton-ticket {
-        background: #BD3900;
-        border-radius: 5px;
-        font-family: Roboto;
-        font-style: normal;
-        font-weight: normal;
-        font-size: 15px;
-        line-height: 15px;
-        color: #fff;;
-    }
+
 </style>
 <div class="container">
     <!-- Stack the columns on mobile by making one full-width and the other half-width -->
@@ -30,71 +21,58 @@
 
     <div id="record">
         <div class="col-12">
-            <div class="card">
-                <div class="card-content ">
-                    <!--contenedor de adentro-->
-                    <div class="card-body card-dashboard ">
-                        <div class="table-responsive">
+            <div class="table-responsive">
 
-                            <table class="table nowrap scroll-horizontal-vertical myTable table-striped w-100">
-                                <thead class="">
+                <table class=" nowrap scroll-horizontal-vertical  table-striped w-100">
 
-                                    <tr class="text-center text-white">
-                                        <th>SL</th>
-                                        <th>Sijeto</th>
-                                        <th>Estado</th>
-                                        <th>Ultima Respuesta</th>
-                                        <th>Accion</th>
-                                    </tr>
+                    <thead id="thead">
 
-                                </thead>
+                        <tr class="text-center text-white">
+                            <th>SL</th>
+                            <th>Sujeto</th>
+                            <th>Estado</th>
+                            <th>Última Respuesta</th>
+                            <th>Acción</th>
+                        </tr>
 
-                                <tbody>
+                    </thead>
 
-                                    @foreach ($ticket as $item)
-                                    <tr class="text-center">
-                                        <td>{{ $item->id}}</td>
-                                        <td>{{ $item->iduser}}</td>
-                                        {{-- <td>{{ $item->estado}}</td>
-                                        <td>{{ $item->prioridad}}</td>
-                                        <td>{{ $item->issue}}</td>
-                                        --}}
+                    <tbody id="tvody">
+
+                        @foreach ($ticket as $item)
+                        <tr class="text-center" id="contend">
+                            <td>00{{ $item->id}}</td>
+                            <td>[Ticket #{{ $item->iduser}}]</td>
 
 
-                                        @if ($item->status == '0')
-                                        <td> <a class=" btn text-bold-600 text-white" style="background-color: green;">Abierto</a></td>
-                                        @elseif($item->status == '1')
-                                        <td> <a class=" btn  text-bold-600 text-white" style="background-color: red;">Cerrado</a></td>
-                                        @endif
-
-
-                                        @if ($item->priority == '0')
-                                        <td> <a class="text-bold-600 text-dark">Alto</a></td>
-                                        @elseif($item->priority == '1')
-                                        <td> <a class="text-bold-600 text-dark">Medio</a></td>
-                                        @elseif($item->priority == '2')
-                                        <td> <a class="text-bold-600 text-dark">Bajo</a></td>
-                                        @endif
+                            @if ($item->status == '0')
+                            <td> <a class=" btn text-bold-600 text-white" style="background: rgba(0, 246, 225, 0.77);border-radius: 8px;">Abierto</a></td>
+                            @elseif($item->status == '1')
+                            <td> <a class=" btn  text-bold-600 text-white" style="background: rgba(246, 74, 0, 0.77);border-radius: 8px;">Cerrado</a></td>
+                            @endif
 
 
 
-                                        @if ($item->status == '0')
-                                        <td><a href="{{ route('ticket.edit-user',$item->id) }}" class="btn  text-bold-600 text-dark" style="background-color: #0CB7F2;">Editar</a></td>
-                                        @else
-                                        <td><a href="{{ route('ticket.show-user',$item->id) }}" class="btn  text-bold-600 text-dark" style="background-color: #0CB7F2;">Revisar</a></td>
-                                        @endif
-                                    </tr>
-                                    @endforeach
+                            <td> <a class="text-bold-600">Alto</a></td>
 
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
+
+
+                            @if ($item->status == '0')
+                            <td><a href="{{ route('ticket.edit-user',$item->id) }}"><img src="{{asset('assets/Diseño/Desktop.svg')}}" alt="" width="40" height="40"></a></td>
+                            @else
+                            <td><a href="{{ route('ticket.show-user',$item->id) }}"><img src="{{asset('assets/Diseño/Desktop.svg')}}" alt="" width="40" height="40"></a></a></td>
+                            @endif
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
+</div>
+</div>
+</div>
 
-    @endsection
-    {{-- permite llamar a las opciones de las tablas --}}
-    @include('layouts.componenteDashboard.optionDatatable')
+@endsection
+{{-- permite llamar a las opciones de las tablas --}}
+@include('layouts.componenteDashboard.optionDatatable')

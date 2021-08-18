@@ -23,7 +23,7 @@ WE WILL RELEASE FUTURE UPDATES SO IN ORDER TO NOT OVERWRITE YOUR STYLES IT'S BET
     border: none;
     padding: 0;
     background: none;
-    width:77.5%;
+    width: 73.5%;
 }
 
 .range::-moz-range-track {
@@ -98,4 +98,43 @@ output {
     line-height: 21px;
 }
 
+/*===============*/
+/* List-User Tickets
+/*===============*/
 
+#boton-ticket {
+    background: #bd3900;
+    border-radius: 5px;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 15px;
+    line-height: 15px;
+    color: #fff;
+}
+
+#tvody {
+    background: #0f1522;
+    border-radius: 8px;
+}
+
+#contend {
+    height: 63px;
+    border: 0.5px solid #00c8f4;
+    box-sizing: border-box;
+    border-radius: 0px;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 18px;
+    letter-spacing: -0.2px;
+    color: #ffffff;
+}
+#thead {
+    height: 63px;
+    background: rgba(0, 200, 244, 0.4);
+    border: 1px solid #00c8f4;
+    box-sizing: border-box;
+    border-radius: 8px 8px 0px 0px;
+}
