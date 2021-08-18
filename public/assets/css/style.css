@@ -138,3 +138,47 @@ output {
     box-sizing: border-box;
     border-radius: 8px 8px 0px 0px;
 }
+
+/*===============*/
+/* Create-Tickets
+/*===============*/
+
+#form-label {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 18px;
+    letter-spacing: -0.2px;
+    color: #ffffff;
+}
+
+#name,
+#email,
+#issue {
+    background: rgba(196, 196, 196, 0.08);
+    border: 2px solid rgba(0, 246, 225, 0.77);
+    box-sizing: border-box;
+    border-radius: 4px;
+    color: #fff;
+    font-size: 13px;
+}
+
+
+#send {
+    background: #04c1b1;
+    border: 2px solid rgba(0, 246, 225, 0.77);
+    box-sizing: border-box;
+    border-radius: 4px;
+
+    font-family: Roboto;
+ 
+    font-size: 15px;
+    line-height: 18px;
+
+    /* or 95% */
+    letter-spacing: -0.2px;
+    text-transform: uppercase;
+
+    color: #000000;
+}
