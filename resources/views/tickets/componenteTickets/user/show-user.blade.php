@@ -1,16 +1,24 @@
 @extends('layouts.dashboard')
 
-<script>
-</script>
 @section('content')
+
+
+<div class="row">
+    <div class="col-md-8">
+        <h1 class="text-white">Revisando el Ticket #{{ $ticket->id}}</h1>
+    </div>
+    <div class="col-6 col-md-4">
+        <a id="boton-ticket" href="{{ route('ticket.list-user')}}" class="btn  mb-2 waves-effect waves-light">Volver Atrás <i class="fas fa-chevron-left"></i></a>
+    </div>
+</div>
+
 
 <section>
     <div class="row match-height d-flex justify-content-center">
-        <div class="col-md-9 col-12">
-            <div class="card bg-lp">
-                <div class="card-header">
-                    <h4 class="card-title ">Editando el Ticket #{{ $ticket->id}}</h4>
-                </div>
+        <div class="col-md-12 col-12">
+            <div class="card" style="
+background: linear-gradient(180deg, #0F1522 0%, rgba(15, 21, 34, 0) 100%);
+border-radius: 8px;">
                 <div class="card-content">
                     <div class="card-body">
                         <form action="{{route('ticket.update-user', $ticket->id)}}" method="POST">
@@ -21,47 +29,29 @@
                                 <div class="row">
 
                                     <div class="col-12">
-                                        <label class="form-label  mb-1" for="issue"><b>Asunto del
-                                                ticket</b></label>
-                                        <input class="form-control border  rounded-0" type="text" readonly id="issue" name="issue" value="{{ $ticket->issue }}" rows="3" />
+                                        <label class="form-label  mb-1" id="form-label" for="issue"><b>Sujeto</b></label>
+                                        <input class="form-control" type="text" readonly id="issues" name="issue" value="{{ $ticket->issue }}" rows="3" />
 
                                     </div>
 
-                                    <div class="col-12 mt-2">
-                                        <div class="form-group">
-                                            <div class="controls">
-                                                <label for="priority" class="">Prioridad del
-                                                    Ticket</label>
-                                                <span class="text-danger text-bold-600">OBLIGATORIO</span>
-                                                <select name="priority" id="priority" class="custom-select priority form-control bg-lp border  rounded-0 @error('priority') is-invalid @enderror" required data-toggle="select" disabled>
-                                                    <option value="0" @if($ticket->priority == '0') selected
-                                                        @endif>Alto</option>
-                                                    <option value="1" @if($ticket->priority == '1') selected
-                                                        @endif>Medio</option>
-                                                    <option value="2" @if($ticket->priority == '2') selected
-                                                        @endif>Bajo</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
 
                                     <div class="col-12 mt-2 mb-2">
-                                        <label class="form-label  mb-1" for="message"><b>Chat con el
+                                        <label class="form-label  mb-1" id="form-label" for="message"><b>Conversación con el
                                                 administrador</b></label>
 
-                                        <section class="chat-app-window mb-2 border  rounded-0">
+                                        <section class="chat-app-window mb-2" style="border: 2px solid rgba(0, 246, 225, 0.77);">
                                             <div class="active-chat">
-                                                <div class="user-chats ps ps--active-y bg-lp">
+                                                <div class="user-chats ps ps--active-y">
                                                     <div class="chats chat-thread">
 
                                                         {{-- admin --}}
                                                         <div class="chat chat-left">
                                                             <div class="chat-avatar">
                                                                 <span class="avatar ">
-                                                                    <img src="{{asset('assets/img/sistema/favicon.png')}}" alt="avatar" height="40" width="40" style="background-color: white;" alt="avatar" height="40" width="40">
+                                                                    <img src="{{asset('assets/img/sistema/favicon.png')}}" alt="avatar" height="40" width="40" style="background-color: black;" alt="avatar" height="40" width="40">
                                                                 </span>
                                                             </div>
-                                                            <div class="chat-body">
+                                                            <div class="chat-body text-white">
                                                                 <div class="chat-content">
                                                                     <div class="email-admin mb-1">{{$admin}}</div>
                                                                     <p>¿Cómo podemos ayudarle? </p>
@@ -79,11 +69,11 @@
                                                                     @if (Auth::user()->photoDB != NULL)
                                                                     <img src="{{asset('storage/'.Auth::user()->photoDB)}}" alt="avatar" height="40" width="40">
                                                                     @else
-                                                                    <img src="{{asset('assets/img/sistema/favicon.png')}}" alt="avatar" height="40" width="40">
+                                                                    <img src="{{asset('assets/img/sistema/favicon.png')}}" alt="avatar" height="40" width="40" style="background-color:black ;">
                                                                     @endif
                                                                 </span>
                                                             </div>
-                                                            <div class="chat-body">
+                                                            <div class="chat-body text-white">
                                                                 <div class="chat-content">
                                                                     <div class="email-user mb-1">{{ $item->getUser->email}}</div>
                                                                     <p>{{ $item->message }}</p>
@@ -96,10 +86,10 @@
                                                         <div class="chat chat-left">
                                                             <div class="chat-avatar">
                                                                 <span class="avatar ">
-                                                                    <img src="{{asset('assets/img/sistema/favicon.png')}}" alt="avatar" height="40" width="40" style="background-color: white;" alt="avatar" height="40" width="40">
+                                                                    <img src="{{asset('assets/img/sistema/favicon.png')}}" alt="avatar" height="40" width="40" style="background-color: black;" alt="avatar" height="40" width="40">
                                                                 </span>
                                                             </div>
-                                                            <div class="chat-body">
+                                                            <div class="chat-body text-white">
                                                                 <div class="chat-content">
                                                                     <div class="email-admin mb-1">{{ $item->getAdmin->email}}</div>
                                                                     <p>{{ $item->message }}</p>
@@ -115,7 +105,7 @@
                                             </div>
                                         </section>
 
-                                        <textarea class="form-control border  rounded-0" type="text" id="message" name="message" disabled rows="3"></textarea>
+
                                     </div>
                                 </div>
                             </div>

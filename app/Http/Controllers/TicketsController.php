@@ -202,11 +202,6 @@ class TicketsController extends Controller
     }
 
 
-
-
-
-
-
     /**
      * Permite obtener la cantidad de Tickets que tiene un usuario
      *

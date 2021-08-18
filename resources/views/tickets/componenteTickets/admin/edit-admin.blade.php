@@ -43,28 +43,6 @@
                                 </div>
 
 
-                                <div class="col-12">
-                                    <div class="form-group">
-                                        <div class="controls">
-                                            <label for="priority">Prioridad del
-                                                Ticket</label>
-
-                                            <span class="text-danger text-bold-600">OBLIGATORIO</span>
-
-                                            <select name="priority" id="priority" class="custom-select priority form-control bg-lp border  rounded-0 @error('priority') is-invalid @enderror" required data-toggle="select">
-
-                                                <option value="0" @if($ticket->priority == '0') selected
-                                                    @endif>Alto</option>
-                                                <option value="1" @if($ticket->priority == '1') selected
-                                                    @endif>Medio</option>
-                                                <option value="2" @if($ticket->priority == '2') selected
-                                                    @endif>Bajo</option>
-
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-
                                 <div class="col-12 mt-2 mb-2">
                                     <label class="form-label " for="note"><b>Chat con el usuario</b></label>
 
