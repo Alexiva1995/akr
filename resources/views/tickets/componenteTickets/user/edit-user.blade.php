@@ -26,14 +26,28 @@ border-radius: 8px;">
 
                             <div class="row">
 
-                                <div class="col-12">
+
+                                <div class="col-6">
+                                    <label id="form-label" class="form-label" for="name"><b>Nombre</b></label>
+                                    <input class=" form-control" required type="text" id="names" name="name" value="{{ $ticket->name}}" rows="3" />
+
+                                </div>
+
+                                <div class="col-6">
+                                    <label id="form-label" class="form-label" for="email"><b>Direccion de correo electrónico</b></label>
+                                    <input class="form-control" required type="text" id="emails" name="email" value="{{ $ticket->email }}" rows="3" />
+
+                                </div>
+
+                                <div class="col-12 mt-1">
                                     <label id="form-label" class="form-label mb-1" for="issue"><b>Sujeto</b></label>
                                     <input class="form-control" type="text" id="issues" name="issue" value="{{ $ticket->issue }}" rows="3" disabled />
 
                                 </div>
 
+
                                 <div class="col-12 mt-2 mb-2">
-                                    <label  id="form-label" class="form-label  mb-1" for="message"><b>Chat con el
+                                    <label id="form-label" class="form-label  mb-1" for="message"><b>Chat con el
                                             administrador</b></label>
 
                                     <section class="chat-app-window mb-2" style="border: 2px solid rgba(0, 246, 225, 0.77);">
@@ -107,13 +121,13 @@ border-radius: 8px;">
                                     </section>
 
                                     <span id="form-labels" class="text-bold-600">Respuesta</span>
-                                    <textarea id="names" class="form-control" type="text" id="message" name="message" required rows="3"></textarea>
+                                    <textarea id="names" class="text-tex form-control" type="text" id="message" name="message" required rows="3"></textarea>
                                 </div>
 
                             </div>
 
                             <div class="col-12">
-                                <button id="send" type="submit" class="col-12 btn  mr-1 mb-1 waves-effect waves- float-right">Actualizar
+                                <button id="send" type="submit" class="col-12 btn  mb-1 waves-effect waves- float-right">Actualizar
                                     Ticket</button>
                             </div>
                         </form>

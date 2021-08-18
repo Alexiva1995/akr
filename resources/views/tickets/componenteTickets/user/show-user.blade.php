@@ -28,12 +28,21 @@ border-radius: 8px;">
                             <div class="form-body">
                                 <div class="row">
 
-                                    <div class="col-12">
+                                <div class="col-6">
+                                        <label class="form-label  mb-1" id="form-label" for="issue"><b>Nombre</b></label>
+                                        <input class="form-control" type="text" readonly id="issues" name="issue" value="{{ $ticket->name }}" rows="3" />
+
+                                    </div>
+
+
+
+                                    <div class="col-6">
                                         <label class="form-label  mb-1" id="form-label" for="issue"><b>Sujeto</b></label>
                                         <input class="form-control" type="text" readonly id="issues" name="issue" value="{{ $ticket->issue }}" rows="3" />
 
                                     </div>
 
+                                  
 
                                     <div class="col-12 mt-2 mb-2">
                                         <label class="form-label  mb-1" id="form-label" for="message"><b>Conversación con el

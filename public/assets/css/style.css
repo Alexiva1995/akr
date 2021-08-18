@@ -168,20 +168,14 @@ output {
 #send {
     background: #04c1b1;
     border: 2px solid rgba(0, 246, 225, 0.77);
-    box-sizing: border-box;
     border-radius: 4px;
-
     font-family: Roboto;
- 
     font-size: 15px;
-    line-height: 18px;
-
-    /* or 95% */
     letter-spacing: -0.2px;
     text-transform: uppercase;
-
     color: #000000;
 }
+
 #form-labels{
     font-family: Roboto;
     font-style: normal;
@@ -191,4 +185,6 @@ output {
     letter-spacing: -0.2px;
     color: #ffffff;
 }
-
+#names{
+    font-size: 17px;
+}
