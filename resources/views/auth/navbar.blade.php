@@ -1,67 +1,57 @@
-<header>
-    
-<nav class="navbar  navbar-expand-sm  fixed-top">
+<body class="hero-anime">
+
+    <div class="navigation-wrap  start-header  start-style navbart" id="navbar">
         <div class="container">
-      
+            <div class="row">
+                <div class="col-12">
+                    <nav class="navbar navbar-expand-md ">
 
-       <a class="navbar-brand" href="#"><img src="{{asset('assets/Diseño/DreamsBlue.svg')}}" alt="hola"></a>
-       
-       
-       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse">
-            <span class="navbar-toggler-icon"><i class="fas fa-bars"></i></span>
-        </button>
+                        <a class="navbar-brand" href="#"><img src="{{asset('assets/Diseño/DreamsBlue.svg')}}" alt="hola"></a>
+
+                        <button class="navbar-toggler text-center" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" >
+                            <span class="navbar-toggler-icon"><i style="color:white;"  class="fas fa-bars"></i></span>
+                        </button>
+                        
+
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav ml-auto py-4 py-md-0">
+                                <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+                                    <a class="nav-link " href="#">Inicio</a>
+                                </li>
+                                <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+                                    <a class="nav-link" href="#">Blog</a>
+                                </li>
+                                <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+                                    <a class="nav-link" href="#">Contacto</a>
+                                </li>
+                            </ul>
+                        </div>
+
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+<style>
+.navbart {transition: top 0.1s;}
+
+</style>
+
+<script>
+
+let scroll = window.pageYOffset;
+window.onscroll = function() {
+let scrolling = window.pageYOffset;
+  if (scroll > scrolling) {
+    document.getElementById("navbar").style.top = "0";
+  } else {
+    document.getElementById("navbar").style.top = "-80px";
+  }
+  scroll = scrolling;
+}
 
 
-        <div id="navbarCollapse" class="collapse navbar-collapse">
-        <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-                <a href="" class="nav-link text-white">
-                    Inicio
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="" class="nav-link text-white">
-                    Blog
-                </a>
-            </li>
-           
-            <li class="nav-item">
-                <a href="" class="nav-link text-white">
-                    Contacto
-                </a>
-            </li>
-        </ul>
-         </div>
-       </div>
-     </nav>
-    </header>
-    
-    
-    
-    <style>
-    
-    .navbar .navbar-brand {
-     font-size: 30px;
-    }
-    .navbar .nav-item {
-     padding: 10px 20px;
-    }
-    .navbar .nav-link {
-     font-size: 20px;
-    
-    }
-    .fa-bars {
-     color: #fff;
-     font-size: 30px;
-    }
-    .navbar-collapse { text-align: center;
-       
-     }
 
-     .nav-link:hover{
-         background-color: #000000;
-         border-radius:50px;
-     }
-    
-    
-    </style>
+</script>

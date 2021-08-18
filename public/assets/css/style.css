@@ -10,53 +10,92 @@ NOTE:
 PLACE HERE YOUR OWN SCSS CODES AND IF NEEDED, OVERRIDE THE STYLES FROM THE OTHER STYLESHEETS.
 WE WILL RELEASE FUTURE UPDATES SO IN ORDER TO NOT OVERWRITE YOUR STYLES IT'S BETTER LIKE THIS.  */
 
-
 /*////////////////////
 
 /* INPUT DE RANGO DE PAQUETES DE INVERCIONES*/
 
 /*///////////////////*/
-.range-container {
-  position: relative;
-  top: 17px;
+
+.range {
+    -webkit-appearance: none;
+    vertical-align: middle;
+    outline: none;
+    border: none;
+    padding: 0;
+    background: none;
+    width:77.5%;
 }
 
-input[type="range"] {
-  width: 300px;
-  margin: 18px 0;
+.range::-moz-range-track {
+    background-color: #ffffff;
+    height: 6px;
+    border-radius: 3px;
+    border: none;
 }
 
-input[type="range"]:focus {
-  outline: none;
+.range::-ms-track {
+    color: transparent;
+    border: none;
+    background: none;
+    height: 6px;
 }
 
-input[type="range"] + label {
-  background-color: rgb(255, 255, 255);
-  position: absolute;
-  top: -25px;
-  left: 110px;
-  width: 80px;
-  padding: 5px 0;
-  text-align: center;
-  border-radius: 4px;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+.range::-ms-fill-lower {
+    background-color: #d7dbdd;
+    border-radius: 3px;
 }
 
-input[type="range"]::-moz-range-track {
-  background: rgb(0, 0, 0);
-  border-radius: 4px;
-  height: 7px;
-  cursor: pointer;
+.range::-ms-fill-upper {
+    background-color: #d7dbdd;
+    border-radius: 3px;
+}
+
+.range::-ms-tooltip {
+    display: none; /* display and visibility only */
+}
+
+.range::-moz-range-thumb {
+    border-radius: 20px;
+    height: 18px;
+    width: 18px;
+    border: none;
+    background: none;
+    background-color: #ffffff;
+}
+
+.range:active::-moz-range-thumb {
+    outline: none;
+}
+
+.range::-webkit-slider-thumb {
+    -webkit-appearance: none !important;
+    border-radius: 100%;
+    background-color: #606670;
+    height: 18px;
+    width: 18px;
+    margin-top: -7px;
+}
+
+.range:active::-ms-thumb {
+    border: none;
+}
+
+output {
+    border: 1px solid #00c8f4;
+    color: #fff;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 0.4em 0.6em;
+    border-radius: 5px;
+    align-items: center;
+    text-align: center;
+    height: 33px;
+    left: 1218px;
+    top: 366px;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 21px;
 }
 
 
-input[type="range"]::-moz-range-thumb {
-  -webkit-appearance: none;
-  height: 24px;
-  width: 24px;
-  background: #fff;
-  border-radius: 50%;
-  border: 1px solid rgb(0, 0, 0);
-  margin-top: -7px;
-  cursor: pointer;
-}

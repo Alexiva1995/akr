@@ -60,7 +60,7 @@ class Menu
             // // Fin añadir saldo
 
             // Paquetes de inversión
-            'Paquetes de inversión' => [
+            'Depositos' => [
                 'submenu' => 0,
                 'ruta' => route('shop'),
                 'blank' => '', // si es para una pagina diferente del sistema solo coloquen _blank
@@ -68,6 +68,34 @@ class Menu
                 'complementoruta' => '',
             ],
             // Fin Paquetes de inversión
+
+            // Mis Referidos
+            'Mis Referidos' => [
+                'submenu' => 1,
+                'ruta' => 'javascript:;',
+                'blank' => '', // si es para una pagina diferente del sistema solo coloquen _blank
+                'icon' => 'feather icon-users',
+                'complementoruta' => '',
+                'submenus' => [
+                    [
+                        'name' => 'Arbol De Referidos',
+                        'blank' => '', // si es para una pagina diferente del sistema solo coloquen _blank
+                        'ruta' => (''),
+                        'complementoruta' => ''
+                    ],
+
+                    [
+                        'name' => 'Lista De Referidos',
+                        'blank' => '', // si es para una pagina diferente del sistema solo coloquen _blank
+                        'ruta' => route('genealogy_list_network', 'direct'),
+                        'complementoruta' => ''
+                    ],
+
+
+                ],
+            ],
+            // Fin De Mis Referidos
+
 
             // Negocio
             'Negocio' => [
@@ -83,12 +111,7 @@ class Menu
                         'ruta' => route('genealogy_type', 'matriz'),
                         'complementoruta' => ''
                     ],
-                    [
-                        'name' => 'Referidos Directos',
-                        'blank' => '', // si es para una pagina diferente del sistema solo coloquen _blank
-                        'ruta' => route('genealogy_list_network', 'direct'),
-                        'complementoruta' => ''
-                    ],
+
                     [
                         'name' => 'Ordenes',
                         'blank' => '', // si es para una pagina diferente del sistema solo coloquen _blank
@@ -105,6 +128,38 @@ class Menu
             ],
             // Fin Negocio
 
+
+
+            // Retiros
+            'Retiros' => [
+                'submenu' => 1,
+                'ruta' => 'javascript:;',
+                'blank' => '', // si es para una pagina diferente del sistema solo coloquen _blank
+                'icon' => 'feather icon-users',
+                'complementoruta' => '',
+                'submenus' => [
+                    [
+                        'name' => 'Comisiones',
+                        'blank' => '', // si es para una pagina diferente del sistema solo coloquen _blank
+                        'ruta' => (''),
+                        'complementoruta' => ''
+                    ],
+
+                    [
+                        'name' => 'AKR',
+                        'blank' => '', // si es para una pagina diferente del sistema solo coloquen _blank
+                        'ruta' => (''),
+                        'complementoruta' => ''
+                    ],
+
+
+                ],
+            ],
+            // Fin De Retiros
+
+
+
+
             //U-4 Inverisones
             'Inversiones' => [
                 'submenu' => 0,
@@ -112,7 +167,7 @@ class Menu
                 'blank' => '', // si es para una pagina diferente del sistema solo coloquen _blank
                 'icon' => 'feather icon-activity',
                 'complementoruta' => '',
-               
+
             ],
             // Fin Inverisones
 
@@ -156,12 +211,12 @@ class Menu
             // Fin Financiero
 
 
-          
+
             // Soporte
             'Soporte' => [
                 'submenu' => 0,
                 'ruta' => route('ticket.list-user'),
-                'blank'=> '', // si es para una pagina diferente del sistema solo coloquen _blank
+                'blank' => '', // si es para una pagina diferente del sistema solo coloquen _blank
                 'icon' => 'feather icon-help-circle',
                 'complementoruta' => '',
             ],
@@ -218,10 +273,8 @@ class Menu
                 'ruta' =>  route('inversiones.index', 1),
                 'blank' => '', // si es para una pagina diferente del sistema solo coloquen _blank
                 'icon' => 'feather icon-shopping-cart',
-                'complementoruta' => '',                
-                'submenus' => [
-                   
-                ],                
+                'complementoruta' => '',
+                'submenus' => [],
                 // 'submenus' => [
                 //     [
                 //         'name' => 'Grupos',
@@ -243,7 +296,7 @@ class Menu
                 //     ],
                 // ],
             ],
-            
+
             // 4- Informes
             // 'Informes' => [
             //     'submenu' => 1,
@@ -362,36 +415,34 @@ class Menu
                         'ruta' => route('flujo-de-ganancia'),
                         'complementoruta' => ''
                     ],
-                  
+
                 ],
             ],
             // Fin Informes
 
 
-             // Soporte
-             'Soporte' => [
+            // Soporte
+            'Soporte' => [
                 'submenu' => 0,
                 'ruta' => route('ticket.list-admin'),
-                'blank'=> '', // si es para una pagina diferente del sistema solo coloquen _blank
+                'blank' => '', // si es para una pagina diferente del sistema solo coloquen _blank
                 'icon' => 'feather icon-help-circle',
                 'complementoruta' => '',
             ],
             // Fin Soporte
 
 
-              //7- VTR
-              'AKR' => [
+            //7- VTR
+            'AKR' => [
 
                 'submenu' => 1,
-                'ruta' =>  (''),
+                'ruta' => (''),
                 'blank' => '', // si es para una pagina diferente del sistema solo coloquen _blank
                 'icon' => 'feather icon-dollar-sign',
-                'complementoruta' => '',                
+                'complementoruta' => '',
+                'submenus' => [],
                 'submenus' => [
-                   
-                ],                
-                 'submenus' => [
-                     [
+                    [
                         'name' => 'Generacion',
                         'blank' => '', // si es para una pagina diferente del sistema solo coloquen _blank
                         'ruta' => route('Generacion'),
@@ -409,9 +460,8 @@ class Menu
                         'ruta' => route('VTR.historys.status', 'Pagadas'),
                         'complementoruta' => ''
                     ]
-                 ],
+                ],
             ],
         ];
-        
     }
 }

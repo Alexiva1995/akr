@@ -17,8 +17,9 @@ class CreateCryptosTable extends Migration
             $table->id();
             $table->bigInteger('iduser')->unsigned();;
             $table->timestamps();
-            $table->bigInteger('porcentaje_de_cryptos');
-            $table->bigInteger('valor');
+            $table->decimal('porcentaje_de_cryptos');
+            $table->decimal('valor');
+          
         });
     }
 

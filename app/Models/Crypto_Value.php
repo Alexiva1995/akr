@@ -16,5 +16,4 @@ class Crypto_Value extends Model
     public function user(){
         return $this->belongsto('App\Models\User', 'iduser', 'id', 'email');
     }
-    
 }

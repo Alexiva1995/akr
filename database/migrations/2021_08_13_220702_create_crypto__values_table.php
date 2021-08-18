@@ -11,7 +11,7 @@ class CreateCryptoValuesTable extends Migration
      *
      * @return void
      */
-    public function up() 
+    public function up()
     {
         Schema::create('Crypto_Value', function (Blueprint $table) {
             $table->bigIncrements('id')->unsigned();

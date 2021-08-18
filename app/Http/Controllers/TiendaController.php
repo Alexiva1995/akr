@@ -41,7 +41,7 @@ class TiendaController extends Controller
     {
         try {
             // title
-            View::share('titleg', 'Paquetes de Inversión');
+            
 
             // $categories = Groups::all()->where('status', 1);
 
@@ -271,7 +271,9 @@ class TiendaController extends Controller
     }
 
     public function cambiar_status(Request $request)
-    {       
+
+    {  
+         
         $orden = OrdenPurchases::findOrFail($request->id);
         $orden->status = $request->status;
         $orden->save();
@@ -315,11 +317,13 @@ class TiendaController extends Controller
                         Log::error('Tienda - generalUrlOrden -> Error: '.$th);
                         abort(403, "Ocurrio un error, contacte con el administrador");
                     }
-               }            
+               }        
+              
         
         }
 
-
+    
+      
         // return redirect('/dashboard/reports/purchase')->with('msj-success', 'Orden actualizada exitosamente');
         //  $user->notify(new \App\Notifications\Order_approved);
         return redirect('/dashboard/reports/purchase')->with('msj-success', 'Orden actualizada exitosamente'); 

@@ -24,6 +24,7 @@
 <!-- BEGIN: Custom CSS-->
 <link rel="stylesheet" type="text/css" href="{{asset('assets/css/style.css')}}">
 @stack('custom_css')
+
 <style>
     .bg-full-screen-image-alt {
         background: url("{{asset('assets/img/sistema/fondo.jpg')}}");
@@ -37,19 +38,137 @@
         -o-background-size: cover;
         background-size: cover;
         opacity: 0.93;
+
+        background-image: url("{{asset('assets/img/sistema/fondo.jpg')}}"
+        );
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+
+        
+    }
+
+
+    /*===============*/
+    /*ESTILOS DEL REGISTER*/
+    /*================*/
+    .infor {
+        margin-top: 25%;
+    }
+
+    input:focus~.floating-label,
+    input:not(:focus):valid~.floating-label {
+        top: 3px;
+        bottom: 100px;
+        left: 20px;
+        font-size: 11px;
+        opacity: 1;
     }
 
 
 
+    .floating-label {
+        position: absolute;
+        pointer-events: none;
+        left: 20px;
+        top: 18px;
+        transition: 0.2s ease all;
+        color: white;
+    }
 
-    /* @media screen and (max-width: 600px){
-        .card-margin{
-            margin: 0px 30px;
+    #age {
+        background-color: rgba(0, 0, 0, 0.3);
+        background-color: transparent;
+    }
+
+
+    .cardd {
+        background: rgba(0, 0, 0, 0.75);
+        border: 1px solid #000000;
+        box-sizing: border-box;
+        border-radius: 11px;
+        margin-top: 10%;
+        margin-bottom: 10%;
+    }
+
+    #country {
+        color: red;
+    }
+
+    @media (max-width: 600px) {
+        .container {
+            max-width: 100%;
+            flex: 0 1 100%;
         }
     }
 
-    .app-content.content{
-        overflow-y: scroll !important;
-    } */
+
+    @media (max-width: 999px) {
+        .floating-label {
+            max-width: 100%;
+            flex: 0 1 100%;
+            font-size: 8px;
+        }
+    }
+
+    #Captcha {
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: center;
+        align-content: space-around;
+        width: 50%;
+    }
+
+    #Captcha {
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: center;
+        align-content: space-around;
+        width: 80%;
+
+    }
+
+
+    @media (max-width: 800px) {
+        #Captcha {
+            max-width: 75%;
+            flex: 0 1 30%;
+        }
+    }
+
+
+    @media (max-width: 380px) {
+        #Captcha {
+            max-width: 35%;
+            flex: 0 1 30%;
+
+        }
+    }
+
+    @media (max-width: 330px) {
+        #Captcha {
+            max-width: 20%;
+            flex: 0 1 30%;
+        }
+    }
+
+
+    @media (max-width: 335px) {
+        #Captcha {
+            max-width: 35%;
+            flex: 0 1 30%;
+            margin: 0px 10px 0px 10px;
+        }
+    }
+
+    .container {
+
+        width: 100%;
+        padding-right: 15px;
+        padding-left: 15px;
+        margin-right: auto;
+        margin-left: auto;
+    }
 </style>
 <!-- END: Custom CSS-->

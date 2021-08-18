@@ -1,5 +1,5 @@
 <!-- Modal -->
-<div class="modal fade" id="modalModalAccion" tabindex="-1" role="dialog" aria-labelledby="modalModalAccionTitle"
+<div class="modal fade" id="modalModalAccionCrypto" tabindex="-1" role="dialog" aria-labelledby="modalModalAccionTitle"
     aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-dialog-centered" role="document">
         <div class="modal-content">
@@ -10,7 +10,7 @@
                 </button>
             </div>
             <div class="modal-body text-justify">
-                <form action="{{route('settlement.process')}}" method="post">
+                <form action="{{route('crypto.process')}}" method="post">
                     @csrf
                     <input type="hidden" name="idliquidation" :value="ComisionesDetalles.idliquidaction">
                     <input type="hidden" name="action" :value="StatusProcess">
@@ -21,10 +21,10 @@
                         <label for="">Hash</label>
                         <input type="text" name="hash" class="form-control" required>
                     </div>
-                    <div class="form-group">
+                    {{-- <div class="form-group">
                         <label for="">Comentario</label>
                         <textarea name="comentario" class="form-control" :required="(StatusProcess == 'reverse') ? true : false"></textarea>
-                    </div>
+                    </div> --}}
                     <div class="form-group text-center">
                         <button class="btn btn-primary" v-text="(StatusProcess == 'reverse') ? 'Reservar' : 'Aprobar'"></button>
                     </div>

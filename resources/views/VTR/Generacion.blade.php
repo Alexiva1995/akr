@@ -3,7 +3,6 @@
 @push('vendor_css')
 <link rel="stylesheet" type="text/css" href="{{asset('assets/app-assets/vendors/css/extensions/sweetalert2.min.css')}}">
 <style type="text/css">
-
     #table_detalle{
         overflow-y: hidden; 
         overflow-x: auto;
@@ -12,7 +11,6 @@
         padding: 10px;
         white-space: nowrap;
     }
-
 </style>
 @endpush
 
@@ -28,11 +26,12 @@
 @endpush
 
 @push('custom_js')
-<script src="{{asset('assets/js/liquidation.js')}}"></script>
+<script src="{{asset('assets/js/liquidaciones.js')}}"></script>
 @endpush
 
 @section('content')
-<div id="AKR">
+
+<div id="settlement">
     <div class="col-12">
         <div class="card">
             <div class="card-content">
@@ -61,19 +60,19 @@
                                         <td>{{$crypto->iduser}}</td>
                                         <td>{{$crypto->user->fullname}}</td>
                                         <td>{{$crypto->user->email}}</td>
-                                        <td>{{$crypto->cantidad}}</td>
-                                        <td>{{$crypto->status}}</td>
-                                        <td>
-
-                                        <a onclick="v_liquidation.getDetail({{$crypto->iduser}})" class="btn btn-info">
+                                        <td>{{$crypto->total}}</td>
+                                     
+                                        @if ($crypto->user->status == '0')
+                                    <td>En espera</td>
+                                    @elseif($crypto->user->status == '1')
+                                    <td>Pagado</td>
+                                    @endif
+                                  
+                                  
+                                        <td>                                            
+                                            <a onclick="vm_liquidation.getDetailCrypto({{$crypto->iduser}})" class="btn btn-info">
                                                 <i class="feather icon-eye"></i>
                                             </a>
-
-
-                                            <!--
-                                            <a onclick="vm_liquidation.getDetailComision({{$crypto->iduser}})" class="btn btn-info">
-                                                <i class="feather icon-eye"></i>
-                                            </a>-->
                                         </td>
                                     </tr>
                                 @endforeach
@@ -95,11 +94,10 @@
         </div>
     </div>
     @include('VTR.componentes.modalDetalles', ['all' => true])
-    @include('VTR.component.modal%')
+    @include('VTR.component.modal%') 
 </div>
 @endsection
 
 {{-- permite llamar a las opciones de las tablas --}}
 @include('layouts.componenteDashboard.optionDatatable')
-
 

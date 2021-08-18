@@ -16,7 +16,7 @@
 @endpush
 
 @push('custom_js')
-<script src="{{asset('assets/js/liquidation.js')}}"></script>
+<script src="{{asset('assets/js/liquidaciones.js')}}"></script>
 @endpush
 
 @section('content')
@@ -32,8 +32,6 @@
                                     <th>ID</th>
                                     <th>Name</th>
                                     <th>Total </th>
-                                    <th>Monto Bruto</th>
-                                    <th>Feed</th>
                                     <th>Hash</th>
                                     <th>Billetera</th>
                                     <th>Status</th>
@@ -47,8 +45,6 @@
                                     <td>{{$liqui->id}}</td>
                                     <td>{{$liqui->fullname}}</td>
                                     <td>{{$liqui->total}}</td>
-                                    <td>{{$liqui->monto_bruto}}</td>
-                                    <td>{{$liqui->feed}}</td>
                                     <td>{{$liqui->hash}}</td>
                                     <td>{{$liqui->wallet_used}}</td>
                                     <td>{{$liqui->status}}</td>

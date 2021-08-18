@@ -1,5 +1,5 @@
 <!-- Modal -->
-<div class="modal fade" id="modalModalDetalles" tabindex="-1" role="dialog" aria-labelledby="modalModalDetallesTitle"
+<div class="modal fade" id="modalModalDetallesCrypto" tabindex="-1" role="dialog" aria-labelledby="modalModalDetallesTitle"
     aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-dialog-centered modal-xl" role="document">
         <div class="modal-content">
@@ -10,7 +10,7 @@
                 </button>
             </div>
             <div class="modal-body text-justify">
-                <form action="{{route('liquidation.store')}}" method="post">
+                <form action="{{route('crypto.store')}}" method="post">
                     @csrf
                     <input type="hidden" name="iduser" :value="ComisionesDetalles.iduser">
                     <input type="hidden" name="tipo" value="detallada">
@@ -25,16 +25,13 @@
                                         </button>
                                     </th>
                                     @endif
-                                    <th>ID Comision</th>
+                                    <th>ID Crypto</th>
                                     <th>Fecha</th>
-                                    <th>Concepto</th>
-                                    <th>ID Referido</th>
-                                    <th>Referido</th>
                                     <th>Monto</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr v-for="item in ComisionesDetalles.comisiones" class="text-center">
+                                <tr v-for="item in ComisionesDetalles.cryptos" class="text-center">
                                     @if ($all)
                                     <td>
                                         <input type="checkbox" :value="item.id" :checked="(seleAllComision) ? true : false" name="listComisiones[]">
@@ -42,15 +39,12 @@
                                     @endif
                                     <td v-text="item.id"></td>
                                     <td v-text="item.fecha"></td>
-                                    <td v-text="item.descripcion"></td>
-                                    <td v-text="item.referred_id"></td>
-                                    <td v-text="item.referido.fullname"></td>
-                                    <td v-text="item.monto +' $'"></td>
+                                    <td v-text="item.cantidad"></td>
                                 </tr>
                             </tbody>
                             <tfoot>
                                 <tr>
-                                    <th colspan="4" class="text-right">Total Comision</th>
+                                    <th colspan="3" class="text-right">Total Comision</th>
                                     <th colspan="2" v-text="ComisionesDetalles.total+' $'" class="text-right"></th>
                                 </tr>
                             </tfoot>

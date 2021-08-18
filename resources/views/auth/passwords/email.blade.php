@@ -2,88 +2,85 @@
 
 @section('content')
 @push('custom_css')
-<style>
-    .bg-fucsia {
-        background: transparent linear-gradient(180deg, #13192E 0%, #13192E 100%) 0% 0% no-repeat padding-box;
-    }
 
-    .text-rosado {
-        color: #13192E;
-    }
-
-    .btn-login {
-        padding: 0.6rem 2rem;
-        border-radius: 1.429rem;
-    }
-
-    .text-input-holder {
-        font-weight: 800;
-        color: #000000;
-    }
-
-    .card{
-        border-radius: 1.5rem;
-    }
-
-</style>
 @endpush
+
+@include('auth.navbar')
 <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-4 col-sm-8 col-12">
-            {{-- header --}}
-            <div class="col-12 text-center mb-2">
-                <img src="{{asset('assets/img/assets/Diseño/DreamsBlue.svg')}}" alt="logo" height="150" width="190">
-                <h5 class="text-white">Bienvenido a DreamsBlue</h5>
-            </div>
-            {{-- cuerpo login --}}
-            <div class="card card-margin">
-                <div class="card-header text-center">
-                    <a class="text-rosado float-left" href="{{route('login')}}">
-                        <i class="fa fa-arrow-left"></i>
-                    </a>
-                    <h5 class="card-title col-11 text-input-holder">{{ __('Restablecer Contraseña') }}</h5>
+
+    @if (session('status'))
+    <div class="alert alert-success" role="alert">
+        {{ session('status') }}
+    </div>
+    @endif
+
+    <div id="home" class="hero route bg-image" style="background-image: url(assets/img/header.jpg)">
+        <div class="row ">
+            <div class="col-md-6 col-sm-12 col-12 infor">
+                <div class="title ">
+                    Recuperar Cuenta!
                 </div>
+                <div class="subtitle">
+                    Manten tu rostro siempre hacia la luz del sol, y las sombras caeran detrás de ti.
+                </div>
+            </div>
 
-                <div class="card-body">
-                    @if (session('status'))
-                    <div class="alert alert-success" role="alert">
-                        {{ session('status') }}
+            <div class="col-md-1 col-sm-12 col-12 ">
+            </div>
+            <div class="col-md-5 col-sm-12 col-12" style="margin-top: 150px;">
+                <div class="mb-5 cardd w-100 login">
+                    <div class="mt-3 mx-2">
+                        
+                    <a class="text-rosado float-left " href="{{route('login')}}">
+                
+                        <i style="color:white;" class="fa fa-arrow-left"></i>
+                    </a>
+                        <p class="titulo text-center ml-2">{{ __('Recuperar Contraseña') }}</p>
+
                     </div>
-                    @endif
+                    <div class="card-body">
 
-                    <p class="text-help">
-                        <small>Te vamos a enviar un código a la dirección de correo que ingreses para que recuperes tu contraseña.</small>
-                    </p>
+                        <form method="POST" action="{{ route('password.email') }}">
+                            @csrf
+                            <div class="form-group row">
 
-                    <form method="POST" action="{{ route('password.email') }}">
-                        @csrf
 
-                        <div class="form-group row">
-                            <div class="col-12">
-                                <input id="email" type="email"
-                                    class="form-control text-input-holder @error('email') is-invalid @enderror"
-                                    name="email" value="{{ old('email') }}" required autocomplete="email" autofocus
-                                    placeholder="Ingresa tu email">
+                                <div class="col-md-12 mt-1">
+                                    <label>Correo Electronico o Nombre de Usuario</label>
+                                    <input id="email" type="text" class=" email form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus placeholder=" " />
 
-                                @error('email')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
+                                    <span class="floating-label mt-1"><i class="fas fa-envelope"></i> Digita tu Nombre de usuario o Email</span>
+
+
+                                    @error('email')
+
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="form-group row mb-0">
-                            <div class="col-12">
-                                <button type="submit" class="btn bg-fucsia btn-login text-white btn-block">
+                            <div class="form-group row mb-5 mt-3">
+                                <div class="col-12 d-flex justify-content-center">
+                                    <button type="submit" class="btn-login w-100">
                                     {{ __('Enviar Código') }}
-                                </button>
+                                    </button>
+
+                               
+                                </div>
                             </div>
-                        </div>
-                    </form>
+
+                        </form>
+
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</div>
+        
+        <br>
+        <br>
+        @include('auth.footer')
+
+
 @endsection
