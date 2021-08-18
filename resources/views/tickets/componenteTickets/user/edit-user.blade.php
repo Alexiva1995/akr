@@ -29,13 +29,13 @@ border-radius: 8px;">
 
                                 <div class="col-6">
                                     <label id="form-label" class="form-label" for="name"><b>Nombre</b></label>
-                                    <input class=" form-control" required type="text" id="names" name="name" value="{{ $ticket->name}}" rows="3" />
+                                    <input class=" form-control" required type="text" id="names" name="name" value="{{ $ticket->name}}" rows="3"disabled />
 
                                 </div>
 
                                 <div class="col-6">
                                     <label id="form-label" class="form-label" for="email"><b>Direccion de correo electrónico</b></label>
-                                    <input class="form-control" required type="text" id="emails" name="email" value="{{ $ticket->email }}" rows="3" />
+                                    <input class="form-control" required type="text" id="emails" name="email" value="{{ $ticket->email }}" rows="3" disabled/>
 
                                 </div>
 
