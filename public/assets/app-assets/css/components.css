@@ -424,9 +424,14 @@ body.fixed-footer footer.footer-dark {
 }
 .main-menu.menu-light .navigation > li.open > a, .main-menu.menu-light .navigation > li.sidebar-group-active > a {
   color : #494949;
-  background : whitesmoke;
+  background : #0F575D;
   transition : transform 0.25s ease 0s, -webkit-transform 0.25s ease 0s;
-  border-radius : 6px;
+  border-radius : 30px;
+  border-top:3px solid #121212;
+  border-right:3px solid #121212;
+  border-bottom:3px solid #121212;
+  border-left:3px solid #121212;
+  opacity: 0.93;
   margin-bottom : 7px;
 }
 .main-menu.menu-light .navigation > li:not(.open) > ul {
@@ -483,10 +488,10 @@ body.fixed-footer footer.footer-dark {
   border-radius : 4px;
 }
 .main-menu.menu-light .navigation > li ul .active > a {
-  color : #FFFFFF;
+  color : transparent;
 }
 .main-menu.menu-light .navigation > li > ul {
-  background : #FFFFFF;
+  background : transparent;
 }
 .main-menu.menu-light ul.menu-popout {
   background : #FFFFFF;

@@ -126,7 +126,7 @@
             {{-- <div class="card-content row justify-content-center align-items-center"> --}}
                 {{-- <div class="card-body d-flex justify-content-center align-items-center flex-sm-row flex-column pb-0 pt-1 col-12"> --}}
                 <div class="card-sub d-flex align-items-center mt-2">
-                    <div class="progresscircle blue" data-value='100'>
+                    <div class="progresscircle blue" data-value='50'>
                         <span class="progress-left">
                             <span class="progress-circle"></span>
                         </span>
@@ -145,7 +145,6 @@
             {{-- </div> --}}
         </div>
     </div>
-
 
     <div class="col-lg-12 col-md-12 col-12 mt-1 mb-1"> 
         <div class="card text-white h-100 mb-0 pb-1" style="background: #121212">
