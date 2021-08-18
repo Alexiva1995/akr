@@ -7,18 +7,20 @@
 </style>
 
 <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
-<script src="{{asset('assets/js/librerias/axios.min.js')}}"></script>
+{{-- <script src="{{asset('assets/js/librerias/axios.min.js')}}"></script> --}}
+     <script src="{{asset('assets/js/librerias/axios.min.js')}}"></script>
 <script>
         axios.get('/dashboard/dataGrafica').then( function(response){
          
+          console.log(response)
           var options = {
             colors: ['#BA8621'],
             series: [{
-              name: "Referidos",
+              name: "Ganancia de este mes",
               data: response.data.valores
           }],
             chart: {
-            height: 650,
+            height: 250,
             type: 'line',
             zoom: {
               enabled: false
@@ -48,7 +50,7 @@
           },
         },
         xaxis: {
-          categories: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
+          categories: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
           labels: {
             rotate: -45,
             style: {

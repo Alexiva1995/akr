@@ -52,7 +52,7 @@
             </div>
             <div class="content-body">
                 @yield('content')
-                <div class="mt-4"></div>
+                <div class=""></div>
                 @include('auth.footer2')
 
             </div>
