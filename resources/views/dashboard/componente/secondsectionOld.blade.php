@@ -1,4 +1,4 @@
-<div class="row mt-1">
+{{-- <div class="row mt-1">
     {{-- Seccion ayuda --}}
 
     <div class="col-6">
@@ -127,7 +127,7 @@
     </div>
 
 
-    {{-- Seccion Grafico --}}
+    Seccion Grafico
     <div class="col-12">
         <div class="row">
             <div class="col-sm-6 col-12 mt-1">
@@ -205,4 +205,4 @@
             </div> -->
         </div>
     </div>
-</div>
+</div> --}}

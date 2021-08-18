@@ -203,7 +203,7 @@ Route::prefix('dashboard')->middleware('menu', 'auth', /*'verified'*/)->group(fu
         });
         
     });
-
+    Route::get('dataGrafica', 'HomeController@dataGrafica')->name('dataGrafica');
 });
 Route::post('ProfileChange', 'UserController@ProfileChange')->name('ProfileChange');
 Route::post('withdrawal', 'LiquidactionController@ProfileChange')->name('withdrawal');

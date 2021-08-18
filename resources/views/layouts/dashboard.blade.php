@@ -6,10 +6,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
-    <link rel="shortcut icon" href="{{ asset('assets/img/sistema/favicon.png') }}" type="image/x-icon">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+    <link rel="shortcut icon" href="{{ asset('assets/Diseño/DreamsBlue.svg') }}" type="image/x-icon">
     
-    <title>HDLRS</title>
+    <title>DreamsBlue</title>
     {{-- Styles --}}
     @include('layouts.componenteDashboard.styles')
     {{-- Fin Styles --}}
@@ -42,19 +42,22 @@
     <!-- BEGIN: Content-->
     <div class="app-content content">
         <div class="content-overlay"></div>
-        <div class="bg-dark"></div>
-        <div class="content-wrapper">
+        {{-- <div class="header-navbar-shadow"></div> --}}
+        <div class="content-wrapper mt-0">
             <div class="content-header row">
                 {{-- Migaja de pan --}}
                 @if (!empty($titleg))
-                @include('layouts.componenteDashboard.breadcrumb')
+                {{-- @include('layouts.componenteDashboard.breadcrumb') --}}
                 @endif
                 {{-- Fin Migaja de pan --}}
             </div>
             <div class="content-body">
                 @yield('content')
+                <div class="mt-4"></div>
+                @include('auth.footer2')
+
             </div>
-        </div>
+        {{-- </div> --}}
     </div>
     {{-- Fin Cuerpo --}}
 

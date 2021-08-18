@@ -2,7 +2,18 @@
 
 @section('content')
 @push('custom_css')
-
+<style>
+    .infor{
+        margin-top: 20%;
+    }
+    .cardd{
+        background: rgba(0, 0, 0, 0.75);
+        border: 1px solid #000000;
+        box-sizing: border-box;
+        border-radius: 11px;
+        margin-top: 20%;
+    }
+</style>
 @endpush
 
 <body>
@@ -98,7 +109,6 @@
             </div>
 
 </body>
-
 
 @include('auth.footer')
 

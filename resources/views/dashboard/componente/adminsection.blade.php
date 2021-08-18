@@ -1,169 +1,159 @@
 {{-- Primeros cuadros -> Agregar paqutes - link Refedos --}}
-<div class="row">
-    <div class="col-lg-6 col-md-12 col-12 mt-1">
-        <div class="card bg-analytics bg-purple-alt2 text-white h-100">
+<div class="row" >
+    <div class="col-lg-12 col-md-12 col-12">
+        <div class="card text-white h-100 m-0" style="background-color:#171717; box-shadow:none;">
             <div class="card-content">
-                <div class="card-body text-center">
-                    <img src="{{asset('assets/img/sistema/ban-der.svg')}}" class="img-left" alt="card-img-left">
-                    <img src="{{asset('assets/img/sistema/ban-izq.svg')}}" class="img-right" alt="card-img-right">
-                    <img src="{{asset('assets/img/sistema/confe-der.svg')}}" class="img-left" alt="card-img-left"
-                        style="height: 100%">
-                    <img src="{{asset('assets/img/sistema/confe-izq.svg')}}" class="img-right" alt="card-img-right"
-                        style="height: 100%">
-                    <div class="avatar avatar-xl bg-primary shadow m-0 mb-1">
-                        <img src="{{asset('assets/img/sistema/favicon.png')}}" alt="card-img-left">
-                        {{-- <div class="avatar-content">
-                         <i class="feather icon-award white font-large-1"></i> 
-                        </div> --}}
+                <div class="card-body d-flex justify-content-between">                    
+                    <div class="">
+                        <h1 class=" text-white">Bienvenido <span style="color:#00C8F4;">{{$data['usuario']}}</span></h1>                        
                     </div>
-                    <div class="text-center">
-                        <h1 class="mb-2 text-white">Bienvenido {{$data['usuario']}}</h1>
-                        <p class="m-auto w-75">
-                            {{-- <a href="{{route('package.index')}}" target=""
-                                class="btn btn-flat-primary padding-button-short bg-white mt-1 waves-effect waves-light">
-                                Agregar Paquete
-                            </a> --}}
-                        </p>
+                    <p class="card-text">
+                        <button class="btn" style="background-color: #00C8F4; color: black;" onclick="getlink()">ID de referido: {{$data['id']}} <i class="fa fa-copy"></i></button>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-12 col-md-12 col-12 mt-1 mb-1">
+        <div class="card text-white  bg-red-alt2 h-100">
+            <div class="card-content">
+                <div class="card-body card-dashboard">
+                    <div class="container">                        
+                        <form action="{{route('realizar-inversion')}}" method="POST" target="_blank" class="d-inline">                            
+                            @csrf
+                            <div class="">
+                                <div class="range-wrap">
+                                    <div class="range-container">
+                                        <input type="range" class="w-100" name="range" id="range" min="70" max="10000" step="10" value="70"/>
+                                        <label for="range">70$</label>
+                                        @if(isset($user))
+                                            <input type="hidden" class="w-100" name="user" id="user" value="{{$user->id}}"/>  
+                                            <div class="custom-control custom-switch mt-1">
+                                                <input type="checkbox" class="custom-control-input" id="customSwitch1" name="comision" value="comision">
+                                                <label class="custom-control-label" for="customSwitch1"></label>
+                                                Generar Comisiones
+                                            </div>                                        
+                                        @endif
+                                    </div>
+                                    <br>
+    
+                                </div>
+                                <div class="">                                  
+                                    <button type="submit" class="btn float-right" style="background-color: #00C8F4; color: black;">Comprar</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6 col-md-12 col-12 mt-1 mb-1"> 
+        <div class="card text-white h-100 mb-0 pb-1" style="background: #121212">
+            <div class="card-content row">
+                {{-- <div class="card-body d-flex justify-content-center align-items-center flex-sm-row flex-column pb-0 pt-1 col-12"> --}}
+                <div class="card-body moneda">
+                    <div class="d-flex justify-content-center align-items-center">
+                        <div class="col-6 w-100 text-center">
+                            <h4 class="text-white">Monedas Actuales</h4>
+                        </div>
+                        <div class="col-6 w-100 text-center font-size-">
+                            <h4 class="text-white">Saldo en dolares</h4>                                                    
+                        </div>                    
+                    </div>
+                    <div class="d-flex justify-content-center">
+                        <div class="col-6 w-100 pt-1 d-flex justify-content-center">
+                            <div>
+                                <h1>{{50.000}} DRB</h1>
+                                <button class="btn btn-saldo mt-1">Retirar</button>                                
+                            </div>
+                        </div>
+                        <div class="col-6 w-100 pt-1 d-flex justify-content-center " style="border-left: 2px solid white">
+                            <div>                            
+                                <h1>{{1.000}} USDT</h1>
+                                <button class="btn btn-saldo mt-1">Retirar</button>
+                            </div>
+                        </div>                    
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{-- Este es --}}
+    <div class="col-lg-6 col-md-12 col-12 mt-1 mb-1">
+        <div class="card text-white bg-blue h-100 mb-0">
+            {{-- <div class="card-content row justify-content-center align-items-center"> --}}
+                {{-- <div class="card-body d-flex justify-content-center align-items-center flex-sm-row flex-column pb-0 pt-1 col-12"> --}}
+                <div class="card-sub d-flex align-items-center mt-2">
+                    <div class="progresscircle blue" data-value='100'>
+                        <span class="progress-left">
+                            <span class="progress-circle"></span>
+                        </span>
+                        <span class="progress-right">
+                            <span class="progress-circle"></span>
+                        </span>
+                        <div class="progress-value">50%</div>
+                    </div>
+                </div>
+                    <div class="d-flex justify-content-center align-items-center porcentaje">
+                        <div class="col-12 w-100 text-center mt-2 mb-2">
+                            <h1 class="text-white">$ 500,00</h1>
+                            <span class="text-white">Estas a punto de cumplir tu meta</span>
+                        </div>
+                    </div>
+            {{-- </div> --}}
+        </div>
+    </div>
+
+    <div class="col-lg-3 col-md-6 col-12 mt-1 mb-1"> 
+        <div class="card text-white h-100 mb-0 pb-1 bg-blue" >
+            <div class="card-content row">
+                {{-- <div class="card-body d-flex justify-content-center align-items-center flex-sm-row flex-column pb-0 pt-1 col-12"> --}}
+                <div class="card-body moneda">
+                        <div class="col-6 w-100 text-left">
+                            <h4 class="text-white">Referidos</h4>
+                        </div>                                           
+                    
+                    <div class="d-flex justify-content-center">
+                        <div class="col-6 w-100 pt-1 d-flex justify-content-center">
+                            <div>
+                                <p class="">Mes pasado</p>                                
+                                <h1>{{25}}</h1>
+                            </div>
+                        </div>
+                        <div class="col-6 w-100 pt-1 d-flex justify-content-center " style="border-left: 2px solid white">
+                            <div>                            
+                                <p class="">Mes Actual</p>
+                                <h1>{{28}}+</h1>
+                            </div>
+                        </div>                    
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="col-lg-6 col-md-12 col-12 mt-1">
-        <div class="card text-white bg-gradient-danger bg-red-alt h-100">
+    <div class="col-lg-3 col-md-6 col-6 mt-1 mb-1">
+        <div class="card text-white bg-blue h-100 mb-0">
             <div class="card-content row justify-content-center align-items-center">
-                <div class="card-body d-flex justify-content-center align-items-center flex-sm-row flex-column pb-0 pt-1 col-12">
-                    <div class="order-1 order-md-2">
-                        <img src="{{asset('assets/img/sistema/card-img.svg')}}" alt="element 03" width="250" height="250"
-                        class=" px-1">
-                    </div>
-
-                    <div class="order-2 order-md-1">
-                        <p class="card-text mt-3">Invita a tus amigos <br> y gana una comision</p>
-                        <h4 class="card-title text-white">¡Todo es mejor con <br> amigos!</h4>
-                        <p class="card-text">
-                            <button class="btn btn-flat-primary padding-button-short bg-white mt-1 waves-effect waves-light" onclick="getlink()">Copiar link de referido <i class="fa fa-copy"></i></button>
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="col-lg-6 col-md-12 col-12 mt-1">
-    <div class="card text-white bg-gradient-danger bg-red-alt h-100">
-        <div class="card-content">
-            <div class="card-body pb-0">
-                <div class="card-header d-flex align-items-center text-right pb-0 pt-0 white">
-                    <h5 class="mt-1 mb-0 text-white"><b>Lado Binario</b></h5>
-                </div>
-            </div>
-
-            <div class="card-sub ml-3">
-                <h1 class="text-warning text-bold-700">
-                    @if (Auth::user()->binary_side_register == 'I')
-                    IZQUIERDA
-                    @else
-                    DERECHA
-                    @endif
-                </h1>
-            </div>
-
-            <div class="mt-4">
-                @if (Auth::user()->binary_side_register == 'I')                    
-                    <div class="d-flex justify-content-center">
-                        <a href="#" class="btn bg-white text-black text-bold-600 mr-1" v-on:click="updateBinarySide('D')">Derecha</a> 
-                        <a href="#" class="btn bg-black text-white text-bold-600 ml-1 disabled"  >Izquierda</a> 
-                    </div>                 
-                @else
-                    <div class="d-flex justify-content-center">
-                        <a href="#" class="btn bg-white text-black  text-bold-600 mr-1 disabled">Derecha</a> 
-                        <a href="#" class="btn bg-black text-white text-bold-600 ml-1"  v-on:click="updateBinarySide('I')">Izquierda</a> 
-                    </div>                    
-                @endif    
-            </div>
-            </div>                
-
-        </div>
-    </div>
-</div>
-
-<!-- {{-- Segundo Cuadros -> Graficas de Comisiones e inversiones --}}
-<div class="row">
-    <div class="col-lg-6 col-md-12 col-12 mt-1">
-        <div class="card text-white h-100">
-            <div class="card-content">
+                {{-- <div class="card-body d-flex justify-content-center align-items-center flex-sm-row flex-column pb-0 pt-1 col-12"> --}}
                 <div class="card-body">
-                    <div id="gcomisiones"></div>
+
                 </div>
             </div>
         </div>
-    </div>
-    <div class="col-lg-6 col-md-12 col-12 mt-1">
-        <div class="card h-100">
-            <div class="card-content">
-                <div class="card-body">
-                    <div id="ginversiones" class="mx-auto"></div>
-                </div>
+    </div> 
+
+    <div class="col-lg-12 col-md-12 col-12 mt-1 mb-1"> 
+        <div class="card text-white h-100 mb-0 pb-1" style="background: #121212">
+            <div class="card-header d-flex align-items-center text-right pb-0 pt-0 white">
+                <h5 class="mt-1 mb-0 text-white"><b>Ganancias totales</b></h5>
             </div>
+                {{-- @include('dashboard.componente.partials.grafig-1') --}}
         </div>
     </div>
+   
 </div>
-
-{{-- Tercer Cuadro Cuadros -> Ordenes de Compra --}}
-<div class="row">
-    <div class="col-12 mt-1">
-        <div class="card text-white h-100">
-            <div class="card-content">
-                <div class="card-body text-center">
-                    <table class="table w-100 nowrap scroll-horizontal-vertical myTable table-striped"
-                        data-order='[[ 1, "asc" ]]'>
-                        <thead class="h-100">
-
-                            <tr class="text-center text-white bg-purple-alt2">
-                                <th>ID</th>
-                                <th>Usuario</th>
-                                <th>Grupo</th>
-                                <th>Paquete</th>
-                                <th>ID de Transación</th>
-                                <th>Monto</th>
-                                <th>Estado</th>
-                                <th>Fecha de Creación</th>
-                            </tr>
-
-                        </thead>
-                        <tbody>
-
-                            @foreach ($data['ordenes'] as $orden)
-                            <tr class="text-center">
-                                <td>{{$orden->id}}</td>
-                                <td>{{$orden->name}}</td>
-                                <td>{{$orden->grupo}}</td>
-                                <td>{{$orden->paquete}}</td>
-                                <td>{{$orden->idtransacion}}</td>
-                                <td>{{$orden->total}}</td>
-
-                                @if ($orden->status == '0')
-                                <td> <a class=" btn btn-info text-white text-bold-600">Esperando</a></td>
-                                @elseif($orden->status == '1')
-                                <td> <a class=" btn btn-success text-white text-bold-600">Aprobado</a></td>
-                                @elseif($orden->status >= '2')
-                                <td> <a class=" btn btn-danger text-white text-bold-600">Cancelado</a></td>
-                                @endif
-
-                                <td>{{date('Y-M-d', strtotime($orden->created_at))}}</td>
-
-                            </tr>
-                            @endforeach
-
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-    </div>
-</div> -->
 
 @include('layouts.componenteDashboard.optionDatatable')

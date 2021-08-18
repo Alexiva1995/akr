@@ -27,6 +27,17 @@
 
 <style>
     .bg-full-screen-image-alt {
+        background: url("{{asset('assets/img/sistema/fondo.jpg')}}");
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        left: 0px;
+        top: 0px;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+        opacity: 0.93;
 
         background-image: url("{{asset('assets/img/sistema/fondo.jpg')}}"
         );
@@ -34,7 +45,10 @@
         -moz-background-size: cover;
         -o-background-size: cover;
         background-size: cover;
+<<<<<<< HEAD
 
+=======
+>>>>>>> cb203d0f91482e30d1024f474aa664a2bc78beb1
 
     }
 

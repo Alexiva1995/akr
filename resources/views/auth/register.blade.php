@@ -9,6 +9,52 @@
 
 @section('content')
 @push('custom_css')
+<style>
+    .infor {
+        margin-top: 25%;
+    }
+
+
+    input:focus~.floating-label,
+    input:not(:focus):valid~.floating-label {
+
+        font-size: 11px;
+        opacity: 1;
+        display: none;
+    }
+
+    .inputText {
+        font-size: 25px;
+
+    }
+
+    .floating-label {
+        position: absolute;
+        pointer-events: none;
+        left: 20px;
+        top: 10px;
+        transition: 0.2s ease all;
+    }
+
+    #age {
+        background-color: rgba(0, 0, 0, 0.3);
+    }
+    @media screen and (max-width: 600px){
+    .title,.subtitle{
+        margin-left: 10px;
+        margin-right: 6px;
+    }
+    }
+
+    .cardd{
+        background: rgba(0, 0, 0, 0.75);
+        border: 1px solid #000000;
+        box-sizing: border-box;
+        border-radius: 11px;
+        margin-top: 10%;
+        margin-bottom: 10%;
+    }
+</style>
 
 @endpush
 
