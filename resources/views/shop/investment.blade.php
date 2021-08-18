@@ -18,7 +18,7 @@
                                 <h1 class="text-center mt-3 mb-3" id="titulo">Selecciona El Monto A Depositar</h1>
 
                                 <a href="#" class="btn" id="btn-iniciar">Iniciar</a>
-                                <input class="range" type="range" name="range" id="range" min="70" max="10000" value="70" step="1" />
+                                <input class="range" type="range" name="range" id="range" min="70" max="10000" value="70" step="10" />
 
                                 <output class="range-slider">70</output>
                             </div>

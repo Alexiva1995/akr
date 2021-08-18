@@ -11,7 +11,7 @@ class MessageTicket extends Model
 
     
     protected $fillable = [
-         'id_user','id_admin', 'id_ticket', 'type', 'message'
+         'id_user','id_admin', 'id_ticket', 'type', 'message', 'created_at'
     ];
      
      public function getUser()
@@ -27,4 +27,7 @@ class MessageTicket extends Model
     {
         return $this->belongsTo('App\Models\Ticket', 'id_ticket', 'id');
     }
+
+
+
 }

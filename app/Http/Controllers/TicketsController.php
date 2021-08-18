@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Carbon\Carbon;
+
 use App\Models\Ticket;
 use App\Models\MessageTicket;
 use Illuminate\Http\Request;
@@ -14,35 +14,44 @@ use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\ValidationException;
+use Carbon\Carbon;
 use App\Models\User;
+
 
 
 class TicketsController extends Controller
 {
 
+    public function __construct()
+    {
+
+    }
+
+
     // permite ver la vista de creacion del ticket
 
-   
-    public function create(){
+
+    public function create()
+    {
         $email = User::find(1);
         $admin = $email->email;
-      return view('tickets.create')->with('admin', $admin);
-
+        return view('tickets.create')->with('admin', $admin);
     }
 
     // permite la creacion del ticket
 
-    public function store(Request $request){
-
+    public function store(Request $request)
+    {
 
 
         Ticket::create([
             'iduser' => Auth::id(),
             'issue' => request('issue'),
-            'priority' => request('priority'),
+            'email' => request('email'),
+            'name' => request('name'),
         ]);
 
-        $ticket_create = Ticket::where('iduser', Auth::id())->orderby('created_at','DESC')->take(1)->get();
+        $ticket_create = Ticket::where('iduser', Auth::id())->orderby('created_at', 'DESC')->take(1)->get();
         $id_ticket = $ticket_create[0]->id;
 
         MessageTicket::create([
@@ -56,25 +65,29 @@ class TicketsController extends Controller
         return redirect()->route('ticket.list-user')->with('msj-success', 'El Ticket se creo Exitosamente');
     }
 
+
+
     // permite editar el ticket
 
-    public function editUser($id){
+    public function editUser($id)
+    {
 
         $ticket = Ticket::find($id);
-        $message = MessageTicket::where('id_ticket', $id)->orderby('created_at','ASC')->get();
+        $message = MessageTicket::where('id_ticket', $id)->orderby('created_at', 'ASC')->get();
         $email = User::all()->where('id', $message[0]->id_admin);
         $admin = $email[0]->email;
         return view('tickets.componenteTickets.user.edit-user')
-        ->with('ticket', $ticket)
-         ->with('message', $message)->with('admin', $admin);
+            ->with('ticket', $ticket)
+            ->with('message', $message)->with('admin', $admin);
     }
 
     // permite actualizar el ticket
 
-    public function updateUser(Request $request, $id){
+    public function updateUser(Request $request, $id)
+    {
 
         $ticket = Ticket::find($id);
-        
+
         $ticket->update($request->all());
         $ticket->save();
 
@@ -87,32 +100,33 @@ class TicketsController extends Controller
         ]);
 
         return redirect()->back();
-
     }
 
     // permite ver la lista de tickets
 
-    public function listUser(Request $request){
+    public function listUser(Request $request)
+    {
 
         $ticket = Ticket::where('iduser', Auth::id())->get();
-        
- 
+
+
 
         return view('tickets.componenteTickets.user.list-user')
-        ->with('ticket', $ticket);
+            ->with('ticket', $ticket);
     }
 
     // permite ver el ticket
 
-    public function showUser($id){
+    public function showUser($id)
+    {
         $ticket = Ticket::find($id);
-        $message =MessageTicket::all()->where('id_ticket', $id);
+        $message = MessageTicket::all()->where('id_ticket', $id);
         $email = User::find(1);
         $admin = $email->email;
         return view('tickets.componenteTickets.user.show-user')
-        ->with('ticket', $ticket)
-        ->with('message', $message)
-        ->with('admin', $admin);
+            ->with('ticket', $ticket)
+            ->with('message', $message)
+            ->with('admin', $admin);
     }
 
 
@@ -125,23 +139,24 @@ class TicketsController extends Controller
 
     // permite editar el ticket
 
-    public function editAdmin($id){
+    public function editAdmin($id)
+    {
 
         $ticket = Ticket::find($id);
-        $message = MessageTicket::where('id_ticket', $id)->orderby('created_at','ASC')->get();
+        $message = MessageTicket::where('id_ticket', $id)->orderby('created_at', 'ASC')->get();
         $email = User::all()->where('id', $message[0]->id_admin);
-       
+
         $admin = $email[0]->email;
         return view('tickets.componenteTickets.admin.edit-admin')
-        ->with('ticket', $ticket)
-        ->with('message', $message)
-        ->with('admin', $admin);
-
+            ->with('ticket', $ticket)
+            ->with('message', $message)
+            ->with('admin', $admin);
     }
 
     // permite actualizar el ticket
 
-    public function updateAdmin(Request $request, $id){
+    public function updateAdmin(Request $request, $id)
+    {
 
         $ticket = Ticket::find($id);
 
@@ -161,33 +176,30 @@ class TicketsController extends Controller
 
     // permite ver la lista de tickets
 
-    public function listAdmin(){
+    public function listAdmin()
+    {
 
         $ticket = Ticket::all();
 
         View::share('titleg', 'Historial de Tickets');
 
         return view('tickets.componenteTickets.admin.list-admin')
-        ->with('ticket', $ticket);
+            ->with('ticket', $ticket);
     }
 
     // permite ver el ticket
 
-    public function showAdmin($id){
+    public function showAdmin($id)
+    {
 
         $ticket = Ticket::find($id);
-        $message =MessageTicket::all()->where('id_ticket', $id);
+        $message = MessageTicket::all()->where('id_ticket', $id);
         $email = User::find(1);
         $admin = $email->email;
         return view('tickets.componenteTickets.admin.show-admin')
-        ->with('ticket', $ticket)
-        ->with('message', $message)->with('admin', $admin);
+            ->with('ticket', $ticket)
+            ->with('message', $message)->with('admin', $admin);
     }
-
-
-
-
-
 
 
     /**
@@ -221,33 +233,32 @@ class TicketsController extends Controller
             $totalTickets = [];
             if (Auth::user()->admin == 1) {
                 $Tickets = Ticket::select(DB::raw('COUNT(id) as Tickets'))
-                                ->where([
-                                    ['status', '>=', 0]
-                                ])
-                                ->groupBy(DB::raw('YEAR(created_at)'), DB::raw('MONTH(created_at)'))
-                                ->orderBy(DB::raw('YEAR(created_at)'), 'ASC')
-                                ->orderBy(DB::raw('MONTH(created_at)'), 'ASC')
-                                ->take(6)
-                                ->get();
-            }else{
+                    ->where([
+                        ['status', '>=', 0]
+                    ])
+                    ->groupBy(DB::raw('YEAR(created_at)'), DB::raw('MONTH(created_at)'))
+                    ->orderBy(DB::raw('YEAR(created_at)'), 'ASC')
+                    ->orderBy(DB::raw('MONTH(created_at)'), 'ASC')
+                    ->take(6)
+                    ->get();
+            } else {
                 $Tickets = Ticket::select(DB::raw('COUNT(id) as Tickets'))
-                                ->where([
-                                    ['iduser', '=',  $iduser],
-                                    ['status', '>=', 0]
-                                ])
-                                ->groupBy(DB::raw('YEAR(created_at)'), DB::raw('MONTH(created_at)'))
-                                ->orderBy(DB::raw('YEAR(created_at)'), 'ASC')
-                                ->orderBy(DB::raw('MONTH(created_at)'), 'ASC')
-                                ->take(6)
-                                ->get();
+                    ->where([
+                        ['iduser', '=',  $iduser],
+                        ['status', '>=', 0]
+                    ])
+                    ->groupBy(DB::raw('YEAR(created_at)'), DB::raw('MONTH(created_at)'))
+                    ->orderBy(DB::raw('YEAR(created_at)'), 'ASC')
+                    ->orderBy(DB::raw('MONTH(created_at)'), 'ASC')
+                    ->take(6)
+                    ->get();
             }
             foreach ($Tickets as $ticket) {
-                $totalTickets [] = $ticket->Tickets;
+                $totalTickets[] = $ticket->Tickets;
             }
             return $totalTickets;
         } catch (\Throwable $th) {
             dd($th);
         }
     }
-
 }

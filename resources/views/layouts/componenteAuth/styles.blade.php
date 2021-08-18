@@ -45,8 +45,11 @@
         -moz-background-size: cover;
         -o-background-size: cover;
         background-size: cover;
+<<<<<<< HEAD
 
-        
+=======
+>>>>>>> cb203d0f91482e30d1024f474aa664a2bc78beb1
+
     }
 
 

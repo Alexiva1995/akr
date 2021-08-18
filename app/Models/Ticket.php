@@ -12,11 +12,14 @@ class Ticket extends Model
     public $timestamps = true;
     
     protected $fillable = [
-         'iduser','status', 'priority','issue'
+         'iduser','status', 'priority','issue','created_at', 'name', 'email' 
     ];
 
     public function getUser()
     {
         return $this->belongsTo('App\Models\User', 'iduser', 'id');
     }
+
+
+
 }
