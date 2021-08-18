@@ -21,7 +21,7 @@
 
     <div id="record">
         <div class="col-12">
-            <div class="table-responsive">
+            <div class="table-responsive" style="border-radius: 8px 8px 0px 0px;">
 
                 <table class=" nowrap scroll-horizontal-vertical  table-striped w-100">
 
