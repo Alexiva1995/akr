@@ -44,11 +44,11 @@ class TicketsController extends Controller
     {
 
 
-
         Ticket::create([
             'iduser' => Auth::id(),
             'issue' => request('issue'),
-            'priority' => request('priority'),
+            'email' => request('email'),
+            'name' => request('name'),
         ]);
 
         $ticket_create = Ticket::where('iduser', Auth::id())->orderby('created_at', 'DESC')->take(1)->get();

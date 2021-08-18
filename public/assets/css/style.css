@@ -153,9 +153,9 @@ output {
     color: #ffffff;
 }
 
-#name,
-#email,
-#issue {
+#names,
+#emails,
+#issues {
     background: rgba(196, 196, 196, 0.08);
     border: 2px solid rgba(0, 246, 225, 0.77);
     box-sizing: border-box;
@@ -181,4 +181,16 @@ output {
     text-transform: uppercase;
 
     color: #000000;
+}
+#form-labels{
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 18px;
+    letter-spacing: -0.2px;
+    color: #ffffff;
+}
+
+#id{
 }

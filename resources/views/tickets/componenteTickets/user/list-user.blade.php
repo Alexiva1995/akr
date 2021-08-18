@@ -42,8 +42,8 @@
                         @foreach ($ticket as $item)
                         <tr class="text-center" id="contend">
                             <td>00{{ $item->id}}</td>
-                            <td>[Ticket #{{ $item->iduser}}]</td>
-
+                            <td>[Ticket #{{ $item->iduser}}] {{$item->issue}}</td>
+ 
                             @if ($item->status == '0')
                             <td> <a class=" btn text-bold-600 text-white" style="background: rgba(0, 246, 225, 0.77);border-radius: 8px;">Abierto</a></td>
                             @elseif($item->status == '1')

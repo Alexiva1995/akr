@@ -12,7 +12,7 @@ class Ticket extends Model
     public $timestamps = true;
     
     protected $fillable = [
-         'iduser','status', 'priority','issue','created_at'
+         'iduser','status', 'priority','issue','created_at', 'name', 'email' 
     ];
 
     public function getUser()
