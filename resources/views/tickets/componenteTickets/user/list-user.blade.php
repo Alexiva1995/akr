@@ -5,8 +5,9 @@
 <style>
 
 </style>
+
 <div class="container">
-    <!-- Stack the columns on mobile by making one full-width and the other half-width -->
+
     <div class="row">
         <div class="col-md-8">
             <h1 class="text-white">Soporte</h1>
@@ -15,7 +16,6 @@
             <a id="boton-ticket" href="{{ route('ticket.create')}}" class="btn  mb-2 waves-effect waves-light"> Nuevo Ticket <i class="fas fa-ticket-alt"></i></a>
         </div>
     </div>
-
 
     <br>
 
@@ -44,7 +44,6 @@
                             <td>00{{ $item->id}}</td>
                             <td>[Ticket #{{ $item->iduser}}]</td>
 
-
                             @if ($item->status == '0')
                             <td> <a class=" btn text-bold-600 text-white" style="background: rgba(0, 246, 225, 0.77);border-radius: 8px;">Abierto</a></td>
                             @elseif($item->status == '1')
@@ -52,8 +51,8 @@
                             @endif
 
 
-
-                            <td> <a class="text-bold-600">Alto</a></td>
+                            
+                            <td>{{$item->created_at->diffForHumans()}}</td>
 
 
 
