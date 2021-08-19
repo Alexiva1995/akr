@@ -7,7 +7,9 @@
     <div class="col-md-8">
         <h1 class="text-white">Atendiendo el Ticket #{{ $ticket->id}}</h1>
     </div>
+
     <div class="col-6 col-md-4">
+        
         <a id="boton-ticket" href="{{ route('ticket.list-admin')}}" class="btn  mb-2 waves-effect waves-light">Volver Atrás <i class="fas fa-chevron-left"></i></a>
     </div>
 </div>
