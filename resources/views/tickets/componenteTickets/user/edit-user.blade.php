@@ -25,17 +25,15 @@ border-radius: 8px;">
                             @method('PATCH')
 
                             <div class="row">
-
-
                                 <div class="col-6">
                                     <label id="form-label" class="form-label" for="name"><b>Nombre</b></label>
-                                    <input class=" form-control" required type="text" id="names" name="name" value="{{ $ticket->name}}" rows="3"disabled />
+                                    <input class=" form-control" required type="text" id="names" name="name" value="{{ $ticket->name}}" rows="3" disabled />
 
                                 </div>
 
                                 <div class="col-6">
                                     <label id="form-label" class="form-label" for="email"><b>Direccion de correo electrónico</b></label>
-                                    <input class="form-control" required type="text" id="emails" name="email" value="{{ $ticket->email }}" rows="3" disabled/>
+                                    <input class="form-control" required type="text" id="emails" name="email" value="{{ $ticket->email }}" rows="3" disabled />
 
                                 </div>
 
@@ -62,7 +60,7 @@ border-radius: 8px;">
                                                                 <img src="{{asset('assets/img/sistema/favicon.png')}}" alt="avatar" height="40" width="40" style="background-color: black;" alt="avatar" height="40" width="40">
                                                             </span>
                                                         </div>
-                                                        <div class="chat-body text-white">
+                                                        <div class="chat-body "  id="form-label">
                                                             <div class="chat-content">
                                                                 <div class="email-admin mb-1">{{$admin}}</div>
 
@@ -86,7 +84,7 @@ border-radius: 8px;">
                                                                 @endif
                                                             </span>
                                                         </div>
-                                                        <div class="chat-body ">
+                                                        <div class="chat-body " id="form-label">
                                                             <div class="chat-content">
                                                                 <div class="email-user mb-1">{{ $item->getUser->email}}</div>
 
@@ -103,7 +101,7 @@ border-radius: 8px;">
                                                                 <img src="{{asset('assets/img/sistema/favicon.png')}}" alt="avatar" height="40" width="40" style="background-color: white;">
                                                             </span>
                                                         </div>
-                                                        <div class="chat-body">
+                                                        <div class="chat-body" id="form-label">
                                                             <div class="chat-content">
                                                                 <div class="email-admin mb-1">{{ $item->getAdmin->email}}</div>
 

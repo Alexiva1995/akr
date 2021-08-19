@@ -102,7 +102,7 @@ class TicketsController extends Controller
 
         $ticket = Ticket::where('iduser', Auth::id())->get();
        
-        $message = MessageTicket::all()->where('id_user', Auth::id())->where('type', 1);
+        $message = MessageTicket::where('id_user', Auth::id())->where('type', 1)->get();
      
         foreach ($message as $messages) {
          
@@ -110,16 +110,13 @@ class TicketsController extends Controller
                 
                 $message = $messages->created_at->diffForHumans();
             
-            }else{
-                $message = "No disponible";
-            }    
+            } 
         }
         return view('tickets.componenteTickets.user.list-user')
             ->with('message', $message)
             ->with('ticket', $ticket);
             
     }
-
     // permite ver el ticket
 
     public function showUser($id)
