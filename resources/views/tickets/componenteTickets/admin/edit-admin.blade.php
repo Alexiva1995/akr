@@ -39,7 +39,7 @@ border-radius: 8px;">
                                 <div class="col-6">
                                     <div class="form-group">
                                     <label id="form-label" class="form-label" for="issue"><b>Sujeto</b></label>
-                                        <input type="text"  readonly class="form-control" value="{{ $ticket->issue}}" name="asunto">
+                                        <input type="text" id="names" readonly class="form-control" value="{{ $ticket->issue}}" name="asunto">
                                     </div>
                                 </div>
 
