@@ -7,9 +7,7 @@
     <div class="col-md-8">
         <h1 class="text-white">Historial de Tickets</h1>
     </div>
-    <!--<div class="col-6 col-md-4">
-        <a id="boton-ticket" href="{{ route('ticket.list-user')}}" class="btn  mb-2 waves-effect waves-light">Volver Atrás <i class="fas fa-chevron-left"></i></a>
-    </div>-->
+  
 </div>
 
 <br>
@@ -35,20 +33,20 @@
 
                     @foreach ($ticket as $item)
                     <tr class="text-center" id="contend">
-                        <td>{{ $item->id}}</td>
+                        <td># {{ $item->id}}</td>
                         <td>{{ $item->getUser->fullname}}</td>
                        
 
                         @if ($item->status == '0')
-                        <td> <a class=" btn text-white text-bold-600" style="background-color: green;">Abierto</a></td>
-                        @elseif($item->status == '1')
-                        <td> <a class=" btn text-white text-bold-600" style="background-color: red;">Cerrado</a></td>
-                        @endif
+                            <td> <a class=" btn text-bold-600 text-white" style="background: rgba(0, 246, 225, 0.77);border-radius: 8px;">Abierto</a></td>
+                            @elseif($item->status == '1')
+                            <td> <a class=" btn  text-bold-600 text-white" style="background: rgba(246, 74, 0, 0.77);border-radius: 8px;">Cerrado</a></td>
+                            @endif
 
 
                         <td>asd</td>
 
-                        <td><a href="{{ route('ticket.edit-admin',$item->id) }}" class="btn text-bold-600 text-dark" style="background-color: #0CB7F2;">Revisar</a></td>
+                        <td><a href="{{ route('ticket.edit-admin',$item->id) }}"><img src="{{asset('assets/Diseño/Desktop.svg')}}" alt="" width="40" height="40"></a></td>
                     </tr>
                     @endforeach
                 </tbody>
