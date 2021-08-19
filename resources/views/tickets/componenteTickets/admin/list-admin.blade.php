@@ -44,7 +44,7 @@
                             @endif
 
 
-                        <td>asd</td>
+                        <td>{{$item->send}}</td>
 
                         <td><a href="{{ route('ticket.edit-admin',$item->id) }}"><img src="{{asset('assets/Diseño/Desktop.svg')}}" alt="" width="40" height="40"></a></td>
                     </tr>

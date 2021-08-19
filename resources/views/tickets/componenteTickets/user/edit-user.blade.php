@@ -60,9 +60,10 @@ border-radius: 8px;">
                                                                 <img src="{{asset('assets/img/sistema/favicon.png')}}" alt="avatar" height="40" width="40" style="background-color: black;" alt="avatar" height="40" width="40">
                                                             </span>
                                                         </div>
-                                                        <div class="chat-body "  id="form-label">
+                                                        
+                                                        <div class="chat-body " id="form-label">
                                                             <div class="chat-content">
-                                                                <div class="email-admin mb-1" >{{$admin}}</div>
+                                                                <div class="email-admin mb-1">{{$admin}}</div>
 
 
                                                                 <p>¿Cómo Podemos ayudarle?</p>

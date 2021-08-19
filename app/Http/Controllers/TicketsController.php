@@ -183,11 +183,31 @@ class TicketsController extends Controller
 
         $ticket = Ticket::all();
 
-        View::share('titleg', 'Historial de Tickets');
+  //Aqui llamo todos los tickets de un usuario
+  //recorro dicho tickets
+  foreach ($ticket as $ticke) {
+      //Verifico el ultimos mensaje obtenido de un ticket en especifico
+      $message = MessageTicket::where('id_ticket', '=', $ticke->id) // aqui comparo el ticket
+          ->where('type', 0) //verificas que sea nivel 1
+          ->select('created_at') // selecciona el campo o los campos a trabajar en nuestro caso create_at
+          ->orderBy('id', 'desc') //ordeno de mayor a menor para saber cual es el mensaje mas reciente
+          ->first(); // obtengo solamente el mensaje mas reciente
+      $ticke->send = '' ; // por default declaramos en vacio 
+      //verifico si existe un ultimo mensaje
+      if ($message != null) {
+          // en caso de que existe un mensaje veao en tiempo humano cuando fue la ultima vez que me lo hicieron
+          $ticke->send = $message->created_at->diffForHumans();
+      }
+  }
+  return view('tickets.componenteTickets.admin.list-admin')
+      ->with('ticket', $ticket);
+}
+       
+      
 
-        return view('tickets.componenteTickets.admin.list-admin')
-            ->with('ticket', $ticket);
-    }
+
+
+
 
     // permite ver el ticket
 
