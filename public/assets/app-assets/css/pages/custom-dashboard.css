@@ -28,9 +28,9 @@ background-color: #66FFCC !important;
 /* BARRA DE PROGRESO CIRCULAR */
 
 .progresscircle{
-    width: 100px;
-    height: 100px;
-    line-height: 100px;
+    width: 250px;
+    height: 250px;
+    line-height: 250px;
     background: none;
     margin: 0 auto;
     box-shadow: none;
@@ -79,8 +79,8 @@ background-color: #66FFCC !important;
 }
 .progresscircle .progress-right .progress-circle{
     left: -100%;
-    border-top-left-radius: 80px;
-    border-bottom-left-radius: 80px;
+    border-top-left-radius: 150px;
+    border-bottom-left-radius: 150px;
     border-right: 0;
     -webkit-transform-origin: center right;
     transform-origin: center right;
@@ -90,10 +90,10 @@ background-color: #66FFCC !important;
     width: 90%;
     height: 90%;
     border-radius: 50%;
-    background: #44484b;
-    font-size: 24px;
-    color: #fff;
-    line-height: 100px;
+    background: transparent;
+    font-size: 48px;
+    color: #66FFCC;
+    line-height: 250px;
     text-align: center;
     position: absolute;
     top: 0%;

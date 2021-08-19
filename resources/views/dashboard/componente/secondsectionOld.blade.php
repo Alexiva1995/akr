@@ -94,7 +94,7 @@
 
      
     <div class="col-12">
-        <div class="card">
+        <div class="card bg-lp">
             <div class="card-content">
                 <div class="card-body card-dashboard">
                 <h1>Inversiones</h1>

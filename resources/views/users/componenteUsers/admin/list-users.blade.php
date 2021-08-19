@@ -26,12 +26,12 @@
 
 <div id="record">
     <div class="col-12">
-        <div class="card">
+        <div class="card bg-lp">
             <div class="card-content">
                 <div class="card-body card-dashboard">
                     <div class="table-responsive">
-                        <h1>Lista de Usuarios</h1>
-                        <p>Para ver mas información dar click -> <img src="{{asset('assets/img/sistema/btn-plus.png')}}" alt=""></p>
+                        <h1 class="text-white">Lista de Usuarios</h1>
+                        <p class="text-white">Para ver mas información dar click -> <img src="{{asset('assets/img/sistema/btn-plus.png')}}" alt=""></p>
                         <table class="table w-100 nowrap scroll-horizontal-vertical myTable table-striped w-100">
                             
                             <thead class="">

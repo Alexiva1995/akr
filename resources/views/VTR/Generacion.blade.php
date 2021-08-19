@@ -33,7 +33,7 @@
 
 <div id="settlement">
     <div class="col-12">
-        <div class="card">
+        <div class="card bg-lp">
             <div class="card-content">
                 <div class="card-body card-dashboard">
                     <form action="{{route('crypto.store')}}" method="post">
