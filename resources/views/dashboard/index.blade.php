@@ -110,11 +110,11 @@
 
 @section('content')
 <section id="dashboard-analytics">
-    @if (Auth::user()->admin == 1)
+    {{-- @if (Auth::user()->admin == 1) --}}
     {{-- Primera Seccion --}}
-    @include('dashboard.componente.adminsection')
+    {{-- @include('dashboard.componente.adminsection') --}}
     {{-- Fin Primera Seccion --}}
-    @else
+    {{-- @else --}}
     {{-- Primera Seccion --}}
     @include('dashboard.componente.firstsection')
     {{-- Fin Primera Seccion --}}
@@ -124,7 +124,7 @@
     {{-- Tercera Seccion --}}
     {{-- @include('dashboard.componente.thirdsection') --}}
     {{-- Fin Tercera Seccion --}}
-    @endif
+    {{-- @endif --}}
 
     {{-- link de referido --}}
     @include('layouts.componenteDashboard.linkReferido')

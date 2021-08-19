@@ -1,4 +1,5 @@
 <div class="row">
+    {{-- Bienvenido --}}
     <div class="col-lg-12 col-md-12 col-12">
         <div class="card text-white h-100 m-0" style="background-color:#171717; box-shadow:none;">
             <div class="card-content">
@@ -15,7 +16,7 @@
             </div>
         </div>
     </div>
-
+    {{-- Realizar compra --}}
     <div class="col-lg-12 col-md-12 col-12 mt-1 mb-1">
         <div id="adminServices">
             <div class="card card-dashboard" id="bg-screen-image">
@@ -27,7 +28,7 @@
                         <div class="range-wrap">
                             <div class="range-container py-4">
                                 <a href="#" class="btn" id="btn-iniciar">Iniciar</a>
-                                <input class="range" type="range" name="range" id="range" min="70" max="10000"
+                                <input class="rango" type="range" name="range" id="range" min="70" max="10000"
                                 value="70" step="10" 
                                 style="width: 70%"
                                 />
@@ -45,13 +46,13 @@
             </form>
         </div>
     </div>
-
+    {{-- Espacio para saldo, referidos y rango --}}
     <div class="col-lg-6 col-md-12 col-12 mt-1 mb-1">
         <div class="row">
+            {{-- Monedas y saldo --}}
             <div class="col-lg-12 col-md-12 col-12">
                 <div class="card text-white h-100 mb-0 pb-1" style="background: #121212">
                     <div class="card-content row">
-                        {{-- <div class="card-body d-flex justify-content-center align-items-center flex-sm-row flex-column pb-0 pt-1 col-12"> --}}
                         <div class="card-body moneda">
                             <div class="d-flex justify-content-center align-items-center">
                                 <div class="col-6 w-100 text-center">
@@ -80,6 +81,17 @@
                     </div>
                 </div>
             </div>
+            {{-- Rangos --}}
+            <div class="col-lg-6 col-md-6 col-12 mt-1">
+                <div class="card text-white bg-blue h-100 mb-0">
+                    <div class="card-content row justify-content-center align-items-center">
+                        <div class="card-body">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {{-- Referidos --}}
             <div class="col-lg-6 col-md-6 col-12 mt-1">
                 <div class="card text-white h-100 mb-0 pb-1 bg-blue">
                     <div class="card-content row">
@@ -107,18 +119,9 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-6 col-md-6 col-12 mt-1">
-                <div class="card text-white bg-blue h-100 mb-0">
-                    <div class="card-content row justify-content-center align-items-center">
-                        <div class="card-body">
-
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
-
     </div>
+    {{-- Porcentaje --}}
     <div class="col-lg-6 col-md-12 col-12 mt-1 mb-1">
         <div class="card text-white bg-blue h-100 mb-0">
             {{-- <div class="card-content row justify-content-center align-items-center"> --}}
@@ -143,7 +146,7 @@
             {{-- </div> --}}
         </div>
     </div>
-
+    {{-- Ganancias totales --}}
     <div class="col-lg-12 col-md-12 col-12 mt-1 mb-1">
         <div class="card text-white h-100 mb-0 pb-1" style="background: #121212">
             <div class="card-header d-flex align-items-center text-right pb-0 pt-0 white">
@@ -152,25 +155,19 @@
             @include('dashboard.componente.partials.grafig-1')
         </div>
     </div>
-
 </div>
 
 @include('layouts.componenteDashboard.optionDatatable')
 
 @push('custom_js')
 <script>
-    let slider = document.querySelector(".range");
-    // let outputEl = document.querySelector(".range-slider__value");
+    let slider = document.querySelector(".rango");
     let output = document.querySelector(".range-slider");
 
     function decimalSeparator(number) {
         return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
     }
-
-    // outputEl.textContent = `${decimalSeparator(slider.value)}`;
-
     slider.oninput = function() {
-        // outputEl.textContent = `${decimalSeparator(this.value)}`;
         output.textContent = `${decimalSeparator(this.value)} USD`;
     };
 </script>

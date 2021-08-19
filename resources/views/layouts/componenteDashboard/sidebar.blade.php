@@ -1,4 +1,6 @@
- <style>
+<link rel="stylesheet" type="text/css" href="{{asset('assets/app-assets/css/components.css')}}">
+ 
+<style>
      .main-menu{
         background: url("{{asset('assets/img/sistema/fondo.jpg')}}");
         position: absolute;
@@ -19,7 +21,7 @@
         /* background: linear-gradient(90deg, rgba(0, 246, 225, 0.77) 9.27%, rgba(19, 98, 182, 0.78) 92.53%); */
         opacity: 0.93;
     }
- </style>
+</style>
  
  <!-- BEGIN: Main Menu-->
 <div class="main-menu menu-fixed menu-light menu-accordion menu-shadow" data-scroll-to-active="true">
@@ -56,7 +58,14 @@
                 @endforeach
                 @endif
             </ul>
+            <footer class="site-footer fixed-bottom mt-4">
+                <div style="text-align:center;">
+                    <a class="btn btn-logout" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
+                        Cerrar sesión&nbsp;&nbsp;<i class="feather icon-log-out"></i> 
+                    </a> 
+                </div>
+            </footer>
         </div>
-   </div>    
+        </div>    
  </div>
 <!-- END: Main Menu-->

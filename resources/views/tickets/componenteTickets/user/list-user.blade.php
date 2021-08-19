@@ -14,6 +14,10 @@
         </div>
         <div class="col-6 col-md-4">
             <a id="boton-ticket" href="{{ route('ticket.create')}}" class="btn  mb-2 waves-effect waves-light"> Nuevo Ticket <i class="fas fa-ticket-alt"></i></a>
+            <button class="btn" style="background-color: #00C8F4; color: black;" onclick="getlink({{Auth::user()->binary_side_register}})">ID de
+                referido: {{ Auth::user()->id }} <i class="fa fa-copy"></i>
+            </button>
+
         </div>
     </div>
 
@@ -74,4 +78,5 @@
 
 @endsection
 {{-- permite llamar a las opciones de las tablas --}}
+@include('layouts.componenteDashboard.linkReferido')
 @include('layouts.componenteDashboard.optionDatatable')

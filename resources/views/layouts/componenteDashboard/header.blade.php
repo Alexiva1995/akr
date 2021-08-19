@@ -31,20 +31,14 @@
                         @endif
                     </div>                       
                 </a>
-                <div class="dropdown-menu dropdown-menu-right">
-                    <a class="dropdown-item" href="{{ route('profile') }}" >
-                        <i class="feather icon-user"></i> Editar Perfil
-                    </a>
-                    @if (session('impersonated_by'))
-                    <a class="dropdown-item" href="{{ route('impersonate.stop') }}">
-                        <i class="feather icon-log-in"></i> Volver a mi Usuario
-                    </a>    
-                    @endif
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
-                        <i class="feather icon-log-out"></i> Logout
-                    </a>            
-                </div>
+                @if (session('impersonated_by'))
+                    <div class="dropdown-menu dropdown-menu-right">                
+                        <a class="dropdown-item" href="{{ route('impersonate.stop') }}">
+                            <i class="feather icon-log-in"></i> Volver a mi Usuario
+                        </a>    
+                    </div>
+                @endif                                
+
             </li>
         </ul>
     </div>
