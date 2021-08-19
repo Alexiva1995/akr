@@ -33,13 +33,13 @@ border-radius: 8px;">
 
                                 <div class="col-6">
                                     <label id="form-label" class="form-label" for="email"><b>Direccion de correo electrónico</b></label>
-                                    <input class="form-control" required type="text" id="emails" name="email" value="{{ $ticket->email }}" rows="3" disabled />
+                                    <input class="form-control" required type="text" id="names" name="email" value="{{ $ticket->email }}" rows="3" disabled />
 
                                 </div>
 
                                 <div class="col-12 mt-1">
                                     <label id="form-label" class="form-label mb-1" for="issue"><b>Sujeto</b></label>
-                                    <input class="form-control" type="text" id="issues" name="issue" value="{{ $ticket->issue }}" rows="3" disabled />
+                                    <input class="form-control" type="text" id="names" name="issue" value="{{ $ticket->issue }}" rows="3" disabled />
 
                                 </div>
 
@@ -62,7 +62,7 @@ border-radius: 8px;">
                                                         </div>
                                                         <div class="chat-body "  id="form-label">
                                                             <div class="chat-content">
-                                                                <div class="email-admin mb-1">{{$admin}}</div>
+                                                                <div class="email-admin mb-1" >{{$admin}}</div>
 
 
                                                                 <p>¿Cómo Podemos ayudarle?</p>

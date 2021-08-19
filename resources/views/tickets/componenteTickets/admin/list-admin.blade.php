@@ -15,11 +15,11 @@
 <br>
 <div id="record">
     <div class="col-12">
-        <div class="table-responsive" style="border-radius: 8px 8px 0px 0px;"> 
+        <div class="table-responsive" style="border-radius: 8px 8px 0px 0px;">
 
 
             <table class="nowrap scroll-horizontal-vertical  table-striped w-100">
-                <thead  id="thead">
+                <thead id="thead">
 
                     <tr class="text-center text-white ">
                         <th>ID</th>
@@ -36,11 +36,8 @@
                     @foreach ($ticket as $item)
                     <tr class="text-center" id="contend">
                         <td>{{ $item->id}}</td>
-                        <td>{{ $item->iduser}}</td>
-                        {{-- <td>{{ $item->estado}}</td>
-                        <td>{{ $item->prioridad}}</td>
-                        <td>{{ $item->issue}}</td>
-                        --}}
+                        <td>{{ $item->getUser->fullname}}</td>
+                       
 
                         @if ($item->status == '0')
                         <td> <a class=" btn text-white text-bold-600" style="background-color: green;">Abierto</a></td>

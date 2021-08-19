@@ -39,13 +39,13 @@ border-radius: 8px;">
                                 <div class="col-6">
                                     <div class="form-group">
                                     <label id="form-label" class="form-label" for="issue"><b>Sujeto</b></label>
-                                        <input type="text" id="issues" readonly class="form-control" value="{{ $ticket->issue}}" name="asunto">
+                                        <input type="text"  readonly class="form-control" value="{{ $ticket->issue}}" name="asunto">
                                     </div>
                                 </div>
 
                                 <div class="col-6">
                                         <label id="form-label" class="form-label" for="email"><b>Direccion de correo electrónico</b></label>
-                                        <input class="form-control" value="{{$ticket->getUser->email}}" required type="text" id="emails" name="email" rows="3" disabled/>
+                                        <input class="form-control" value="{{$ticket->getUser->email}}" required type="text" id="names" name="email" rows="3" disabled/>
 
                                     </div>
 
@@ -54,8 +54,8 @@ border-radius: 8px;">
                                     <div class="form-group">
                                         <div class="controls">
                                         <label id="form-label" class="form-label" for="status"><b>Estado del ticket</b></label>
-                                            <select style="border: 2px solid rgba(0, 246, 225, 0.77);background: rgba(196, 196, 196, 0.08);color:#fff;cursor:pointer; " name="status" id="status" class="custom-select status form-control @error('status') is-invalid @enderror" required data-toggle="select">
-                                                <option value="0" @if($ticket->status == '0') selected
+                                            <select style="border: 2px solid rgba(0, 246, 225, 0.77);background: rgba(196, 196, 196, 0.08);color:#fff;cursor:pointer; " name="status"  class="custom-select status form-control @error('status') is-invalid @enderror" required data-toggle="select" id="names">
+                                                <option  value="0" @if($ticket->status == '0') selected
                                                     @endif>Abierto</option>
                                                 <option value="1" @if($ticket->status == '1') selected
                                                     @endif>Cerrado</option>
@@ -73,7 +73,7 @@ border-radius: 8px;">
                                             <div class="user-chats ps ps--active-y ">
                                                 <div class="chats chat-thread">
 
-                                                    <div class="chat">
+                                                    <div class="chat" >
                                                         <div class="chat-avatar">
                                                             <span class="avatar ">
                                                                 <img src="{{asset('assets/img/sistema/favicon.png')}}" alt="avatar" height="40" width="40" style="background-color: black;">
@@ -82,7 +82,7 @@ border-radius: 8px;">
                                                             </span>
                                                         </div>
                                                         <div class="chat-body" id="form-labels">
-                                                            <div class="chat-content">
+                                                            <div class="chat-content" >
 
                                                                 <div class="email-admin mb-1">{{ $admin }}</div>
                                                                 <p>¿Cómo podemos ayudarle? </p>
