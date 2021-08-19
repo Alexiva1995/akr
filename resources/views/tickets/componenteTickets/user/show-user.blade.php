@@ -28,9 +28,9 @@ border-radius: 8px;">
                             <div class="form-body">
                                 <div class="row">
 
-                                <div class="col-6">
+                                    <div class="col-6">
                                         <label class="form-label  mb-1" id="form-label" for="issue"><b>Nombre</b></label>
-                                        <input class="form-control" type="text" readonly id="issues" name="issue" value="{{ $ticket->name }}" rows="3" />
+                                        <input class="form-control" type="text" readonly id="names" name="issue" value="{{ $ticket->name }}" rows="3" />
 
                                     </div>
 
@@ -38,11 +38,11 @@ border-radius: 8px;">
 
                                     <div class="col-6">
                                         <label class="form-label  mb-1" id="form-label" for="issue"><b>Sujeto</b></label>
-                                        <input class="form-control" type="text" readonly id="issues" name="issue" value="{{ $ticket->issue }}" rows="3" />
+                                        <input class="form-control" type="text" readonly id="names" name="issue" value="{{ $ticket->issue }}" rows="3" />
 
                                     </div>
 
-                                  
+
 
                                     <div class="col-12 mt-2 mb-2">
                                         <label class="form-label  mb-1" id="form-label" for="message"><b>Conversación con el
@@ -60,7 +60,7 @@ border-radius: 8px;">
                                                                     <img src="{{asset('assets/img/sistema/favicon.png')}}" alt="avatar" height="40" width="40" style="background-color: black;" alt="avatar" height="40" width="40">
                                                                 </span>
                                                             </div>
-                                                            <div class="chat-body text-white">
+                                                            <div class="chat-body " id="form-labels"> 
                                                                 <div class="chat-content">
                                                                     <div class="email-admin mb-1">{{$admin}}</div>
                                                                     <p>¿Cómo podemos ayudarle? </p>
@@ -82,7 +82,7 @@ border-radius: 8px;">
                                                                     @endif
                                                                 </span>
                                                             </div>
-                                                            <div class="chat-body text-white">
+                                                            <div class="chat-body" id="form-labels">
                                                                 <div class="chat-content">
                                                                     <div class="email-user mb-1">{{ $item->getUser->email}}</div>
                                                                     <p>{{ $item->message }}</p>
@@ -98,7 +98,7 @@ border-radius: 8px;">
                                                                     <img src="{{asset('assets/img/sistema/favicon.png')}}" alt="avatar" height="40" width="40" style="background-color: black;" alt="avatar" height="40" width="40">
                                                                 </span>
                                                             </div>
-                                                            <div class="chat-body text-white">
+                                                            <div class="chat-body" id="form-labels">
                                                                 <div class="chat-content">
                                                                     <div class="email-admin mb-1">{{ $item->getAdmin->email}}</div>
                                                                     <p>{{ $item->message }}</p>

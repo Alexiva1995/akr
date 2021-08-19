@@ -61,12 +61,12 @@ border-radius: 8px;">
                                                             </span>
                                                         </div>
                                                         
-                                                        <div class="chat-body " id="form-label">
+                                                        <div class="chat-body " id="form-labels">
                                                             <div class="chat-content">
                                                                 <div class="email-admin mb-1">{{$admin}}</div>
 
 
-                                                                <p>¿Cómo Podemos ayudarle?</p>
+                                                                <p id="form-labels">¿Cómo Podemos ayudarle?</p>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -85,7 +85,7 @@ border-radius: 8px;">
                                                                 @endif
                                                             </span>
                                                         </div>
-                                                        <div class="chat-body " id="form-label">
+                                                        <div class="chat-body " id="form-labels">
                                                             <div class="chat-content">
                                                                 <div class="email-user mb-1">{{ $item->getUser->email}}</div>
 
@@ -99,10 +99,10 @@ border-radius: 8px;">
                                                     <div class="chat chat-left">
                                                         <div class="chat-avatar">
                                                             <span class="avatar ">
-                                                                <img src="{{asset('assets/img/sistema/favicon.png')}}" alt="avatar" height="40" width="40" style="background-color: white;">
+                                                                <img src="{{asset('assets/img/sistema/favicon.png')}}" alt="avatar" height="40" width="40" style="background-color: black;">
                                                             </span>
                                                         </div>
-                                                        <div class="chat-body" id="form-label">
+                                                        <div class="chat-body" id="form-labels">
                                                             <div class="chat-content">
                                                                 <div class="email-admin mb-1">{{ $item->getAdmin->email}}</div>
 
