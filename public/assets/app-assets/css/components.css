@@ -3569,10 +3569,12 @@ table.dataTable thead .sorting:after, table.dataTable thead .sorting_asc:after, 
   top : 1.3rem;
 }
 table.dataTable.table-striped tbody tr:nth-of-type(even) {
-  background-color : #F8F8F8;
+  color: white;
+  background-color : #0F1522;
 }
 table.dataTable.table-striped tbody tr:nth-of-type(odd) {
-  background-color : #FFFFFF;
+  color: white;
+  background-color : #0F1522;
 }
 table.dataTable.complex-headers {
   border : 1px solid #DAE1E7;
@@ -3777,6 +3779,81 @@ tr.group {
   .site-footer .social-icons {
     text-align: center
   }
+}
+
+#bg-screen-image {
+  background-image: url('../../../assets/img/sistema/fondo.jpg');
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  border-radius: 8px;
+
+}
+
+#fondo-shadow {
+  background: linear-gradient(90deg, rgba(5, 176, 215, 0.75) 0%, rgba(3, 46, 55, 0.83) 100%);
+  border-radius: 8px;
+  width: 100%;
+}
+
+#card {
+  background: linear-gradient(180deg, #12203C 0%, rgba(10, 16, 28, 0) 100%);
+  border-radius: 10px;
+  background-color: #0C0C0C;
+}
+
+#btn-iniciar {
+  background: rgba(0, 0, 0, 0.5);
+  border: 1px solid #00C8F4;
+  box-sizing: border-box;
+  border-radius: 5px;
+  color: white;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 21px;
+  letter-spacing: -0.3px;
+  padding: 5px 10px;
+}
+
+#titulo {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 36px;
+  line-height: 42px;
+  color: #FFFFFF;
+}
+
+#deposito {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 42px;
+  letter-spacing: -0.2px;
+  color: #FFFFFF;
+}
+
+#total-a-pagar {
+  font-weight: bold;
+  letter-spacing: -0.6px;
+  line-height: 110%;
+  font-style: normal;
+  margin: 0px 16px;
+}
+
+.btn.btn-comprar{
+  padding: 10px 5px;
+}
+
+.range{
+  width: 70%;
+}
+
+.bg-lp{
+  background-color: #171717 
 }
 
 

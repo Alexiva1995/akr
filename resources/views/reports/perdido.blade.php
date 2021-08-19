@@ -3,11 +3,11 @@
 @section('content')
 <div id="logs-list">
     <div class="col-12">
-        <div class="card">
+        <div class="card bg-lp">
             <div class="card-content">
                 <div class="card-body card-dashboard">
                     <div class="table-responsive">
-                        <table class="table w-100 nowrap scroll-horizontal-vertical myTable table-striped w-100">
+                        <table class="table w-100 nowrap scroll-horizontal-vertical myTable2 table-striped w-100">
                             <thead class="">
 
                                 <tr class="text-center text-white bg-purple-alt2">                                

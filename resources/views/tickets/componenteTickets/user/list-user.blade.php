@@ -50,8 +50,10 @@
                             <td> <a class=" btn  text-bold-600 text-white" style="background: rgba(246, 74, 0, 0.77);border-radius: 8px;">Cerrado</a></td>
                             @endif
 
+                            
+                            
+                            <td>{{$message}}</td>
 
-                            <td>{{$ticket}}</td>
 
 
                             @if ($item->status == '0')
