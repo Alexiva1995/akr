@@ -22,12 +22,6 @@ use App\Models\User;
 class TicketsController extends Controller
 {
 
-    public function __construct()
-    {
-
-    }
-
-
     // permite ver la vista de creacion del ticket
 
 
@@ -42,7 +36,6 @@ class TicketsController extends Controller
 
     public function store(Request $request)
     {
-
 
         Ticket::create([
             'iduser' => Auth::id(),
@@ -108,10 +101,13 @@ class TicketsController extends Controller
     {
 
         $ticket = Ticket::where('iduser', Auth::id())->get();
-
-
-
+        $ticket_msj = MessageTicket::all()->where('id_user', Auth::id())->where('type', 1);
+        foreach ($ticket_msj as $time) {
+            $time_msj = $time->created_at->diffForHumans();
+        }
+        
         return view('tickets.componenteTickets.user.list-user')
+            ->with('time_msj', $time_msj)
             ->with('ticket', $ticket);
     }
 

@@ -51,9 +51,7 @@
                             @endif
 
 
-                            
-                            <td>{{$item->created_at->diffForHumans()}}</td>
-
+                            <td>{{$ticket}}</td>
 
 
                             @if ($item->status == '0')
