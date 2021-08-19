@@ -7,9 +7,7 @@
     <div class="col-md-8">
         <h1 class="text-white">Historial de Tickets</h1>
     </div>
-    <!--<div class="col-6 col-md-4">
-        <a id="boton-ticket" href="{{ route('ticket.list-user')}}" class="btn  mb-2 waves-effect waves-light">Volver Atrás <i class="fas fa-chevron-left"></i></a>
-    </div>-->
+  
 </div>
 
 <br>
@@ -18,7 +16,7 @@
         <div class="table-responsive" style="border-radius: 8px 8px 0px 0px;"> 
 
 
-            <table class="nowrap scroll-horizontal-vertical  table-striped w-100">
+            <table class="nowrap  scroll-horizontal-vertical  table-striped w-100">
                 <thead  id="thead">
 
                     <tr class="text-center text-white ">
