@@ -13,6 +13,7 @@ use App\Http\Controllers\WalletController;
 use App\Http\Controllers\ActivacionController;
 use App\Http\Controllers\TiendaController;
 use App\Models\Inversion;
+use App\Models\Liquidaction;
 use Carbon\Carbon;
 
 class HomeController extends Controller
@@ -154,11 +155,11 @@ class HomeController extends Controller
         $fecha_ini = Carbon::createFromDate($anno,1,1)->startOfDay();
         $fecha_fin = Carbon::createFromDate($anno, 12,1)->endOfMonth()->endOfDay();
 
-        $ordenes = OrdenPurchases::where('iduser', Auth::id())->where('status', '1')
+        $ordenes = Liquidaction::where('iduser', Auth::id())->where('status', '1')
                     ->select(
                         
                         DB::raw('date_format(created_at,"%m/%Y") as created'),
-                        DB::raw('SUM(monto) as montos'),
+                        DB::raw('SUM(total) as montos'),
                     )
                     ->whereBetween('created_at', [$fecha_ini, $fecha_fin])
                     ->groupBy('created')

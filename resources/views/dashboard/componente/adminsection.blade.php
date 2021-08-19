@@ -49,44 +49,84 @@
             </div>
         </div>
     </div>
-    <div class="col-lg-6 col-md-12 col-12 mt-1 mb-1"> 
-        <div class="card text-white h-100 mb-0 pb-1" style="background: #121212">
-            <div class="card-content row">
-                {{-- <div class="card-body d-flex justify-content-center align-items-center flex-sm-row flex-column pb-0 pt-1 col-12"> --}}
-                <div class="card-body moneda">
-                    <div class="d-flex justify-content-center align-items-center">
-                        <div class="col-6 w-100 text-center">
-                            <h4 class="text-white">Monedas Actuales</h4>
+
+    <div class="col-lg-6 col-md-12 col-12 mt-1 mb-1">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-12">
+                <div class="card text-white h-100 mb-0 pb-1" style="background: #121212">
+                    <div class="card-content row">
+                        {{-- <div class="card-body d-flex justify-content-center align-items-center flex-sm-row flex-column pb-0 pt-1 col-12"> --}}
+                        <div class="card-body moneda">
+                            <div class="d-flex justify-content-center align-items-center">
+                                <div class="col-6 w-100 text-center">
+                                    <h4 class="text-white">Monedas Actuales</h4>
+                                </div>
+                                <div class="col-6 w-100 text-center font-size-">
+                                    <h4 class="text-white">Saldo en dolares</h4>                                                    
+                                </div>                    
+                            </div>
+                            <div class="d-flex justify-content-center">
+                                <div class="col-6 w-100 pt-1 d-flex justify-content-center">
+                                    <div>
+                                        <h1>{{50.000}} DRB</h1>
+                                        <button class="btn btn-saldo mt-1">Retirar</button>                                
+                                    </div>
+                                </div>
+                                <div class="col-6 w-100 pt-1 d-flex justify-content-center " style="border-left: 2px solid white">
+                                    <div>                            
+                                        <h1>{{1.000}} USDT</h1>
+                                        <button class="btn btn-saldo mt-1">Retirar</button>
+                                    </div>
+                                </div>                    
+                            </div>
                         </div>
-                        <div class="col-6 w-100 text-center font-size-">
-                            <h4 class="text-white">Saldo en dolares</h4>                                                    
-                        </div>                    
                     </div>
-                    <div class="d-flex justify-content-center">
-                        <div class="col-6 w-100 pt-1 d-flex justify-content-center">
-                            <div>
-                                <h1>{{50.000}} DRB</h1>
-                                <button class="btn btn-saldo mt-1">Retirar</button>                                
+                </div> 
+            </div>
+            <div class="col-lg-6 col-md-6 col-12 mt-1"> 
+                <div class="card text-white h-100 mb-0 pb-1 bg-blue" >
+                    <div class="card-content row">
+                        <div class="card-body moneda">
+                                <div class="col-6 w-100 text-left">
+                                    <h4 class="text-white">Referidos</h4>
+                                </div>                                           
+                            
+                            <div class="d-flex justify-content-center">
+                                <div class="col-6 w-100 pt-1 d-flex justify-content-center">
+                                    <div>
+                                        <p class="">Mes pasado</p>                                
+                                        <h1>{{25}}</h1>
+                                    </div>
+                                </div>
+                                <div class="col-6 w-100 pt-1 d-flex justify-content-center " style="border-left: 2px solid white">
+                                    <div>                            
+                                        <p class="">Mes Actual</p>
+                                        <h1>{{28}}+</h1>
+                                    </div>
+                                </div>                    
                             </div>
                         </div>
-                        <div class="col-6 w-100 pt-1 d-flex justify-content-center " style="border-left: 2px solid white">
-                            <div>                            
-                                <h1>{{1.000}} USDT</h1>
-                                <button class="btn btn-saldo mt-1">Retirar</button>
-                            </div>
-                        </div>                    
                     </div>
                 </div>
             </div>
-        </div>
+            <div class="col-lg-6 col-md-6 col-6 mt-1">
+                <div class="card text-white bg-blue h-100 mb-0">
+                    <div class="card-content row justify-content-center align-items-center">
+                        <div class="card-body">
+        
+                        </div>
+                    </div>
+                </div>
+            </div> 
+        </div> 
+
     </div>
-    {{-- Este es --}}
     <div class="col-lg-6 col-md-12 col-12 mt-1 mb-1">
         <div class="card text-white bg-blue h-100 mb-0">
             {{-- <div class="card-content row justify-content-center align-items-center"> --}}
                 {{-- <div class="card-body d-flex justify-content-center align-items-center flex-sm-row flex-column pb-0 pt-1 col-12"> --}}
                 <div class="card-sub d-flex align-items-center mt-2">
-                    <div class="progresscircle blue" data-value='100'>
+                    <div class="progresscircle blue" data-value='50'>
                         <span class="progress-left">
                             <span class="progress-circle"></span>
                         </span>
@@ -106,51 +146,12 @@
         </div>
     </div>
 
-    <div class="col-lg-3 col-md-6 col-12 mt-1 mb-1"> 
-        <div class="card text-white h-100 mb-0 pb-1 bg-blue" >
-            <div class="card-content row">
-                {{-- <div class="card-body d-flex justify-content-center align-items-center flex-sm-row flex-column pb-0 pt-1 col-12"> --}}
-                <div class="card-body moneda">
-                        <div class="col-6 w-100 text-left">
-                            <h4 class="text-white">Referidos</h4>
-                        </div>                                           
-                    
-                    <div class="d-flex justify-content-center">
-                        <div class="col-6 w-100 pt-1 d-flex justify-content-center">
-                            <div>
-                                <p class="">Mes pasado</p>                                
-                                <h1>{{25}}</h1>
-                            </div>
-                        </div>
-                        <div class="col-6 w-100 pt-1 d-flex justify-content-center " style="border-left: 2px solid white">
-                            <div>                            
-                                <p class="">Mes Actual</p>
-                                <h1>{{28}}+</h1>
-                            </div>
-                        </div>                    
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="col-lg-3 col-md-6 col-6 mt-1 mb-1">
-        <div class="card text-white bg-blue h-100 mb-0">
-            <div class="card-content row justify-content-center align-items-center">
-                {{-- <div class="card-body d-flex justify-content-center align-items-center flex-sm-row flex-column pb-0 pt-1 col-12"> --}}
-                <div class="card-body">
-
-                </div>
-            </div>
-        </div>
-    </div> 
-
     <div class="col-lg-12 col-md-12 col-12 mt-1 mb-1"> 
         <div class="card text-white h-100 mb-0 pb-1" style="background: #121212">
             <div class="card-header d-flex align-items-center text-right pb-0 pt-0 white">
                 <h5 class="mt-1 mb-0 text-white"><b>Ganancias totales</b></h5>
             </div>
-                {{-- @include('dashboard.componente.partials.grafig-1') --}}
+                @include('dashboard.componente.partials.grafig-1')
         </div>
     </div>
    
