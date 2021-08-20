@@ -170,7 +170,7 @@ class Menu
             // Perfil
             'Perfil' => [
                 'submenu' => 0,
-                'ruta' => '',
+                'ruta' => route('profile'),
                 'blank' => '', // si es para una pagina diferente del sistema solo coloquen _blank
                 'icon' => 'feather icon-user',
                 'complementoruta' => '',

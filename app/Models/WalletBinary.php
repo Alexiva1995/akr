@@ -14,6 +14,6 @@ class WalletBinary extends Model
     protected $fillable = [
         'iduser', 'referred_id', 'orden_purchase_id',
         'puntos_d', 'puntos_i', 'side', 'descripcion',
-        'status'
+        'status', 'restante'
     ];
 }

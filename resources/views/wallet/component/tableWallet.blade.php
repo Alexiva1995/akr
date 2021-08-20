@@ -1,4 +1,4 @@
-<table class="table w-100 nowrap scroll-horizontal-vertical myTableOrdenDesc table-striped w-100">
+<table class="table w-100 nowrap scroll-horizontal-vertical myTable table-striped w-100">
 
     <thead class="text-white">
         <tr class="text-center  bg-purple-alt2">

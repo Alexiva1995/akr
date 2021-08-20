@@ -573,6 +573,7 @@ class WalletController extends Controller
             'puntos_i' => $puntosI,
             'side' => $ladomayor,
             'status' => 0,
+            'restante' => 1,
             'descripcion' => 'Puntos restantes del dia '.$fecha        
         ]);
 

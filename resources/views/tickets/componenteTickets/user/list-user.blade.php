@@ -75,4 +75,5 @@
 
 @endsection
 {{-- permite llamar a las opciones de las tablas --}}
+@include('layouts.componenteDashboard.linkReferido')
 @include('layouts.componenteDashboard.optionDatatable')
