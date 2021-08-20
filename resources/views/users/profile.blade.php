@@ -63,7 +63,7 @@ $(document).ready(function() {
     <div class="content-body">
      
                 <!-- right content section -->
-                <div class="col-md-12">
+                <div class="col-md-7 float-right">
                     <div class="card">
                         <div class="card-content">
                             <div class="card-body">
