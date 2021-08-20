@@ -1,6 +1,4 @@
 
-
-
 <form action="{{ route('profile.update',$user->id) }}" method="POST"
     enctype="multipart/form-data">
     @csrf
