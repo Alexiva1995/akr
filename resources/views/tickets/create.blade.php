@@ -38,7 +38,7 @@ border-radius: 8px;">
 
                                     <div class="col-6">
                                         <label id="form-label" class="form-label" for="email"><b>Direccion de correo electrónico</b></label>
-                                        <input class="form-control" required type="text" id="emails" name="email" rows="3" />
+                                        <input class="form-control" required type="text" id="names" name="email" rows="3" />
 
                                     </div>
 
