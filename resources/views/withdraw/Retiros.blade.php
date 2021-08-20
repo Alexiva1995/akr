@@ -2,6 +2,9 @@
 @include('layouts.componenteDashboard.linkReferido')
 @section('content')
 
+
+
+
 <div class="container">
     <div class="row">
         <div class="col-9">
@@ -29,47 +32,47 @@
         </div>
         <form action="">
 
-            <div class="card-body " id="card">
+        <div class="card-body " id="card">
 
-                <div class="row mt-2" style="justify-content: center;">
-                    <div class="col-7">
-                        <label id="form-label" class="form-label" for="name"><b>Tipo de Retiro</b></label>
-                        <select class=" form-control mt-1" id="up" type="text" value="" placeholder="Selecciona una opción" rows="3">
-                        </select>
+            <div class="row mt-2" style="justify-content: center;">
+                <div class="col-7">
+                    <label id="form-label" class="form-label" for="name"><b>Tipo de Retiro</b></label>
+                    <select class=" form-control mt-1" id="up" type="text" value="" placeholder="Selecciona una opción" rows="3">
+                    </select>
 
-                    </div>
+                </div>
 
 
                     <div class="col-7 mt-2">
                         <div class="form-group">
                             <label id="form-label" class="form-label" for="issue"><b>Ingrese la Cantidad: </b></label>
-                            <input type="text" id="up" class="form-control mt-1" value="" placeholder="">
+                            <input type="text" id="up" class="form-control mt-1" value="" placeholder="Cantidad de monedas">
 
                         </div>
                     </div>
 
                     <div class="col-7 mb-2">
                         <label id="form-label" class="form-label" for="email"><b>Ingrese la billetera de Retiro: </b></label>
-                        <input class="form-control mt-1 " value="" type="text" id="up" rows="3" />
+                        <input class="form-control mt-1 " value="" type="text" id="up"  rows="3" />
 
                     </div>
                     <div class="col-7 mb-2">
-                        <button type="submit" id="sends" class="col-12 mt-2  btn mb-1 waves-effect waves-light float-right">Solicitar Retiro</button>
+                    <button type="submit" id="sends" class="col-12 mt-2  btn mb-1 waves-effect waves-light float-right">Solicitar Retiro</button>
+                    
+                </div>
 
-                    </div>
-
-                    <div class="col-6 mb-2">
+                <div class="col-6 mb-2">
                         <label id="limite"><b>Limite de Retiro: 70 USDT </b></label>
 
                     </div>
 
-        </form>
+                </form>
+            </div>
+        </div>
     </div>
-</div>
-</div>
 
 
 
 
 
-@endsection
+    @endsection
