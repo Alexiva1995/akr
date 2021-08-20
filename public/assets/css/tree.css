@@ -64,7 +64,7 @@
   .btn-darks{
     display: inline-block;
     font-weight: 400;
-    border-color: #3eb8d6;
+    border-color: rgba(0, 178, 162, 1);
     color: #ffffff;
     text-align: center;
     vertical-align: middle;
@@ -88,9 +88,8 @@
   }
 
   .btn-tree{
-    border: 2px #3eb8d6 solid;
+    border: 2px  rgba(0, 246, 225, 0.77) solid;
     font-weight: 400;
-    border-color: #3eb8d6;
     border-radius: 5px;
     color: #ffffff;
     text-align: center;
@@ -99,11 +98,21 @@
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-    background-color: #1b1b1b;
+    background-color: transparent;
     padding: 1rem 0.9rem;
     font-size: 1rem;
     line-height: 1;
     width: 95%;
+  }
+
+  .btn-arbol{
+    border: 2px  rgba(0, 246, 225, 0.77) solid;
+    color: white;
+  }
+  .btn-arbol:hover{
+    border: 2px  rgba(0, 246, 225, 0.77) solid;
+    background-color: rgba(0, 246, 225, 0.77);
+    color: white;
   }
 
   .card-sub {
@@ -196,6 +205,9 @@
 .h-90 {
     height: 90%;
 }
+.padre{
+  padding-top: 120px;
+}
 
 .padre ul {
   padding-top: 20px;
@@ -216,7 +228,7 @@
 .padre .base{
   height: 100px;
   width: 100px;
-  border: #141414;
+  border: 5px solid rgba(50, 240, 223);
 }
 
 .padre .baseli{
@@ -243,7 +255,7 @@
   position: absolute;
   top: 0;
   right: 50%;
-  border-top: 2px solid #3eb8d6;
+  border-top: 2px solid rgba(0, 178, 162, 1);
   width: 50%;
   height: 20px;
 }
@@ -251,7 +263,7 @@
 .padre li::after {
   right: auto;
   left: 50%;
-  border-left: 2px solid #3eb8d6;
+  border-left: 2px solid rgba(0, 178, 162, 1);
 }
 
 /*We need to remove left-right connectors from elements without 
@@ -275,7 +287,7 @@ right connector from last child*/
 
 /*Adding back the vertical connector to the last nodes*/
 .padre li:last-child::before {
-  border-right: 2px solid #3eb8d6;
+  border-right: 2px solid rgba(0, 178, 162, 1);
   border-radius: 0 5px 0 0;
   -webkit-border-radius: 0 5px 0 0;
   -moz-border-radius: 0 5px 0 0;
@@ -292,13 +304,13 @@ right connector from last child*/
   position: absolute;
   top: 0;
   left: 50%;
-  border-left: 2px solid #3eb8d6;
+  border-left: 2px solid rgba(0, 178, 162, 1);
   width: 0;
   height: 20px;
 }
 
 .padre li a {
-  border: 2px solid #3eb8d6;
+  border: 2px solid white;
   /* padding: 8px 5px; */
   text-decoration: none;
   color: #666;
@@ -335,10 +347,11 @@ right connector from last child*/
 
 @media (min-width: 768px) {
   #tarjeta{
-      width: 33%;
+      width: 80%;
       position: absolute;
       right: 50px;
       z-index: 1;
+      border: 2px  rgba(0, 246, 225, 0.77) solid;
   }
 }
 
@@ -358,15 +371,15 @@ right connector from last child*/
 }
 
 .bg-red-alt{
-  background: #3eb8d6 !important;
+  background: rgba(0, 178, 162, 1) !important;
 }
 
 .pagination .page-item.active .page-link{
-  background: #3eb8d6 !important;
+  background: rgba(0, 178, 162, 1) !important;
 }
 
 .text-red-alt{
-  color: #3eb8d6 !important;
+  color: rgba(0, 178, 162, 1) !important;
 }
 
 .padding-button-short{
@@ -380,14 +393,14 @@ right connector from last child*/
 }
 
 .main-menu.bg-purple-alt.menu-light .navigation > li.open > a{
-  background: #3eb8d6 !important;
+  background: rgba(0, 178, 162, 1) !important;
 }
 
 .art{
-  background: rgb(131,104,44);
-  background: radial-gradient(circle, rgb(44, 96, 131) 0%, rgb(29, 75, 96) 100%);
-  border-radius: 10px;
-  background: linear-gradient(90deg, rgb(19, 103, 172) 0%, rgb(62, 141, 214) 68%) !important;
+  /* background: rgb(131,104,44); */
+  /* background: radial-gradient(circle, rgb(44, 96, 131) 0%, rgb(29, 75, 96) 100%); */
+  border: 2px solid rgba(0, 246, 225, 0.77);
+  /* background: linear-gradient(90deg, rgb(19, 103, 172) 0%, rgb(62, 141, 214) 68%) !important; */
 }
 
   input[type=text]:hover:not([disabled]), 
@@ -429,9 +442,30 @@ right connector from last child*/
   }
   
   body::-webkit-scrollbar-thumb {
-      background: #3eb8d6 !important;
+      background: rgba(0, 178, 162, 1) !important;
       border-radius: 7px !important;
 
+  }
+
+  .bg-image{
+    background-image: url('../../assets/img/sistema/fondo_tree.png');
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    border-radius: 8px;
+  }
+
+  .bg-color{
+    background: #0C0C0C;
+    border-radius: 8px;
+    /* width: 100%; */
+    opacity: 0.9;
+  }
+
+  .art2{
+    background: linear-gradient(180deg, rgba(13, 33, 31, 0.77) 0%, rgba(14, 48, 99, 0.88) 100%);
+    border-radius: 8px;
   }
 
   

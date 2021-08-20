@@ -27,10 +27,10 @@ class User extends Authenticatable /*implements MustVerifyEmail*/
         'country_id', 'age', 'state'
     ];
 
-    // public function country()
-    // {
-    //     return $this->belongsTo('App\Models\Country', 'country_id', 'id');
-    // }
+    public function country()
+    {
+        return $this->belongsTo('App\Models\Country', 'country_id', 'id');
+    }
 
     /**
      * The attributes that should be hidden for arrays.

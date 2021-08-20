@@ -31,6 +31,7 @@ class CreateWalletBinariesTable extends Migration
             $table->string('side', 1);
             $table->string('descripcion');
             $table->tinyInteger('status')->default(0)->comment('0 - En espera, 1 - Pagado (liquidado), 2 - Cancelado');
+            $table->tinyInteger('restante')->default(0)->comment('0 - Es una comision normal, 1 - Es un residuo de una comision');
             $table->timestamps();
         });
     }

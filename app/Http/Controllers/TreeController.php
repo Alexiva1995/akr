@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Http\Controllers\Controller;
+use App\Models\Country;
 use App\Models\WalletBinary;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
@@ -28,7 +29,8 @@ class TreeController extends Controller
             $base = Auth::user();
             $base->logoarbol = asset('assets/img/sistema/favicon.png');
             $binario = $this->getBinaryPoints(Auth::user()->id);
-            return view('genealogy.tree', compact('trees', 'type', 'base', 'binario'));
+            $binarioTotal = $this->getTotalBinaryPoints(Auth::user()->id);
+            return view('genealogy.tree', compact('trees', 'type', 'base', 'binario', 'binarioTotal'));
         } catch (\Throwable $th) {
             Log::error('Tree - indexNewtwork -> Error: '.$th);
             abort(403, "Ocurrio un error, contacte con el administrador");
@@ -69,6 +71,28 @@ class TreeController extends Controller
             ['iduser', '=', $iduser]
         ])->orWhere([
             ['status', '=', 0],
+            ['puntos_i', '>', 0],
+            ['iduser', '=', $iduser]
+        ])->selectRaw('iduser, SUM(puntos_d) as totald, SUM(puntos_i) as totali')->groupBy('iduser')->first();
+
+        $data = collect(['totald' => 0, 'totali' => 0]);
+        if ($binario) {
+            $data = collect([
+                'totald' => $binario->totald,
+                'totali' => $binario->totali
+            ]);
+        }
+        return $data;
+    }
+
+    public function getTotalBinaryPoints($iduser)
+    {
+        $binario = WalletBinary::where([
+            ['restante', '=', 0],
+            ['puntos_d', '>', 0],
+            ['iduser', '=', $iduser]
+        ])->orWhere([
+            ['restante', '=', 0],
             ['puntos_i', '>', 0],
             ['iduser', '=', $iduser]
         ])->selectRaw('iduser, SUM(puntos_d) as totald, SUM(puntos_i) as totali')->groupBy('iduser')->first();
@@ -146,7 +170,8 @@ class TreeController extends Controller
             $base = User::find($id);
             $base->logoarbol = asset('assets/img/sistema/favicon.png');
             $binario = $this->getBinaryPoints(Auth::user()->id);
-            return view('genealogy.tree', compact('trees', 'type', 'base', 'binario'));
+            $binarioTotal = $this->getTotalBinaryPoints(Auth::user()->id);
+            return view('genealogy.tree', compact('trees', 'type', 'base', 'binario', 'binarioTotal'));
         } catch (\Throwable $th) {
             Log::error('Tree - moretree -> Error: '.$th);
             abort(403, "Ocurrio un error, contacte con el administrador");
@@ -191,15 +216,49 @@ class TreeController extends Controller
     {
         try {
             $resul = User::where($typeTree, '=', $id)->get();
+            // dd($resul->nombre);
             foreach ($resul as $user) {
                 $user->nivel = $nivel;
                 $user->logoarbol = asset('assets/img/sistema/favicon.png');
+                $user->pais = $user->country->name;                
+                $user->fecha = $user->created_at->format('d/m/y');
+                $sponsor = User::find($user->referred_id);
+                $user->auspiciador = $sponsor->fullname;
+                $user->puntos = $this->getTotalPoints($user->id);
             }
             return $resul;
         } catch (\Throwable $th) {
             Log::error('Tree - getData -> Error: '.$th);
             abort(403, "Ocurrio un error, contacte con el administrador");
         }
+    }
+
+    private function getTotalPoints($iduser): int
+    {
+        try{
+            $binario = WalletBinary::where([
+                ['restante', '=', 0],
+                ['puntos_d', '>', 0],
+                ['iduser', '=', $iduser]
+            ])->orWhere([
+                ['restante', '=', 0],
+                ['puntos_i', '>', 0],
+                ['iduser', '=', $iduser]
+            ])->selectRaw('iduser, SUM(puntos_d) as totald, SUM(puntos_i) as totali')->groupBy('iduser')->first();
+
+            $totald = 0; $totali = 0;
+
+            if ($binario) {
+                $totald = $binario->totald;
+                $totali = $binario->totali;
+            }
+            $total = $totald + $totali;
+            return $total;
+        }catch (\Throwable $th) {
+            Log::error('Tree - getTotalPoints -> Error: '.$th);
+            abort(403, "Ocurrio un error, contacte con el administrador");
+        }
+        
     }
 
     /**
