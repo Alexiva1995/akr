@@ -89,7 +89,7 @@
     </div>
 
     <div class="media">
-        <div class="custom-file">
+        <div class="custom-file mt-1">
             <label class="custom-file-label" id="id" for="photoDB">Seleccione su
                 Foto <b>(Se permiten JPG o PNG.
                     Tamaño máximo de 800kB)</b></label>
@@ -103,14 +103,59 @@
     </div>
     <br>
 
-    
-            <!--
-            <div class="col-12 d-flex flex-sm-row flex-column justify-content-end">
-                <button type="submit" class="btn btn-primary mr-sm-1 mb-1 mb-sm-0 waves-effect waves-light">GUARDAR</button>
+
+    <div class="container">
+        <div class="row align-items-start">
+            <div class="col-4">
+                <label class="required" id="form-label" for="whatsapp">Ciudad</label>
+                <input id="names" type="text" class="form-control @error('city') is-invalid @enderror" name="city" autocomplete="city" autofocus placeholder="" value="{{ old('city') }}">
+
+                @error('city')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+                @enderror
             </div>
 
-        
 
+            <div class="col-4">
+                <label class="required" id="form-label" for="whatsapp">Estado</label>
+                <input id="names" type="text" class=" form-control @error('state') is-invalid @enderror" name="state" autocomplete="state" autofocus placeholder="" value="{{ old('state') }}">
+
+                @error('state')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+                @enderror
+            </div>
+
+
+
+            <div class="col-4">
+                <label class="required" id="form-label" for="whatsapp">País</label>
+                <select id="names" type="text" class="form-control @error('country') is-invalid @enderror" name="country" required autocomplete="country" autofocus>
+                    <option selected disabled readonly>País</option>
+                    {{--@foreach($countries as $country)--}}
+                    <option value="{{--{{$country->id}}--}}">{{--{{$country->name}}--}}</option>
+                    {{--@endforeach--}}
+
+
+                </select>
+
+                @error('country')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+                @enderror
+            </div>
+        </div>
+
+
+        <div class="col-12 d-flex flex-sm-row flex-column justify-content-end">
+            <button type="submit" class="btn btn-primary mr-sm-1 mb-1 mb-sm-0 waves-effect waves-light">GUARDAR</button>
+        </div>
+
+        <!--
             <div class="row">
                 <div class="col-12">
                     <div class="form-group">

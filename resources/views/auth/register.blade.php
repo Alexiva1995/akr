@@ -265,8 +265,6 @@ $referred = DB::table('users')
                         <div class="form-group col-md-6">
                             <input style="  margin-top: 8px;" id="password-confirm" type="password" class=" form-control" name="password_confirmation" required autocomplete="new-password" placeholder="">
 
-
-
                             <span class="floating-label "><i class="fas fa-lock"></i> confirme su contraseña </span>
 
                         </div>
