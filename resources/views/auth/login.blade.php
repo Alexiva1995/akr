@@ -17,7 +17,7 @@
 
     @media screen and (max-width: 650px) {
         .title {
-            font-size: 50px;
+            font-size: 55px;
 
         }
     }
@@ -34,7 +34,7 @@
         .title,
         .subtitle {
             margin-left: 15px;
-            margin-right: 6px;
+            margin-right: 10px;
 
         }
     }
