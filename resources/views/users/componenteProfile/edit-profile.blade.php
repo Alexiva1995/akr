@@ -151,19 +151,21 @@
         </div>
 
 
-        <div class="col-12 d-flex flex-sm-row flex-column justify-content-end">
-            <button type="submit" class="btn btn-primary mr-sm-1 mb-1 mb-sm-0 waves-effect waves-light">GUARDAR</button>
+        <div class="col-12  justify-content-start mt-2 mb-2">
+            <button type="submit" id="send" class="btn  col-12 mr-sm-1  waves-effect waves-light">GUARDAR</button>
         </div>
 
-        <!--
+        <hr style="color: red;">
+        
             <div class="row">
                 <div class="col-12">
                     <div class="form-group">
                         <div class="controls">
-                            <h2 class="font-weight-bold">Cambiar Contraseña</h2>
+                            <p id="form-label" style="font-size: 18px;">Cambiar la Contraseña : </p>
                         </div>
                     </div>
                 </div>
 
             </div>
 </form>
+

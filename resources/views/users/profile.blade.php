@@ -106,14 +106,10 @@
                             <div class="card-body">
                                 <div class="tab-content">
 
-                                    <div role="tabpanel" class="tab-pane active" id="account-vertical-general" aria-labelledby="account-pill-general" aria-expanded="true">
-
-
+                                  
                                         @include('users.componenteProfile.edit-profile')
 
                                     </div>
-                                    <!--
-                                    <div role="tabpanel" class="tab-pane" id="account-vertical-pass" aria-labelledby="account-pill-pass" aria-expanded="false">
 
                                         @include('users.componenteProfile.changePassword')
 
