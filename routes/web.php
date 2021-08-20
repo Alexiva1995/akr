@@ -129,6 +129,11 @@ Route::prefix('dashboard')->middleware('menu', 'auth', /*'verified'*/)->group(fu
         Route::get('purchase', 'ReporteController@indexPedidos')->name('reports.pedidos');
     });
 
+    //Ruta para los retiros
+    Route::prefix('withdraw')->group(function(){
+        Route::get('Retiros', 'WithdrawController@retiros')->name('withdraw.Retiros');
+    });
+
      //Ruta de los Tickets
      Route::prefix('tickets')->group(function(){
         Route::get('ticket-create','TicketsController@create')->name('ticket.create');

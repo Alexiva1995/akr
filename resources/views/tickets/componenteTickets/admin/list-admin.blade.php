@@ -2,66 +2,61 @@
 
 @section('content')
 
+
+<div class="row">
+    <div class="col-md-8">
+        <h1 class="text-white">Historial de Tickets</h1>
+    </div>
+  
+</div>
+
+<br>
 <div id="record">
     <div class="col-12">
-        <div class="card bg-lp">
-            <div class="card-content">
-                <div class="card-body card-dashboard">
-                    <div class="table-responsive">
-                        <h1 class="text-dark">Historial de Tickets</h1>
-                        
-                        <table class="table nowrap scroll-horizontal-vertical myTable table-striped w-100">
-                            <thead class="">
+        <div class="table-responsive" style="border-radius: 8px 8px 0px 0px;">
 
-                            <tr class="text-center text-white bg-purple-alt2">
-                                    <th>ID</th>
-                                    <th>Usuario</th>
-                                    <th>Estado</th>
-                                    <th>Prioridad</th>
-                                    <th>Accion</th>
-                                </tr>
 
-                            </thead>
+            <table class="nowrap scroll-horizontal-vertical  table-striped w-100">
+                <thead id="thead">
 
-                            <tbody>
+                    <tr class="text-center text-white ">
+                        <th>ID</th>
+                        <th>Usuario</th>
+                        <th>Estado</th>
+                        <th>Última Respuesta</th>
+                        <th>Accion</th>
+                    </tr>
 
-                                 @foreach ($ticket as $item)
-                                 <tr class="text-center">
-                                    <td>{{ $item->id}}</td>
-                                    <td>{{ $item->iduser}}</td>
-                                    {{-- <td>{{ $item->estado}}</td>
-                                    <td>{{ $item->prioridad}}</td>
-                                    <td>{{ $item->issue}}</td>
-                                    --}}
-                                
-                                    @if ($item->status == '0')
-                                    <td> <a class=" btn text-white text-bold-600" style="background-color: green;">Abierto</a></td>
-                                    @elseif($item->status == '1')
-                                    <td> <a class=" btn text-white text-bold-600" style="background-color: red;">Cerrado</a></td>
-                                    @endif
-                                    
-                                    @if ($item->priority == '0')
-                                    <td> <a class="btn  text-dark text-bold-600">Alto</a></td>
-                                    @elseif($item->priority == '1')
-                                    <td> <a class="btn  text-dark text-bold-600">Medio</a></td>
-                                    @elseif($item->priority == '2')
-                                    <td> <a class="btn  text-dark text-bold-600">Bajo</a></td>
-                                    @endif
-                                    
-                                 
-                                    <td><a href="{{ route('ticket.edit-admin',$item->id) }}" class="btn text-bold-600 text-dark" style="background-color: #0CB7F2;">Revisar</a></td>
-                                </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
+                </thead>
+
+                <tbody id="tvody">
+
+                    @foreach ($ticket as $item)
+                    <tr class="text-center" id="contend">
+                        <td># {{ $item->id}}</td>
+                        <td>{{ $item->getUser->fullname}}</td>
+                       
+
+                        @if ($item->status == '0')
+                            <td> <a class=" btn text-bold-600 text-white" style="background: rgba(0, 246, 225, 0.77);border-radius: 8px;">Abierto</a></td>
+                            @elseif($item->status == '1')
+                            <td> <a class=" btn  text-bold-600 text-white" style="background: rgba(246, 74, 0, 0.77);border-radius: 8px;">Cerrado</a></td>
+                            @endif
+
+                        <td>{{$item->send}}</td>
+
+                        <td><a href="{{ route('ticket.edit-admin',$item->id) }}"><img src="{{asset('assets/Diseño/Desktop.svg')}}" alt="" width="40" height="40"></a></td>
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
         </div>
     </div>
+</div>
+</div>
+</div>
 </div>
 
 @endsection
 {{-- permite llamar a las opciones de las tablas --}}
 @include('layouts.componenteDashboard.optionDatatable')
-

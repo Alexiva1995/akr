@@ -176,6 +176,34 @@ output {
     color: #000000;
 }
 
+
+#sends {
+    background: #19b4db;
+    border: 2px solid rgba(0, 246, 225, 0.77);
+    border-radius: 4px;
+    font-family: Roboto;
+    font-size: 15px;
+    letter-spacing: -0.2px;
+    text-transform: uppercase;
+    color: #ffffff;
+}
+
+#up{
+    background: #275c69;
+    border: 2px solid rgba(17, 184, 209, 0.77);
+    border-radius: 4px;
+    font-family: Roboto;
+    color: #FFFFFF;
+    font-size: 15px;
+}
+
+#limite{
+    color:#973131;
+    font-weight:bold;
+    font-size: 15px;
+    
+}
+
 #form-labels{
     font-family: Roboto;
     font-style: normal;

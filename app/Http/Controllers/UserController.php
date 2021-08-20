@@ -67,12 +67,12 @@ class UserController extends Controller
         $user = User::find($id);
 
         // $timezone = Timezone::orderBy('list_utc','ASC')->get();
-        // $countries = Country::orderBy('name','ASC')->get();
+         $countries = Country::orderBy('name','ASC')->get();
  
- 
+
         return view('users.componenteUsers.admin.edit-user')
-              ->with('user',$user);
-            //   ->with('countries',$countries)
+              ->with('user',$user)
+               ->with('countries',$countries);
             //   ->with('timezone',$timezone)
 
     }

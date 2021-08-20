@@ -3,15 +3,40 @@
 @section('content')
 @push('custom_css')
 <style>
-    .infor{
+    .infor {
         margin-top: 20%;
     }
-    .cardd{
+
+    .cardd {
         background: rgba(0, 0, 0, 0.75);
         border: 1px solid #000000;
         box-sizing: border-box;
         border-radius: 11px;
         margin-top: 20%;
+    }
+
+    @media screen and (max-width: 650px) {
+        .title {
+            font-size: 55px;
+
+        }
+    }
+
+    @media screen and (max-width: 650px) {
+        .subtitle {
+            font-size: 20px;
+
+        }
+    }
+
+    @media screen and (max-width: 650px) {
+
+        .title,
+        .subtitle {
+            margin-left: 15px;
+            margin-right: 10px;
+
+        }
     }
 </style>
 @endpush
@@ -50,7 +75,7 @@
                                         <input id="email" type="text" class=" email form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus placeholder=" " />
 
 
-                                        <span class="floating-label mt-1"><i class="fas fa-envelope" ></i> tucorreo@email.com</span>
+                                        <span class="floating-label mt-1"><i class="fas fa-envelope"></i> tucorreo@email.com</span>
 
 
                                         @error('email')
@@ -95,14 +120,14 @@
                                 </div>
                                 <div class="col-12 mt-3">
                                     <p class="text-center">
-                                        <a  href="{{ route('register') }}" class="registrate">
+                                        <a href="{{ route('register') }}" class="registrate">
                                             ¿No registrado? <span>Crear una cuenta</span>
-                                          
+
                                         </a>
                                     </p>
                                 </div>
                             </form>
-                            
+
                         </div>
                     </div>
                 </div>

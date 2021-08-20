@@ -1,16 +1,21 @@
 @extends('layouts.dashboard')
-
+@include('layouts.componenteDashboard.linkReferido')
 @section('content')
 
-<div class="row">
-    <div class="col-md-8">
-        <h1 class="text-white">Tickets de Soporte</h1>
+<div class="container">
+    <div class="row">
+        <div class="col-6">
+            <h1 class="text-white">Tickets de Soporte</h1>
+        </div>
+        <div class="col-3"><a id="boton-ticket" href="{{ route('ticket.list-user')}}" class="btn  mb-2 waves-effect waves-light">Volver Atrás <i class="fas fa-chevron-left"></i></a>
+        </div>
+        <div class="col-3">
+            <button class="btn mb-2 " style="background-color:#00C8F4;color: black;" onclick="getlink()">ID de
+                referido: {{Auth::user()->id}} <i class="fa fa-copy"></i></button>
+        </div>
     </div>
-    <div class="col-6 col-md-4">
-        <a id="boton-ticket" href="{{ route('ticket.list-user')}}" class="btn  mb-2 waves-effect waves-light">Volver Atrás <i class="fas fa-chevron-left"></i></a>
-    </div>
-</div>
 
+</div>
 
 <section id="basic-vertical-layouts">
     <div class="row match-height d-flex justify-content-center">
@@ -33,7 +38,7 @@ border-radius: 8px;">
 
                                     <div class="col-6">
                                         <label id="form-label" class="form-label" for="email"><b>Direccion de correo electrónico</b></label>
-                                        <input class="form-control" required type="text" id="emails" name="email" rows="3" />
+                                        <input class="form-control" required type="text" id="names" name="email" rows="3" />
 
                                     </div>
 
@@ -64,8 +69,8 @@ border-radius: 8px;">
                                                             </div>
                                                             <div class="chat-body text-white">
                                                                 <div class="chat-content">
-                                                                    <div class="email-admin mb-1">{{$admin}}</div>
-                                                                    <p>¿Cómo podemos ayudarle? </p>
+                                                                    <div id="form-labels" class="email-admin mb-1">{{$admin}}</div>
+                                                                    <p id="form-labels">¿Cómo podemos ayudarle? </p>
                                                                 </div>
                                                             </div>
                                                         </div>

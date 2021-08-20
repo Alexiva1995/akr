@@ -39,12 +39,30 @@
     #age {
         background-color: rgba(0, 0, 0, 0.3);
     }
-    @media screen and (max-width: 600px){
+
+    @media screen and (max-width: 650px){
     .title,.subtitle{
-        margin-left: 10px;
+        margin-left: 15px;
         margin-right: 6px;
+      
     }
     }
+
+    @media screen and (max-width: 650px){
+    .title,{
+     font-size: 25px;
+      
+    }
+    }
+
+    @media screen and (max-width: 650px){
+        .subtitle{
+     font-size: 20px;
+      
+    }
+    }
+
+  
 
     .cardd{
         background: rgba(0, 0, 0, 0.75);

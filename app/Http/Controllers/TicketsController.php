@@ -22,12 +22,6 @@ use App\Models\User;
 class TicketsController extends Controller
 {
 
-    public function __construct()
-    {
-
-    }
-
-
     // permite ver la vista de creacion del ticket
 
 
@@ -42,7 +36,6 @@ class TicketsController extends Controller
 
     public function store(Request $request)
     {
-
 
         Ticket::create([
             'iduser' => Auth::id(),
@@ -65,8 +58,6 @@ class TicketsController extends Controller
         return redirect()->route('ticket.list-user')->with('msj-success', 'El Ticket se creo Exitosamente');
     }
 
-
-
     // permite editar el ticket
 
     public function editUser($id)
@@ -74,7 +65,7 @@ class TicketsController extends Controller
 
         $ticket = Ticket::find($id);
         $message = MessageTicket::where('id_ticket', $id)->orderby('created_at', 'ASC')->get();
-        $email = User::all()->where('id', $message[0]->id_admin);
+        $email = User::all()->where('id');
         $admin = $email[0]->email;
         return view('tickets.componenteTickets.user.edit-user')
             ->with('ticket', $ticket)
@@ -103,14 +94,25 @@ class TicketsController extends Controller
     }
 
     // permite ver la lista de tickets
-
     public function listUser(Request $request)
     {
-
+        //Aqui llamo todos los tickets de un usuario
         $ticket = Ticket::where('iduser', Auth::id())->get();
-
-
-
+        //recorro dicho tickets
+        foreach ($ticket as $ticke) {
+            //Verifico el ultimos mensaje obtenido de un ticket en especifico
+            $message = MessageTicket::where('id_ticket', '=', $ticke->id) // aqui comparo el ticket
+                ->where('type', 1) //verificas que sea nivel 1
+                ->select('created_at') // selecciona el campo o los campos a trabajar en nuestro caso create_at
+                ->orderBy('id', 'desc') //ordeno de mayor a menor para saber cual es el mensaje mas reciente
+                ->first(); // obtengo solamente el mensaje mas reciente
+            $ticke->send = '' ; // por default declaramos en vacio 
+            //verifico si existe un ultimo mensaje
+            if ($message != null) {
+                // en caso de que existe un mensaje veao en tiempo humano cuando fue la ultima vez que me lo hicieron
+                $ticke->send = $message->created_at->diffForHumans();
+            }
+        }
         return view('tickets.componenteTickets.user.list-user')
             ->with('ticket', $ticket);
     }
@@ -144,7 +146,7 @@ class TicketsController extends Controller
 
         $ticket = Ticket::find($id);
         $message = MessageTicket::where('id_ticket', $id)->orderby('created_at', 'ASC')->get();
-        $email = User::all()->where('id', $message[0]->id_admin);
+        $email = User::all()->where('id');
 
         $admin = $email[0]->email;
         return view('tickets.componenteTickets.admin.edit-admin')
@@ -181,11 +183,31 @@ class TicketsController extends Controller
 
         $ticket = Ticket::all();
 
-        View::share('titleg', 'Historial de Tickets');
+  //Aqui llamo todos los tickets de un usuario
+  //recorro dicho tickets
+  foreach ($ticket as $ticke) {
+      //Verifico el ultimos mensaje obtenido de un ticket en especifico
+      $message = MessageTicket::where('id_ticket', '=', $ticke->id) // aqui comparo el ticket
+          ->where('type', 0) //verificas que sea nivel 1
+          ->select('created_at') // selecciona el campo o los campos a trabajar en nuestro caso create_at
+          ->orderBy('id', 'desc') //ordeno de mayor a menor para saber cual es el mensaje mas reciente
+          ->first(); // obtengo solamente el mensaje mas reciente
+      $ticke->send = '' ; // por default declaramos en vacio 
+      //verifico si existe un ultimo mensaje
+      if ($message != null) {
+          // en caso de que existe un mensaje veao en tiempo humano cuando fue la ultima vez que me lo hicieron
+          $ticke->send = $message->created_at->diffForHumans();
+      }
+  }
+  return view('tickets.componenteTickets.admin.list-admin')
+      ->with('ticket', $ticket);
+}
+       
+      
 
-        return view('tickets.componenteTickets.admin.list-admin')
-            ->with('ticket', $ticket);
-    }
+
+
+
 
     // permite ver el ticket
 

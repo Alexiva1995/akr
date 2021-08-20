@@ -132,16 +132,16 @@ class Menu
 
             // Retiros
             'Retiros' => [
-                'submenu' => 1,
-                'ruta' => 'javascript:;',
+                'submenu' => 0,
+                'ruta' => route('withdraw.Retiros'),
                 'blank' => '', // si es para una pagina diferente del sistema solo coloquen _blank
                 'icon' => 'feather icon-download-cloud',
                 'complementoruta' => '',
-                'submenus' => [
-                    [
+                'submenus' =>'',//[
+                    /*[
                         'name' => 'Comisiones',
                         'blank' => '', // si es para una pagina diferente del sistema solo coloquen _blank
-                        'ruta' => (''),
+                        'ruta' => ('withdraw.Retiros'),
                         'complementoruta' => ''
                     ],
 
@@ -153,7 +153,7 @@ class Menu
                     ],
 
 
-                ],
+                ],*/
             ],
             // Fin De Retiros
 
