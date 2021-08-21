@@ -88,6 +88,7 @@ class HomeController extends Controller
             'directos' => $cantUsers['directos'],
             'indirectos' => $cantUsers['indirectos'],
             'wallet' => Auth::user()->getWallet->where('status', 0)->sum('monto'),
+            'crypto' => Auth::user()->getCrypto->where('status', 0)->sum('cantidad'),
             'comisiones' => Auth::user()->getWallet->sum('monto'),
             'tickets' => 0,
             'ordenes' => $this->reportController->getOrdenes(10),

@@ -65,7 +65,7 @@
                             <div class="d-flex justify-content-center">
                                 <div class="col-6 w-100 pt-1 d-flex justify-content-center">
                                     <div>
-                                        <h1>{{ 50.0 }} DRB</h1>
+                                        <h1>{{number_format($data['crypto'], '2', ',', '.')}} DRB</h1>
                                         <button class="btn btn-saldo mt-1">Retirar</button>
                                     </div>
                                 </div>
