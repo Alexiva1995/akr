@@ -19,7 +19,7 @@ class UserController extends Controller
     //     View::share('titleg', 'Usuarios');
     //     return view('users.index');
     // }
-    
+
     /**
      * Vista de la lista de usuarios de la pagina
      *
@@ -28,13 +28,12 @@ class UserController extends Controller
     public function listUser()
     {
 
-       $user = User::all();
+        $user = User::all();
 
         View::share('titleg', 'Usuarios');
 
         return view('users.componenteUsers.admin.list-users')
-        ->with('user',$user);
-
+            ->with('user', $user);
     }
 
 
@@ -44,15 +43,15 @@ class UserController extends Controller
      * @param [type] $id
      * @return void
      */
-    public function showUser($id){
+    public function showUser($id)
+    {
 
         View::share('titleg');
 
         $user = User::find($id);
 
         return view('users.componenteUsers.admin.show-user')
-        ->with('user', $user);
-
+            ->with('user', $user);
     }
 
     /**
@@ -67,16 +66,16 @@ class UserController extends Controller
         $user = User::find($id);
 
         // $timezone = Timezone::orderBy('list_utc','ASC')->get();
-         $countries = Country::orderBy('name','ASC')->get();
- 
+        $countries = Country::orderBy('name', 'ASC')->get();
+
 
         return view('users.componenteUsers.admin.edit-user')
-              ->with('user',$user)
-               ->with('countries',$countries);
-            //   ->with('timezone',$timezone)
+            ->with('user', $user);
+        //  ->with('countries',$countries);
+        //   ->with('timezone',$timezone)
 
     }
-    
+
     /**
      * Funcion para actualizar un usuario
      *
@@ -90,14 +89,14 @@ class UserController extends Controller
 
         $fields = [
 
-         "name" => ['required'],
-         "last_name" => ['required'],
-         "email" => [
-            'required',
-            'string',
-            'email',
-            'max:255',
-        ],
+            "name" => ['required'],
+            "last_name" => ['required'],
+            "email" => [
+                'required',
+                'string',
+                'email',
+                'max:255',
+            ],
 
         ];
 
@@ -111,16 +110,16 @@ class UserController extends Controller
 
         $this->validate($request, $fields, $msj);
 
-        $fullname = $request->name .' '. $request->last_name;
+        $fullname = $request->name . ' ' . $request->last_name;
 
         $user->update($request->all());
-  
+
         if ($request->hasFile('photoDB')) {
             $file = $request->file('photoDB');
 
-            $nombre = time().$file->getClientOriginalName();
+            $nombre = time() . $file->getClientOriginalName();
 
-            $ruta = 'photo/'. $user->id .'/'.$nombre;
+            $ruta = 'photo/' . $user->id . '/' . $nombre;
 
             Storage::disk('public')->put($ruta,  \File::get($file));
             $user->photoDB = $ruta;
@@ -137,28 +136,28 @@ class UserController extends Controller
 
         $user->save();
 
-        return redirect()->route('users.list-user')->with('msj-success','Se actualizo el perfil de '.$user->fullname.'');
+        return redirect()->route('users.list-user')->with('msj-success', 'Se actualizo el perfil de ' . $user->fullname . '');
     }
 
-   /**
-    * Vista para editar perfil
-    *
-    * @return void
-    */
-   public function editProfile()
-   {
+    /**
+     * Vista para editar perfil
+     *
+     * @return void
+     */
+    public function editProfile()
+    {
+        $countries = Country::all()->where('id', 'name');
+        //    $timezone = Timezone::orderBy('list_utc','ASC')->get();
 
-    //    $timezone = Timezone::orderBy('list_utc','ASC')->get();
-    //    $countries = Country::orderBy('name','ASC')->get();
 
-       $user = Auth::user();
+        $user = Auth::user();
 
-       return view('users.profile')
-             ->with('user',$user);
-            //  ->with('countries',$countries)
-            //  ->with('timezone',$timezone)
+        return view('users.profile')
+            ->with('user', $user)
+            ->with('countries', $countries);
+        //  ->with('timezone',$timezone)
 
-   }
+    }
 
     /**
      * Funcion para actualizar perfil
@@ -170,7 +169,7 @@ class UserController extends Controller
     {
         $user = User::find(Auth::user()->id);
         $user->notify(new \App\Notifications\ProfileChange);
-         
+
 
         $msj = [
 
@@ -182,7 +181,7 @@ class UserController extends Controller
 
         $this->validate($request, $msj);
 
-        $fullname = $request->name .' '. $request->last_name;
+        $fullname = $request->name . ' ' . $request->last_name;
 
 
         $user->update($request->all());
@@ -190,9 +189,9 @@ class UserController extends Controller
         if ($request->hasFile('photoDB')) {
             $file = $request->file('photoDB');
 
-            $nombre = time().$file->getClientOriginalName();
+            $nombre = time() . $file->getClientOriginalName();
 
-            $ruta = 'photo/'. $user->id .'/'.$nombre;
+            $ruta = 'photo/' . $user->id . '/' . $nombre;
 
             Storage::disk('public')->put($ruta,  \File::get($file));
             $user->photoDB = $ruta;
@@ -203,8 +202,7 @@ class UserController extends Controller
 
         $user->save();
 
-        return redirect()->route('profile')->with('msj-success','Se actualizo tu perfil');
-
+        return redirect()->route('profile')->with('msj-success', 'Se actualizo tu perfil');
     }
 
     public function verifyUser(Request $request, $id)
@@ -219,8 +217,7 @@ class UserController extends Controller
 
         $user->save();
 
-        return redirect()->route('users.list-user')->with('msj-success','Se Verifico el usuario Exitosamente');
-
+        return redirect()->route('users.list-user')->with('msj-success', 'Se Verifico el usuario Exitosamente');
     }
 
     public function verificarUser($id)
@@ -228,7 +225,7 @@ class UserController extends Controller
         $user = User::find($id);
 
         return view('users.componenteUsers.admin.verify-user')
-        ->with('user',$user);    
+            ->with('user', $user);
     }
 
     /**
@@ -239,26 +236,25 @@ class UserController extends Controller
      */
     public function destroyUser($id)
     {
-      $user = User::find($id);
-      
-      $user->delete();
-      
-      return redirect()->route('users.list-user')->with('msj-success', 'Usuario '.$id.' Eliminado');
+        $user = User::find($id);
+
+        $user->delete();
+
+        return redirect()->route('users.list-user')->with('msj-success', 'Usuario ' . $id . ' Eliminado');
     }
 
     public function updateEstadoReinvertir(Request $request)
     {
         $user = Auth::user();
 
-        if($request->reinvertir == "capital"){
+        if ($request->reinvertir == "capital") {
             $user->reinvertir_capital = !$user->reinvertir_capital;
-        }else if($request->reinvertir == "comision"){
+        } else if ($request->reinvertir == "comision") {
             $user->reinvertir_comision = !$user->reinvertir_comision;
         }
 
         $user->save();
-       
+
         return back()->with('msj-success', 'estado de reinversion actualizado exitosamente');
     }
 }
-

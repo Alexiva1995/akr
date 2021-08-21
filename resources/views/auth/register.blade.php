@@ -196,8 +196,6 @@ $referred = DB::table('users')
 
                             </select>
 
-
-
                             @error('country')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
