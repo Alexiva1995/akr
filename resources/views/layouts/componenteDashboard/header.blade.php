@@ -9,17 +9,27 @@
     <a class="navbar-brand ml-4" href={{route('home')}}><img src="{{asset('assets/Diseño/DreamsBlue.svg')}}" alt="hola"></a>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ml-auto">
-            <li class="dropdown dropdown-user nav-item">
-                <a class="dropdown-toggle nav-link dropdown-user-link d-flex" href="#" data-toggle="dropdown">
+            <li class="nav-item m-auto px-2 borde">                
+                <a href="#" class="user-nav d-sm-flex d-none">
+                    <span class="user-name text-white m-auto"><i class="far fa-question-circle"></i>Ayuda</span>                
+                </a>                       
+            </li>
+            <li class="nav-item m-auto px-2 borde">                
+                <a href="#" class="user-nav d-sm-flex d-none">
+                    <span class="user-name text-white m-auto"><i class="far fa-bell"></i>Notificaciones</span>                
+                </a>                       
+            </li>
+            <li class="nav-item pl-2">
+                <div class="user-header d-flex">
                     @if (Auth::user()->photoDB != NULL)
                         <span>
-                            <img class="rounded-circle" src="{{asset('storage/'.Auth::user()->photoDB)}}"alt="" height="25" width="25">
+                            <img class="rounded-circle" src="{{asset('storage/'.Auth::user()->photoDB)}}"alt="">
                             &nbsp;
                         </span>
                     @else
                         <span>                        
                             <img class="round" src="{{asset('assets/img/sistema/favicon.png')}}"
-                                alt="{{ Auth::user()->fullname }}" height="25" width="25">
+                                alt="{{ Auth::user()->fullname }}">
                                 &nbsp;
                         </span>
                     @endif 
@@ -30,15 +40,14 @@
                             <span class="user-name text-white m-auto">{{Auth::user()->fullname}}</span>
                         @endif
                     </div>                       
-                </a>
-                @if (session('impersonated_by'))
+                </div>
+                {{-- @if (session('impersonated_by'))
                     <div class="dropdown-menu dropdown-menu-right">                
                         <a class="dropdown-item" href="{{ route('impersonate.stop') }}">
                             <i class="feather icon-log-in"></i> Volver a mi Usuario
                         </a>    
                     </div>
-                @endif                                
-
+                @endif                                 --}}
             </li>
         </ul>
     </div>
