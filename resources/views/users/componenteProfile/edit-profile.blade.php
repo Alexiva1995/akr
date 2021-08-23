@@ -123,14 +123,6 @@
                 </div>
             </div>
         </div>
-
-
-        <div class="col-12">
-            <div class="form-group">
-                <label for="account-api" id="form-label">Billetera</label>
-                <input type="text" id="names" class="form-control" name="wallet_address" value="{{ $user->wallet_address }}">
-            </div>
-        </div>
     </div>
     </div>
 
