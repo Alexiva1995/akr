@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\WalletController;
 use App\Models\User;
 use App\Models\Wallet;
@@ -211,6 +212,7 @@ Route::prefix('dashboard')->middleware('menu', 'auth', /*'verified'*/)->group(fu
         
     });
     Route::get('dataGrafica', 'HomeController@dataGrafica')->name('dataGrafica');
+    Route::get('Historial-login', 'HomeController@logLogin')->name('logLogin');
 });
 Route::post('ProfileChange', 'UserController@ProfileChange')->name('ProfileChange');
 Route::post('withdrawal', 'LiquidactionController@ProfileChange')->name('withdrawal');
