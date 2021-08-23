@@ -194,7 +194,6 @@
         </div>
 
 
-
         <div class="col-12  justify-content-start mt-2 mb-2">
             <button type="submit" data-toggle="modal" data-target="#staticBackdrop" id="send" class="btn  col-12 mr-sm-1  waves-effect waves-light">GUARDAR</button>
         </div>

@@ -14,7 +14,6 @@
         margin-top: 25%;
     }
 
-
     input:focus~.floating-label,
     input:not(:focus):valid~.floating-label {
 
@@ -79,6 +78,14 @@
         color: white;
     }
 
+
+    .Captcha {
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: center;
+        align-content: space-around;
+
+    }
 </style>
 
 @endpush
@@ -293,36 +300,35 @@ $referred = DB::table('users')
                             Acepto las políticas de manejo de informacion de <span>Venture Capital Association</span>
                         </p>
                     </fieldset>
-                    <div class="captchat form-group row d-flex ml-5">
-                        <div class="col-10">
-                            <div class="form-group ml-3" id="Captcha">
+
+                    <div>
+                        <div>
+                            <div class="Captcha form-group" id="Captcha">
                                 {!! NoCaptcha::renderJs('es', false, 'recaptchaCallback') !!}
                                 {!! NoCaptcha::display() !!}
                             </div>
-
                         </div>
                     </div>
-
-
 
                     <button type="submit" class="btn bg-fucsia text-white btn-block btn-login">
                         {{ __('Registrate') }}
                     </button>
             </div>
+
+            <div class="col-12">
+                <p class="text-center">
+                    <a href="{{ route('login') }}" class="registrate">
+                        ¿Ya tienes una cuenta? <span>Inicia sesión</span>
+                    </a>
+                </p>
+            </div>
+            </form>
+
         </div>
-        <div class="col-12">
-            <p class="text-center">
-                <a href="{{ route('login') }}" class="registrate">
-                    ¿Ya tienes una cuenta? <span>Inicia sesión</span>
-                </a>
-            </p>
-        </div>
-        </form>
 
     </div>
 
     </div>
-
     </div>
     </div>
 

@@ -111,45 +111,7 @@
         }
     }
 
-    #Captcha {
-        display: flex;
-        flex-flow: row wrap;
-        justify-content: center;
-        align-content: space-around;
 
-    }
-
-    @media (max-width: 800px) {
-        #Captcha {
-            max-width: 75%;
-            flex: 0 1 30%;
-        }
-    }
-
-
-    @media (max-width: 380px) {
-        #Captcha {
-            max-width: 35%;
-            flex: 0 1 30%;
-
-        }
-    }
-
-    @media (max-width: 330px) {
-        #Captcha {
-            max-width: 20%;
-            flex: 0 1 30%;
-        }
-    }
-
-
-    @media (max-width: 335px) {
-        #Captcha {
-            max-width: 35%;
-            flex: 0 1 30%;
-            margin: 0px 10px 0px 10px;
-        }
-    }
 
     .container {
 
