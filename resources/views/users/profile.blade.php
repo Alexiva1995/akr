@@ -56,7 +56,7 @@
     #background {
         background: #0F1522;
         border-radius: 8px;
-        max-height: 400px;
+        max-height: 380px;
     }
 
     .list-group-item {
@@ -67,12 +67,11 @@
         color: #FFFFFF;
 
     }
-    #background2{
+
+    #background2 {
         background: #0F1522;
         border-radius: 8px;
     }
-
-   
 </style>
 
 <h1 class="text-white">Perfil</h1>
@@ -107,14 +106,10 @@
                             <div class="card-body">
                                 <div class="tab-content">
 
-                                    <div role="tabpanel" class="tab-pane active" id="account-vertical-general" aria-labelledby="account-pill-general" aria-expanded="true">
-
-
+                                  
                                         @include('users.componenteProfile.edit-profile')
 
                                     </div>
-        <!--
-                                    <div role="tabpanel" class="tab-pane" id="account-vertical-pass" aria-labelledby="account-pill-pass" aria-expanded="false">
 
                                         @include('users.componenteProfile.changePassword')
 

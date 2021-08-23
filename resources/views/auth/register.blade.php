@@ -72,6 +72,10 @@
         margin-top: 10%;
         margin-bottom: 10%;
     }
+    #option{
+           background-color: black;
+           color: white;
+       }
 </style>
 
 @endpush
@@ -196,8 +200,6 @@ $referred = DB::table('users')
 
                             </select>
 
-
-
                             @error('country')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -264,8 +266,6 @@ $referred = DB::table('users')
 
                         <div class="form-group col-md-6">
                             <input style="  margin-top: 8px;" id="password-confirm" type="password" class=" form-control" name="password_confirmation" required autocomplete="new-password" placeholder="">
-
-
 
                             <span class="floating-label "><i class="fas fa-lock"></i> confirme su contraseña </span>
 
