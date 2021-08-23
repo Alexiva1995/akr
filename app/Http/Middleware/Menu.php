@@ -133,7 +133,7 @@ class Menu
             // Retiros
             'Retiros' => [
                 'submenu' => 0,
-                'ruta' => route('retirar'),
+                'ruta' => route('withdraw.Retiros'),
                 'blank' => '', // si es para una pagina diferente del sistema solo coloquen _blank
                 'icon' => 'feather icon-download-cloud',
                 'complementoruta' => '',

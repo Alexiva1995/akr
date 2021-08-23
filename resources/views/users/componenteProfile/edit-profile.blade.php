@@ -18,7 +18,53 @@
             height: 4px;
             background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
         }
+
+        #selec {
+            background: rgba(196, 196, 196, 0.08);
+            border: 2px solid rgba(0, 246, 225, 0.77);
+            box-sizing: border-box;
+            border-radius: 4px;
+            color: #fff;
+            font-size: 13px;
+        }
+
+        .modal-content {
+            background: url("{{asset('assets/img/sistema/fondo.jpg')}}");
+        }
+
+
+        .modal-body,
+        .modal-footer {
+
+            background: linear-gradient(90deg, rgba(0, 246, 225, 0.77) 9.27%, rgba(19, 98, 182, 0.78) 92.53%);
+
+            font-family: Roboto;
+            font-style: normal;
+            font-weight: 500;
+            font-size: 25px;
+            line-height: 18px;
+
+            /* or 50% */
+            letter-spacing: -0.2px;
+
+            color: #0C0C0C;
+
+
+        }
+
+        #acep {
+
+            background: #21292C;
+            border: 1px solid rgba(0, 246, 225, 0.9);
+            box-sizing: border-box;
+            border-radius: 5px;
+            color:#FFF ;
+            
+        }
     </style>
+
+
+
 
     @php
     $countries = DB::table('countries')->get();
@@ -32,7 +78,24 @@
     ->first();
     @endphp
     @endif
-    
+
+
+<!--
+    <div class="modal" id="exampleModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content" >
+                <div class="modal-body">
+                    <p class="text-center mt-3">Cambios guardados con éxito.</p>
+                </div>
+                <div class="modal-footer">
+
+                    <button id="acep" type="button" class="col-5 btn" data-dismiss="modal">Aceptar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    -->
+
     <div class="row">
         <div class="col-12 ">
             <div class="form-group">
@@ -96,7 +159,6 @@
             </div>
         </div>
 
-
         <div class="col-12">
             <div class="form-group">
                 <label for="account-api" id="form-label">Billetera</label>
@@ -150,10 +212,10 @@
 
             <div class="col-4 ">
                 <label class="required" id="form-label" for="whatsapp">País</label>
-                <select id="names" type="text" class="form-control @error('country') is-invalid @enderror" name="country" required autocomplete="country" autofocus>
+                <select id="selec" type="text" class="form-control @error('country') is-invalid @enderror" name="country" required autocomplete="country" autofocus>
                     <option selected disabled readonly>País</option>
                     @foreach($countries as $country)
-                    <option value="{{$country->id}}">{{$country->name}}</option>
+                    <option id="fondo-c" value="{{$country->id}}">{{$country->name}}</option>
                     @endforeach
                 </select>
 
@@ -167,7 +229,7 @@
 
 
         <div class="col-12  justify-content-start mt-2 mb-2">
-            <button type="submit" id="send" class="btn  col-12 mr-sm-1  waves-effect waves-light">GUARDAR</button>
+            <button type="submit" data-toggle="modal" data-target="#exampleModal" id="send" class="btn  col-12 mr-sm-1  waves-effect waves-light">GUARDAR</button>
         </div>
 
         <hr class="hr-1">
