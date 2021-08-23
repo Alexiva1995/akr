@@ -79,11 +79,6 @@
         color: white;
     }
 
-    #Captcha {
-        background: rgba(3, 201, 245, 0.3);
-        border: 3px solid #00B3A2;
-
-    }
 </style>
 
 @endpush
