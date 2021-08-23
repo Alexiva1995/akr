@@ -40,31 +40,33 @@
         background-color: rgba(0, 0, 0, 0.3);
     }
 
-    @media screen and (max-width: 650px){
-    .title,.subtitle{
-        margin-left: 15px;
-        margin-right: 6px;
-      
-    }
+    @media screen and (max-width: 650px) {
+
+        .title,
+        .subtitle {
+            margin-left: 15px;
+            margin-right: 6px;
+
+        }
     }
 
-    @media screen and (max-width: 650px){
-    .title,{
-     font-size: 25px;
-      
-    }
+    @media screen and (max-width: 650px) {
+
+        .title,
+            {
+            font-size: 25px;
+
+        }
     }
 
-    @media screen and (max-width: 650px){
-        .subtitle{
-     font-size: 20px;
-      
-    }
+    @media screen and (max-width: 650px) {
+        .subtitle {
+            font-size: 20px;
+
+        }
     }
 
-  
-
-    .cardd{
+    .cardd {
         background: rgba(0, 0, 0, 0.75);
         border: 1px solid #000000;
         box-sizing: border-box;
@@ -72,10 +74,11 @@
         margin-top: 10%;
         margin-bottom: 10%;
     }
-    #option{
-           background-color: black;
-           color: white;
-       }
+
+    #option {
+        background-color: black;
+        color: white;
+    }
 </style>
 
 @endpush

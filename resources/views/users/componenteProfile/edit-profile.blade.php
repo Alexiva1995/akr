@@ -4,25 +4,47 @@
 
 
     <style>
-        #id {
-            background: rgba(196, 196, 196, 0.08);
-            border: 2px solid rgba(0, 246, 225, 0.77);
-            box-sizing: border-box;
-            border-radius: 4px;
-            color: #fff;
-            font-size: 12px;
+        #modal {
+            margin-left: 90px;
         }
 
-        hr.hr-1 {
-            border: 0;
-            height: 4px;
-            background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+        #text {
+            background: url("{{asset('assets/img/sistema/fondo.jpg')}}");
+            border-radius: 9px;
         }
-       #option{
-           background-color: black;
-           color: white;
-       }
+
+        #idk {
+
+            background: linear-gradient(90deg, rgba(0, 246, 225, 0.77) 9.27%, rgba(19, 98, 182, 0.78) 92.53%);
+            opacity: 0.93;
+            border-radius: 9px;
+        }
+
+        #texto {
+            font-family: Roboto;
+            font-style: normal;
+            font-weight: 500;
+            font-size: 20px;
+            line-height: 18px;
+            letter-spacing: -0.2px;
+            color: #0C0C0C;
+
+
+        }
+
+        #bnt {
+
+            background: #21292C;
+            border: 1px solid rgba(0, 246, 225, 0.9);
+            box-sizing: border-box;
+            border-radius: 5px;
+            color: #FFFFFF;
+
+
+        }
     </style>
+
+
 
     @php
     $countries = DB::table('countries')->get();
@@ -36,7 +58,8 @@
     ->first();
     @endphp
     @endif
-    
+
+
     <div class="row">
         <div class="col-12 ">
             <div class="form-group">
@@ -171,8 +194,9 @@
         </div>
 
 
+
         <div class="col-12  justify-content-start mt-2 mb-2">
-            <button type="submit" id="send" class="btn  col-12 mr-sm-1  waves-effect waves-light">GUARDAR</button>
+            <button type="submit" data-toggle="modal" data-target="#staticBackdrop" id="send" class="btn  col-12 mr-sm-1  waves-effect waves-light">GUARDAR</button>
         </div>
 
         <hr class="hr-1">
@@ -188,3 +212,22 @@
 
         </div>
 </form>
+
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content " style="height:190px;">
+
+            <div class="card text-center mb-4" id="text">
+                <div class="card-body" id="idk">
+                    <h5 class="card-title mb-3 mt-4" id="texto">Cambios Guardados Con Éxito</h5>
+
+                    <a href="#" data-dismiss="modal" id="bnt" class="btn  col-7">Aceptar</a>
+                </div>
+
+            </div>
+
+
+        </div>
+    </div>
