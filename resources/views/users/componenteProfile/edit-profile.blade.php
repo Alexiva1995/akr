@@ -27,43 +27,7 @@
             color: #fff;
             font-size: 13px;
         }
-
-        .modal-content {
-            background: url("{{asset('assets/img/sistema/fondo.jpg')}}");
-        }
-
-
-        .modal-body,
-        .modal-footer {
-
-            background: linear-gradient(90deg, rgba(0, 246, 225, 0.77) 9.27%, rgba(19, 98, 182, 0.78) 92.53%);
-
-            font-family: Roboto;
-            font-style: normal;
-            font-weight: 500;
-            font-size: 25px;
-            line-height: 18px;
-
-            /* or 50% */
-            letter-spacing: -0.2px;
-
-            color: #0C0C0C;
-
-
-        }
-
-        #acep {
-
-            background: #21292C;
-            border: 1px solid rgba(0, 246, 225, 0.9);
-            box-sizing: border-box;
-            border-radius: 5px;
-            color:#FFF ;
-            
-        }
     </style>
-
-
 
 
     @php
@@ -78,23 +42,6 @@
     ->first();
     @endphp
     @endif
-
-
-<!--
-    <div class="modal" id="exampleModal" tabindex="-1">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content" >
-                <div class="modal-body">
-                    <p class="text-center mt-3">Cambios guardados con éxito.</p>
-                </div>
-                <div class="modal-footer">
-
-                    <button id="acep" type="button" class="col-5 btn" data-dismiss="modal">Aceptar</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    -->
 
     <div class="row">
         <div class="col-12 ">
@@ -161,7 +108,7 @@
 
         <div class="col-12">
             <div class="form-group">
-                <label for="account-api" id="form-label">Billetera</label>
+                <label for="account-api" id="form-label">Billetera<span style="color: red;"> *</span></label>
                 <input type="text" id="names" class="form-control" name="wallet_address" value="{{ $user->wallet_address }}">
             </div>
         </div>
@@ -188,7 +135,7 @@
     <div class="container">
         <div class="row align-items-start">
             <div class="col-4">
-                <label class="required" id="form-label" for="whatsapp">Ciudad</label>
+                <label class="required" id="form-label" for="whatsapp">Ciudad<span style="color: red;"> *</span></label>
                 <input id="names" type="text" class="form-control @error('city') is-invalid @enderror" name="city" autocomplete="city" autofocus placeholder="" value="{{ old('city') }}">
 
                 @error('city')
@@ -200,7 +147,7 @@
 
 
             <div class="col-4">
-                <label class="required" id="form-label" for="whatsapp">Estado</label>
+                <label class="required" id="form-label" for="whatsapp">Estado<span style="color: red;"> *</span></label>
                 <input id="names" type="text" class=" form-control @error('state') is-invalid @enderror" name="state" autocomplete="state" autofocus placeholder="" value="{{ old('state') }}">
 
                 @error('state')
@@ -211,7 +158,7 @@
             </div>
 
             <div class="col-4 ">
-                <label class="required" id="form-label" for="whatsapp">País</label>
+                <label class="required" id="form-label" for="whatsapp">País<span style="color: red;"> *</span></label>
                 <select id="selec" type="text" class="form-control @error('country') is-invalid @enderror" name="country" required autocomplete="country" autofocus>
                     <option selected disabled readonly>País</option>
                     @foreach($countries as $country)
