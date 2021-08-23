@@ -19,7 +19,7 @@
             </button>
         </div>
     </div>
-    <div class="container bg-image">
+    <div class="container bg-image2">
         <div class="row py-1 bg-color">
             {{-- Seccion principal --}}
             <div class="col-12">

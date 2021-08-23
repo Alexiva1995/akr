@@ -12,7 +12,7 @@
             </button>
         </div>
     </div>
-    <div class="container bg-image">
+    <div class="container bg-image2">
         <div class="row py-1 bg-color">
             <div class="col-md-12 retiro text-center text-white">
                 <h1>Retiro solicitado </h1>
