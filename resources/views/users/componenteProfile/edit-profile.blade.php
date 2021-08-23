@@ -126,7 +126,6 @@
     </div>
     </div>
 
-
     <div class="media">
         <div class="custom-file mt-1">
             <label class="custom-file-label" id="id" for="photoDB">Seleccione su
@@ -141,7 +140,6 @@
         </div>
     </div>
     <br>
-
 
     <div class="container">
         <div class="row align-items-start">
