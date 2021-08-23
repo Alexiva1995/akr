@@ -3911,4 +3911,42 @@ tr.group {
   color: rgba(5, 156, 189, 1);
 }
 
+.bg-image{
+  background-image: url('../../../assets/img/sistema/fondo_tree.png');
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  border-radius: 8px;
+}
+
+.bg-color{
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.66) 0%, #017C98 100%);  border-radius: 8px;
+  /* width: 100%; */
+  opacity: 0.9;
+}
+
+.retiro{
+  margin: 10% 0;
+}
+
+.retiro h1{
+  color: white;
+  /* font-weight: 100; */
+  font-size: 4rem;
+}
+
+.retiro p, strong{
+  font-size: 1.2rem;
+}
+
+.btn.btn-retiros{
+  background-color: #00C8F4;
+  margin: auto;
+  padding: 5px 20px;
+  color: black;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
 
