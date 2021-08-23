@@ -72,6 +72,10 @@
         margin-top: 10%;
         margin-bottom: 10%;
     }
+    #option{
+           background-color: black;
+           color: white;
+       }
 </style>
 
 @endpush

@@ -18,6 +18,10 @@
             height: 4px;
             background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
         }
+       #option{
+           background-color: black;
+           color: white;
+       }
     </style>
 
     @php
@@ -154,7 +158,7 @@
                 <select id="names" type="text" class="form-control @error('country') is-invalid @enderror" name="country" required autocomplete="country" autofocus>
                     <option selected disabled readonly>País</option>
                     @foreach($countries as $country)
-                    <option value="{{$country->id}}">{{$country->name}}</option>
+                    <option id="option" value="{{$country->id}}">{{$country->name}}</option>
                     @endforeach
                 </select>
 
