@@ -52,8 +52,7 @@
 
     @media screen and (max-width: 650px) {
 
-        .title,
-            {
+        .title {
             font-size: 25px;
 
         }
@@ -78,6 +77,12 @@
     #option {
         background-color: black;
         color: white;
+    }
+
+    #Captcha {
+        background: rgba(3, 201, 245, 0.3);
+        border: 3px solid #00B3A2;
+
     }
 </style>
 
@@ -126,7 +131,7 @@ $referred = DB::table('users')
             </div>
             @endif
 
-            <div id="id" class="card-body ">
+            <div id="" class="card-body ">
                 <form method="POST" action="{{ route('register') }}">
                     @csrf
 
@@ -300,23 +305,28 @@ $referred = DB::table('users')
                                 {!! NoCaptcha::display() !!}
                             </div>
 
-                            <button type="submit" class="btn bg-fucsia text-white btn-block btn-login">
-                                {{ __('Registrate') }}
-                            </button>
                         </div>
                     </div>
-                    <div class="col-12">
-                        <p class="text-center">
-                            <a href="{{ route('login') }}" class="registrate">
-                                ¿Ya tienes una cuenta? <span>Inicia sesión</span>
-                            </a>
-                        </p>
-                    </div>
-                </form>
 
+
+
+                    <button type="submit" class="btn bg-fucsia text-white btn-block btn-login">
+                        {{ __('Registrate') }}
+                    </button>
             </div>
-
         </div>
+        <div class="col-12">
+            <p class="text-center">
+                <a href="{{ route('login') }}" class="registrate">
+                    ¿Ya tienes una cuenta? <span>Inicia sesión</span>
+                </a>
+            </p>
+        </div>
+        </form>
+
+    </div>
+
+    </div>
 
     </div>
     </div>

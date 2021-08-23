@@ -116,18 +116,8 @@
         flex-flow: row wrap;
         justify-content: center;
         align-content: space-around;
-        width: 50%;
-    }
-
-    #Captcha {
-        display: flex;
-        flex-flow: row wrap;
-        justify-content: center;
-        align-content: space-around;
-        width: 80%;
 
     }
-
 
     @media (max-width: 800px) {
         #Captcha {
