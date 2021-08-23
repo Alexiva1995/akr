@@ -63,6 +63,16 @@ class User extends Authenticatable /*implements MustVerifyEmail*/
     }
 
     /**
+     * Permite obtener todas las  de saldo realizadas
+     *
+     * @return void
+     */
+    public function getCrypto()
+    {
+        return $this->hasMany('App\Models\Crypto_Value', 'iduser');
+    }
+
+    /**
      * Permite obtener todas la liquidaciones que tengo
      *
      * @return void

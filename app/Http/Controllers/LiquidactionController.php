@@ -11,7 +11,8 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\View;
 use App\Http\Controllers\WalletController;
-use App\Models\cryptos; 
+use App\Models\cryptos;
+use App\Models\LiquidationCrypto;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -24,6 +25,7 @@ class LiquidactionController extends Controller
     function __construct()
     {
         $this->walletController = new WalletController();
+        $this->LiquidationCrypto = new LiquidationCryptoController();
     }
 
     /**
@@ -534,7 +536,7 @@ class LiquidactionController extends Controller
     }
 
 
-    public function wallet()
+    public function wallet($billetera = null)
     {
 
         try {
@@ -560,7 +562,7 @@ class LiquidactionController extends Controller
                     'monto_bruto' => $bruto,
                     'feed' => $feed,
                     'hash',
-                    'wallet_used' => $user->wallet_address,
+                    'wallet_used' => $billetera? $billetera : $user->wallet_address,
                     'status' => 0,
                 ];
 
@@ -576,14 +578,61 @@ class LiquidactionController extends Controller
                     ]);
                 }
                     
-                $user = User::find(Auth::user()->id);
-                 $user->notify(new \App\Notifications\withdrawal);
-                return redirect()->back()->with('msj-success', 'Liquidaciones Generadas Exitosamente');
+                // $user = User::find(Auth::user()->id);
+                //  $user->notify(new \App\Notifications\withdrawal);
+                // return redirect()->back()->with('msj-success', 'Liquidaciones Generadas Exitosamente');
+                // return view('withdraw.RetiroExitoso');
+                // return 1;
             }
         } catch (\Throwable $th) {
             Log::error('Liquidaction - generarLiquidation -> Error: ' . $th);
             abort(403, "Ocurrio un error, contacte con el administrador");
         }
     }
+
+    public function retirar(){
+        return view('withdraw.Retiros');
+    }
+
+    public function retiros(Request $request){
+        
+        $validate = $request->validate([
+            'tipo' => 'required|string',
+            'billetera' => 'required|string'
+        ]);
+
+
+        try {
+            if ($validate) {
+                if($request->tipo == "USDT"){
+                    $saldo = Auth::user()->getWallet->where('status', 0)->sum('monto');  
+                    if($saldo < 70){
+                        return redirect()->back()->with('msj-warning', 'El monto mínimo para retirar son $70, no llegas a ese monto');
+                    }else{
+                        $this->wallet($request->billetera);
+                            return view('withdraw.RetiroExitoso');
+                    }
+                }else{
+                    $monedas = Auth::user()->getCrypto->where('status', 0)->sum('cantidad');
+                    if($monedas <= 0){
+                        return redirect()->back()->with('msj-warning', 'No tienes monedas disponibles para retirar');
+                    }else{
+                        $this->LiquidationCrypto->CryptoValue($request->billetera);
+                        return view('withdraw.RetiroExitoso');
+                    }
+                }
+
+            }
+        } catch (\Throwable $th) {
+            Log::error('Liquidaction - retiros -> Error: ' . $th);
+            abort(403, "Ocurrio un error, contacte con el administrador");
+        }
+
+    }
+
+    public function retiroExitoso(){
+        return view('withdraw.RetiroExitoso');
+    }
+
 
 }

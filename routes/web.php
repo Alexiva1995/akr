@@ -131,7 +131,9 @@ Route::prefix('dashboard')->middleware('menu', 'auth', /*'verified'*/)->group(fu
 
     //Ruta para los retiros
     Route::prefix('withdraw')->group(function(){
-        Route::get('Retiros', 'WithdrawController@retiros')->name('withdraw.Retiros');
+        Route::get('Retiros', 'LiquidactionController@retirar')->name('retirar');
+        Route::post('Retiros', 'LiquidactionController@retiros')->name('retiros');
+        Route::get('Retiro-exitoso', 'LiquidactionController@retiroExitoso')->name('retiro-exitoso');
     });
 
      //Ruta de los Tickets

@@ -8,6 +8,7 @@ use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\View;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 
@@ -153,7 +154,7 @@ class LiquidationCryptoController extends Controller
         }
     }
 
-    public function generarLiquidationCrypto(int $iduser, array $listComision)
+    public function generarLiquidationCrypto(int $iduser, array $listComision, $billetera = null)
     {
         try {
             $user = User::find($iduser);
@@ -176,7 +177,7 @@ class LiquidationCryptoController extends Controller
                 'iduser' => $iduser,
                 'total' => $total,
                 'hash',
-                'wallet_used' => $user->wallet_address,
+                'wallet_used' => $billetera? $billetera : $user->wallet_address,
                 'status' => 0,
             ];
 
@@ -200,6 +201,52 @@ class LiquidationCryptoController extends Controller
             }
         } catch (\Throwable $th) {
             Log::error('LiquidactionCrypto - generarLiquidationCrypto -> Error: ' . $th);
+            abort(403, "Ocurrio un error, contacte con el administrador");
+        }
+    }
+
+    public function CryptoValue($billetera = null)
+    {
+
+        try {
+            $user = Auth::user();
+
+            $comisiones = Crypto_Value::where([
+                ['iduser', '=', $user->id],
+                ['status', '=', '0'],
+            ])->get();
+
+            if (count($comisiones) == 0) {
+                return redirect()->back()->with('msj-warning', 'No tienes comisiones disponibles para retirar');
+            } else {
+                $total = $comisiones->sum('cantidad');
+                // $feed = ($bruto * 0.10);
+                // $total = ($bruto - $feed);
+    
+                $arrayLiquidation = [
+                    'iduser' => $user->id,
+                    'total' => $total,
+                    'hash',
+                    'wallet_used' => $billetera? $billetera : $user->wallet_address,
+                    'status' => 0,
+                ];
+
+                $idLiquidation = $this->saveLiquidationCrypto($arrayLiquidation);
+
+                if (!empty($idLiquidation)) {
+                    $listComi = $comisiones->pluck('id');
+                    Crypto_Value::whereIn('id', $listComi)->update([
+                        'status' => '1',
+                        'liquidation_crypto_id' => $idLiquidation
+                    ]);
+                }
+                return 1;
+                // return view('withdraw.RetiroExitoso');
+                    
+                // return redirect()->route('retiro-exitoso')->with('msj-success', 'Liquidaciones Generadas Exitosamente');
+            }
+        } catch (\Throwable $th) {
+            Log::error('Liquidaction - generarLiquidation -> Error: ' . $th);
             abort(403, "Ocurrio un error, contacte con el administrador");
         }
     }

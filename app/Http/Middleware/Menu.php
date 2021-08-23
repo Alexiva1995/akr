@@ -68,7 +68,7 @@ class Menu
                 'complementoruta' => '',
                 'submenus' => [
                     [
-                        'name' => 'Arbol Binario',
+                        'name' => 'Arbol de referidos',
                         'blank' => '', // si es para una pagina diferente del sistema solo coloquen _blank
                         'ruta' => route('genealogy_type', 'matriz'),
                         'complementoruta' => ''
@@ -133,7 +133,7 @@ class Menu
             // Retiros
             'Retiros' => [
                 'submenu' => 0,
-                'ruta' => route('withdraw.Retiros'),
+                'ruta' => route('retirar'),
                 'blank' => '', // si es para una pagina diferente del sistema solo coloquen _blank
                 'icon' => 'feather icon-download-cloud',
                 'complementoruta' => '',
@@ -254,7 +254,7 @@ class Menu
                         'complementoruta' => '',
                     ],
                     [
-                        'name' => 'Arbol Binario',
+                        'name' => 'Arbol de referidos',
                         'blank' => '', // si es para una pagina diferente del sistema solo coloquen _blank
                         'ruta' => route('genealogy_type', 'matriz'),
                         'complementoruta' => ''
