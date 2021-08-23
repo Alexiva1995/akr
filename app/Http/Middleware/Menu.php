@@ -200,7 +200,7 @@ class Menu
             // Historial de inicio de sesión
             'Historial inicio sesión' => [
                 'submenu' => 0,
-                'ruta' => '',
+                'ruta' => route('logLogin'),
                 'blank' => '', // si es para una pagina diferente del sistema solo coloquen _blank
                 'icon' => 'feather icon-info',
                 'complementoruta' => '',
