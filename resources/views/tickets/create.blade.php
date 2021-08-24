@@ -14,7 +14,6 @@
                 referido: {{Auth::user()->id}} <i class="fa fa-copy"></i></button>
         </div>
     </div>
-
 </div>
 
 <section id="basic-vertical-layouts">

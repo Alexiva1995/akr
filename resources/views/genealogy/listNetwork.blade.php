@@ -1,5 +1,5 @@
 @extends('layouts.dashboard')
-
+@include('layouts.componenteDashboard.linkReferido')
 @section('title', 'Listado '.$title)
 
 {{-- contenido --}}

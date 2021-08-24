@@ -1,3 +1,18 @@
+<div class="container">
+    <div class="row">
+        <div class="col-9">
+            <h1 class="text-white">Lista de Referidos</h1>
+        </div>
+
+        <div class="col-3">
+            <button class="btn mb-2 " style="background-color:#00C8F4;color: black;" onclick="getlink()">ID de
+                referido: {{Auth::user()->id}} <i class="fa fa-copy"></i></button>
+        </div>
+    </div>
+</div>
+
+
+
 <table style="border-radius: 8px 8px 0px 0px;" class=" w-100 nowrap scroll-horizontal-vertical  table-striped">
     <thead class="" id="thead">
         <tr class="text-center text-white">
@@ -8,10 +23,10 @@
             <th>Ingreso</th>
         </tr>
     </thead>
-    
+
     <tbody id="tvody">
         @foreach ($data as $item)
-        <tr  class="text-center" id="contend" >
+        <tr class="text-center" id="contend">
             <td>{{$item->name}}</td>
             <td>{{$item->email}}</td>
             <td>{{$item->montoInvertido()}}</td>
