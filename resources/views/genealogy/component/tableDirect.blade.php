@@ -1,6 +1,6 @@
-<table class="table w-100 nowrap scroll-horizontal-vertical myTable table-striped">
-    <thead class="">
-        <tr class="text-center text-white bg-purple-alt2">
+<table style="border-radius: 8px 8px 0px 0px;" class=" w-100 nowrap scroll-horizontal-vertical  table-striped">
+    <thead class="" id="thead">
+        <tr class="text-center text-white">
             <th>Nombre</th>
             <th>Correo</th>
             <th>Invertido</th>
@@ -8,9 +8,9 @@
             <th>Ingreso</th>
         </tr>
     </thead>
-    <tbody>
+    <tbody id="tvody">
         @foreach ($data as $item)
-        <tr class="text-center">
+        <tr  class="text-center" id="contend" >
             <td>{{$item->name}}</td>
             <td>{{$item->email}}</td>
             <td>{{$item->montoInvertido()}}</td>
