@@ -235,3 +235,15 @@ hr.hr-1 {
    background-color: black;
    color: white;
 }
+
+#IDref {
+    background: #00B2A2;
+    border-radius: 5px;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 15px;
+    line-height: 23px;
+    color: #000000 !important;
+
+}

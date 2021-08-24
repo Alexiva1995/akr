@@ -2,28 +2,6 @@
 @include('layouts.componenteDashboard.linkReferido')
 @section('content')
 
-<style>
-
-#IDref {
-        background: #00B2A2;
-        border-radius: 5px;
-        font-family: Roboto;
-        font-style: normal;
-        font-weight: normal;
-        font-size: 15px;
-        line-height: 23px;
-        color: #000000 !important;
-
-    }
-    #boton-ticket{
-        border-radius: 5px;
-        font-family: Roboto;
-        font-style: normal;
-        font-weight: normal;
-        font-size: 15px;
-        line-height: 23px;
-    }
-</style>
 
 
 <div class="container">
