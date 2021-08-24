@@ -69,10 +69,7 @@
             </table>
         </div>
     </div>
-</div>
-</div>
-</div>
-</div>
+
 
 @endsection
 {{-- permite llamar a las opciones de las tablas --}}
