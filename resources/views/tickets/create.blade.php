@@ -30,19 +30,6 @@ border-radius: 8px;">
                             <div class="form-body">
                                 <div class="row">
 
-                                    <div class="col-6">
-                                        <label id="form-label" class="form-label" for="name"><b>Nombre</b></label>
-                                        <input class=" form-control" required type="text" id="names" name="name" rows="3" />
-
-                                    </div>
-
-                                    <div class="col-6">
-                                        <label id="form-label" class="form-label" for="email"><b>Direccion de correo electrónico</b></label>
-                                        <input class="form-control" required type="text" id="names" name="email" rows="3" />
-
-                                    </div>
-
-
 
                                     <div class="col-12">
                                         <label id="form-label" class="form-label mt-2" for="issue"><b>Sujeto</b></label>
@@ -60,18 +47,11 @@ border-radius: 8px;">
                                                 <div class="user-chats ps ps--active-y">
                                                     <div class="chats chat-thread">
 
-                                                        {{-- admin --}}
-                                                        <div class="chat chat-left">
-                                                            <div class="chat-avatar">
-                                                                <span class="avatar ">
-                                                                    <img src="{{asset('assets/img/sistema/favicon.png')}}" alt="avatar" height="40" width="40" style="background-color: black;">
-                                                                </span>
-                                                            </div>
-                                                            <div class="chat-body text-white">
-                                                                <div class="chat-content">
-                                                                    <div id="form-labels" class="email-admin mb-1">{{$admin}}</div>
-                                                                    <p id="form-labels">¿Cómo podemos ayudarle? </p>
-                                                                </div>
+
+
+                                                        <div class="chat-body text-white">
+                                                            <div class="chat-content">
+
                                                             </div>
                                                         </div>
                                                     </div>

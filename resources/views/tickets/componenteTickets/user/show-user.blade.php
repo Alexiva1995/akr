@@ -33,13 +33,7 @@ border-radius: 8px;">
                             <div class="form-body">
                                 <div class="row">
 
-                                    <div class="col-6">
-                                        <label class="form-label  mb-1" id="form-label" for="issue"><b>Nombre</b></label>
-                                        <input class="form-control" type="text" readonly id="names" name="issue" value="{{ $ticket->name }}" rows="3" />
-
-                                    </div>
-
-
+            
 
                                     <div class="col-6">
                                         <label class="form-label  mb-1" id="form-label" for="issue"><b>Sujeto</b></label>

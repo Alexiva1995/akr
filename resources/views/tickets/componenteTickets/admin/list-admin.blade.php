@@ -7,7 +7,7 @@
     <div class="col-md-8">
         <h1 class="text-white">Historial de Tickets</h1>
     </div>
-  
+
 </div>
 
 <br>
@@ -21,7 +21,7 @@
 
                     <tr class="text-center text-white ">
                         <th>ID</th>
-                        <th>Usuario</th>
+                        <th>Sujeto</th>
                         <th>Estado</th>
                         <th>Última Respuesta</th>
                         <th>Accion</th>
@@ -34,14 +34,14 @@
                     @foreach ($ticket as $item)
                     <tr class="text-center" id="contend">
                         <td># {{ $item->id}}</td>
-                        <td>{{ $item->getUser->fullname}}</td>
-                       
+                        <td>[Ticket #{{ $item->iduser}}] {{$item->issue}}</td>
+
 
                         @if ($item->status == '0')
-                            <td> <a class=" btn text-bold-600 text-white" style="background: rgba(0, 246, 225, 0.77);border-radius: 8px;">Abierto</a></td>
-                            @elseif($item->status == '1')
-                            <td> <a class=" btn  text-bold-600 text-white" style="background: rgba(246, 74, 0, 0.77);border-radius: 8px;">Cerrado</a></td>
-                            @endif
+                        <td> <a class=" btn text-bold-600 text-white" style="background: rgba(0, 246, 225, 0.77);border-radius: 8px;">Abierto</a></td>
+                        @elseif($item->status == '1')
+                        <td> <a class=" btn  text-bold-600 text-white" style="background: rgba(246, 74, 0, 0.77);border-radius: 8px;">Cerrado</a></td>
+                        @endif
 
                         <td>{{$item->send}}</td>
 

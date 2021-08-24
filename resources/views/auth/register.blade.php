@@ -78,6 +78,12 @@
         color: white;
     }
 
+    .g-recaptcha{
+
+        background: rgba(0, 0, 0, 0.75);
+        border: 1px solid #000000;
+        box-sizing: border-box;
+    }
 
     .Captcha {
         display: flex;
@@ -303,7 +309,7 @@ $referred = DB::table('users')
 
                     <div>
                         <div>
-                            <div class="Captcha form-group" id="Captcha">
+                            <div class="Captcha form-group" id="">
                                 {!! NoCaptcha::renderJs('es', false, 'recaptchaCallback') !!}
                                 {!! NoCaptcha::display() !!}
                             </div>
