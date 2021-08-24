@@ -1006,3 +1006,34 @@ Stack trace:
 #64 C:\\laragon\\www\\akr\\server.php(21): require_once('C:\\\\laragon\\\\www\\\\...')
 #65 {main}
 "} 
+[2021-08-24 14:58:25] local.ERROR: Command "optimiz" is ambiguous.
+Did you mean one of these?
+    optimize       Cache the framework bootstrap files
+    optimize:clear Remove the cached bootstrap files. {"exception":"[object] (Symfony\\Component\\Console\\Exception\\CommandNotFoundException(code: 0): Command \"optimiz\" is ambiguous.
+Did you mean one of these?
+    optimize       Cache the framework bootstrap files
+    optimize:clear Remove the cached bootstrap files. at /home/abraham/Documents/coding/akr/vendor/symfony/console/Application.php:723)
+[stacktrace]
+#0 /home/abraham/Documents/coding/akr/vendor/symfony/console/Application.php(255): Symfony\\Component\\Console\\Application->find('optimiz')
+#1 /home/abraham/Documents/coding/akr/vendor/symfony/console/Application.php(167): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#2 /home/abraham/Documents/coding/akr/vendor/laravel/framework/src/Illuminate/Console/Application.php(92): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#3 /home/abraham/Documents/coding/akr/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(129): Illuminate\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#4 /home/abraham/Documents/coding/akr/artisan(37): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#5 {main}
+"} 
+[2021-08-24 15:24:44] local.ERROR: There are no commands defined in the "migrete" namespace.
+
+Did you mean this?
+    migrate {"exception":"[object] (Symfony\\Component\\Console\\Exception\\NamespaceNotFoundException(code: 0): There are no commands defined in the \"migrete\" namespace.
+
+Did you mean this?
+    migrate at /home/abraham/Documents/coding/akr/vendor/symfony/console/Application.php:612)
+[stacktrace]
+#0 /home/abraham/Documents/coding/akr/vendor/symfony/console/Application.php(663): Symfony\\Component\\Console\\Application->findNamespace('migrete')
+#1 /home/abraham/Documents/coding/akr/vendor/symfony/console/Application.php(255): Symfony\\Component\\Console\\Application->find('migrete:fresh')
+#2 /home/abraham/Documents/coding/akr/vendor/symfony/console/Application.php(167): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#3 /home/abraham/Documents/coding/akr/vendor/laravel/framework/src/Illuminate/Console/Application.php(92): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#4 /home/abraham/Documents/coding/akr/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(129): Illuminate\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#5 /home/abraham/Documents/coding/akr/artisan(37): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#6 {main}
+"} 

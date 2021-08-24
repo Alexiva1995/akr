@@ -49,8 +49,8 @@ class LiquidactionController extends Controller
             if ($validate) {
 
                 cryptos::create([
-                    'porcentaje_de_cryptos' => (int)$request->porcentaje_de_monedas,
-                    'valor' => (int)$request->valor
+                    'porcentaje_de_cryptos' => (float)$request->porcentaje_de_monedas,
+                    'valor' => (float)$request->valor
 
                 ]);
 
