@@ -43,12 +43,11 @@
                             value="comision">
                         <label class="custom-control-label" for="customSwitch1"></label>
                         Generar Comisiones
-
                 @endif
 
                 <br>
 
-                <div class="d-flex justify-content-center mb-2 ">
+                <div class="d-flex justify-content-center mt-3 ">
                     @if (isset($user))
                         <a href="{{ route('users.list-user') }}" type="btn" class="btn btn-danger mr-2">Regresar</a>
                     @endif
