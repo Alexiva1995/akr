@@ -92,18 +92,18 @@
     var right = $(this).find('.progress-right .progress-circle');
 
     if (value > 0) {
-        if (value <= 50) {
+        if (value <= 100) {
         right.css('transform', 'rotate(' + percentageToDegrees(value) + 'deg)')
         } else {
         right.css('transform', 'rotate(180deg)')
-        left.css('transform', 'rotate(' + percentageToDegrees(value - 50) + 'deg)')
+        left.css('transform', 'rotate(' + percentageToDegrees(value - 100) + 'deg)')
         }
     }
 
   })
 
   function percentageToDegrees(percentage) {
-    return percentage / 100 * 360
+    return percentage / 200 * 360
   }
 </script>
 @endpush

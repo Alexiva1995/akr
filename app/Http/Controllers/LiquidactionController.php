@@ -634,5 +634,29 @@ class LiquidactionController extends Controller
         return view('withdraw.RetiroExitoso');
     }
 
+    public function historial()
+    {
+        if(Auth::user()->admin = 1){
+            $liq = Liquidaction::all();
+            $lidCrypto = LiquidationCrypto::all();
+        }else{
+            $liq = Liquidaction::where('iduser', Auth::user()->id)->get()->toArray();
+            $lidCrypto = Liquidaction::where('iduser', Auth::user()->id)->get()->toArray();
+        }
+
+        foreach($liq as $li){
+            $li->tipoLiquidacion = "USDT";
+        }
+
+        dd($liq);
+        
+        foreach($lidCrypto as $li){
+            $li->tipoLiquidacion = "DRM";
+        }
+
+        // $liquidaciones = $liq->merge($lidCrypto);
+        // dd($liquidaciones);
+    }
+
 
 }
