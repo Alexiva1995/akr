@@ -3949,4 +3949,19 @@ tr.group {
   font-weight: bold;
 }
 
+.grupo{
+  border: 2px solid #00C8F4;
+}
+
+.btn.btn-activo{
+  background-color: #00C8F4;
+  border-radius: 0;
+  color: black;
+}
+
+.btn.btn-inactivo:hover{
+  background-color: #00C8F4;
+  border-radius: 0;
+}
+
 
