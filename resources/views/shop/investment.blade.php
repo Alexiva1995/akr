@@ -34,8 +34,7 @@
 
                 <h2 class="text-center mt-3 text-white" id="total-a-pagar">Total a Pagar : $ <span
                         class="range-slider__value">70</span> USD</h2>
-                <p class="text-center mt-1" style="color: #00F6E1;">Debes realizar un pago de 8.000 USD para <br> poder
-                    activar tu plan.</p>
+                
 
                 @if (isset($user))
                     <input type="hidden" class="w-100" name="user" id="user" value="{{ $user->id }}" />
