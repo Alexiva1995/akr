@@ -3795,6 +3795,18 @@ tr.group {
   border-radius: 8px;
   width: 100%;
 }
+.btn-comprar{
+  box-sizing: border-box;
+  border-radius: 5px;
+  color: white;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 15px;
+  line-height: 22px;
+  letter-spacing: -0.3px;
+  padding: 5px 10px;
+}
 
 #card {
   background: linear-gradient(180deg, #12203C 0%, rgba(10, 16, 28, 0) 100%);
@@ -3812,7 +3824,7 @@ tr.group {
   font-style: normal;
   font-weight: bold;
   font-size: 18px;
-  line-height: 21px;
+  line-height: 32px;
   letter-spacing: -0.3px;
   padding: 5px 10px;
 }
