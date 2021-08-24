@@ -8,6 +8,7 @@
             <th>Ingreso</th>
         </tr>
     </thead>
+    
     <tbody id="tvody">
         @foreach ($data as $item)
         <tr  class="text-center" id="contend" >
