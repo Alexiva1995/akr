@@ -21,7 +21,6 @@
                 <p>La solicitud estara los días viernes de <strong>8 am a 6pm.</strong>
                     <br> El mínimo de retiro son 70 USD.
                     <br> Se cobrará el 10% del total a retirar.
-                    <br> Se cobrará el 10% del total a retirar.
                     <br> Las monedas las pueden retirar cualquier día de la semana,
                 </p>
                 <a href="#" class="btn btn-retiros col-md-4 col-sm-12 py-1 mt-1">Ver historial de pagos</a>

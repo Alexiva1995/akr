@@ -18,8 +18,8 @@ class CreateLiquidationCryptosTable extends Migration
             $table->bigInteger('iduser')->unsigned();
             $table->foreign('iduser')->references('id')->on('users');
             $table->double('total');
-            // $table->double('monto_bruto');
-            // $table->double('feed');
+            $table->double('monto_bruto')->nullable();
+            $table->double('feed')->nullable();
             $table->string('hash')->nullable();
             $table->string('wallet_used')->nullable();
             $table->tinyInteger('status');

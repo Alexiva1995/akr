@@ -20,7 +20,7 @@
         </div>
     </div>
     <div class="container bg-image2">
-        <div class="row py-1 bg-color">
+        <div class="row py-1 bg-color-tree">
             {{-- Seccion principal --}}
             <div class="col-12">
                 {{-- Seccion de información del usuario clickeado --}}

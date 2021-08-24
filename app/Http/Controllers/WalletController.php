@@ -379,6 +379,7 @@ class WalletController extends Controller
             } else {
                 $inversion->restante = $resta;
                 $inversion->ganacia += $cantidad;
+                $inversion->porcentaje_utilidad += ($porcentaje*100);
             }
             
             $data = [

@@ -128,33 +128,29 @@ class Menu
             // ],
             // Fin Negocio
 
-
-
-            // Retiros
+            // 'Retiros' => [
             'Retiros' => [
-                'submenu' => 0,
-                'ruta' => route('retirar'),
+                'submenu' => 1,
+                'ruta' => 'javascript:;',
                 'blank' => '', // si es para una pagina diferente del sistema solo coloquen _blank
                 'icon' => 'feather icon-download-cloud',
                 'complementoruta' => '',
-                'submenus' =>'',//[
-                    /*[
-                        'name' => 'Comisiones',
-                        'blank' => '', // si es para una pagina diferente del sistema solo coloquen _blank
-                        'ruta' => ('withdraw.Retiros'),
-                        'complementoruta' => ''
-                    ],
-
+                'submenus' => [
                     [
-                        'name' => 'AKR',
+                        'name' => 'Generar Retiro',
                         'blank' => '', // si es para una pagina diferente del sistema solo coloquen _blank
-                        'ruta' => (''),
+                        'ruta' => route('retirar'),
                         'complementoruta' => ''
                     ],
-
-
-                ],*/
-            ],
+                    [
+                        'name' => 'Historial de retiros',
+                        'blank' => '', // si es para una pagina diferente del sistema solo coloquen _blank
+                        // 'ruta' => route('historial'),
+                        'ruta' => route('retirar'),
+                        'complementoruta' => ''
+                    ],
+                ],
+            ],            
             // Fin De Retiros
 
             // Soporte

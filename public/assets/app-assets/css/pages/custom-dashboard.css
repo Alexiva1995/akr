@@ -68,8 +68,8 @@ background-color: #66FFCC !important;
 }
 .progresscircle .progress-left .progress-circle{
     left: 100%;
-    border-top-right-radius: 80px;
-    border-bottom-right-radius: 80px;
+    border-top-right-radius: 150px;
+    border-bottom-right-radius: 150px;
     border-left: 0;
     -webkit-transform-origin: center left;
     transform-origin: center left;

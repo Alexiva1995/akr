@@ -95,7 +95,9 @@ class HomeController extends Controller
             'ordenes' => $this->reportController->getOrdenes(10),
             'usuario' => Auth::user()->fullname,
             'rewards' => Wallet::where([['iduser', '=', $iduser], ['status', '=', '0']])->get()->sum('monto'),
-            'packages' => OrdenPurchases::where([['iduser', '=', $iduser]])->get()
+            'packages' => OrdenPurchases::where([['iduser', '=', $iduser]])->get(),
+            'porcentaje' => Inversion::where([['iduser', Auth::user()->id]])->sum('porcentaje_utilidad'),
+            'inversion' => Inversion::where([['iduser', Auth::user()->id]])->sum('invertido'),
         ];
 
         return $data;

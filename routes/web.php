@@ -135,6 +135,7 @@ Route::prefix('dashboard')->middleware('menu', 'auth', /*'verified'*/)->group(fu
         Route::get('Retiros', 'LiquidactionController@retirar')->name('retirar');
         Route::post('Retiros', 'LiquidactionController@retiros')->name('retiros');
         Route::get('Retiro-exitoso', 'LiquidactionController@retiroExitoso')->name('retiro-exitoso');
+        Route::get('Historial-de-retiros', 'LiquidactionController@historial')->name('historial');
     });
 
      //Ruta de los Tickets
