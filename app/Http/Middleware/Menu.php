@@ -176,19 +176,43 @@ class Menu
 
             // Informes/Registros
             'Informes/Registros' => [
-                'submenu' => 0,
+                'submenu' => 1,
                 'ruta' => 'javascript:;',
                 'blank' => '', // si es para una pagina diferente del sistema solo coloquen _blank
                 'icon' => 'feather icon-clipboard',
                 'complementoruta' => '',
-                // 'submenus' => [
-                //     [
-                //         'name' => 'Retiros',
-                //         'blank' => '', // si es para una pagina diferente del sistema solo coloquen _blank
-                //         'ruta' => route('payments.index'),
-                //         'complementoruta' => ''
-                //     ],
-                // ],
+                 'submenus' => [
+                     [
+                         'name' => 'Registro de transacciones',
+                         'blank' => '', // si es para una pagina diferente del sistema solo coloquen _blank
+                         'ruta' => '',
+                         'complementoruta' => ''
+                     ],
+                     [
+                        'name' => 'Registro de depositos',
+                        'blank' => '', // si es para una pagina diferente del sistema solo coloquen _blank
+                        'ruta' => '',
+                        'complementoruta' => ''
+                    ],
+                    [
+                        'name' => 'Registro de Retiros',
+                        'blank' => '', // si es para una pagina diferente del sistema solo coloquen _blank
+                        'ruta' => '',
+                        'complementoruta' => ''
+                    ],
+                    [
+                        'name' => 'Registro de Inversión',
+                        'blank' => '', // si es para una pagina diferente del sistema solo coloquen _blank
+                        'ruta' => '',
+                        'complementoruta' => ''
+                    ],
+                    [
+                        'name' => 'Registro de Binario',
+                        'blank' => '', // si es para una pagina diferente del sistema solo coloquen _blank
+                        'ruta' => '',
+                        'complementoruta' => ''
+                    ],
+                 ],
             ],
 
             // Fin Informes/Registros            
