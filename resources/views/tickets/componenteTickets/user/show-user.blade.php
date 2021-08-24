@@ -4,8 +4,7 @@
 
 
 <style>
-
-#IDref {
+    #IDref {
         background: #00B2A2;
         border-radius: 5px;
         font-family: Roboto;
@@ -16,6 +15,7 @@
         color: #000000 !important;
 
     }
+
 </style>
 
 
@@ -27,7 +27,7 @@
         <div class="col-3"><a id="boton-ticket" href="{{ route('ticket.list-user')}}" class="btn  mb-2 waves-effect waves-light">Volver Atrás <i class="fas fa-chevron-left"></i></a>
         </div>
         <div class="col-3">
-        <button id="IDref"  class="btn mb-2" onclick="getlink()">ID de
+            <button id="IDref" class="btn mb-2" onclick="getlink()">ID de
                 referido: {{Auth::user()->id}} <i class="fas fa-link"></i></button>
         </div>
     </div>
@@ -49,7 +49,7 @@ border-radius: 8px;">
                             <div class="form-body">
                                 <div class="row">
 
-            
+
 
                                     <div class="col-6">
                                         <label class="form-label  mb-1" id="form-label" for="issue"><b>Sujeto</b></label>
@@ -75,7 +75,7 @@ border-radius: 8px;">
                                                                     <img src="{{asset('assets/img/sistema/favicon.png')}}" alt="avatar" height="40" width="40" style="background-color: black;" alt="avatar" height="40" width="40">
                                                                 </span>
                                                             </div>
-                                                            <div class="chat-body " id="form-labels"> 
+                                                            <div class="chat-body " id="form-labels">
                                                                 <div class="chat-content">
                                                                     <div class="email-admin mb-1">{{$admin}}</div>
                                                                     <p>¿Cómo podemos ayudarle? </p>

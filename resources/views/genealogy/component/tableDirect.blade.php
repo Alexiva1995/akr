@@ -1,3 +1,47 @@
+<style>
+    #abierto {
+        background: rgba(0, 246, 225, 0.77);
+        border-radius: 8px;
+
+
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 18px;
+        line-height: 18px;
+        /* identical to box height, or 100% */
+        letter-spacing: -0.2px;
+        color: #FFFFFF;
+
+    }
+
+    #cerrado {
+        background: rgba(246, 74, 0, 0.77);
+        border-radius: 8px;
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 18px;
+        line-height: 18px;
+        /* identical to box height, or 100% */
+        letter-spacing: -0.2px;
+         color: #FFFFFF;
+
+    }
+
+    #IDref {
+        background: #00B2A2;
+        border-radius: 5px;
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 15px;
+        line-height: 23px;
+        color: #000000 !important;
+
+    }
+</style>
+
 <div class="container">
     <div class="row">
         <div class="col-9">
@@ -5,8 +49,8 @@
         </div>
 
         <div class="col-3">
-            <button class="btn mb-2 " style="background-color:#00C8F4;color: black;" onclick="getlink()">ID de
-                referido: {{Auth::user()->id}} <i class="fa fa-copy"></i></button>
+            <button class="btn mb-2 " id="IDref" onclick="getlink()">ID de
+                referido: {{Auth::user()->id}} <i class="fa fa-link"></i></button>
         </div>
     </div>
 </div>
@@ -34,17 +78,17 @@
                 <td>{{$item->montoInvertido()}}</td>
 
                 @if ($item->status == '0')
-                <td> <a class=" btn btn-info text-white text-bold-600">Inactivo</a></td>
+                <td> <a class=" btn" id="cerrado">Inactivo</a></td>
                 @elseif($item->status == '1')
-                <td> <a class=" btn btn-success text-white text-bold-600">Activo</a></td>
+                <td> <a class=" btn" id="abierto">Activo</a></td>
                 @elseif($item->status == '2')
-                <td> <a class=" btn btn-warning text-white text-bold-600">Suspendido</a></td>
+                <td> <a class=" btn" id="cerrado">Suspendido</a></td>
                 @elseif($item->status == '3')
-                <td> <a class=" btn btn-danger text-white text-bold-600">Bloqueado</a></td>
+                <td> <a class=" btn " id="cerrado">Bloqueado</a></td>
                 @elseif($item->status == '4')
-                <td> <a class=" btn btn-danger text-white text-bold-600">Caducado</a></td>
+                <td> <a class=" btn " id="cerrado">Caducado</a></td>
                 @elseif($item->status == '5')
-                <td> <a class=" btn btn-danger text-white text-bold-600">Eliminado</a></td>
+                <td> <a class=" btn" id="cerrado">Eliminado</a></td>
                 @endif
                 <td>{{date('d-m-Y', strtotime($item->created_at))}}</td>
             </tr>
