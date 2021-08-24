@@ -2,11 +2,11 @@
 {{--<link rel="stylesheet" type="text/css" href="{{asset('assets/app-assets/vendors/css/extensions/sweetalert2.min.css')}}">--}}
 <style>
     .swal2-icon.swal2-success .swal2-success-ring{
-        border: .25em solid rgba(214,168,62,1) !important;
+        border: .25em solid #00C8F4 !important;
     }
     
     .swal2-icon.swal2-success [class^=swal2-success-line]{
-        background: linear-gradient(90deg, rgba(172,118,19,1) 0%, rgba(214,168,62,1) 94%) !important;
+        background: linear-gradient(90deg, #00C8F4 0%, #00C8F4 94%) !important;
     }
 
     .swal2-show, .swal2-icon.swal2-success [class^=swal2-success-circular-line][class$=left], .swal2-icon.swal2-success [class^=swal2-success-circular-line][class$=right], .swal2-icon.swal2-success .swal2-success-fix{
@@ -25,7 +25,8 @@
 
 @push('custom_js')
 <script>
-    function getlink(side) {
+    function getlink() {
+        var side = "{{Auth::user()->binary_side_register}}"
         var aux = document.createElement("input");
         aux.setAttribute("value", "{{route('register')}}?referred_id={{Auth::id()}}");
         document.body.appendChild(aux);

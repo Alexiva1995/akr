@@ -2,13 +2,6 @@
 <div class="row">
     {{-- Bienvenido --}}
 
-    <style>
-
-#IDref {
-       
-
-    }
-</style>
 
     <div class="col-lg-12 col-md-12 col-12">
         <div class="card text-white h-100 m-0" style="background-color:#171717; box-shadow:none;">
@@ -152,46 +145,23 @@
     {{-- Porcentaje --}}
     <div class="col-lg-5 col-md-12 col-12 mt-1 mb-1">
         <div class="card text-white bg-blue h-100 mb-0">
-            {{-- <div class="card-content row justify-content-center align-items-center"> --}}
-            {{-- <div class="card-body d-flex justify-content-center align-items-center flex-sm-row flex-column pb-0 pt-1 col-12"> --}}
-            {{-- @if($data['porcentaje'] == null)                
-                <div class="card-sub d-flex align-items-center mt-2">
-                    <div class="progresscircle blue" data-value='0'>
-                        <span class="progress-left">
-                            <span class="progress-circle"></span>
-                        </span>
-                        <span class="progress-right">
-                            <span class="progress-circle"></span>
-                        </span>
-                        <div class="progress-value">0%</div>
-                    </div>
+            <div class="card-sub d-flex align-items-center mt-2">
+                <div class="progresscircle blue" data-value={{$data['porcentaje']}}>
+                    <span class="progress-left">
+                        <span class="progress-circle"></span>
+                    </span>
+                    <span class="progress-right">
+                        <span class="progress-circle"></span>
+                    </span>
+                    <div class="progress-value">{{$data['porcentaje'].'%'}}</div>
                 </div>
-                <div class="d-flex justify-content-center align-items-center porcentaje">
-                    <div class="col-12 w-100 text-center mt-2 mb-2">
-                        <h1 class="text-white">$ 0,00</h1>
-                        <span class="text-white">Aún no tienes una inversión</span>
-                    </div>
+            </div>
+            <div class="d-flex justify-content-center align-items-center porcentaje">
+                <div class="col-12 w-100 text-center mt-2 mb-1">
+                    <h1 class="text-white">$ {{number_format($data['inversion'], '2', ',', '.')}}</h1>
+                    <span class="text-white">Monto de tu inversión</span>
                 </div>
-            @else --}}
-                <div class="card-sub d-flex align-items-center mt-2">
-                    <div class="progresscircle blue" data-value={{$data['porcentaje']}}>
-                        <span class="progress-left">
-                            <span class="progress-circle"></span>
-                        </span>
-                        <span class="progress-right">
-                            <span class="progress-circle"></span>
-                        </span>
-                        <div class="progress-value">{{$data['porcentaje'].'%'}}</div>
-                    </div>
-                </div>
-                <div class="d-flex justify-content-center align-items-center porcentaje">
-                    <div class="col-12 w-100 text-center mt-2 mb-1">
-                        <h1 class="text-white">$ {{number_format($data['inversion'], '2', ',', '.')}}</h1>
-                        <span class="text-white">Monto de tu inversión</span>
-                    </div>
-                </div>
-            {{-- @endif --}}
-            {{-- </div> --}}
+            </div>
         </div>
     </div>
     {{-- Ganancias totales --}}
