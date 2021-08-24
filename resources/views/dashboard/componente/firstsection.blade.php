@@ -11,17 +11,29 @@
                         <h1 class=" text-white">Bienvenido <span style="color:#00C8F4;">{{ $data['usuario'] }}</span>
                         </h1>
                     </div>
-                    <p class="card-text">
+                    <div class="d-flex">
+                        @if (Auth::user()->binary_side_register == 'I')                    
+                            <div class="d-flex justify-content-center grupo mr-1">
+                                <a href="#" class="btn btn-inactivo text-white text-bold-600" v-on:click="updateBinarySide('D')">Derecha</a> 
+                                <a href="#" class="btn btn-activo text-white text-bold-600 disabled">Izquierda</a> 
+                            </div>                    
+                        @else
+                            <div class="d-flex justify-content-center grupo mr-1">
+                                <a href="#" class="btn btn-activo text-white text-bold-600 disabled">Derecha</a> 
+                                <a href="#" class="btn btn-inactivo text-white text-bold-600" v-on:click="updateBinarySide('I')">Izquierda</a> 
+                            </div>                    
+                        @endif  
                         <button class="btn" style=" background: #00B2A2;
-        border-radius: 5px;
-        font-family: Roboto;
-        font-style: normal;
-        font-weight: normal;
-        font-size: 15px;
-        line-height: 23px;
-        color: #000000 !important;" onclick="getlink()">ID de
-                            referido: {{ $data['id'] }} <i class="fa fa-link"></i></button>
-                    </p>
+                            border-radius: 5px;
+                            font-family: Roboto;
+                            font-style: normal;
+                            font-weight: normal;
+                            font-size: 15px;
+                            line-height: 23px;
+                            color: #000000 
+                            !important;" onclick="getlink()">ID de
+                            referido: XXXX {{ $data['id'] }} <i class="fa fa-link"></i></button>
+                    </div>
                 </div>
             </div>
         </div>
