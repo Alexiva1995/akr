@@ -1,6 +1,20 @@
 @extends('layouts.dashboard')
 @include('layouts.componenteDashboard.linkReferido')
 @section('content')
+<style>
+    #IDref{
+        background: #00B2A2;
+        border-radius: 5px;
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 15px;
+        line-height: 23px;
+        color: #000000 !important;
+
+    }
+</style>
+
 
 <div class="container">
     <div class="row">
@@ -10,8 +24,8 @@
         <div class="col-3"><a id="boton-ticket" href="{{ route('ticket.list-user')}}" class="btn  mb-2 waves-effect waves-light">Volver Atrás <i class="fas fa-chevron-left"></i></a>
         </div>
         <div class="col-3">
-            <button class="btn mb-2 " style="background-color:#00C8F4;color: black;" onclick="getlink()">ID de
-                referido: {{Auth::user()->id}} <i class="fa fa-copy"></i></button>
+            <button class="btn mb-2 " id="IDref" onclick="getlink()">ID de
+                referido: {{Auth::user()->id}} <i class="fa fa-link"></i></button>
         </div>
     </div>
 </div>

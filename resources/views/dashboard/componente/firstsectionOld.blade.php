@@ -59,7 +59,7 @@
                         class="float-right px-1">
                     <h4 class="card-text mt-3">Invita a tus amigos <br> y gana una comision</h4>
                     <p class="card-text">
-                        <button class="btn btn-flat-primary padding-button-short bg-white mt-1 waves-effect waves-light" onclick="getlink()">Copiar link de referido <i class="fa fa-copy"></i></button>
+                        <button class="btn btn-flat-primary padding-button-short bg-white mt-1 waves-effect waves-light" onclick="getlink()">Copiar link de referido <i class="fa fa-link"></i></button>
                     </p>
                     <h4 class="card-title text-white">¡Todo es mejor con amigos!</h4>
                 </div>

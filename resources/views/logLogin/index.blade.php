@@ -1,12 +1,26 @@
 @extends('layouts.dashboard')
 
 @section('content')
+
+<style>
+    #IDref{
+        background: #00B2A2;
+        border-radius: 5px;
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 15px;
+        line-height: 23px;
+        color: #000000 !important;
+
+    }
+</style>
 <div class="container">
     <div class="col-12">
         <div class="row d-flex justify-content-between mb-1">
             <h1 class="text-white">Historial del inicio de sesión</h1>
-            <button class="btn" style="background-color: #00C8F4; color: black;" onclick="getlink()">ID de
-                referido: {{ Auth::user()->id }} <i class="fa fa-copy"></i>
+            <button class="btn" id="IDref" onclick="getlink()">ID de
+                referido: {{ Auth::user()->id }} <i class="fa fa-link"></i>
             </button>
         </div>
     </div>

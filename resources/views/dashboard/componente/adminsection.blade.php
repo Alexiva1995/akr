@@ -1,3 +1,4 @@
+
 <div class="row">
     <div class="col-lg-12 col-md-12 col-12">
         <div class="card text-white h-100 m-0" style="background-color:#171717; box-shadow:none;">
@@ -8,8 +9,16 @@
                         </h1>
                     </div>
                     <p class="card-text">
-                        <button class="btn" style="background-color: #00C8F4; color: black;" onclick="getlink()">ID de
-                            referido: {{ $data['id'] }} <i class="fa fa-copy"></i></button>
+                        <button class="btn" style="  background: #00B2A2;
+        border-radius: 5px;
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 15px;
+        line-height: 23px;
+        color: #000000 !important;
+" onclick="getlink()">ID de
+                            referido: {{ $data['id'] }} <i class="fas fa-link"></i></button>
                     </p>
                 </div>
             </div>
