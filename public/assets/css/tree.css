@@ -112,7 +112,7 @@
   .btn-arbol:hover{
     border: 2px  rgba(0, 246, 225, 0.77) solid;
     background-color: rgba(0, 246, 225, 0.77);
-    color: white;
+    color: black;
   }
 
   .card-sub {
@@ -210,12 +210,13 @@
 }
 
 .padre ul {
+  padding-bottom: 10px;
   padding-top: 20px;
   padding-left: 0px;
   position: relative;
   display: flex;
   overflow: auto;
-  justify-content: center;
+  /* justify-content: center; */
   transition: all 0.5s;
   -webkit-transition: all 0.5s;
   -moz-transition: all 0.5s;
@@ -326,14 +327,15 @@ right connector from last child*/
   transition: all 0.5s;
   -webkit-transition: all 0.5s;
   -moz-transition: all 0.5s;
+  background-color: rgb(216, 189, 163);
 }
 
 /*Time for some hover effects*/
 /*We will apply the hover effect the the lineage of the element also*/
 .padre li a:hover,
 .padre li a:hover+ul li a {
-  background: #c8e4f8;
-  color: #000;
+  /* background: #c8e4f8;
+  color: #000; */
   border: 2px solid #94a0b4;
 }
 
