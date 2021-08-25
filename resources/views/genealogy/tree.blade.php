@@ -4,14 +4,13 @@
 {{-- <link rel="stylesheet" href="{{asset('assets/css/tree2.css')}}"> --}}
 <link rel="stylesheet" href="{{ asset('assets/css/tree.css') }}">
 <style>
-    .padre li img {
+    /* .padre li img {
         width: 100%;
-    }
+    } */
 
     #IDref {
         background: #00B2A2;
         border-radius: 5px;
-        font-family: Roboto;
         font-style: normal;
         font-weight: normal;
         font-size: 15px;
@@ -42,24 +41,25 @@
                             <div class="row art2" style="border-radius: 0px;">
                                 <div class="col-12 ">
                                     <div class="white mt-1">
-                                        <p class="">Nombre: <span id="nombre"></span></p>
+                                        <p><span class="font-weight-bold">Nombre: </span><span id="nombre"></span></p>
                                     </div>
                                     <div class="white">
-                                        <p>Fecha de ingreso: <span id="fecha"></span></p>
+                                        <p><span class="font-weight-bold">Fecha de ingreso: </span><span id="fecha"></span></p>
                                     </div>
                                     <div class="white">
-                                        <p>Auspiciador: <span id="auspiciador"></span></p>
+                                        <p><span class="font-weight-bold">Auspiciador: </span><span id="auspiciador"></span></p>
                                     </div>
                                     <div class="white">
-                                        <p>Puntos totales: <span id="puntos"></span></p>
+                                        <p class="font-weight-bold">Puntos totales: <span id="puntos"></span></p>
                                     </div>
                                     <div class="white">
-                                        <p>País: <span id="pais"></span></p>
+                                        <p><span class="font-weight-bold">País: </span><span id="pais"></span></p>
                                     </div>
                                 </div>
                                 <div class="m-auto">
-                                    <a class="btn btn-arbol text-center mb-1" {{-- style="width: 175px;background: #1B1B1B;margin-left: 72px;" --}} id="ver_arbol" href=> Ver
-                                        Arbol</a>
+                                    <a class="btn btn-arbol text-center mb-1 font-weight-bold" id="ver_arbol" href=>
+                                        Ver Arbol
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -72,7 +72,7 @@
                     <li class="baseli">
                         <a class="base" href="#">
                             @if (empty($base->photoDB))
-                            <img src="{{ asset('assets/img/icono-persona.jpg') }}" alt="{{ $base->name }}" title="{{ $base->name }}" class="pt-1 rounded-circle" style="width: 95%;height: 107%;margin-left: 0px;margin-top: -8px;">
+                            <img src="{{ asset('assets/img/icono-persona.jpg') }}" alt="{{ $base->name }}" title="{{ $base->name }}" class="rounded-circle" style="width: 100%;height: 100%;">
                             @else
                             <img src="{{ asset('storage/photo/' . $base->photoDB) }}" alt="{{ $base->name }}" title="{{ $base->name }}" class="pt-1 rounded-circle" style="width: 95%;height: 107%;margin-left: 0px;margin-top: -8px;">
                             @endif

@@ -4,7 +4,7 @@
         border-radius: 8px;
 
 
-        font-family: Roboto;
+       
         font-style: normal;
         font-weight: normal;
         font-size: 18px;
@@ -18,7 +18,7 @@
     #cerrado {
         background: rgba(246, 74, 0, 0.77);
         border-radius: 8px;
-        font-family: Roboto;
+        
         font-style: normal;
         font-weight: normal;
         font-size: 18px;
@@ -32,7 +32,7 @@
     #IDref {
         background: #00B2A2;
         border-radius: 5px;
-        font-family: Roboto;
+      
         font-style: normal;
         font-weight: normal;
         font-size: 15px;

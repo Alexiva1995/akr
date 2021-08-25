@@ -53,7 +53,7 @@
                         
                         ::-webkit-scrollbar-thumb {
                             border-radius: 10px;
-                            background-color: #D6A83E;
+                            background-color: rgba(0, 178, 162, 1) !important;
                         }
                         
                         .email-user {
