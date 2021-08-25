@@ -1,6 +1,13 @@
 @extends('layouts.dashboard')
 @include('layouts.componenteDashboard.linkReferido')
 @section('content')
+
+<style>
+
+
+</style>
+
+
 <div class="container">
     <div class="row">
         <div class="col-6">
@@ -30,12 +37,11 @@
                     <th>Acción</th>
                 </tr>
             </thead>
-
             <tbody>
 
                 @foreach ($ticket as $item)
                 <tr class="text-center" id="contend">
-                    <td>0{{ $item->id}}</td>
+                    <td># {{ $item->id}}</td>
                     <td>[Ticket #{{ $item->iduser}}] {{$item->issue}}</td>
 
                     @if ($item->status == '0')

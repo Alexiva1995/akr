@@ -41,7 +41,7 @@
             language: {
                 paginate: {
                     Siguiente:				">",
-                    previous:			"<"
+                    Atrás:			"<"
                 },
             },
             drawCallback: function( settings ) {

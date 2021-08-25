@@ -3424,6 +3424,7 @@ div.dataTables_wrapper div.dataTables_length select {
 div.dataTables_wrapper div.dataTables_paginate ul.pagination {
     margin-top: 1rem;
     padding-bottom: 7px;
+    
 }
 
 div.dataTables_wrapper div.dataTables_paginate ul.pagination li a {

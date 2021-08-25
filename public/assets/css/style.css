@@ -210,6 +210,13 @@ output {
     display: none;
 }
 
+#DataTables_Table_0_paginate{
+    float: left;
+    margin-top: 15px;
+    margin-bottom: 25px;
+}
+
+
 
 #id {
     background: rgba(196, 196, 196, 0.08);
