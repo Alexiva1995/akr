@@ -40,7 +40,7 @@
             pageLength: 5,
             language: {
                 paginate: {
-                    next:				">",
+                    Siguiente:				">",
                     previous:			"<"
                 },
             },

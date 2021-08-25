@@ -102,9 +102,6 @@ output {
 
 
 
-
-
-
 /*===============*/
 /* List-User Tickets
 /*===============*/
@@ -112,7 +109,6 @@ output {
 #boton-ticket {
     background: #bd3900;
     border-radius: 5px;
-
     font-style: normal;
     font-weight: normal;
     font-size: 15px;
@@ -133,7 +129,6 @@ output {
     color: #ffffff;
 }
 #thead {
-
     border-radius: 8px 8px 0px 0px;
 }
 
@@ -200,7 +195,6 @@ output {
 }
 
 #form-labels{
-  
     font-style: normal;
     font-weight: bold;
     font-size: 16px;
@@ -211,6 +205,11 @@ output {
 #names{
     font-size: 17px;
 }
+
+#DataTables_Table_0_info{
+    display: none;
+}
+
 
 #id {
     background: rgba(196, 196, 196, 0.08);

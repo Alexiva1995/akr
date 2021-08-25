@@ -3,10 +3,10 @@
 @section('content')
 
 <style>
-    #IDref{
+    #IDref {
         background: #00B2A2;
         border-radius: 5px;
-    
+
         font-style: normal;
         font-weight: normal;
         font-size: 15px;
@@ -27,24 +27,22 @@
 </div>
 <div id="logs-list">
     <div class="col-12">
-        <div class="card bg-lp">
-            <div class="card-content">
-                <div class="card-body card-dashboard">
+    <div class="card" style="background-color:#0f1522;">
                     <div class="table-responsive">
                         <table class="table w-100 nowrap scroll-horizontal-vertical myTable table-striped w-100">
                             <thead class="" id="thead">
 
-                                <tr class="text-center text-white bg-purple-alt2">        
-                                    @if(Auth::user()->id == 1)                        
-                                        <th>ID</th>
-                                        <th>Usuario</th>
+                                <tr class="text-center text-white bg-purple-alt2">
+                                    @if(Auth::user()->id == 1)
+                                    <th>ID</th>
+                                    <th>Usuario</th>
                                     @endif
                                     <th>Fecha</th>
                                     <th>IP</th>
                                     <th>Localización</th>
                                     <th>Navegador</th>
                                     <th>SO</th>
-                                    
+
                                 </tr>
 
                             </thead>
@@ -53,8 +51,8 @@
                                 @foreach ($logins as $login)
                                 <tr class="text-center" id="contend">
                                     @if(Auth::user()->id == 1)
-                                        <td>{{$login->id}}</td>
-                                        <td>{{$login->getUser->fullname}}</td>
+                                    <td>{{$login->id}}</td>
+                                    <td>{{$login->getUser->fullname}}</td>
                                     @endif
                                     <td>{{date('Y-M-d', strtotime($login->created_at))}}</td>
                                     <td>{{$login->ip_address}}</td>
@@ -64,19 +62,17 @@
                                 </tr>
 
                                 @endforeach
-                               
+
                             </tbody>
                         </table>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+
 </div>
 
 @endsection
 
 {{-- permite llamar a las opciones de las tablas --}}
 @include('layouts.componenteDashboard.optionDatatable')
-
-

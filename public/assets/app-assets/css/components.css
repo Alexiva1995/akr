@@ -3896,9 +3896,10 @@ table.dataTable {
     border-radius: 4px 5px 0px 0px;
 }
 /*tbody*/
+
 table.dataTable th,
 table.dataTable td {
-    border-bottom: 1px solid rgba(0, 246, 225, 0.77);
+    border-bottom: 2px solid rgba(0, 246, 225, 0.77);
 }
 
 table.dataTable thead th,
@@ -3990,6 +3991,9 @@ div.dataTables_wrapper div.dataTables_paginate ul.pagination {
 }
 div.dataTables_wrapper div.dataTables_paginate ul.pagination li a {
     font-size: 0.8rem;
+
+    
+    
     
 
 }

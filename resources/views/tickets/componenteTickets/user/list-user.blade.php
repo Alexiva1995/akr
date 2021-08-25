@@ -17,7 +17,8 @@
 </div>
 <br>
 <div class="col-12 ">
-    <div class="table-responsive mt-2">
+<div class="card" style="background-color:#0f1522;">
+    <div class="table-responsive">
         <table class="nowrap myTable scroll-horizontal-vertical   table-striped w-100">
             <thead>
 
@@ -61,6 +62,7 @@
             </tbody>
         </table>
     </div>
+</div>
 </div>
 
 @endsection
