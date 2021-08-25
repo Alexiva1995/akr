@@ -13,10 +13,10 @@
 <br>
 <div id="record">
     <div class="col-12">
-        <div class="table-responsive" style="border-radius: 8px 8px 0px 0px;">
+        <div class="table-responsive" >
 
 
-            <table class="nowrap scroll-horizontal-vertical  table-striped w-100">
+            <table class="myTable nowrap scroll-horizontal-vertical  table-striped w-100">
                 <thead id="thead">
 
                     <tr class="text-center text-white ">
