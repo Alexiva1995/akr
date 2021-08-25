@@ -145,8 +145,8 @@ class Menu
                     [
                         'name' => 'Historial de retiros',
                         'blank' => '', // si es para una pagina diferente del sistema solo coloquen _blank
-                        // 'ruta' => route('historial'),
-                        'ruta' => route('retirar'),
+                        'ruta' => route('historial'),
+                        // 'ruta' => route('retirar'),
                         'complementoruta' => ''
                     ],
                 ],
