@@ -83,7 +83,7 @@ return [
     */
 
     'font' => [
-        'family' => "'Roboto', sans-serif",
+        'family' => "sans-serif",
         'date_format' => 'd/m/y H:i'
     ],
 

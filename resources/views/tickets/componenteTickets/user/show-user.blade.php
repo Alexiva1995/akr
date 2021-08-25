@@ -7,7 +7,7 @@
     #IDref {
         background: #00B2A2;
         border-radius: 5px;
-        font-family: Roboto;
+       
         font-style: normal;
         font-weight: normal;
         font-size: 15px;
@@ -28,7 +28,7 @@
         </div>
         <div class="col-3">
             <button id="IDref" class="btn mb-2" onclick="getlink()">ID de
-                referido: {{Auth::user()->id}} <i class="fas fa-link"></i></button>
+                referido: XXXX {{Auth::user()->id}} <i class="fas fa-link"></i></button>
         </div>
     </div>
 

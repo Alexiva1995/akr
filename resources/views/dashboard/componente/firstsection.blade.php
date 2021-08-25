@@ -25,14 +25,14 @@
                         @endif  
                         <button class="btn" style=" background: #00B2A2;
                             border-radius: 5px;
-                            font-family: Roboto;
+                           
                             font-style: normal;
                             font-weight: normal;
                             font-size: 15px;
                             line-height: 23px;
                             color: #000000 
                             !important;" onclick="getlink()">ID de
-                            referido: {{ $data['id'] }} <i class="fa fa-link"></i></button>
+                            referido: XXXX {{ $data['id'] }} <i class="fa fa-link"></i></button>
                     </div>
                 </div>
             </div>

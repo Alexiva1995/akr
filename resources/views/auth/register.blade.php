@@ -78,19 +78,15 @@
         color: white;
     }
 
-    .g-recaptcha{
-
-        background: rgba(0, 0, 0, 0.75);
-        border: 1px solid #000000;
-        box-sizing: border-box;
-    }
-
     .Captcha {
         display: flex;
         flex-flow: row wrap;
         justify-content: center;
         align-content: space-around;
 
+    }
+    #cap{
+        border: 1px solid #000000;
     }
 </style>
 
@@ -255,7 +251,6 @@ $referred = DB::table('users')
                         <div class="form-group col-md-6">
                             <input style="  margin-top: 8px;" id="age" type="text" onfocus="(this.type='date')" class="text-white form-control @error('age') is-invalid @enderror" name="age" required autocomplete="age" autofocus placeholder=" " value="{{ old('age') }}">
 
-
                             <span class="floating-label "><i class="fas fa-calendar"></i> Fecha de Nacimiento </span>
 
                             @error('age')
@@ -309,7 +304,7 @@ $referred = DB::table('users')
 
                     <div>
                         <div>
-                            <div class="Captcha form-group" id="">
+                            <div class="Captcha form-group" id="cap">
                                 {!! NoCaptcha::renderJs('es', false, 'recaptchaCallback') !!}
                                 {!! NoCaptcha::display() !!}
                             </div>

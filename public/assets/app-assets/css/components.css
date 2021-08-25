@@ -3799,7 +3799,6 @@ tr.group {
   box-sizing: border-box;
   border-radius: 5px;
   color: white;
-  font-family: Roboto;
   font-style: normal;
   font-weight: bold;
   font-size: 15px;
@@ -3820,7 +3819,6 @@ tr.group {
   box-sizing: border-box;
   border-radius: 5px;
   color: white;
-  font-family: Roboto;
   font-style: normal;
   font-weight: bold;
   font-size: 18px;
@@ -3830,7 +3828,6 @@ tr.group {
 }
 
 #titulo {
-  font-family: Roboto;
   font-style: normal;
   font-weight: normal;
   font-size: 36px;
@@ -3839,7 +3836,6 @@ tr.group {
 }
 
 #deposito {
-  font-family: Roboto;
   font-style: normal;
   font-weight: normal;
   font-size: 42px;

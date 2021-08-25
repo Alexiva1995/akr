@@ -11,7 +11,6 @@
     #IDref {
         background: #00B2A2;
         border-radius: 5px;
-        font-family: Roboto;
         font-style: normal;
         font-weight: normal;
         font-size: 15px;
