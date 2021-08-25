@@ -4185,11 +4185,10 @@ tr.group {
     opacity: 0.93;
     border-radius: 8px;
     width: 100%;
-    box-shadow:inset 0px 100px 0px #5566;
+    box-shadow:inset 0px 100px 0px #4364;
     
 
 }
-
 
 .btn-comprar {
     box-sizing: border-box;

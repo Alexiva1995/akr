@@ -27,7 +27,7 @@
                     <div class="form-group ">
                         <div class="range-wrap">
                             <div class="range-container ">
-                                <h1 class="text-center mt-3 mb-2" id="titulo">Selecciona El Monto A Depositar</h1>
+                                <h1 class="text-center mt-3 mb-4" id="titulo">Selecciona El Monto A Depositar</h1>
 
                                 <a href="#" class="btn" id="btn-iniciar">Iniciar</a>
                                 <input class="range" type="range" name="range" id="range" min="70" max="10000" value="70" step="10" />
