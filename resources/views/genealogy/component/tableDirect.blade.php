@@ -56,8 +56,8 @@
 </div>
 
 
-<div class="table-responsive" style="border-radius: 8px 8px 0px 0px;">
-    <table style="border-radius: 8px 8px 0px 0px;" class=" w-100 nowrap scroll-horizontal-vertical  table-striped">
+<div class="table-responsive">
+    <table  class="myTable w-100 nowrap scroll-horizontal-vertical  table-striped">
         <thead class="" id="thead">
             <tr class="text-center text-white">
                 <th>ID</th>
