@@ -14,8 +14,7 @@ use App\Http\Controllers\WalletController;
 use App\Models\cryptos;
 use App\Models\LiquidationCrypto;
 use Illuminate\Support\Facades\Auth;
-
-
+use stdClass;
 
 class LiquidactionController extends Controller
 {
@@ -636,25 +635,44 @@ class LiquidactionController extends Controller
 
     public function historial()
     {
-        if(Auth::user()->admin = 1){
-            $liq = Liquidaction::all();
-            $lidCrypto = LiquidationCrypto::all();
-        }else{
-            $liq = Liquidaction::where('iduser', Auth::user()->id)->get()->toArray();
-            $lidCrypto = Liquidaction::where('iduser', Auth::user()->id)->get()->toArray();
-        }
+        // if(Auth::user()->admin = 1){
+        //     $liq = Liquidaction::all();
+        //     $lidCrypto = LiquidationCrypto::all();
+        // }else{
+            $liq = Liquidaction::where('iduser', Auth::user()->id)->get();
+            $lidCrypto = LiquidationCrypto::where('iduser', Auth::user()->id)->get();
+        // }
 
         foreach($liq as $li){
-            $li->tipoLiquidacion = "USDT";
+            $liquidaciones[] = [
+                'fullname' => $li->getUserLiquidation->fullname,
+                'total' => $li->total,
+                'monto_bruto' => $li->monto_bruto,
+                'feed' => $li->feed,
+                'hash' => $li->hash,
+                'wallet_used' => $li->wallet_used,
+                'status' => $li->status,
+                'created_at' => $li->created_at,
+                'tipoLiquidacion' => "USDT",
+            ];
         }
 
-        dd($liq);
-        
         foreach($lidCrypto as $li){
-            $li->tipoLiquidacion = "DRM";
+            $liquidaciones[] = [
+                'fullname' => $li->getUserLiquidation->fullname,
+                'total' => $li->total,
+                'monto_bruto' => $li->monto_bruto,
+                'feed' => $li->feed,
+                'hash' => $li->hash,
+                'wallet_used' => $li->wallet_used,
+                'status' => $li->status,
+                'created_at' => $li->created_at,
+                'tipoLiquidacion' => "DRM",
+            ];
         }
 
-        // $liquidaciones = $liq->merge($lidCrypto);
+
+        return view('withdraw.Historial', compact('liquidaciones'));
         // dd($liquidaciones);
     }
 

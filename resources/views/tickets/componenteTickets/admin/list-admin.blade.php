@@ -14,12 +14,10 @@
 <div id="record">
     <div class="col-12">
         <div class="table-responsive" >
-
-
             <table class="myTable nowrap scroll-horizontal-vertical  table-striped w-100">
                 <thead id="thead">
 
-                    <tr class="text-center text-white ">
+                <tr class="text-center text-white">
                         <th>ID</th>
                         <th>Sujeto</th>
                         <th>Estado</th>

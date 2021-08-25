@@ -12,6 +12,18 @@
 @endpush
 
 @section('content')
+<div class="container">
+    <div class="row">
+        <div class="col-9">
+            <h1 class="text-white" id="deposito">Historial de Retiros</h1>
+        </div>
+        <div class="col-3">
+        <button id="IDref"  class="btn mb-2" onclick="getlink()">ID de
+            referido: {{Auth::user()->id}} <i class="fas fa-link"></i></button>
+        </div>
+    </div>
+</div>
+
 <div id="settlement">
     <div class="col-12">
         <div class="card bg-lp">
@@ -21,29 +33,33 @@
                         <table class="table w-100 nowrap scroll-horizontal-vertical myTable table-striped">
                             <thead class="">
                                 <tr class="text-center text-white bg-purple-alt2">
-                                    <th>ID</th>
-                                    <th>Name</th>
-                                    <th>Total </th>
-                                    <th>Monto Bruto</th>
+                                    <th>Nombre</th>
+                                    <th>Monto </th>
                                     <th>Feed</th>
                                     <th>Hash</th>
                                     <th>Billetera</th>
                                     <th>Status</th>
+                                    <th>Tipo de retiro</th>
                                     <th>Fecha</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($liquidaciones as $liqui)
                                 <tr class="text-center">
-                                    <td>{{$liqui->id}}</td>
-                                    <td>{{$liqui->fullname}}</td>
-                                    <td>{{$liqui->total}}</td>
-                                    <td>{{$liqui->monto_bruto}}</td>
-                                    <td>{{$liqui->feed}}</td>
-                                    <td>{{$liqui->hash}}</td>
-                                    <td>{{$liqui->wallet_used}}</td>
-                                    <td>{{$liqui->status}}</td>
-                                    <td>{{date('Y-M-d', strtotime($liqui->created_at))}}</td>
+                                    <td>{{$liqui['fullname']}}</td>
+                                    <td>{{$liqui['total']}}</td>
+                                    <td>{{$liqui['feed']}}</td>
+                                    <td>{{$liqui['hash']}}</td>
+                                    <td>{{$liqui['wallet_used']}}</td>
+                                    @if($liqui['status'] == 0)                                    
+                                        <td>Pendiente</td>
+                                    @elseif($liqui['status'] == 1)
+                                        <td>Pagado</td>
+                                    @elseif($liqui['status'] == 2)
+                                        <td>Cancelado</td>
+                                    @endif
+                                    <td>{{$liqui['tipoLiquidacion']}}</td>
+                                    <td>{{date('d-M-Y', strtotime($liqui['created_at']))}}</td>
                                 </tr>
                                 @endforeach
                             </tbody>

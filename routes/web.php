@@ -130,13 +130,6 @@ Route::prefix('dashboard')->middleware('menu', 'auth', /*'verified'*/)->group(fu
         Route::get('purchase', 'ReporteController@indexPedidos')->name('reports.pedidos');
     });
 
-    //Ruta para los retiros
-    Route::prefix('withdraw')->group(function(){
-        Route::get('Retiros', 'LiquidactionController@retirar')->name('retirar');
-        Route::post('Retiros', 'LiquidactionController@retiros')->name('retiros');
-        Route::get('Retiro-exitoso', 'LiquidactionController@retiroExitoso')->name('retiro-exitoso');
-        Route::get('Historial-de-retiros', 'LiquidactionController@historial')->name('historial');
-    });
 
      //Ruta de los Tickets
      Route::prefix('tickets')->group(function(){
@@ -154,6 +147,14 @@ Route::prefix('dashboard')->middleware('menu', 'auth', /*'verified'*/)->group(fu
         Route::patch('ticket-update-admin/{id}','TicketsController@updateAdmin')->name('ticket.update-admin');
         Route::get('ticket-list-admin','TicketsController@listAdmin')->name('ticket.list-admin');
         Route::get('ticket-show-admin/{id}','TicketsController@showAdmin')->name('ticket.show-admin');
+    });
+
+    //Ruta para los retiros
+    Route::prefix('withdraw')->group(function(){
+        Route::get('Retiros', 'LiquidactionController@retirar')->name('retirar');
+        Route::post('Retiros', 'LiquidactionController@retiros')->name('retiros');
+        Route::get('Retiro-exitoso', 'LiquidactionController@retiroExitoso')->name('retiro-exitoso');
+        Route::get('Historial-de-retiros', 'LiquidactionController@historial')->name('historial');
     });
 
 
