@@ -3893,7 +3893,7 @@ input[type="month"].form-control {
 /*thead*/
 table.dataTable {
     border: 2px solid rgba(0, 246, 225, 0.77);
-    border-radius: 4px 4px 0px 0px;
+    border-radius: 4px 5px 0px 0px;
 }
 /*tbody*/
 table.dataTable th,
@@ -3943,8 +3943,12 @@ table.dataTable.table-striped tbody tr:nth-of-type(even) {
     background-color: #0f1522;
 }
 table.dataTable.table-striped tbody tr:nth-of-type(odd) {
-    color: white;
+    font-size: 18px;
+    line-height: 18px;
+    letter-spacing: -0.2px;
+    color: #ffffff;
     background-color: #0f1522;
+    height: 45px;
 }
 table.dataTable.complex-headers {
     border: 1px solid #dae1e7;
@@ -3970,6 +3974,7 @@ table.dataTable tbody tr.selected th {
 div.dataTables_wrapper div.dataTables_filter label,
 div.dataTables_wrapper div.dataTables_length label {
     margin-top: 1rem;
+    display: none;
 }
 
 div.dataTables_wrapper div.dataTables_filter select,

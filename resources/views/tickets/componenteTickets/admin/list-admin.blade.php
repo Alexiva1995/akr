@@ -7,7 +7,6 @@
     <div class="col-md-8">
         <h1 class="text-white">Historial de Tickets</h1>
     </div>
-
 </div>
 
 <br>
