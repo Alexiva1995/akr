@@ -23,7 +23,7 @@ WE WILL RELEASE FUTURE UPDATES SO IN ORDER TO NOT OVERWRITE YOUR STYLES IT'S BET
     border: none;
     padding: 0;
     background: none;
-    width: 77%;
+    width: 80%;
 }
 
 .range::-moz-range-track {
@@ -241,11 +241,10 @@ hr.hr-1 {
 #IDref {
     background: #00B2A2;
     border-radius: 5px;
-
     font-style: normal;
     font-weight: normal;
     font-size: 15px;
     line-height: 23px;
-    color: #000000 !important;
+    color: #FFFFFF !important;
 
 }

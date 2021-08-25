@@ -7,9 +7,9 @@
     <div class="container">
         <div class="row d-flex justify-content-between mb-1">
             <h1 class="text-white">Retiros</h1>
-            <button class="btn" style="background-color: #00C8F4; color: black;" onclick="getlink()">ID de
-                referido: {{ Auth::user()->id }} <i class="fa fa-copy"></i>
-            </button>
+            <button id="IDref"  class="btn mb-2" onclick="getlink()">ID de
+                referido: {{Auth::user()->id}} <i class="fas fa-link"></i></button>
+            </div>
         </div>
     </div>
     <div class="container bg-image2">

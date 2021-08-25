@@ -11,7 +11,7 @@
                         style="height: 100%">
                     <div class="avatar avatar-xl bg-primary shadow m-0 mb-1">
                         <img src="{{asset('assets/img/sistema/favicon.png')}}" alt="card-img-left">
-                        {{-- <div class="avatar-content">
+                        {{-- <div class="awvatar-content">
                          <i class="feather icon-award white font-large-1"></i> 
                         </div> --}}
                     </div>

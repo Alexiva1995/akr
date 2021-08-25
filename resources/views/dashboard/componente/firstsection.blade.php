@@ -30,7 +30,7 @@
                             font-weight: normal;
                             font-size: 15px;
                             line-height: 23px;
-                            color: #000000 
+                            color: #FFFFFF 
                             !important;" onclick="getlink()">ID de
                             referido: XXXX {{ $data['id'] }} <i class="fa fa-link"></i></button>
                     </div>
