@@ -3986,14 +3986,9 @@ div.dataTables_wrapper div.dataTables_length select {
 
 div.dataTables_wrapper div.dataTables_paginate ul.pagination {
     margin-top: 1rem;
-
 }
 div.dataTables_wrapper div.dataTables_paginate ul.pagination li a {
     font-size: 0.8rem;
-
-    
-    
-
 }
 
 tr.group {
@@ -4171,8 +4166,6 @@ tr.group {
     }
 }
 
-
-
 /* Estilos del rango */
 #bg-screen-image {
     background-image: url("../../../assets/img/sistema/fondo.jpg");
@@ -4189,9 +4182,15 @@ tr.group {
         rgba(5, 176, 215, 0.75) 0%,
         rgba(3, 46, 55, 0.83) 100%
     );
+    opacity: 0.93;
     border-radius: 8px;
     width: 100%;
+    box-shadow:inset 0px 100px 0px #5556;
+    
+
 }
+
+
 .btn-comprar {
     box-sizing: border-box;
     border-radius: 5px;

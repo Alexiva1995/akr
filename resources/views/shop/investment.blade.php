@@ -13,11 +13,9 @@
     </div>
 </div>
 
-
-
 <div id="adminServices" class="mt-2">
-    <div class="card card-dashboard" id="bg-screen-image">
-        <div class="container" id="fondo-shadow">
+    <div class="card card-dashboard " id="bg-screen-image">
+        <div class="container " id="fondo-shadow">
             @if (isset($user))
             <h1 class="text-center mt-1 mb-4">Verificar Usuario #{{ $user->id . ' - ' . $user->fullname }}</h1>
             <form action="{{ route('realizar-inversion')}}" method="POST" class="d-inline">
@@ -26,7 +24,7 @@
                     @endif
 
                     @csrf
-                    <div class="form-group">
+                    <div class="form-group ">
                         <div class="range-wrap">
                             <div class="range-container ">
                                 <h1 class="text-center mt-3 mb-2" id="titulo">Selecciona El Monto A Depositar</h1>
