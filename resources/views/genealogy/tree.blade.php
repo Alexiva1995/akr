@@ -4,9 +4,7 @@
 {{-- <link rel="stylesheet" href="{{asset('assets/css/tree2.css')}}"> --}}
 <link rel="stylesheet" href="{{ asset('assets/css/tree.css') }}">
 <style>
-    /* .padre li img {
-        width: 100%;
-    } */
+  
 
     #IDref {
         background: #00B2A2;
@@ -15,7 +13,7 @@
         font-weight: normal;
         font-size: 15px;
         line-height: 23px;
-        color: #000000 !important;
+        color: #FFFFFF !important;
 
     }
 </style>
