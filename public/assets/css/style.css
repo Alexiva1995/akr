@@ -120,16 +120,12 @@ output {
     color: #fff;
 }
 
-#tvody {
-    background: #0f1522;
-    border-radius: 8px;
-}
 
 #contend {
     height: 63px;
     border: 0.5px solid #00c8f4;
     box-sizing: border-box;
-    border-radius: 0px;
+   
     font-style: normal;
     font-weight: normal;
     font-size: 18px;
@@ -138,10 +134,7 @@ output {
     color: #ffffff;
 }
 #thead {
-    height: 63px;
-    background: rgba(0, 200, 244, 0.4);
-    border: 1px solid #00c8f4;
-    box-sizing: border-box;
+
     border-radius: 8px 8px 0px 0px;
 }
 

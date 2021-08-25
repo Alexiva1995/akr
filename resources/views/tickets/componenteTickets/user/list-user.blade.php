@@ -1,9 +1,6 @@
 @extends('layouts.dashboard')
 @include('layouts.componenteDashboard.linkReferido')
 @section('content')
-
-
-
 <div class="container">
     <div class="row">
         <div class="col-6">
@@ -18,14 +15,11 @@
     </div>
 
 </div>
-
 <br>
-
-<div id="record">
-    <div class="col-12">
-        <div class="table-responsive" style="border-radius: 8px 8px 0px 0px;">
-            <table class="nowrap scroll-horizontal-vertical   table-striped w-100">
-                <thead id="thead">
+    <div class="col-12 ">
+        <div class="table-responsive" >
+            <table class="nowrap myTable scroll-horizontal-vertical   table-striped w-100">
+                <thead>
 
                     <tr class="text-center text-white">
                         <th>SL</th>
@@ -37,7 +31,7 @@
 
                 </thead>
 
-                <tbody id="tvody">
+                <tbody> 
 
                     @foreach ($ticket as $item)
                     <tr class="text-center" id="contend">
@@ -69,8 +63,7 @@
             </table>
         </div>
     </div>
-
-
+   
 @endsection
 {{-- permite llamar a las opciones de las tablas --}}
 @include('layouts.componenteDashboard.linkReferido')

@@ -32,7 +32,7 @@
                 <div class="card-body card-dashboard">
                     <div class="table-responsive">
                         <table class="table w-100 nowrap scroll-horizontal-vertical myTable table-striped w-100">
-                            <thead class="">
+                            <thead class="" id="thead">
 
                                 <tr class="text-center text-white bg-purple-alt2">        
                                     @if(Auth::user()->id == 1)                        
@@ -48,10 +48,10 @@
                                 </tr>
 
                             </thead>
-                            <tbody>
+                            <tbody id="tvody">
 
                                 @foreach ($logins as $login)
-                                <tr class="text-center">
+                                <tr class="text-center" id="contend">
                                     @if(Auth::user()->id == 1)
                                         <td>{{$login->id}}</td>
                                         <td>{{$login->getUser->fullname}}</td>
