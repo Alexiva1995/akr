@@ -15,9 +15,11 @@
                 referido: XXXX {{Auth::user()->id}} <i class="fas fa-link"></i></button>
         </div>
     </div>
-
 </div>
 <br>
+
+
+
 <div class="col-12 ">
     <div class="card" style="background-color:#0f1522;">
         <div class="table-responsive">
@@ -26,7 +28,7 @@
 
                     <tr class="text-center text-white">
                         <th>ID de transacción</th>
-                        <th>Puerta</th>
+                        <th>Pasarela</th>
                         <th>Monto</th>
                         <th>Estado</th>
                         <th>Tiempo</th>
@@ -39,7 +41,7 @@
                     <tr class="text-center" id="contend">
                         <td># 1</td>
 
-                        <td>2</td>
+                        <td>CoinPayments</td>
 
                         <td>1250</td>
 
@@ -47,7 +49,7 @@
 
                         <td>12 min</td>
 
-                        <td>CoinPayments</td>
+                        <td></td>
 
 
                     </tr>

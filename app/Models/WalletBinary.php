@@ -16,4 +16,9 @@ class WalletBinary extends Model
         'puntos_d', 'puntos_i', 'side', 'descripcion',
         'status', 'restante'
     ];
+
+    public function getUser()
+    {
+        return $this->belongsTo('App\Models\User', 'iduser', 'id');
+    }   
 }

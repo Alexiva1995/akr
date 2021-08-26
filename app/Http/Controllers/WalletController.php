@@ -657,6 +657,7 @@ class WalletController extends Controller
     }
 
     public function transaction(){
+
         return view('regis.transaction');
     }
 
@@ -676,10 +677,10 @@ class WalletController extends Controller
         return view('regis.invertion');
     }
 
-
     public function binario(){
-        return view('regis.binario');
+        $binan = WalletBinary::where('iduser', Auth::user()->id)->get();
+        return view('regis.binario')->with('binan', $binan);
     }
 
- 
+
 }
