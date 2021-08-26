@@ -175,16 +175,6 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class=" d-flex white mt-2">
-                                        <button class="btn-tree text-left" style="width: 320PX;">PUNTOS RED IZQUIERDOS:
-                                            <b>{{ $binarioTotal['totald'] }}</b></button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
                 {{-- Puntos por la derecha --}}
@@ -196,16 +186,6 @@
                                     <div class=" d-flex white mt-2">
                                         <button class="btn-tree text-left" style="width: 320PX;">PUNTOS DERECHOS:
                                             <b>{{ $binario['totali'] }}</b></button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="container d-flex justify-content-end">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class=" d-flex white mt-2">
-                                        <button class="btn-tree text-left" style="width: 320PX;">PUNTOS RED DERECHOS:
-                                            <b>{{ $binarioTotal['totali'] }}</b></button>
                                     </div>
                                 </div>
                             </div>
