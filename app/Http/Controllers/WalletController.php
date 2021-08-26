@@ -657,8 +657,8 @@ class WalletController extends Controller
     }
 
     public function transaction(){
-
-        return view('regis.transaction');
+        $transac = OrdenPurchases::where('iduser', Auth::user()->id)->get();; 
+        return view('regis.transaction')->with('transac', $transac);
     }
 
 
@@ -672,9 +672,9 @@ class WalletController extends Controller
         return view('regis.retreats');
     }
 
-    
     public function invertion(){
-        return view('regis.invertion');
+        $inver = inversion::where('iduser', Auth::user()->id)->get();
+        return view('regis.invertion')->with('inver', $inver);
     }
 
     public function binario(){

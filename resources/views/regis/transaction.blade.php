@@ -37,24 +37,27 @@
                 </thead>
                 <tbody>
 
-
+                    @foreach($transac as $transac)
                     <tr class="text-center" id="contend">
-                        <td># 1</td>
+                        <td>{{$transac->id}}</td>
 
                         <td>CoinPayments</td>
 
-                        <td>1250</td>
+                        <td>{{$transac->total + $transac->fee}}</td>
 
+                        @if($transac->status == 0)
                         <td> <a class=" btn  text-bold-600 text-white" style="background: rgba(246, 74, 0, 0.77);border-radius: 8px;">Cerrado</a></td>
+                        @else($transac->status == 1)
+                        <td> <a class=" btn  text-bold-600 text-white" style="background: rgba(246, 74, 0, 0.77);border-radius: 8px;">Completada</a></td>
+                       
+                        @endif
+                        <td>{{$transac->created_at->toFormattedDateString()}}</td>
 
-                        <td>12 min</td>
-
-                        <td></td>
-
+                        <td>Deposito</td>
 
                     </tr>
-
                 </tbody>
+                @endforeach
             </table>
         </div>
     </div>
