@@ -4185,9 +4185,12 @@ tr.group {
     opacity: 0.93;
     border-radius: 8px;
     width: 100%;
+   
+
+}
+.fondo-shadow{
     box-shadow:inset 0px 100px 0px #4364;
     
-
 }
 
 .btn-comprar {

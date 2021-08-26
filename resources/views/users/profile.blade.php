@@ -93,7 +93,7 @@
                         <ul class="col">
                             <li class="list-group-item ">Nombre : {{ $user->fullname }}</li>
                             <li class="list-group-item">Nombre de usuario : {{$user->name}}</li>
-                            <li class="list-group-item">Se unió el : {{$user->created_at->toDateTimeString()}}</li>
+                            <li class="list-group-item">Se unió el : {{date('d-M-Y', strtotime($user['created_at']))}}</li>
 
                         </ul>
                     </div>

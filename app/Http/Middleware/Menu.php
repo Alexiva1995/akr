@@ -188,7 +188,7 @@ class Menu
                          'ruta' => '',
                          'complementoruta' => ''
                      ],
-                     [
+                    /* [
                         'name' => 'Registro de depositos',
                         'blank' => '', // si es para una pagina diferente del sistema solo coloquen _blank
                         'ruta' => '',
@@ -211,7 +211,7 @@ class Menu
                         'blank' => '', // si es para una pagina diferente del sistema solo coloquen _blank
                         'ruta' => '',
                         'complementoruta' => ''
-                    ],
+                    ],*/
                  ],
             ],
 
