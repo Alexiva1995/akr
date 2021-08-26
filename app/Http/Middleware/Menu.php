@@ -53,7 +53,7 @@ class Menu
             'Mi Rango' => [
                 'submenu' => 0,
                 'ruta' => '',
-                'blank'=> '', // si es para una pagina diferente del sistema solo coloquen _blank
+                'blank' => '', // si es para una pagina diferente del sistema solo coloquen _blank
                 'icon' => 'feather icon-zap',
                 'complementoruta' => '',
             ],
@@ -90,7 +90,7 @@ class Menu
                 ],
             ],
             // Fin De Mis Referidos
-            
+
             // Paquetes de inversión
             'Depositos' => [
                 'submenu' => 0,
@@ -150,7 +150,7 @@ class Menu
                         'complementoruta' => ''
                     ],
                 ],
-            ],            
+            ],
             // Fin De Retiros
 
             // Soporte
@@ -181,38 +181,38 @@ class Menu
                 'blank' => '', // si es para una pagina diferente del sistema solo coloquen _blank
                 'icon' => 'feather icon-clipboard',
                 'complementoruta' => '',
-                 'submenus' => [
-                     [
-                         'name' => 'Registro de transacciones',
-                         'blank' => '', // si es para una pagina diferente del sistema solo coloquen _blank
-                         'ruta' => '',
-                         'complementoruta' => ''
-                     ],
-                    /* [
-                        'name' => 'Registro de depositos',
+                'submenus' => [
+                    [
+                        'name' => 'Registro de transacciones',
                         'blank' => '', // si es para una pagina diferente del sistema solo coloquen _blank
-                        'ruta' => '',
+                        'ruta' => route('transaction'),
+                        'complementoruta' => ''
+                    ],
+                    [
+                        'name' => 'Registro de depósitos',
+                        'blank' => '', // si es para una pagina diferente del sistema solo coloquen _blank
+                        'ruta' => route('deposit'),
                         'complementoruta' => ''
                     ],
                     [
                         'name' => 'Registro de Retiros',
                         'blank' => '', // si es para una pagina diferente del sistema solo coloquen _blank
-                        'ruta' => '',
+                        'ruta' => route('retreats'),
                         'complementoruta' => ''
                     ],
                     [
                         'name' => 'Registro de Inversión',
                         'blank' => '', // si es para una pagina diferente del sistema solo coloquen _blank
-                        'ruta' => '',
+                        'ruta' => route('invertion'),
                         'complementoruta' => ''
                     ],
-                    [
+                     [
                         'name' => 'Registro de Binario',
                         'blank' => '', // si es para una pagina diferente del sistema solo coloquen _blank
-                        'ruta' => '',
+                        'ruta' => route('binario'),
                         'complementoruta' => ''
-                    ],*/
-                 ],
+                    ],
+                ],
             ],
 
             // Fin Informes/Registros            

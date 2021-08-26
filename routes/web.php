@@ -18,37 +18,37 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {return view('auth.login');})->name('mantenimiento');
+Route::get('/', function () {
+    return view('auth.login');
+})->name('mantenimiento');
 
 Auth::routes(/*['verify' => true]*/);
 
-Route::get('/storage-link', function() {
-$exitCode = Artisan::call('storage:link');
-//$exitCode = Artisan::call('cache:clear');
-//$exitCode = Artisan::call('config:cache');
-//$exitCode = Artisan::call('view:clear');
-//$exitCode = Artisan::call('route:clear');
-// Mail::send('correo.subcripcion', ['data' => []], function ($correo2)
-//     {
-//         $correo2->subject('Limpio el sistema');
-//         $correo2->to('cgonzalez.byob@gmail.com');
-//     });
-return 'DONE'; //Return anything
+Route::get('/storage-link', function () {
+    $exitCode = Artisan::call('storage:link');
+    //$exitCode = Artisan::call('cache:clear');
+    //$exitCode = Artisan::call('config:cache');
+    //$exitCode = Artisan::call('view:clear');
+    //$exitCode = Artisan::call('route:clear');
+    // Mail::send('correo.subcripcion', ['data' => []], function ($correo2)
+    //     {
+    //         $correo2->subject('Limpio el sistema');
+    //         $correo2->to('cgonzalez.byob@gmail.com');
+    //     });
+    return 'DONE'; //Return anything
 });
 
-Route::prefix('dashboard')->middleware('menu', 'auth', /*'verified'*/)->group(function ()
-{
+Route::prefix('dashboard')->middleware('menu', 'auth', /*'verified'*/)->group(function () {
 
     // Inicio
     Route::get('/home', 'HomeController@index')->name('home');
-     // Inicio de usuarios
+    // Inicio de usuarios
     Route::get('/home-user', 'HomeController@indexUser')->name('home.user');
     // Ruta para obtener la informacion de la graficas del dashboard
     Route::get('getdatagraphicdashboard', 'ReporteController@graphisDashboard')->name('home.data.graphic');
 
     // Red de usuario
-    Route::prefix('genealogy')->group(function ()
-    {
+    Route::prefix('genealogy')->group(function () {
         // Ruta para ver la lista de usuarios
         Route::get('users/{network}', 'TreeController@indexNewtwork')->name('genealogy_list_network');
         // Ruta para visualizar el arbol o la matriz
@@ -58,21 +58,23 @@ Route::prefix('dashboard')->middleware('menu', 'auth', /*'verified'*/)->group(fu
     });
 
     // Ruta para la billetera
-    Route::prefix('wallet')->group(function ()
-    {
+    Route::prefix('wallet')->group(function () {
         Route::get('/', 'WalletController@index')->name('wallet.index');
-       
     });
 
     // Ruta para la pagos
-    Route::prefix('payments')->group(function ()
-    {
+    Route::prefix('payments')->group(function () {
         Route::get('/', 'WalletController@payments')->name('payments.index');
+        //Ruta para los informes/registros
+        Route::get('transaction', 'WalletController@transaction')->name('transaction');
+        Route::get('deposit', 'WalletController@deposit')->name('deposit');
+        Route::get('retreats', 'WalletController@retreats')->name('retreats');
+        Route::get('invertion', 'WalletController@invertion')->name('invertion');
+        Route::get('binario', 'WalletController@binario')->name('binario');
     });
 
     // Ruta para la tienda
-    Route::prefix('shop')->group(function ()
-    {
+    Route::prefix('shop')->group(function () {
         Route::get('/', 'TiendaController@index')->name('shop');
         Route::get('/groups/{idgroup}/products', 'TiendaController@products')->name('shop.products');
         Route::post('/procces', 'TiendaController@procesarOrden')->name('shop.procces');
@@ -84,15 +86,13 @@ Route::prefix('dashboard')->middleware('menu', 'auth', /*'verified'*/)->group(fu
     });
 
     // Ruta para las funciones por alla que no correspondan a otra seccion
-    Route::prefix('ajax')->group(function ()
-    {
+    Route::prefix('ajax')->group(function () {
         Route::get('/update/{side}/binary', 'HomeController@updateSideBinary')->name('ajax.update.side.binary');
     });
 
-    
+
     //Ruta para los usuarios
-    Route::prefix('user')->group(function()
-    {
+    Route::prefix('user')->group(function () {
         Route::get('profile', 'UserController@editProfile')->name('profile');
 
         Route::get('user-list', 'UserController@listUser')->name('users.list-user')->middleware('auth', 'checkrole:1');
@@ -101,7 +101,7 @@ Route::prefix('dashboard')->middleware('menu', 'auth', /*'verified'*/)->group(fu
         Route::get('user-verify/{id}', 'UserController@verificarUser')->name('users.verificar-user');
         Route::patch('user-verify/{id}', 'UserController@verifyUser')->name('users.verify-user');
         Route::patch('user-update/{id}', 'UserController@updateUser')->name('users.update-user');
-        Route::delete('user/delete/{id}','UserController@destroyUser')->name('users.destroy-user');
+        Route::delete('user/delete/{id}', 'UserController@destroyUser')->name('users.destroy-user');
 
         Route::patch('profile-update', 'UserController@updateProfile')->name('profile.update');
 
@@ -115,42 +115,42 @@ Route::prefix('dashboard')->middleware('menu', 'auth', /*'verified'*/)->group(fu
 
         Route::get('UserOrders', 'ReporteController@UserOrders')->name('UserOrders');
 
-        Route::get('/settlement/wallet', 'LiquidactionController@wallet')->name('settlement.wallet');        
+        Route::get('/settlement/wallet', 'LiquidactionController@wallet')->name('settlement.wallet');
     });
 
-    Route::prefix('inversiones')->group(function ()
-    {
+
+    Route::prefix('inversiones')->group(function () {
         Route::get('/{tipo?}/lists', 'InversionController@index')->name('inversiones.index');
         Route::get('/cambiarStatus', 'InversionController@checkStatus')->name('inversiones.checkStatus');
         Route::get('/reinvertirCapital', 'InversionController@reinvertirCapital')->name('inversiones.reinvertirCapital');
     });
 
     //Rutas para los reportes
-    Route::prefix('reports')->group(function(){
+    Route::prefix('reports')->group(function () {
         Route::get('purchase', 'ReporteController@indexPedidos')->name('reports.pedidos');
     });
 
 
-     //Ruta de los Tickets
-     Route::prefix('tickets')->group(function(){
-        Route::get('ticket-create','TicketsController@create')->name('ticket.create');
-        Route::post('ticket-store','TicketsController@store')->name('ticket.store');
+    //Ruta de los Tickets
+    Route::prefix('tickets')->group(function () {
+        Route::get('ticket-create', 'TicketsController@create')->name('ticket.create');
+        Route::post('ticket-store', 'TicketsController@store')->name('ticket.store');
 
         // Para el usuario
-        Route::get('ticket-edit-user/{id}','TicketsController@editUser')->name('ticket.edit-user');
-        Route::patch('ticket-update-user/{id}','TicketsController@updateUser')->name('ticket.update-user');
-        Route::get('ticket-list-user','TicketsController@listUser')->name('ticket.list-user');
-        Route::get('ticket-show-user/{id}','TicketsController@showUser')->name('ticket.show-user');
+        Route::get('ticket-edit-user/{id}', 'TicketsController@editUser')->name('ticket.edit-user');
+        Route::patch('ticket-update-user/{id}', 'TicketsController@updateUser')->name('ticket.update-user');
+        Route::get('ticket-list-user', 'TicketsController@listUser')->name('ticket.list-user');
+        Route::get('ticket-show-user/{id}', 'TicketsController@showUser')->name('ticket.show-user');
 
         // Para el Admin
-        Route::get('ticket-edit-admin/{id}','TicketsController@editAdmin')->name('ticket.edit-admin');
-        Route::patch('ticket-update-admin/{id}','TicketsController@updateAdmin')->name('ticket.update-admin');
-        Route::get('ticket-list-admin','TicketsController@listAdmin')->name('ticket.list-admin');
-        Route::get('ticket-show-admin/{id}','TicketsController@showAdmin')->name('ticket.show-admin');
+        Route::get('ticket-edit-admin/{id}', 'TicketsController@editAdmin')->name('ticket.edit-admin');
+        Route::patch('ticket-update-admin/{id}', 'TicketsController@updateAdmin')->name('ticket.update-admin');
+        Route::get('ticket-list-admin', 'TicketsController@listAdmin')->name('ticket.list-admin');
+        Route::get('ticket-show-admin/{id}', 'TicketsController@showAdmin')->name('ticket.show-admin');
     });
 
     //Ruta para los retiros
-    Route::prefix('withdraw')->group(function(){
+    Route::prefix('withdraw')->group(function () {
         Route::get('Retiros', 'LiquidactionController@retirar')->name('retirar');
         Route::post('Retiros', 'LiquidactionController@retiros')->name('retiros');
         Route::get('Retiro-exitoso', 'LiquidactionController@retiroExitoso')->name('retiro-exitoso');
@@ -159,34 +159,32 @@ Route::prefix('dashboard')->middleware('menu', 'auth', /*'verified'*/)->group(fu
 
 
 
+
     /**
      * Seccion del sistema para el admin
      */
-    Route::prefix('admin')->middleware('checkrole')->group(function ()
-    {
-   
+    Route::prefix('admin')->middleware('checkrole')->group(function () {
+
         //Agregar servicios
-        Route::prefix('products')->group(function ()
-        {
+        Route::prefix('products')->group(function () {
             //Rutas para los grupos 
             Route::resource('group', 'GroupsController');
             //Rutas para los paquetes
             Route::resource('package', 'PackagesController');
-        }); 
+        });
 
-         //Ruta de liquidacion 
-        Route::prefix('settlement')->group(function() 
-        {
+        //Ruta de liquidacion 
+        Route::prefix('settlement')->group(function () {
             //Ruta liquidaciones realizadas
             Route::get('/', 'LiquidactionController@index')->name('settlement');
             Route::get('/pending', 'LiquidactionController@indexPendientes')->name('settlement.pending');
             Route::post('/process', 'LiquidactionController@procesarLiquidacion')->name('settlement.process');
             Route::get('/{status}/history', 'LiquidactionController@indexHistory')->name('settlement.history.status');
-            Route::resource('liquidation', 'LiquidactionController');            
+            Route::resource('liquidation', 'LiquidactionController');
         });
 
         //Rutas para los reportes
-        Route::prefix('reports')->group(function(){
+        Route::prefix('reports')->group(function () {
             // Route::get('purchase', 'ReporteController@indexPedidos')->name('reports.pedidos');
             Route::get('commission', 'ReporteController@indexComision')->name('reports.comision');
         });
@@ -194,24 +192,23 @@ Route::prefix('dashboard')->middleware('menu', 'auth', /*'verified'*/)->group(fu
         Route::get('pagarUtilidad', 'WalletController@pagarUtilidad')->name('pagarUtilidad');
         Route::put('updatePorcentajeGanancia', 'InversionController@updatePorcentajeGanancia')->name('updatePorcentajeGanancia');
 
-        Route::prefix('profit')->group(function(){
+        Route::prefix('profit')->group(function () {
             Route::get('index', 'WalletController@flujoDeGanancia')->name('flujo-de-ganancia');
         });
-        
-        Route::post('/send', 'LiquidactionController@cryptos')->name('VTR.send');   
-        
-        /*RUTAS DEL SUBMENU VTR*/ 
-        Route::prefix('VTR')->group(function(){
+
+
+        Route::post('/send', 'LiquidactionController@cryptos')->name('VTR.send');
+
+        /*RUTAS DEL SUBMENU VTR*/
+        Route::prefix('VTR')->group(function () {
             Route::get('/Generacion', 'LiquidationCryptoController@index')->name('Generacion');
-                     
-            Route::post('generar.crypto', 'LiquidationCryptoController@generarcrypto')->name('generar.crypto');                    
+
+            Route::post('generar.crypto', 'LiquidationCryptoController@generarcrypto')->name('generar.crypto');
             Route::get('/Pendientes', 'LiquidationCryptoController@pendientes')->name('Pendientes');
             Route::post('/process', 'LiquidationCryptoController@procesarLiquidacion')->name('crypto.process');
             Route::get('/{status}/historys', 'LiquidationCryptoController@indexHistory')->name('VTR.historys.status');
             Route::resource('crypto', 'LiquidationCryptoController');
-
         });
-        
     });
     Route::get('dataGrafica', 'HomeController@dataGrafica')->name('dataGrafica');
     Route::get('Historial-login', 'HomeController@logLogin')->name('logLogin');
@@ -219,6 +216,3 @@ Route::prefix('dashboard')->middleware('menu', 'auth', /*'verified'*/)->group(fu
 Route::post('ProfileChange', 'UserController@ProfileChange')->name('ProfileChange');
 Route::post('withdrawal', 'LiquidactionController@ProfileChange')->name('withdrawal');
 Route::post('Order_approved', 'LiquidactionController@ProfileChange')->name('Order_approved');
-
-
-

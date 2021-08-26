@@ -655,4 +655,31 @@ class WalletController extends Controller
                     ->with('retiro', $retiro)
                     ->with('fee', $fee);
     }
+
+    public function transaction(){
+        return view('regis.transaction');
+    }
+
+
+
+    public function deposit(){
+        return view('regis.deposit');
+    }
+
+
+    public function retreats(){
+        return view('regis.retreats');
+    }
+
+    
+    public function invertion(){
+        return view('regis.invertion');
+    }
+
+
+    public function binario(){
+        return view('regis.binario');
+    }
+
+ 
 }
