@@ -19,7 +19,6 @@
 <br>
 
 
-
 <div class="col-12 ">
     <div class="card" style="background-color:#0f1522;">
         <div class="table-responsive">
@@ -39,19 +38,23 @@
 
                     @foreach($transac as $transac)
                     <tr class="text-center" id="contend">
-                        <td>{{$transac->id}}</td>
+                        <td># {{$transac->id}}</td>
 
                         <td>CoinPayments</td>
 
-                        <td>{{$transac->total + $transac->fee}}</td>
+                        <td>{{$transac->total + $transac->fee}} $</td>
 
                         @if($transac->status == 0)
-                        <td> <a class=" btn  text-bold-600 text-white" style="background: rgba(246, 74, 0, 0.77);border-radius: 8px;">Cerrado</a></td>
-                        @else($transac->status == 1)
-                        <td> <a class=" btn  text-bold-600 text-white" style="background: rgba(246, 74, 0, 0.77);border-radius: 8px;">Completada</a></td>
-                       
+                        <td> <a class=" btn  text-bold-600 text-white" style="background: rgba(255, 122, 0, 0.77);border-radius: 8px;">En espera</a></td>
+
+                        @elseif($transac->status == 1)
+                        <td> <a class=" btn  text-bold-600 text-white" style="background: rgba(0, 246, 225, 0.77);border-radius: 8px;">Aprobada</a></td>
+
+                        @elseif($transac->status == 2)
+                        <td> <a class=" btn  text-bold-600 text-white" style="background: rgba(246, 74, 0, 0.77);border-radius: 8px;">Rechazada</a></td>
+
                         @endif
-                        <td>{{$transac->created_at->toFormattedDateString()}}</td>
+                        <td>{{$transac->created_at->diffForHumans()}}</td>
 
                         <td>Deposito</td>
 
