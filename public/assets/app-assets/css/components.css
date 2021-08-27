@@ -4305,6 +4305,9 @@ tr.group {
     padding: 10px 30px;
     color: white;
 }
+.btn.btn-logout:hover{
+    color: rgba(5, 156, 189, 1) !important;
+}
 
 .user-header img {
     width: 35px;
