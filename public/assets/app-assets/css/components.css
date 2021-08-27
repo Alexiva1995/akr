@@ -4303,6 +4303,7 @@ tr.group {
     border: 2px solid white;
     border-radius: 25px;
     padding: 10px 30px;
+    
     color: white;
 }
 .btn.btn-logout:hover{
