@@ -38,7 +38,7 @@
                         </div>
                     </div>
                     <br>
-                    {{-- <br> --}}
+                
                 </div>
             </div>
             <form action="{{ route('retiros')}}" method="POST">
