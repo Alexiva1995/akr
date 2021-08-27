@@ -58,23 +58,16 @@
                 @endforeach
                 @endif
             </ul>
-            @if(Auth::user()->id == 1)
+           
             <footer class="site-footer ">
                 <div style="text-align:center;">
-                    <a class="btn btn-logout" style="margin-top: 295px;" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
+                    <a class="btn btn-logout"  href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
                         Cerrar sesión&nbsp;&nbsp;<i class="feather icon-log-out"></i> 
                     </a> 
                 </div>
             </footer>
-            @else
-            <footer class="site-footer ">
-                <div style="text-align:center;">
-                    <a class="btn btn-logout" style="margin-top: 210px;" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
-                        Cerrar sesión&nbsp;&nbsp;<i class="feather icon-log-out"></i> 
-                    </a> 
-                </div>
-            </footer>
-            @endif
+          
+        
         </div>
         </div>    
  </div>
