@@ -47,21 +47,20 @@ div.dataTables_wrapper div.dataTables_filter input {
     margin-left: 0.5em;
     display: inline-block;
     width: auto;
-}
+}/*
 div.dataTables_wrapper div.dataTables_info {
     padding-top: 0.85em;
     white-space: nowrap;
     
-}
+}*/
 div.dataTables_wrapper div.dataTables_paginate {
     margin: 0;
     white-space: nowrap;
-    text-align: right;
+    text-align: center;
 }
 div.dataTables_wrapper div.dataTables_paginate ul.pagination {
     margin: 2px 0;
-    white-space: nowrap;
-    justify-content: flex-end;
+    justify-content: center;
 }
 div.dataTables_wrapper div.dataTables_processing {
     position: absolute;

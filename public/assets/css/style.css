@@ -207,16 +207,14 @@ output {
 }
 
 #DataTables_Table_0_info{
-    display: none;
+    display:none !important;
+    font-size: 1px;
 }
 
 #DataTables_Table_0_paginate{
-    
-
     margin-top: 15px;
     margin-bottom: 25px;
 }
-
 
 
 #id {

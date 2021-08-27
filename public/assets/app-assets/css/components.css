@@ -3975,7 +3975,7 @@ table.dataTable tbody tr.selected th {
 div.dataTables_wrapper div.dataTables_filter label,
 div.dataTables_wrapper div.dataTables_length label {
     margin-top: 1rem;
-    display: none;
+    display:none !important;
 }
 
 div.dataTables_wrapper div.dataTables_filter select,
@@ -3986,10 +3986,19 @@ div.dataTables_wrapper div.dataTables_length select {
 
 div.dataTables_wrapper div.dataTables_paginate ul.pagination {
     margin-top: 1rem;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    
 }
+
 div.dataTables_wrapper div.dataTables_paginate ul.pagination li a {
     font-size: 0.8rem;
+    background-color: transparent;
+    color: white;
 }
+
 
 tr.group {
     background-color: #ededed;
