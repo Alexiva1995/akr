@@ -5,7 +5,7 @@
       <div class="container">
         <div class="row">
           <div class="col-md-8 col-sm-6 col-xs-12">
-          <p class="copyright-text">Dreams Blue &copy; 2021 - All Right Reserved</p>
+          <p class="copyright-text" id="text-o">Dreams Blue &copy; 2021 - All Right Reserved</p>
           </div>
   
           <div class="col-md-4 col-sm-6 col-xs-12">
@@ -19,5 +19,11 @@
         </div>
       </div>
   </footer>
+
+  <style>
+    #text-o{
+      color: #FFFFFF !important;
+    }
+  </style>
   
   
