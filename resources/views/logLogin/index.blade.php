@@ -54,7 +54,7 @@
                             <td>{{$login->id}}</td>
                             <td>{{$login->getUser->fullname}}</td>
                             @endif
-                            <td>{{date('Y-M-d', strtotime($login->created_at))}}</td>
+                            <td>{{$login->created_at->diffForHumans()}}</td>
                             <td>{{$login->ip_address}}</td>
                             <td>{{$login->location}}</td>
                             <td>{{$login->browser}}</td>
