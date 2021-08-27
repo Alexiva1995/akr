@@ -19,7 +19,7 @@
     <div class="container">
         <div class="row">
             <div class="col-9">
-                <h1 class="text-white" id="deposito">Retiros</h1>
+                <h1 class="text-white" >Retiros</h1>
             </div>
             <div class="col-3">
             <button id="IDref"  class="btn mb-2" onclick="getlink()">ID de

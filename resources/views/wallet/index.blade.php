@@ -3,8 +3,9 @@
 {{-- contenido --}}
 @section('content')
 <div class="col-12">
-    <div class="card bg-lp">
-
+    
+<h1 class="text-white mb-2">Wallet</h1>
+        
         <div class="card-content">
             <div class="card-body card-dashboard">
                 <div class="float-right row no-gutters" style="width: 30%;">

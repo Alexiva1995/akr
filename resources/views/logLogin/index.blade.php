@@ -11,7 +11,7 @@
         font-weight: normal;
         font-size: 15px;
         line-height: 23px;
-        color: #000000 !important;
+        color: #FFFFFF !important;
 
     }
 </style>
@@ -26,49 +26,49 @@
     </div>
 </div>
 <div id="logs-list">
-    <div class="col-12">
-    <div class="card" style="background-color:#0f1522;">
-                    <div class="table-responsive">
-                        <table class="table w-100 nowrap scroll-horizontal-vertical myTable table-striped w-100">
-                            <thead class="" id="thead">
+    <div class="col-12 ">
+        <div class="card" style="background-color:#0f1522;">
+            <div class="table-responsive">
+                <table class="nowrap myTable scroll-horizontal-vertical   table-striped w-100">
+                    <thead class="">
 
-                                <tr class="text-center text-white bg-purple-alt2">
-                                    @if(Auth::user()->id == 1)
-                                    <th>ID</th>
-                                    <th>Usuario</th>
-                                    @endif
-                                    <th>Fecha</th>
-                                    <th>IP</th>
-                                    <th>Localización</th>
-                                    <th>Navegador</th>
-                                    <th>SO</th>
+                        <tr class="text-center text-white ">
+                            @if(Auth::user()->id == 1)
+                            <th>ID</th>
+                            <th>Usuario</th>
+                            @endif
+                            <th>Fecha</th>
+                            <th>IP</th>
+                            <th>Localización</th>
+                            <th>Navegador</th>
+                            <th>SO</th>
 
-                                </tr>
+                        </tr>
 
-                            </thead>
-                            <tbody id="tvody">
+                    </thead>
+                    <tbody id="tvody">
 
-                                @foreach ($logins as $login)
-                                <tr class="text-center" id="contend">
-                                    @if(Auth::user()->id == 1)
-                                    <td>{{$login->id}}</td>
-                                    <td>{{$login->getUser->fullname}}</td>
-                                    @endif
-                                    <td>{{date('Y-M-d', strtotime($login->created_at))}}</td>
-                                    <td>{{$login->ip_address}}</td>
-                                    <td>{{$login->location}}</td>
-                                    <td>{{$login->browser}}</td>
-                                    <td>{{$login->so}}</td>
-                                </tr>
+                        @foreach ($logins as $login)
+                        <tr class="text-center" id="contend">
+                            @if(Auth::user()->id == 1)
+                            <td>{{$login->id}}</td>
+                            <td>{{$login->getUser->fullname}}</td>
+                            @endif
+                            <td>{{date('Y-M-d', strtotime($login->created_at))}}</td>
+                            <td>{{$login->ip_address}}</td>
+                            <td>{{$login->location}}</td>
+                            <td>{{$login->browser}}</td>
+                            <td>{{$login->so}}</td>
+                        </tr>
 
-                                @endforeach
+                        @endforeach
 
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
+                    </tbody>
+                </table>
             </div>
         </div>
+    </div>
+</div>
 
 </div>
 

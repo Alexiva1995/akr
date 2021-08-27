@@ -3,16 +3,14 @@
 @push('vendor_css')
 <link rel="stylesheet" type="text/css" href="{{asset('assets/app-assets/vendors/css/extensions/sweetalert2.min.css')}}">
 <style type="text/css">
-
-    #table_detalle{
-        overflow-y: hidden; 
+    #table_detalle {
+        overflow-y: hidden;
         overflow-x: auto;
         width: auto;
         height: 50px;
         padding: 10px;
         white-space: nowrap;
     }
-
 </style>
 @endpush
 
@@ -34,30 +32,29 @@
 @section('content')
 <div id="settlement">
     <div class="col-12">
-        <div class="card bg-lp">
-            <div class="card-content">
-                <div class="card-body card-dashboard">
+    <div class="card" style="background-color:#0f1522;">
+         
                     <form action="{{route('liquidation.store')}}" method="post">
-                    @csrf
-                    <div class="table-responsive">
-                        <table class="table w-100 nowrap scroll-horizontal-vertical myTable table-striped">
-                            <thead class="">
-                                <tr class="text-center text-white bg-purple-alt2">
-                                    <th> Seleccionar</th>
-                                    <th>ID Usuario</th>
-                                    <th>Usuario</th>
-                                    <th>Email</th>
-                                    <th>Total Comision</th>
-                                    <th>Estado</th>
-                                    <th>Accion</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($comisiones as $comision)
-                                    <tr class="text-center">
+                        @csrf
+                        <div class="table-responsive">
+                            <table class="table w-100 nowrap scroll-horizontal-vertical myTable table-striped">
+                                <thead class="">
+                                    <tr class="text-center text-white ">
+                                        <th> Seleccionar</th>
+                                        <th>ID Usuario</th>
+                                        <th>Usuario</th>
+                                        <th>Email</th>
+                                        <th>Total Comision</th>
+                                        <th>Estado</th>
+                                        <th>Accion</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($comisiones as $comision)
+                                    <tr class="text-center" id="contend">
                                         <td>
                                             <input type="checkbox" value="{{$comision->iduser}}" name="listUsers[]" value="{{$comision->iduser}}">
-                                        </td> 
+                                        </td>
                                         <td>{{$comision->iduser}}</td>
                                         <td>{{$comision->getWalletUser->fullname}}</td>
                                         <td>{{$comision->getWalletUser->email}}</td>
@@ -69,16 +66,16 @@
                                             </a>
                                         </td>
                                     </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
-                    </div>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
 
-                    {{-- @if(\Carbon\Carbon::now()->format('l') == 'Friday') --}}
+                        {{-- @if(\Carbon\Carbon::now()->format('l') == 'Friday') --}}
                         <div class="form-group text-center">
                             <button class="btn btn-primary">Generar Liquidacion</button>
                         </div>
-                    {{-- @endif --}}
+                        {{-- @endif --}}
                     </form>
                 </div>
             </div>
@@ -90,5 +87,3 @@
 
 {{-- permite llamar a las opciones de las tablas --}}
 @include('layouts.componenteDashboard.optionDatatable')
-
-

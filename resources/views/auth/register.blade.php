@@ -85,9 +85,6 @@
         align-content: space-around;
 
     }
-    #cap{
-        border: 1px solid #000000;
-    }
 </style>
 
 @endpush
