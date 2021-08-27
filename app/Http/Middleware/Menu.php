@@ -188,12 +188,7 @@ class Menu
                         'ruta' => route('transaction'),
                         'complementoruta' => ''
                     ],
-                    [
-                        'name' => 'Registro de depósitos',
-                        'blank' => '', // si es para una pagina diferente del sistema solo coloquen _blank
-                        'ruta' => route('deposit'),
-                        'complementoruta' => ''
-                    ],
+                   
                     [
                         'name' => 'Registro de Retiros',
                         'blank' => '', // si es para una pagina diferente del sistema solo coloquen _blank

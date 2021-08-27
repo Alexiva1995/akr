@@ -661,26 +661,31 @@ class WalletController extends Controller
         return view('regis.transaction')->with('transac', $transac);
     }
 
-
-
-    public function deposit(){
-        return view('regis.deposit');
-    }
-
-
     public function retreats(){
-        return view('regis.retreats');
+        $retiro = Liquidaction::where('iduser', Auth::user()->id)->get();
+
+        return view('regis.retreats')->with('retiro', $retiro);
     }
+
+
+
 
     public function invertion(){
         $inver = inversion::where('iduser', Auth::user()->id)->get();
+
+        foreach($inver as $inv){
+            
+            $orden = OrdenPurchases::find($inv->orden_id);
+
+            $inv->fee = $orden->fee;
+        }
+
         return view('regis.invertion')->with('inver', $inver);
+
     }
 
     public function binario(){
         $binan = WalletBinary::where('iduser', Auth::user()->id)->get();
         return view('regis.binario')->with('binan', $binan);
     }
-
-
 }

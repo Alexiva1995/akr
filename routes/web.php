@@ -67,7 +67,7 @@ Route::prefix('dashboard')->middleware('menu', 'auth', /*'verified'*/)->group(fu
         Route::get('/', 'WalletController@payments')->name('payments.index');
         //Ruta para los informes/registros
         Route::get('transaction', 'WalletController@transaction')->name('transaction');
-        Route::get('deposit', 'WalletController@deposit')->name('deposit');
+       
         Route::get('retreats', 'WalletController@retreats')->name('retreats');
         Route::get('invertion', 'WalletController@invertion')->name('invertion');
         Route::get('binario', 'WalletController@binario')->name('binario');

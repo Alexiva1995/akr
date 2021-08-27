@@ -55,4 +55,10 @@ class OrdenPurchases extends Model
     {
         return $this->hasOne('App\Models\Inversion', 'orden_id');
     }
+
+    public function getorden()
+    {
+        return $this->hasOne('App\Models\Inversion', 'fee', 'total');
+    }
+
 }

@@ -2,7 +2,6 @@
 @include('layouts.componenteDashboard.linkReferido')
 @section('content')
 
-
 <div class="container">
     <div class="row">
         <div class="col-9">
@@ -27,6 +26,7 @@
                     <tr class="text-center text-white">
                         <th>ID de transacción</th>
                         <th>Wallet</th>
+                        <th>Monto</th>
                         <th>Despues Del Retiro</th>
                         <th>Tarifa</th>
                         <th>Estado</th>
@@ -35,23 +35,36 @@
                 </thead>
                 <tbody>
 
-
+                    @foreach($retiro as $retir)
                     <tr class="text-center" id="contend">
-                        <td># 1</td>
+                        <td># {{$retir->id}}</td>
+                        <td>{{$retir->wallet_used}}</td>
 
-                        <td>2</td>
+                        <td>{{$retir->monto_bruto}} $</td>
+                     
+                        <td>{{$retir->total}} $</td>
+                    
+                        <td>{{$retir->feed}} $</td>
+                        
+                        <td> 
+                        @if($retir->status == 0)
+                       <a class=" btn  text-bold-600 text-white" style="background: rgba(255, 122, 0, 0.77);border-radius: 8px;">En espera</a></td>
 
-                        <td>1250</td>
+                    
+                        @elseif($retir->status == 1)
+                        <td> 
+                        <a class=" btn  text-bold-600 text-white" style="background: rgba(0, 246, 225, 0.77);border-radius: 8px;">Aprobada</a></td>
+                       
+                        @elseif($retir->status == 2)
+                        <td> 
+                        <a class=" btn  text-bold-600 text-white" style="background: rgba(246, 74, 0, 0.77);border-radius: 8px;">Rechazado</a></td>
+                        
 
-                        <td> <a class=" btn  text-bold-600 text-white" style="background: rgba(246, 74, 0, 0.77);border-radius: 8px;">Cerrado</a></td>
-
-                        <td>12 min</td>
-
-                        <td>CoinPayments</td>
-
-
+                        @endif
+                        <td>{{$retir->created_at->diffForHumans()}}</td>
+                       
                     </tr>
-
+                    @endforeach
                 </tbody>
             </table>
         </div>

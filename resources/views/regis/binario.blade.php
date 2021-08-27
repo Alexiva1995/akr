@@ -23,7 +23,7 @@
         <div class="table-responsive">
             <table class="nowrap myTable scroll-horizontal-vertical   table-striped w-100">
                 <thead>
-                   
+
                     <tr class="text-center text-white">
                         <th>Puntos De lado Izquierdo</th>
                         <th>Puntos De lado Derecho</th>
@@ -32,15 +32,15 @@
                     </tr>
                 </thead>
                 <tbody>
-                @foreach($binan as $bina) 
+                    @foreach($binan as $bina)
                     <tr class="text-center" id="contend">
                         <td>{{$bina->puntos_i}}</td>
                         <td>{{$bina->puntos_d}}</td>
                         <td>{{$bina->getUser->fullname}}</td>
                     </tr>
-
+                    @endforeach
                 </tbody>
-                @endforeach
+
             </table>
         </div>
     </div>

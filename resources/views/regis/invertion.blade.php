@@ -36,25 +36,29 @@
                 </thead>
                 <tbody>
 
+                    @foreach($inver as $inve)
                     <tr class="text-center" id="contend">
-                        <td># 1</td>
+                        <td># {{$inve->id}}</td>
                         
-                        <td># 1</td>
-
-                        <td>2</td>
-
-                        <td>1250</td>
-
-                        <td> <a class=" btn  text-bold-600 text-white" style="background: rgba(246, 74, 0, 0.77);border-radius: 8px;">Cerrado</a></td>
-
-                        <td>12 min</td>
-
                         <td>CoinPayments</td>
 
+                        <td>{{$inve->invertido + $inve->fee}} $</td>
+
+                        <td>{{$inve->invertido}} $</td>
+
+                        <td>{{$inve->fee}} $</td>
+
+                        @if($inve->status == 1)                        
+                        <td> <a class=" btn  text-bold-600 text-white" style="background: rgba(0, 246, 225, 0.77);border-radius: 8px;">Activo</a></td>
+                        @else($inve->status == 2)
+                        <td> <a class=" btn  text-bold-600 text-white" style="background: rgba(246, 74, 0, 0.77);border-radius: 8px;">Culminada</a></td>
+                        @endif
+
+                        <td>{{$inve->created_at->diffForHumans()}}</td>
 
                     </tr>
-
                 </tbody>
+                @endforeach
             </table>
         </div>
     </div>
