@@ -46,10 +46,11 @@
                     
                         <td>{{$retir->feed}} $</td>
                         
-                        <td> 
+                     
                         @if($retir->status == 0)
+                        <td> 
                        <a class=" btn  text-bold-600 text-white" style="background: rgba(255, 122, 0, 0.77);border-radius: 8px;">En espera</a></td>
-
+                     
                     
                         @elseif($retir->status == 1)
                         <td> 
