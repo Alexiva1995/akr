@@ -20,6 +20,11 @@
 @endpush
 
 @section('content')
+
+
+<h1 class="text-white mb-2">Pendientes</h1>
+
+
 <div id="settlement">
     <div class="card" style="background-color:#0f1522;">
         <div class="table-responsive">

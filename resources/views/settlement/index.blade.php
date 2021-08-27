@@ -30,6 +30,10 @@
 @endpush
 
 @section('content')
+
+<h1 class="text-white mb-2">Generacion</h1>
+
+
 <div id="settlement">
     <div class="col-12">
     <div class="card" style="background-color:#0f1522;">
