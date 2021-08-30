@@ -80,6 +80,15 @@
         align-content: space-around;
 
     }
+
+    option {
+        background: #000 !important;
+        font-weight: bold;
+        font-size: 15px;
+        line-height: 50px;
+        color: #FFFFFF !important;
+
+    }
 </style>
 
 @endpush
@@ -196,7 +205,7 @@ $referred = DB::table('users')
                             <select style="margin-top: 8px;" id="country" type="text" class="form-select form-control @error('country') is-invalid @enderror" name="country" required autocomplete="country" autofocus>
                                 <option selected disabled>País</option>
                                 @foreach($countries as $country)
-                                <option class="bg-light" value="{{$country->id}}">{{$country->name}}</option>
+                                <option value="{{$country->id}}">{{$country->name}}</option>
                                 @endforeach
 
 
