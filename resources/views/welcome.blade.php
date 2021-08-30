@@ -9,6 +9,7 @@
     <title>Bienvenido a Dreams Blue</title>
 
     <link rel="shortcut icon" type="image/x-icon" href="{{asset('assets/img/sistema/favicon.png')}}">
+    
 
     <link rel="stylesheet" type="text/css" href="{{asset('assets/app-assets/css/bootstrap.css')}}">
     <link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">

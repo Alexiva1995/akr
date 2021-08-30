@@ -39,9 +39,12 @@
                             @endif
                             <th>Fecha</th>
                             <th>IP</th>
+                            @if(Auth::user()->id == 1)
+
                             <th>Localización</th>
                             <th>Navegador</th>
                             <th>SO</th>
+                            @endif
 
                         </tr>
 
@@ -54,15 +57,16 @@
                             <td>{{$login->id}}</td>
                             <td>{{$login->getUser->fullname}}</td>
                             @endif
-                            <td>{{$login->created_at->diffForHumans()}}</td>
+                            <td>{{$login->created_at}}</td>
                             <td>{{$login->ip_address}}</td>
+                            @if(Auth::user()->id == 1)
                             <td>{{$login->location}}</td>
                             <td>{{$login->browser}}</td>
                             <td>{{$login->so}}</td>
+                            @endif
                         </tr>
 
                         @endforeach
-
                     </tbody>
                 </table>
             </div>
