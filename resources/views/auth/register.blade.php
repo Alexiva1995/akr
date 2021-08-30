@@ -193,10 +193,10 @@ $referred = DB::table('users')
 
                     <div class="row">
                         <div class="form-group col-md-6">
-                            <select style="  margin-top: 8px;" id="country" type="text" class="form-control @error('country') is-invalid @enderror" name="country" required autocomplete="country" autofocus>
-                                <option selected disabled readonly>País</option>
+                            <select style="margin-top: 8px;" id="country" type="text" class="form-select form-control @error('country') is-invalid @enderror" name="country" required autocomplete="country" autofocus>
+                                <option selected disabled>País</option>
                                 @foreach($countries as $country)
-                                <option value="{{$country->id}}">{{$country->name}}</option>
+                                <option class="bg-light" value="{{$country->id}}">{{$country->name}}</option>
                                 @endforeach
 
 
@@ -209,113 +209,133 @@ $referred = DB::table('users')
                             @enderror
                         </div>
 
-                        <div class="form-group col-md-6">
-                            <input style="  margin-top: 8px;" id="state" type="text" class=" form-control @error('state') is-invalid @enderror" name="state" required autocomplete="state" autofocus placeholder="" value="{{ old('state') }}">
 
-                            <span class="floating-label "><i class="fas fa-map-marker-alt"></i> Estado o Provincia </span>
-
-
-
-                            @error('state')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                            @enderror
-                        </div>
-                    </div>
-
+                        {{--
                     <div class="row">
                         <div class="form-group col-md-6">
-                            <input style="  margin-top: 8px;" id="city" type="text" class=" form-control @error('city') is-invalid @enderror" name="city" required autocomplete="city" autofocus placeholder="" value="{{ old('city') }}">
+                            <select style="  margin-top: 8px;" id="country" type="text" class="form-control @error('country') is-invalid @enderror" name="country" required autocomplete="country" autofocus>
+                                <option selected disabled readonly>País</option>
+                                @foreach($countries as $country)
+                                <option value="{{$country->id}}">{{$country->name}}</option>
+                        @endforeach
 
 
-                            <span class="floating-label "><i class="fas fa-map-marker-alt"></i> Ciudad </span>
+                        </select>
 
-                            @error('city')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                            @enderror
-                        </div>
+                        @error('country')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
+                    </div>--}}
 
-                        <div class="form-group col-md-6">
-                            <input style="  margin-top: 8px;" id="age" type="text" onfocus="(this.type='date')" class="text-white form-control @error('age') is-invalid @enderror" name="age" required autocomplete="age" autofocus placeholder=" " value="{{ old('age') }}">
+                    <div class="form-group col-md-6">
+                        <input style="  margin-top: 8px;" id="state" type="text" class=" form-control @error('state') is-invalid @enderror" name="state" required autocomplete="state" autofocus placeholder="" value="{{ old('state') }}">
 
-                            <span class="floating-label "><i class="fas fa-calendar"></i> Fecha de Nacimiento </span>
+                        <span class="floating-label "><i class="fas fa-map-marker-alt"></i> Estado o Provincia </span>
 
-                            @error('age')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                            @enderror
-                        </div>
+
+
+                        @error('state')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
                     </div>
-
-                    <div class="row">
-                        <div class="form-group col-md-6">
-                            <input style="  margin-top: 8px;" id="password" type="password" class=" form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password" placeholder="">
-
-
-                            <span class="floating-label"><i class="fas fa-lock"></i> Ingrese una contraseña </span>
-
-                            @error('password')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                            @enderror
-                        </div>
-
-                        <div class="form-group col-md-6">
-                            <input style="  margin-top: 8px;" id="password-confirm" type="password" class=" form-control" name="password_confirmation" required autocomplete="new-password" placeholder="">
-
-                            <span class="floating-label "><i class="fas fa-lock"></i> confirme su contraseña </span>
-
-                        </div>
-                    </div>
-
-                    <fieldset class="checkbox registrate mb-1">
-                        <div class="vs-checkbox-con vs-checkbox-primary float-left justify-content-center">
-                            <input type="checkbox" name="term" id="term" {{ old('term') ? 'checked' : '' }}>
-                            <span class="vs-checkbox">
-                                <span class="vs-checkbox--check">
-                                    <i class="vs-icon feather icon-check"></i>
-                                </span>
-                            </span>
-                            @error('term')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                            @enderror
-                        </div>
-                        <p style="font-size: 1rem">
-                            Acepto las políticas de manejo de informacion de <span>Venture Capital Association</span>
-                        </p>
-                    </fieldset>
-
-                    <div>
-                        <div>
-                            <div class="Captcha form-group" id="cap">
-                                {!! NoCaptcha::renderJs('es', false, 'recaptchaCallback') !!}
-                                {!! NoCaptcha::display() !!}
-                            </div>
-                        </div>
-                    </div>
-
-                    <button type="submit" class="btn bg-fucsia text-white btn-block btn-login">
-                        {{ __('Registrate') }}
-                    </button>
             </div>
 
-            <div class="col-12">
-                <p class="text-center">
-                    <a href="{{ route('login') }}" class="registrate">
-                        ¿Ya tienes una cuenta? <span>Inicia sesión</span>
-                    </a>
+            <div class="row">
+                <div class="form-group col-md-6">
+                    <input style="  margin-top: 8px;" id="city" type="text" class=" form-control @error('city') is-invalid @enderror" name="city" required autocomplete="city" autofocus placeholder="" value="{{ old('city') }}">
+
+
+                    <span class="floating-label "><i class="fas fa-map-marker-alt"></i> Ciudad </span>
+
+                    @error('city')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
+                </div>
+
+                <div class="form-group col-md-6">
+                    <input style="  margin-top: 8px;" id="age" type="text" onfocus="(this.type='date')" class="text-white form-control @error('age') is-invalid @enderror" name="age" required autocomplete="age" autofocus placeholder=" " value="{{ old('age') }}">
+
+                    <span class="floating-label "><i class="fas fa-calendar"></i> Fecha de Nacimiento </span>
+
+                    @error('age')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="form-group col-md-6">
+                    <input style="  margin-top: 8px;" id="password" type="password" class=" form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password" placeholder="">
+
+
+                    <span class="floating-label"><i class="fas fa-lock"></i> Ingrese una contraseña </span>
+
+                    @error('password')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
+                </div>
+
+                <div class="form-group col-md-6">
+                    <input style="  margin-top: 8px;" id="password-confirm" type="password" class=" form-control" name="password_confirmation" required autocomplete="new-password" placeholder="">
+
+                    <span class="floating-label "><i class="fas fa-lock"></i> confirme su contraseña </span>
+
+                </div>
+            </div>
+
+            <fieldset class="checkbox registrate mb-1">
+                <div class="vs-checkbox-con vs-checkbox-primary float-left justify-content-center">
+                    <input type="checkbox" name="term" id="term" {{ old('term') ? 'checked' : '' }}>
+                    <span class="vs-checkbox">
+                        <span class="vs-checkbox--check">
+                            <i class="vs-icon feather icon-check"></i>
+                        </span>
+                    </span>
+                    @error('term')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
+                </div>
+                <p style="font-size: 1rem">
+                    Acepto las políticas de manejo de informacion de <span>Venture Capital Association</span>
                 </p>
-            </div>
-            </form>
+            </fieldset>
 
+            <div>
+                <div>
+                    <div class="Captcha form-group" id="cap">
+                        {!! NoCaptcha::renderJs('es', false, 'recaptchaCallback') !!}
+                        {!! NoCaptcha::display() !!}
+                    </div>
+                </div>
+            </div>
+
+            <button type="submit" class="btn bg-fucsia text-white btn-block btn-login">
+                {{ __('Registrate') }}
+            </button>
         </div>
+
+        <div class="col-12">
+            <p class="text-center">
+                <a href="{{ route('login') }}" class="registrate">
+                    ¿Ya tienes una cuenta? <span>Inicia sesión</span>
+                </a>
+            </p>
+        </div>
+        </form>
+
+    </div>
 
     </div>
 

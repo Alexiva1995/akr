@@ -9,7 +9,7 @@
         font-weight: normal;
         font-size: 15px;
         line-height: 23px;
-        color: #000000 !important;
+        color: #FFFFFF !important;
 
     }
 </style>
