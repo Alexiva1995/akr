@@ -231,10 +231,8 @@ hr.hr-1 {
     height: 4px;
     background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
 }
-#option{
-   background-color: black;
-   color: white;
-}
+
+
 
 #IDref {
     background: #00B2A2;

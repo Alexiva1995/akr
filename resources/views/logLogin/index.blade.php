@@ -1,5 +1,5 @@
 @extends('layouts.dashboard')
-
+@include('layouts.componenteDashboard.linkReferido')
 @section('content')
 
 <style>
@@ -39,12 +39,10 @@
                             @endif
                             <th>Fecha</th>
                             <th>IP</th>
-                            @if(Auth::user()->id == 1)
-
-                            <th>Localización</th>
+                            {{--<th>Localización</th>
                             <th>Navegador</th>
-                            <th>SO</th>
-                            @endif
+                            <th>SO</th>--}}
+                     
 
                         </tr>
 
@@ -59,11 +57,10 @@
                             @endif
                             <td>{{$login->created_at}}</td>
                             <td>{{$login->ip_address}}</td>
-                            @if(Auth::user()->id == 1)
-                            <td>{{$login->location}}</td>
+                           {{-- <td>{{$login->location}}</td>
                             <td>{{$login->browser}}</td>
-                            <td>{{$login->so}}</td>
-                            @endif
+                            <td>{{$login->so}}</td>--}}
+                        
                         </tr>
 
                         @endforeach

@@ -73,11 +73,6 @@
         margin-bottom: 10%;
     }
 
-    #option {
-        background-color: black;
-        color: white;
-    }
-
     .Captcha {
         display: flex;
         flex-flow: row wrap;
@@ -85,11 +80,6 @@
         align-content: space-around;
 
     }
-
-
-    
-
-
 </style>
 
 @endpush
@@ -199,8 +189,6 @@ $referred = DB::table('users')
                             @enderror
                         </div>
                     </div>
-
-
 
 
                     <div class="row">
