@@ -369,7 +369,7 @@ class WalletController extends Controller
 
             $porcentaje = 0.0111;
             $cantidad = $inversion->invertido * $porcentaje;
-            $resta = $inversion->restante - $cantidad;
+            $resta = ($inversion->max_ganancia - $inversion->ganacia);
 
             if ($resta < 0) { //comparamos si se pasa de lo que puede ganar
                 $cantidad = $inversion->restante;
