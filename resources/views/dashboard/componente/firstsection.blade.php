@@ -158,14 +158,14 @@
     <div class="col-lg-5 col-md-12 col-12 mt-1 mb-1">
         <div class="card text-white bg-blue h-100 mb-0">
             <div class="card-sub d-flex align-items-center mt-2">
-                <div class="progresscircle blue" data-value={{$data['porcentaje']}}>
+                <div class="progresscircle blue" data-value={{--{{$data['porcentaje']}}--}}>
                     <span class="progress-left">
                         <span class="progress-circle"></span>
                     </span>
                     <span class="progress-right">
                         <span class="progress-circle"></span>
                     </span>
-                    <div class="progress-value">{{$data['porcentaje'].'%'}}</div>
+                    <div class="progress-value">{{--{{$data['porcentaje'].'%'}}--}}</div>
                 </div>
             </div>
             <div class="d-flex justify-content-center align-items-center porcentaje">

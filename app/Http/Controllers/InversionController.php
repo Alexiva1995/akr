@@ -66,9 +66,7 @@ class InversionController extends Controller
                     'orden_id' => $orden,
                     'invertido' => $invertido,
                     'ganacia' => 0,
-                    'retiro' => 0,
-                    'capital' => $invertido,
-                    'progreso' => 0,
+
                     // 'fecha_vencimiento' => $vencimiento,
                 ];
                 Inversion::create($data);
