@@ -366,7 +366,7 @@ class WalletController extends Controller
                 $inversion->max_ganancia = $inversion->invertido * 2;
             }
 
-            $porcentaje = 1.5 ;
+            $porcentaje = 0.0111 ;
             $cantidad = $inversion->invertido * $porcentaje;
             $resta = $inversion->max_ganancia - $cantidad;
 
