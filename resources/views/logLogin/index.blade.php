@@ -39,10 +39,6 @@
                             @endif
                             <th>Fecha</th>
                             <th>IP</th>
-                            {{--<th>Localización</th>
-                            <th>Navegador</th>
-                            <th>SO</th>--}}
-                     
 
                         </tr>
 
@@ -55,12 +51,10 @@
                             <td>{{$login->id}}</td>
                             <td>{{$login->getUser->fullname}}</td>
                             @endif
-                            <td>{{$login->created_at}}</td>
+                            <td>{{$login->created_at->format('d-m-Y')}}</td>
                             <td>{{$login->ip_address}}</td>
-                           {{-- <td>{{$login->location}}</td>
-                            <td>{{$login->browser}}</td>
-                            <td>{{$login->so}}</td>--}}
-                        
+
+
                         </tr>
 
                         @endforeach
