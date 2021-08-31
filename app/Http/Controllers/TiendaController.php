@@ -293,6 +293,33 @@ class TiendaController extends Controller
                 $user->status = '1';
                 $user->save();
             }
+            if($request->status == '1'){
+             try{
+               
+                   $crypto = cryptos::orderBy('id', 'desc')->first();
+             
+                   // aqui obtengo el ultimo valor de la tabla         $ordenes = Ordenes::where('status', '=', 1)->get(); // obtengo todas las ordenes activas        foreach ($ordenes as $orden) {
+                    
+                       $resulPorcentage = ($orden->total * $crypto->porcentaje_de_cryptos); // multiplico la cantidad entre el porcentaje final obtenido
+                       $resultDivision = ($resulPorcentage / $crypto->valor);
+                       
+                      
+                       // divido el resultado del porcentaje por el valor del crypto final obtenido            //Aqui guardo toda la informacion de la transacion anterior
+                      
+                      Crypto_Value::create([
+                          'iduser' => $orden->iduser,
+                           'cantidad' => $resultDivision,
+                           'status' => 1,
+                          
+                       ]);}
+                      
+                       catch (\Throwable $th) {
+                        Log::error('Tienda - generalUrlOrden -> Error: '.$th);
+                        abort(403, "Ocurrio un error, contacte con el administrador");
+                    }
+               }        
+              
+        
         }
         // return redirect('/dashboard/reports/purchase')->with('msj-success', 'Orden actualizada exitosamente');
         //  $user->notify(new \App\Notifications\Order_approved);
