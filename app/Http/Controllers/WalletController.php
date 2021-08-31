@@ -376,6 +376,7 @@ class WalletController extends Controller
                 $inversion->restante = 0;
                 $inversion->ganacia = $inversion->max_ganancia;
                 $inversion->status = 2;
+                $inversion->porcentaje_utilidad = 200;
             } else {
                 $inversion->restante = $resta;
                 $inversion->ganacia += $cantidad;
