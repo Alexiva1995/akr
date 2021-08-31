@@ -141,3 +141,5 @@ Stack trace:
 #65 /home/abraham/Documents/coding/akr/public/index.php(55): Illuminate\Foundation\Http\Kernel->handle(Object(Illuminate\Http\Request))
 #66 /home/abraham/Documents/coding/akr/server.php(21): require_once('/home/abraham/D...')
 #67 {main}  
+[2021-08-31 19:40:47] local.INFO: Inicio pagar utilidad diaria- 2021-08-31 19:40:47  
+[2021-08-31 19:40:47] local.INFO: Fin de pagar utilidad diaria - 2021-08-31 19:40:47  
