@@ -157,7 +157,10 @@ Route::prefix('dashboard')->middleware('menu', 'auth', /*'verified'*/)->group(fu
         Route::get('Historial-de-retiros', 'LiquidactionController@historial')->name('historial');
     });
 
-
+     //ruta para los rangos
+     Route::prefix('rangos')->group(function(){
+        Route::get('/','RangoController@index')->name('rangos.index');
+    });
 
 
     /**

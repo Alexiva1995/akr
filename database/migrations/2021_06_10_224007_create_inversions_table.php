@@ -20,9 +20,9 @@ class CreateInversionsTable extends Migration
             $table->bigInteger('orden_id')->unsigned();
             $table->foreign('orden_id')->references('id')->on('orden_purchases')->onUpdate('cascade')->onDelete('cascade');
             $table->double('invertido');
-            $table->double('ganacia');
+            $table->integer('ganacia');
             $table->tinyInteger('status')->default(1)->comment('1 - activo , 2 - culminada');
-            $table->double('max_ganancia')->nullable();
+            $table->integer('max_ganancia')->nullable();
             $table->timestamps();
         });
     }

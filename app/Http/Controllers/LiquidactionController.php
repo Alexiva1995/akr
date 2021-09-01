@@ -18,7 +18,7 @@ use stdClass;
 
 class LiquidactionController extends Controller
 {
-    
+
     public $walletController;
 
     function __construct()
@@ -32,8 +32,8 @@ class LiquidactionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    
-    
+
+
 
 
     public function cryptos(Request $request)
@@ -54,14 +54,13 @@ class LiquidactionController extends Controller
                 ]);
 
                 return redirect()->back()->with('msj-success', 'Operación Generada Exitosamente');
-
             }
         } catch (\Throwable $th) {
             Log::error('Liquidaction - Cryptos -> Error: ' . $th);
             abort(403, "Ocurrio un error, contacte con el administrador");
         }
     }
-    
+
 
     public function index()
     {
@@ -128,7 +127,7 @@ class LiquidactionController extends Controller
         }
     }
 
- 
+
     /**
      * LLeva a la vistas de las liquidaciones reservadas o aprobadas
      *
@@ -476,7 +475,6 @@ class LiquidactionController extends Controller
                 }
 
                 return redirect()->back()->with('msj-success', 'La Liquidacion fue ' . $accion . ' con exito');
-                
             }
         } catch (\Throwable $th) {
             Log::error('Liquidaction - saveLiquidation -> Error: ' . $th);
@@ -561,7 +559,7 @@ class LiquidactionController extends Controller
                     'monto_bruto' => $bruto,
                     'feed' => $feed,
                     'hash',
-                    'wallet_used' => $billetera? $billetera : $user->wallet_address,
+                    'wallet_used' => $billetera ? $billetera : $user->wallet_address,
                     'status' => 0,
                 ];
 
@@ -576,7 +574,7 @@ class LiquidactionController extends Controller
                         'liquidation_id' => $idLiquidation
                     ]);
                 }
-                    
+
                 // $user = User::find(Auth::user()->id);
                 //  $user->notify(new \App\Notifications\withdrawal);
                 // return redirect()->back()->with('msj-success', 'Liquidaciones Generadas Exitosamente');
@@ -589,12 +587,14 @@ class LiquidactionController extends Controller
         }
     }
 
-    public function retirar(){
+    public function retirar()
+    {
         return view('withdraw.Retiros');
     }
 
-    public function retiros(Request $request){
-        
+    public function retiros(Request $request)
+    {
+
         $validate = $request->validate([
             'tipo' => 'required|string',
             'billetera' => 'required|string'
@@ -603,33 +603,32 @@ class LiquidactionController extends Controller
 
         try {
             if ($validate) {
-                if($request->tipo == "USDT"){
-                    $saldo = Auth::user()->getWallet->where('status', 0)->sum('monto');  
-                    if($saldo < 70){
+                if ($request->tipo == "USDT") {
+                    $saldo = Auth::user()->getWallet->where('status', 0)->sum('monto');
+                    if ($saldo < 70) {
                         return redirect()->back()->with('msj-warning', 'El monto mínimo para retirar son $70, no llegas a ese monto');
-                    }else{
+                    } else {
                         $this->wallet($request->billetera);
-                            return view('withdraw.RetiroExitoso');
+                        return view('withdraw.RetiroExitoso');
                     }
-                }else{
+                } else {
                     $monedas = Auth::user()->getCrypto->where('status', 0)->sum('cantidad');
-                    if($monedas <= 0){
+                    if ($monedas <= 0) {
                         return redirect()->back()->with('msj-warning', 'No tienes monedas disponibles para retirar');
-                    }else{
+                    } else {
                         $this->LiquidationCrypto->CryptoValue($request->billetera);
                         return view('withdraw.RetiroExitoso');
                     }
                 }
-
             }
         } catch (\Throwable $th) {
             Log::error('Liquidaction - retiros -> Error: ' . $th);
             abort(403, "Ocurrio un error, contacte con el administrador");
         }
-
     }
 
-    public function retiroExitoso(){
+    public function retiroExitoso()
+    {
         return view('withdraw.RetiroExitoso');
     }
 
@@ -639,11 +638,11 @@ class LiquidactionController extends Controller
         //     $liq = Liquidaction::all();
         //     $lidCrypto = LiquidationCrypto::all();
         // }else{
-            $liq = Liquidaction::where('iduser', Auth::user()->id)->get();
-            $lidCrypto = LiquidationCrypto::where('iduser', Auth::user()->id)->get();
+        $liq = Liquidaction::where('iduser', Auth::user()->id)->get();
+        $lidCrypto = LiquidationCrypto::where('iduser', Auth::user()->id)->get();
         // }
 
-        foreach($liq as $li){
+        foreach ($liq as $li) {
             $liquidaciones[] = [
                 'fullname' => $li->getUserLiquidation->fullname,
                 'total' => $li->total,
@@ -657,7 +656,7 @@ class LiquidactionController extends Controller
             ];
         }
 
-        foreach($lidCrypto as $li){
+        foreach ($lidCrypto as $li) {
             $liquidaciones[] = [
                 'fullname' => $li->getUserLiquidation->fullname,
                 'total' => $li->total,
@@ -675,6 +674,4 @@ class LiquidactionController extends Controller
         return view('withdraw.Historial', compact('liquidaciones'));
         // dd($liquidaciones);
     }
-
-
 }

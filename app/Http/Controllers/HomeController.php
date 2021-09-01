@@ -96,7 +96,6 @@ class HomeController extends Controller
             'usuario' => Auth::user()->fullname,
             'rewards' => Wallet::where([['iduser', '=', $iduser], ['status', '=', '0']])->get()->sum('monto'),
             'packages' => OrdenPurchases::where([['iduser', '=', $iduser]])->get(),
-            'porcentaje' => Inversion::where([['iduser', Auth::user()->id]])->sum('porcentaje_utilidad'),
             'inversion' => Inversion::where([['iduser', Auth::user()->id]])->sum('invertido'),
         ];
 

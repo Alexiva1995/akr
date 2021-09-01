@@ -66,9 +66,7 @@ class InversionController extends Controller
                     'orden_id' => $orden,
                     'invertido' => $invertido,
                     'ganacia' => 0,
-                    'retiro' => 0,
-                    'capital' => $invertido,
-                    'progreso' => 0,
+
                     // 'fecha_vencimiento' => $vencimiento,
                 ];
                 Inversion::create($data);
@@ -87,7 +85,7 @@ class InversionController extends Controller
 
     public function checkStatus()
     {
-        Inversion::whereDate('fecha_vencimiento', '<', Carbon::now())->update(['status' => 2]);
+      
     }
 
     public function updateGanancia(int $iduser, $paquete, float $ganacia, int $ordenId=0, $porcentaje=null)

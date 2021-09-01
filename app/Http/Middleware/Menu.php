@@ -51,12 +51,21 @@ class Menu
 
             // Mi Rango
             'Mi Rango' => [
-                'submenu' => 0,
+                'submenu' => 1,
                 'ruta' => '',
                 'blank' => '', // si es para una pagina diferente del sistema solo coloquen _blank
                 'icon' => 'feather icon-zap',
                 'complementoruta' => '',
+                'submenus' => [
+                    [
+                        'name' => 'Rango Actual',
+                        'blank' => '', // si es para una pagina diferente del sistema solo coloquen _blank
+                        'ruta' => route('rangos.index'),
+                        'complementoruta' => ''
+                    ],
             ],
+        ],
+
             // Fin añadir saldo
 
             // Mis Referidos

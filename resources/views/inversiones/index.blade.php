@@ -36,7 +36,7 @@
                                 <th>Correo</th>
                                 <th>Monto</th>
                                 <th>Ganancia</th>
-                                <th>Progreso</th>
+
                                 <th>Fecha</th>
                                 {{-- <th>Estado</th> --}}
                             </tr>
@@ -53,7 +53,7 @@
                                 <td>{{$inversion->correo}}</td>
                                 <td>{{number_format($inversion->capital,2,',','.')}}</td>
                                 <td>$ {{number_format($inversion->ganacia, 2, ',', '.')}}</td>
-                                <td>{{number_format($inversion->progreso, 2, ',', '.')}}</td>
+
                                 <td>{{date('Y-M-d', strtotime($inversion->created_at))}}</td>
                                 {{-- <td>{{$inversion->status}}</td> --}}
                             </tr>
