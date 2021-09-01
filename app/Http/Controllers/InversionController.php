@@ -85,7 +85,7 @@ class InversionController extends Controller
 
     public function checkStatus()
     {
-        Inversion::whereDate('fecha_vencimiento', '<', Carbon::now())->update(['status' => 2]);
+      
     }
 
     public function updateGanancia(int $iduser, $paquete, float $ganacia, int $ordenId=0, $porcentaje=null)
