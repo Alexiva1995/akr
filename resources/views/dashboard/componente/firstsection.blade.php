@@ -2,7 +2,6 @@
 <div class="row">
     {{-- Bienvenido --}}
 
-
     <div class="col-lg-12 col-md-12 col-12">
         <div class="card text-white h-100 m-0" style="background-color:#171717; box-shadow:none;">
             <div class="card-content">
@@ -14,15 +13,16 @@
                     <div class="d-flex">
                         @if (Auth::user()->binary_side_register == 'I')                    
                             <div class="d-flex justify-content-center grupo mr-1">
-                                <a href="#" class="btn btn-inactivo text-white text-bold-600" v-on:click="updateBinarySide('D')">Derecha</a> 
-                                <a href="#" class="btn btn-activo text-white text-bold-600 disabled">Izquierda</a> 
+                                <a href="#" id="form-labels" class="btn btn-inactivo" v-on:click="updateBinarySide('D')">Derecha</a> 
+                                <a href="#" id="form-labels" class="btn btn-activo disabled">Izquierda</a> 
                             </div>                    
                         @else
                             <div class="d-flex justify-content-center grupo mr-1">
-                                <a href="#" class="btn btn-activo text-white text-bold-600 disabled">Derecha</a> 
-                                <a href="#" class="btn btn-inactivo text-white text-bold-600" v-on:click="updateBinarySide('I')">Izquierda</a> 
+                                <a href="#" id="form-labels" class="btn btn-activo  disabled">Derecha</a> 
+                                <a href="#" id="form-labels" class="btn btn-inactivo " v-on:click="updateBinarySide('I')">Izquierda</a> 
                             </div>                    
                         @endif  
+                        
                         <button class="btn" style=" background: #00B2A2;
                             border-radius: 5px;
                            
