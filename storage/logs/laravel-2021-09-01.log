@@ -4281,3 +4281,5 @@ Stack trace:
 #68 /home/abraham/Documents/coding/akr/server.php(21): require_once('/home/abraham/D...')
 #69 {main}
 "} 
+[2021-09-01 16:22:15] local.INFO: Inicio pagar utilidad diaria- 2021-09-01 16:22:15  
+[2021-09-01 16:22:15] local.INFO: Fin de pagar utilidad diaria - 2021-09-01 16:22:15  
