@@ -1,4 +1,5 @@
 <div id="chart"></div>
+@push('custom_js')
 <style>
   .apexcharts-tooltip, .apexcharts-canvas .apexcharts-tooltip, .apexcharts-menu.apexcharts-menu-open, .apexcharts-canvas .apexcharts-toolbar .apexcharts-menu .apexcharts-menu-item {
     /*background: #000 !important;*/
@@ -10,9 +11,9 @@
 {{-- <script src="{{asset('assets/js/librerias/axios.min.js')}}"></script> --}}
      <script src="{{asset('assets/js/librerias/axios.min.js')}}"></script>
 <script>
-        axios.get('/dashboard/dataGrafica').then( function(response){
+        axios.get('../dashboard/dataGrafica').then( function(response){
          
-          console.log(response)
+          // console.log(response)
           var options = {
             colors: ['#BA8621'],
             series: [{
@@ -82,7 +83,5 @@
         chart.render();
 
         }).catch(e => console.log(e))          
-        
-      
-      
     </script>
+    @endpush
