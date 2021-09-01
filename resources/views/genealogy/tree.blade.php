@@ -23,7 +23,8 @@
     <div class="row d-flex justify-content-between mb-1">
         <h1 class="text-white">Arbol de Referidos</h1>
         <button class="btn" id="IDref" onclick="getlink()">ID de
-            referido: XXXX {{ Auth::user()->id }}  <i class="fas fa-link"></i>
+                referido: {{ Auth::user()->id }} <i class="fa fa-link"></i>
+            </button>
         </button>
     </div>
 </div>

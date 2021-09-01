@@ -73,8 +73,21 @@
         border-radius: 8px;
     }
 </style>
+<div class="col-12">
+<div class="container">
+    <div class="row">
+        <div class="col-9">
+            <h1 class="text-white">Perfil</h1>
+        </div>
 
-<h1 class="text-white">Perfil</h1>
+        <div class="col-3">
+        <button class="btn" id="IDref" onclick="getlink()">ID de
+                referido: {{ Auth::user()->id }} <i class="fa fa-link"></i>
+            </button>
+        </div>
+    </div>
+</div>
+        
 <br>
 <div class="app-content">
     <div class="content-overlay"></div>

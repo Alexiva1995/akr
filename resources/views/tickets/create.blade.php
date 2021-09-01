@@ -23,8 +23,9 @@
         <div class="col-3"><a id="boton-ticket" href="{{ route('ticket.list-user')}}" class="btn  mb-2 waves-effect waves-light">Volver Atrás <i class="fas fa-chevron-left"></i></a>
         </div>
         <div class="col-3">
-            <button class="btn mb-2 " id="IDref" onclick="getlink()">ID de
-                referido: XXXX {{Auth::user()->id}} <i class="fa fa-link"></i></button>
+        <button class="btn" id="IDref" onclick="getlink()">ID de
+                referido: {{ Auth::user()->id }} <i class="fa fa-link"></i>
+            </button>
         </div>
     </div>
 </div>

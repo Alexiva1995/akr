@@ -12,8 +12,9 @@
         <div class="col-3"><a id="boton-ticket" href="{{ route('ticket.create')}}" class="btn  mb-2 waves-effect waves-light"> Nuevo Ticket <i class="fas fa-ticket-alt"></i></a>
         </div>
         <div class="col-3">
-            <button id="IDref" class="btn mb-2" onclick="getlink()">ID de
-                referido: XXXX {{Auth::user()->id}} <i class="fas fa-link"></i></button>
+        <button class="btn" id="IDref" onclick="getlink()">ID de
+                referido: {{ Auth::user()->id }} <i class="fa fa-link"></i>
+            </button>
         </div>
     </div>
 

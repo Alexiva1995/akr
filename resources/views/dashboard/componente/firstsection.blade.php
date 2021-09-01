@@ -3,13 +3,16 @@
     {{-- Bienvenido --}}
 
     <div class="col-lg-12 col-md-12 col-12">
-        <div class="card text-white h-100 m-0" style="background-color:#171717; box-shadow:none;">
+        <div class="card text-white h-100 m-0"  style="background-color:#171717; box-shadow:none;">
             <div class="card-content">
                 <div class="card-body d-flex justify-content-between">
                     <div class="">
-                        <h1 class=" text-white">Bienvenido <span style="color:#00C8F4;">{{ $data['usuario'] }}</span>
+                        <h1  class=" text-white">Bienvenido <span style="color:#00C8F4;">{{ $data['usuario'] }}</span>
                         </h1>
                     </div>
+
+
+
                     <div class="d-flex">
                         @if (Auth::user()->binary_side_register == 'I')                    
                             <div class="d-flex justify-content-center grupo mr-1">
