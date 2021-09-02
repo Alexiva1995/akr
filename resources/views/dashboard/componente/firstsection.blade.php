@@ -168,7 +168,7 @@
                     <span class="progress-right">
                         <span class="progress-circle"></span>
                     </span>
-                    <div class="progress-value">{{$data['porcentaje'].'%'}}</div>
+                    <div class="progress-value">{{number_format($data['porcentaje']). '%'}}</div>
                 </div>
             </div>
             <div class="d-flex justify-content-center align-items-center porcentaje">
