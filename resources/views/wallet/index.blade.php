@@ -3,8 +3,19 @@
 {{-- contenido --}}
 @section('content')
 <div class="col-12">
-    
-<h1 class="text-white mb-2">Wallet</h1>
+<div class="container">
+    <div class="row">
+        <div class="col-9">
+            <h1 class="text-white">Wallet</h1>
+        </div>
+
+        <div class="col-3">
+        <button class="btn" id="IDref" onclick="getlink()">ID de
+                referido: {{ Auth::user()->id }} <i class="fa fa-link"></i>
+            </button>
+        </div>
+    </div>
+</div>
         
         <div class="card-content">
             <div class="card-body card-dashboard">

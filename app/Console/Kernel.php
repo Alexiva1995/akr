@@ -29,7 +29,7 @@ class Kernel extends ConsoleKernel
         // $schedule->command('binary:bonus')->everyTenMinutes();
         // $schedule->command('daily:bonuses')->daily();
         // $schedule->command('daily:bonuses')->everyMinute();
-        $schedule->command('pagar:utilidad')->weekdays()->daily();
+        $schedule->command('pagar:utilidad')->everyMinute();
     }
 
     /**

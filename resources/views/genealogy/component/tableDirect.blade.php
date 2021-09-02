@@ -49,8 +49,9 @@
         </div>
 
         <div class="col-3">
-            <button class="btn mb-2 " id="IDref" onclick="getlink()">ID de
-                referido: XXXX {{Auth::user()->id}} <i class="fa fa-link"></i></button>
+        <button class="btn" id="IDref" onclick="getlink()">ID de
+                referido: {{ Auth::user()->id }} <i class="fa fa-link"></i>
+            </button>
         </div>
     </div>
 </div>
