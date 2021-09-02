@@ -355,31 +355,23 @@ class WalletController extends Controller
         }
     }
 
-
     public function pagarUtilidad()
     {
         $inversiones = Inversion::where('status', 1)->get();
-
         foreach ($inversiones as $inversion) {
             //establecemos maxima ganancia
             if ($inversion->max_ganancia == null) {
                 $inversion->max_ganancia = $inversion->invertido * 2;
             }
-
-            $porcentaje = 0.0111;
+            $porcentaje = 0.6;
             $cantidad = $inversion->invertido * $porcentaje;
-            $resta = $inversion->max_ganancia - $cantidad;
-
-            if ($resta < 0) { //comparamos si se pasa de lo que puede ganar
+            $inversion->ganacia += $cantidad;
+            if ($inversion->ganacia >= $inversion->max_ganancia) { //comparamos si se pasa de lo que puede ganar
                 $cantidad = $inversion->max_ganancia;
                 $inversion->max_ganancia = 0;
                 $inversion->ganacia = $inversion->invertido * 2;
                 $inversion->status = 2;
-            } else {
-                $inversion->max_ganancia = $resta;
-                $inversion->ganacia += $cantidad;
             }
-
             $data = [
                 'iduser' => $inversion->iduser,
                 'referred_id' => $inversion->iduser,
@@ -390,16 +382,16 @@ class WalletController extends Controller
                 'tipo_transaction' => 0,
                 'orden_purchases_id' => $inversion->orden_id
             ];
-
             if ($data['monto'] > 0) {
                 $wallet = Wallet::create($data);
                 $saldoAcumulado = ($wallet->getWalletUser->wallet - $data['monto']);
                 $wallet->getWalletUser->update(['wallet' => $saldoAcumulado]);
             }
-
             $inversion->save();
         }
     }
+
+
 
 
     /**
