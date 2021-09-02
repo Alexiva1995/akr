@@ -84,6 +84,13 @@ class HomeController extends Controller
     public function dataDashboard(int $iduser):array
     {
         $cantUsers = $this->treeController->getTotalUser($iduser);
+        $inversionLast = Inversion::where('iduser', '=', Auth::id())->orderBy('id', 'desc')->first();
+        $montoInversion = 0;
+        $porcentajeInversion = 0;
+        if ($inversionLast != null) {
+            $montoInversion = $inversionLast->invertido;
+            $porcentajeInversion = (($inversionLast->ganacia / ($montoInversion*2)) * 100);
+        }
         $data = [
             'id' => Auth::user()->id,
             'directos' => $cantUsers['directos'],
@@ -96,7 +103,8 @@ class HomeController extends Controller
             'usuario' => Auth::user()->fullname,
             'rewards' => Wallet::where([['iduser', '=', $iduser], ['status', '=', '0']])->get()->sum('monto'),
             'packages' => OrdenPurchases::where([['iduser', '=', $iduser]])->get(),
-            'inversion' => Inversion::where([['iduser', Auth::user()->id]])->sum('invertido'),
+            'inversion' => $montoInversion,
+            'porcentaje' => $porcentajeInversion
         ];
 
         return $data;
