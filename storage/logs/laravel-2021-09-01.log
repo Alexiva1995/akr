@@ -5136,3 +5136,48 @@ Stack trace:
 [2021-09-01 22:51:27] local.INFO: Fin de pagar utilidad diaria - 2021-09-01 22:51:27  
 [2021-09-01 22:51:40] local.INFO: Inicio pagar utilidad diaria- 2021-09-01 22:51:40  
 [2021-09-01 22:51:40] local.INFO: Fin de pagar utilidad diaria - 2021-09-01 22:51:40  
+[2021-09-02 13:13:11] local.INFO: Inicio pagar utilidad diaria- 2021-09-02 13:13:11  
+[2021-09-02 13:13:12] local.INFO: Fin de pagar utilidad diaria - 2021-09-02 13:13:12  
+[2021-09-02 15:08:48] local.ERROR: There are no commands defined in the "schedule:pagar" namespace.
+
+Did you mean this?
+    schedule {"exception":"[object] (Symfony\\Component\\Console\\Exception\\NamespaceNotFoundException(code: 0): There are no commands defined in the \"schedule:pagar\" namespace.
+
+Did you mean this?
+    schedule at /home/abraham/Documents/coding/akr/vendor/symfony/console/Application.php:612)
+[stacktrace]
+#0 /home/abraham/Documents/coding/akr/vendor/symfony/console/Application.php(663): Symfony\\Component\\Console\\Application->findNamespace('schedule:pagar')
+#1 /home/abraham/Documents/coding/akr/vendor/symfony/console/Application.php(255): Symfony\\Component\\Console\\Application->find('schedule:pagar:...')
+#2 /home/abraham/Documents/coding/akr/vendor/symfony/console/Application.php(167): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#3 /home/abraham/Documents/coding/akr/vendor/laravel/framework/src/Illuminate/Console/Application.php(92): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#4 /home/abraham/Documents/coding/akr/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(129): Illuminate\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#5 /home/abraham/Documents/coding/akr/artisan(37): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#6 {main}
+"} 
+[2021-09-02 15:09:13] local.ERROR: Command "schedule:PagarUtilidad" is not defined.
+
+Did you mean one of these?
+    schedule:list
+    schedule:run
+    schedule:test
+    schedule:work {"exception":"[object] (Symfony\\Component\\Console\\Exception\\CommandNotFoundException(code: 0): Command \"schedule:PagarUtilidad\" is not defined.
+
+Did you mean one of these?
+    schedule:list
+    schedule:run
+    schedule:test
+    schedule:work at /home/abraham/Documents/coding/akr/vendor/symfony/console/Application.php:682)
+[stacktrace]
+#0 /home/abraham/Documents/coding/akr/vendor/symfony/console/Application.php(255): Symfony\\Component\\Console\\Application->find('schedule:PagarU...')
+#1 /home/abraham/Documents/coding/akr/vendor/symfony/console/Application.php(167): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#2 /home/abraham/Documents/coding/akr/vendor/laravel/framework/src/Illuminate/Console/Application.php(92): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#3 /home/abraham/Documents/coding/akr/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(129): Illuminate\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#4 /home/abraham/Documents/coding/akr/artisan(37): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#5 {main}
+"} 
+[2021-09-02 15:09:27] local.INFO: Inicio pagar utilidad diaria- 2021-09-02 15:09:27  
+[2021-09-02 15:09:28] local.INFO: Fin de pagar utilidad diaria - 2021-09-02 15:09:28  
+[2021-09-02 15:15:10] local.INFO: Inicio pagar utilidad diaria- 2021-09-02 15:15:10  
+[2021-09-02 15:15:10] local.INFO: Fin de pagar utilidad diaria - 2021-09-02 15:15:10  
+[2021-09-02 15:16:52] local.INFO: Inicio pagar utilidad diaria- 2021-09-02 15:16:52  
+[2021-09-02 15:16:52] local.INFO: Fin de pagar utilidad diaria - 2021-09-02 15:16:52  
