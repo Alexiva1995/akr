@@ -363,7 +363,7 @@ class WalletController extends Controller
             if ($inversion->max_ganancia == null) {
                 $inversion->max_ganancia = $inversion->invertido * 2;
             }
-            $porcentaje = 0.6;
+            $porcentaje = 0.0111;
             $cantidad = $inversion->invertido * $porcentaje;
             $inversion->ganacia += $cantidad;
             if ($inversion->ganacia >= $inversion->max_ganancia) { //comparamos si se pasa de lo que puede ganar
