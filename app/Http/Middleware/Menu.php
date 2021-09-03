@@ -58,11 +58,17 @@ class Menu
                 'complementoruta' => '',
                 'submenus' => [
                     [
-                        'name' => 'Rango Actual',
+                        'name' => 'Ver rangos',
                         'blank' => '', // si es para una pagina diferente del sistema solo coloquen _blank
-                        'ruta' => route('rangos.index'),
+                        'ruta' => route('rangos'),
                         'complementoruta' => ''
                     ],
+                    // [
+                    //     'name' => 'Rango Actual',
+                    //     'blank' => '', // si es para una pagina diferente del sistema solo coloquen _blank
+                    //     'ruta' => route(''),
+                    //     'complementoruta' => ''
+                    // ],
             ],
         ],
 
