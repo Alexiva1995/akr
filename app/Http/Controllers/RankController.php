@@ -72,43 +72,43 @@ class RankController extends Controller
         }else{
             switch ($rol_new) {
                 case 2:
+                    $izquierda = User::where('status', '1')->where('binary_side', 'I')->where('referred_id', $iduser)->where('rank_id', 1)->first();
+                    $derecha = User::where('status', '1')->where('binary_side', 'D')->where('referred_id', $iduser)->where('rank_id', 1)->first();
+                    if(isset($izquierda) && isset($derecha)){
+                        $this->guardarRank( $rol_new, $rol_actual, $iduser);
+                    }
+                    break;
+                case 3:
                     $izquierda = User::where('status', '1')->where('binary_side', 'I')->where('referred_id', $iduser)->where('rank_id', 2)->first();
                     $derecha = User::where('status', '1')->where('binary_side', 'D')->where('referred_id', $iduser)->where('rank_id', 2)->first();
                     if(isset($izquierda) && isset($derecha)){
                         $this->guardarRank( $rol_new, $rol_actual, $iduser);
                     }
                     break;
-                case 3:
+                case 4:
                     $izquierda = User::where('status', '1')->where('binary_side', 'I')->where('referred_id', $iduser)->where('rank_id', 3)->first();
                     $derecha = User::where('status', '1')->where('binary_side', 'D')->where('referred_id', $iduser)->where('rank_id', 3)->first();
                     if(isset($izquierda) && isset($derecha)){
                         $this->guardarRank( $rol_new, $rol_actual, $iduser);
                     }
                     break;
-                case 4:
-                    $izquierda = User::where('status', '1')->where('binary_side', 'I')->where('referred_id', $iduser)->where('rank_id', 4)->first();
+                case 5:
+                    $izquierda = User::where('status', '1')->where('binary_side', 'I')->where('referred_id', $iduser)->where('rank_id', 4)->first();  
                     $derecha = User::where('status', '1')->where('binary_side', 'D')->where('referred_id', $iduser)->where('rank_id', 4)->first();
                     if(isset($izquierda) && isset($derecha)){
                         $this->guardarRank( $rol_new, $rol_actual, $iduser);
                     }
                     break;
-                case 5:
-                    $izquierda = User::where('status', '1')->where('binary_side', 'I')->where('referred_id', $iduser)->where('rank_id', 5)->first();  
+                case 6:
+                    $izquierda = User::where('status', '1')->where('binary_side', 'I')->where('referred_id', $iduser)->where('rank_id', 5)->first();
                     $derecha = User::where('status', '1')->where('binary_side', 'D')->where('referred_id', $iduser)->where('rank_id', 5)->first();
                     if(isset($izquierda) && isset($derecha)){
                         $this->guardarRank( $rol_new, $rol_actual, $iduser);
                     }
                     break;
-                case 6:
+                case 7:
                     $izquierda = User::where('status', '1')->where('binary_side', 'I')->where('referred_id', $iduser)->where('rank_id', 6)->first();
                     $derecha = User::where('status', '1')->where('binary_side', 'D')->where('referred_id', $iduser)->where('rank_id', 6)->first();
-                    if(isset($izquierda) && isset($derecha)){
-                        $this->guardarRank( $rol_new, $rol_actual, $iduser);
-                    }
-                    break;
-                case 7:
-                    $izquierda = User::where('status', '1')->where('binary_side', 'I')->where('referred_id', $iduser)->where('rank_id', 7)->first();
-                    $derecha = User::where('status', '1')->where('binary_side', 'D')->where('referred_id', $iduser)->where('rank_id', 7)->first();
                     if(isset($izquierda) && isset($derecha)){
                         $this->guardarRank( $rol_new, $rol_actual, $iduser);
                     }
