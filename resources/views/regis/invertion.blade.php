@@ -39,7 +39,7 @@
 
                     @foreach($inver as $inve)
                     <tr class="text-center" id="contend">
-                        <td># {{$inve->id}}</td>
+                        <td> {{$inve->id}}</td>
                         
                         <td>CoinPayments</td>
 
