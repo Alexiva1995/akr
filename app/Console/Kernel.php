@@ -16,6 +16,7 @@ class Kernel extends ConsoleKernel
         Commands\DailyBonuses::class,
         Commands\PagarUtilidad::class,
         Commands\BinaryBonus::class,
+        Commands\CheckRank::class,
     ];
 
     /**
@@ -26,10 +27,19 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
+        // Los comandos de producción
         // $schedule->command('binary:bonus')->everyTenMinutes();
         // $schedule->command('daily:bonuses')->daily();
-        // $schedule->command('daily:bonuses')->everyMinute();
+        // $schedule->command('pagar:utilidad')->weekdays()->daily();
+        // $schedule->command('check:rank')->daily();
+
+
+        //  Comandos para pruebas en desarrollo
+        $schedule->command('binary:bonus')->everyMinute();
+        $schedule->command('daily:bonuses')->everyMinute();
         $schedule->command('pagar:utilidad')->everyMinute();
+        $schedule->command('check:rank')->everyMinute();
+
     }
 
     /**

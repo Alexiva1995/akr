@@ -90,6 +90,12 @@ Route::prefix('dashboard')->middleware('menu', 'auth', /*'verified'*/)->group(fu
         Route::get('/update/{side}/binary', 'HomeController@updateSideBinary')->name('ajax.update.side.binary');
     });
 
+    // Ruta para los rangos
+    Route::prefix('ranks')->group(function() {
+        Route::get('/', 'RankController@index')->name('rangos');
+        Route::get('/currentRank', 'RankController@currentRank')->name('current-rank');
+    });
+
 
     //Ruta para los usuarios
     Route::prefix('user')->group(function () {

@@ -24,7 +24,7 @@ class User extends Authenticatable /*implements MustVerifyEmail*/
         'fullname', 'referred_id', 'binary_id', 'admin', 'balance', 'status',
         'wallet', 'address', 'binary_side', 'binary_side_register', 'dni', 'photoDB', 
         'wallet_address', 'phone', 'city', 
-        'country_id', 'age', 'state'
+        'country_id', 'age', 'state', 'point_rank', 'rank_id',
     ];
 
     public function country()
@@ -90,6 +90,16 @@ class User extends Authenticatable /*implements MustVerifyEmail*/
     public function getUserOrden()
     {
         return $this->hasMany('App\Models\OrdenPurchases', 'iduser');
+    }
+
+    /**
+     * Permite obtener el rango
+     *
+     * @return void 
+     */
+    public function getRank()
+    {
+        return $this->hasMany('App\Models\RankRecord', 'iduser');
     }
 
     /**
