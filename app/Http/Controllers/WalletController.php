@@ -363,8 +363,10 @@ class WalletController extends Controller
             if ($inversion->max_ganancia == null) {
                 $inversion->max_ganancia = $inversion->invertido * 2;
             }
+
             $porcentaje = 0.0111;
             $cantidad = $inversion->invertido * $porcentaje;
+            $monto = $inversion->invertido * $porcentaje;
             $inversion->ganacia += $cantidad;
             if ($inversion->ganacia >= $inversion->max_ganancia) { //comparamos si se pasa de lo que puede ganar
                 $cantidad = $inversion->max_ganancia;
@@ -376,12 +378,13 @@ class WalletController extends Controller
                 'iduser' => $inversion->iduser,
                 'referred_id' => $inversion->iduser,
                 'orden_purchases_id' => null,
-                'monto' => $cantidad,
+                'monto' => $monto,
                 'descripcion' => 'Profit de ' . ($porcentaje * 100) . ' %',
                 'status' => 0,
                 'tipo_transaction' => 0,
                 'orden_purchases_id' => $inversion->orden_id
             ];
+            
             if ($data['monto'] > 0) {
                 $wallet = Wallet::create($data);
                 $saldoAcumulado = ($wallet->getWalletUser->wallet - $data['monto']);
