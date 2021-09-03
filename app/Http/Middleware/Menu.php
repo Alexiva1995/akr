@@ -63,12 +63,12 @@ class Menu
                         'ruta' => route('rangos'),
                         'complementoruta' => ''
                     ],
-                    // [
-                    //     'name' => 'Rango Actual',
-                    //     'blank' => '', // si es para una pagina diferente del sistema solo coloquen _blank
-                    //     'ruta' => route(''),
-                    //     'complementoruta' => ''
-                    // ],
+                    [
+                        'name' => 'Rango Actual',
+                        'blank' => '', // si es para una pagina diferente del sistema solo coloquen _blank
+                        'ruta' => route('current-rank'),
+                        'complementoruta' => ''
+                    ],
             ],
         ],
 

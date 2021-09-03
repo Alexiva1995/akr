@@ -109,21 +109,16 @@
             {{-- Rangos --}}
             <div class="col-lg-6 col-md-6 col-12 mt-1">
                 <div class="card text-white bg-blue h-100 mb-0">
-                    <div class="card-content row h-100">
-                            <div class="col-12 w-100 text-left">
-                                <h4 class="text-white mt-1 ml-1">Rango Actual</h4>
-                            </div>
-                            <div class="m-auto"
-                                style="width: 150px; height: 150px; border-radius: 100px; background: rgba(5, 156, 189, 1); border: 3px solid white;"
-                            ></div>
-                            <div class="col-12 d-flex justify-content-between align-items-end"
-                            style="margin-top: -10px"
-                            >
-                                <a>&nbsp;&nbsp;< Anterior</a>
-                                <a>Próximo >&nbsp;&nbsp;</a>
-                            </div>
-
-                    
+                    <div class="card-content h-100" style="margin-right: 0; margin-left:0;">
+                        <div class="col-12 w-100 text-left">
+                            <h4 class="text-white mt-1 ml-1">Rango Actual</h4>
+                        </div>
+                        <div class="m-auto"
+                            style="width: 150px; height: 150px; border-radius: 100px; background: rgba(5, 156, 189, 1); border: 3px solid white;"
+                        ></div>
+                        <div class="m-auto py-2 text-center">
+                            <a href="{{route('current-rank')}}" class="text-white text-bold">{{ $data['rango_actual']}}</a>
+                        </div>                    
                     </div>
                 </div>
             </div>

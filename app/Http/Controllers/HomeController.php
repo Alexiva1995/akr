@@ -15,6 +15,7 @@ use App\Http\Controllers\TiendaController;
 use App\Models\Inversion;
 use App\Models\Liquidaction;
 use App\Models\LogLogin;
+use App\Models\RankRecord;
 use Carbon\Carbon;
 
 class HomeController extends Controller
@@ -91,6 +92,11 @@ class HomeController extends Controller
             $montoInversion = $inversionLast->invertido;
             $porcentajeInversion = (($inversionLast->ganacia / ($montoInversion*2)) * 100);
         }
+
+        $iduser = Auth::user()->id;
+        $rango = RankRecord::where('iduser', $iduser)->first();         
+        $rango_actual = $rango != null ? $rango->rank->name : "NO HA OBTENIDO UN RANGO AÚN";
+
         $data = [
             'id' => Auth::user()->id,
             'directos' => $cantUsers['directos'],
@@ -104,7 +110,8 @@ class HomeController extends Controller
             'rewards' => Wallet::where([['iduser', '=', $iduser], ['status', '=', '0']])->get()->sum('monto'),
             'packages' => OrdenPurchases::where([['iduser', '=', $iduser]])->get(),
             'inversion' => $montoInversion,
-            'porcentaje' => $porcentajeInversion
+            'porcentaje' => $porcentajeInversion,
+            'rango_actual' => $rango_actual,
         ];
 
         return $data;

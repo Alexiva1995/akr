@@ -4418,3 +4418,27 @@ strong {
     background-color: #00c8f4;
     border-radius: 0;
 }
+
+.bg-rango{
+    width: 100%;
+    background-color: #0F1522;
+    border-radius: 10px;
+}
+
+.circle-rango2{
+    width: 250px; 
+    height: 250px; 
+    border-radius: 125px; 
+    background: rgba(5, 156, 189, 1); 
+    border: 3px solid white;
+    opacity: 1;
+}
+
+.bg-rango h2{
+    color:white;
+}
+
+.bg-rango h1{
+    color: rgba(5, 156, 189, 1); 
+    font-weight: 600;
+}

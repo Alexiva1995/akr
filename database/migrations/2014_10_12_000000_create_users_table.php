@@ -38,11 +38,13 @@ class CreateUsersTable extends Migration
             $table->bigInteger('binary_id')->default(1)->comment('ID del usuario binario');
             $table->enum('binary_side', ['I', 'D'])->nullable()->comment('Permite saber si esta en la derecha o izquierda en el binario');
             $table->enum('binary_side_register', ['I', 'D'])->default('I')->comment('Permite saber porque lado va a registrar a un nuevo usuario');
-            $table->boolean('reinvertir_comision')->default(false);
-            $table->boolean('reinvertir_capital')->default(false); 
+            // $table->boolean('reinvertir_comision')->default(false);
+            // $table->boolean('reinvertir_capital')->default(false); 
             $table->longtext('wallet_address')->nullable();
             $table->longtext('photoDB')->nullable();
             $table->rememberToken();
+            $table->bigInteger('point_rank')->unsigned()->nullable();
+            $table->bigInteger('rank_id')->unsigned()->default(0)->nullable();
             $table->timestamps();
         });
     }

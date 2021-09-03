@@ -92,7 +92,8 @@ Route::prefix('dashboard')->middleware('menu', 'auth', /*'verified'*/)->group(fu
 
     // Ruta para los rangos
     Route::prefix('ranks')->group(function() {
-        Route::get('/rangos', 'RankController@index')->name('rangos');
+        Route::get('/', 'RankController@index')->name('rangos');
+        Route::get('/currentRank', 'RankController@currentRank')->name('current-rank');
     });
 
 
