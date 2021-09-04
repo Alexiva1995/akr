@@ -1,3 +1,10 @@
+@php
+
+$porc = ($porcentaje < 100) ? $porcentaje : 100;
+$pf = $rango2->points-$user->point_rank;
+$puntosFaltantes  = $pf > 0 ? $pf : 0;
+@endphp
+
 @extends('layouts.dashboard')
 
 @section('content')
@@ -19,16 +26,16 @@
 
                 <div class="d-flex justify-content-around mt-2">
                     <h2>Puntos obtenidos: {{$user->point_rank}}</h2>
-                    <h2>Puntos faltantes: {{$rango2->points-$user->point_rank}}</h2>
+                    <h2>Puntos faltantes: {{$puntosFaltantes}}</h2>
                 </div>
 
                   <div class="progress" style="height: 30px;">
                     <div class="progress-bar" role="progressbar" 
-                        style="width: {{$porcentaje}}%; background-color: rgba(5, 156, 189, 1); font-size: 1.5rem" 
-                        aria-valuenow="{{$porcentaje}}" 
+                        style="width: {{$porc}}%; background-color: rgba(5, 156, 189, 1); font-size: 1.5rem" 
+                        aria-valuenow="{{$porc}}" 
                         aria-valuemin="0" 
                         aria-valuemax="100">
-                        {{ $porcentaje}}%
+                        {{ $porc}}%
                     </div>
                   </div>
 

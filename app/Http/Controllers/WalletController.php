@@ -532,50 +532,17 @@ class WalletController extends Controller
                     }
                     $comision = ($puntos * $porcentaje);
                     // dd('Porcentaje: '.$por.' monto: '.$comision);
-
+                    $sponsor->point_rank += $puntos;
                     $concepto = 'Bono Binario - ' . $puntos;
                     // $idcomision = $binario->iduser.Carbon::now()->format('Ymd');
                     $this->setPointBinaryPaid($puntos, $side_menor, $binario->iduser, $side_mayor);
                     $this->preSaveWallet($sponsor->id, $sponsor->id, null, $comision, $concepto);
-
                     $this->restante($sponsor->id, $restante, $side_mayor, $comision);
-                    // $sponsor->save();
-                    $puntosTotal = $this->getTotalPoints($sponsor->id);
-                    $sponsor->point_rank += $puntosTotal;
+                    $sponsor->save();
 
                 }
             }
         }
-    }
-
-    public function getTotalPoints($iduser)
-    {
-        try{
-            $binario = WalletBinary::where([
-                ['restante', '=', 0],
-                ['puntos_d', '>', 0],
-                ['iduser', '=', $iduser]
-            ])->orWhere([
-                ['restante', '=', 0],
-                ['puntos_i', '>', 0],
-                ['iduser', '=', $iduser]
-            ])->selectRaw('iduser, SUM(puntos_d) as totald, SUM(puntos_i) as totali')->groupBy('iduser')->first();
-
-            $totald = 0; $totali = 0;
-
-            if ($binario) {
-                $totald = $binario->totald;
-                $totali = $binario->totali;
-            }
-            $total = $totald + $totali;
-            
-            User::where('id', $iduser)->update(['point_rank' => $total]);
-
-        }catch (\Throwable $th) {
-            Log::error('Tree - getTotalPoints -> Error: '.$th);
-            abort(403, "Ocurrio un error, contacte con el administrador");
-        }
-        
     }
 
     public function restante(int $iduser, $restante, string $ladomayor, float $monto)

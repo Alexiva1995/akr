@@ -46,12 +46,12 @@ class DailyBonuses extends Command
             $walletControler = new WalletController();
             $walletControler->payAll();
 
-            $users = User::all()->where('status', '1');
+            // $users = User::all()->where('status', '1');
 
-            foreach($users as $user){
-                Log::info('Usuarios para getTotalPoints - '.$user->id);
-                $walletControler->getTotalPoints($user->id);
-            }
+            // foreach($users as $user){
+            //     Log::info('Usuarios para getTotalPoints - '.$user->id);
+            //     $walletControler->getTotalPoints($user->id);
+            // }
             
 
             Log::info('Fin de los puntos y comisiones diarias - '.Carbon::now());

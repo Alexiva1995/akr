@@ -128,14 +128,24 @@ class RankController extends Controller
             ['fecha_fin', '=', null]
         ])->update(['fecha_fin' => Carbon::now()]);
 
-        // registra un nuevo rango
-        RankRecord::create([
-            'iduser' => $iduser, 
-            'rank_actual_id' => $rol_new,
-            'rank_previou_id' => ($rol_actual == 0)? null : $rol_actual,
-            'fecha_inicio' => Carbon::now(),
-        ]);
+        $record = RankRecord::where([
+            ['iduser',$iduser],
+        ])->first();
 
+        if($record){
+            $record->rank_actual_id = $rol_new;
+            $record->rank_previou_id = ($rol_actual == 0) ? null: $rol_actual;
+            $record->save();
+        }else{
+            // registra un nuevo rango
+            RankRecord::create([
+                'iduser' => $iduser, 
+                'rank_actual_id' => $rol_new,
+                'rank_previou_id' => ($rol_actual == 0)? null : $rol_actual,
+                'fecha_inicio' => Carbon::now(),
+            ]);        
+        }
+    
         // actualiza el rango
         User::where('id', $iduser)->update(['rank_id' => $rol_new]); 
     }
