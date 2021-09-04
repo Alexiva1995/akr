@@ -72,7 +72,6 @@ class InversionController extends Controller
                 Inversion::create($data);
             }else{
                 $check->invertido += $invertido;
-                $check->capital += $invertido;
                 $check->save();
                 // dd("Al parecer todo salio bien, revisa");
             }

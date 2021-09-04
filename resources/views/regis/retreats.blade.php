@@ -38,7 +38,7 @@
 
                     @foreach($retiro as $retir)
                     <tr class="text-center" id="contend">
-                        <td># {{$retir->id}}</td>
+                        <td>{{$retir->id}}</td>
                         <td>{{$retir->wallet_used}}</td>
 
                         <td>{{$retir->monto_bruto}} $</td>

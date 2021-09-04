@@ -21,11 +21,11 @@
             <div class="card-body card-dashboard">
                 <div class="float-right row no-gutters" style="width: 30%;">
                     <div class="col-md-6 ">
-                        <span class="font-weight-bold mb-2">Saldo: {{number_format($saldoDisponible,2)}}$</span>
+                        <span class="font-weight-bold mb-2 text-white" style="font-size: 18px;">Saldo: {{number_format($saldoDisponible,2)}}$</span>
                     </div>
 
                     @if(\Carbon\Carbon::now()->isFriday())
-                    <button type="submit" class="btn btn-primary mb-2" id="retiro" data-toggle="modal" data-target="#modalSaldo">Retirar</button>
+                    <a href="{{route('retiros')}}" type="submit" class="btn btn-primary mb-2" id="retiro">Retirar</a>
                     @endif
                 </div>
 

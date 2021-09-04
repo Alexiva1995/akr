@@ -39,7 +39,7 @@
 
                     @foreach($transac as $transac)
                     <tr class="text-center" id="contend">
-                        <td># {{$transac->id}}</td>
+                        <td>{{$transac->id}}</td>
                         <td>CoinPayments</td>
 
                         <td>{{$transac->total + $transac->fee}} $</td>

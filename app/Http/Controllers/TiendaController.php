@@ -31,23 +31,23 @@ class TiendaController extends Controller
         $this->walletController = new WalletController;
         $this->apis_key_nowpayments = 'ECQYK47-JYNMC98-GZ3FHBW-WWRH660';
     }
-    
+
     /**
      * Lleva a la vista de la tienda
      *
      * @return void
-     */ 
+     */
     public function index()
     {
         try {
             // title
-            
+
 
             // $categories = Groups::all()->where('status', 1);
 
             return view('shop.index');
         } catch (\Throwable $th) {
-            Log::error('Tienda - Index -> Error: '.$th);
+            Log::error('Tienda - Index -> Error: ' . $th);
             abort(403, "Ocurrio un error, contacte con el administrador");
         }
     }
@@ -62,7 +62,7 @@ class TiendaController extends Controller
 
             $ordenes = OrdenPurchases::all()->where('iduser', '=', Auth::user()->id);
 
-            
+
             return view('shop.orderhistory', compact('ordenes'));
         } catch (\Throwable $th) {
             // Log::error('Tienda - Index -> Error: '.$th);
@@ -85,10 +85,10 @@ class TiendaController extends Controller
             View::share('titleg', 'Tienda - Productos');
             $category = Groups::find($idgroup);
             $services = $category->getPackage->where('status', 1);
-            
+
             return view('shop.products', compact('services'));
         } catch (\Throwable $th) {
-            Log::error('Tienda - products -> Error: '.$th);
+            Log::error('Tienda - products -> Error: ' . $th);
             abort(403, "Ocurrio un error, contacte con el administrador");
         }
     }
@@ -105,14 +105,14 @@ class TiendaController extends Controller
             'idproduct' => 'required',
             'deposito' => 'required|numeric|min:20'
         ]);
-    
+
         try {
             if ($validate) {
                 $paquete = Packages::find($request->idproduct);
 
                 $porcentaje = ($request->deposito * 0.03);
                 $total = ($request->deposito + $porcentaje);
-                
+
                 $data = [
                     'iduser' => Auth::id(),
                     'group_id' => $paquete->getGroup->id,
@@ -127,14 +127,13 @@ class TiendaController extends Controller
                 $url = $this->generalUrlOrden($data);
                 if (!empty($url)) {
                     return redirect($url);
-
-                }else{
+                } else {
                     OrdenPurchases::where('id', $data['idorden'])->delete();
                     return redirect()->back()->with('msj-info', 'Problemas al general la orden, intente mas tarde');
                 }
             }
         } catch (\Throwable $th) {
-            Log::error('Tienda - procesarOrden -> Error: '.$th);
+            Log::error('Tienda - procesarOrden -> Error: ' . $th);
             abort(403, "Ocurrio un error, contacte con el administrador");
         }
     }
@@ -161,13 +160,13 @@ class TiendaController extends Controller
     public function statusProcess($orden, $status)
     {
         $type = ($status == 'Completada') ? 'success' : 'danger';
-        $msj = 'Compra '.$status;
+        $msj = 'Compra ' . $status;
 
         if ($status == 'Completada') {
             $this->registeInversion($orden);
         }
 
-        return redirect()->route('shop')->with('msj-'.$type, $msj);
+        return redirect()->route('shop')->with('msj-' . $type, $msj);
     }
 
     /**
@@ -192,7 +191,7 @@ class TiendaController extends Controller
     private function registeInversion($idorden)
     {
         $orden = OrdenPurchases::find($idorden);
-        
+
         // Asi estaba Anteriormente        
         // $paquete = $orden->getPackageOrden;
         // $this->inversionController->saveInversion($paquete->id, $idorden, $orden->cantidad, $paquete->expired, $orden->iduser);
@@ -206,8 +205,8 @@ class TiendaController extends Controller
      * @return void
      */
     public function ipn(Request $resquet)
-    { 
-        Log::info('ipn prueba ->', $resquet); 
+    {
+        Log::info('ipn prueba ->', $resquet);
     }
 
     /**
@@ -218,13 +217,13 @@ class TiendaController extends Controller
      */
     private function generalUrlOrden($data): string
     {
-       try {
+        try {
             $headers = [
-                'x-api-key: '.$this->apis_key_nowpayments,
+                'x-api-key: ' . $this->apis_key_nowpayments,
                 'Content-Type:application/json'
             ];
 
-            $resul = ''; 
+            $resul = '';
             $curl = curl_init();
 
             $dataRaw = collect([
@@ -238,7 +237,7 @@ class TiendaController extends Controller
                 "cancel_url" => route('shop.proceso.status', [$data['idorden'], 'Cancelada']),
                 //"Amount" => $data['Amount']
             ]);
-            
+
 
             curl_setopt_array($curl, array(
                 CURLOPT_URL => "https://api.nowpayments.io/v1/invoice",
@@ -251,29 +250,33 @@ class TiendaController extends Controller
                 CURLOPT_POSTFIELDS => $dataRaw->toJson(),
                 CURLOPT_HTTPHEADER => $headers
             ));
-                
-                $response = curl_exec($curl);
-                $err = curl_error($curl);
-                curl_close($curl);
-                if ($err) {
-                    Log::error('Tienda - generalUrlOrden -> Error curl: '.$err);        
-                } else {
-                    $response = json_decode($response);
-                    OrdenPurchases::where('id', $data['idorden'])->update(['idtransacion' => $response->id]);
-                    $resul = $response->invoice_url;
-                }
-                  
+
+            $response = curl_exec($curl);
+            $err = curl_error($curl);
+            curl_close($curl);
+            if ($err) {
+                Log::error('Tienda - generalUrlOrden -> Error curl: ' . $err);
+            } else {
+                $response = json_decode($response);
+                OrdenPurchases::where('id', $data['idorden'])->update(['idtransacion' => $response->id]);
+                $resul = $response->invoice_url;
+            }
+
             return $resul;
         } catch (\Throwable $th) {
-            Log::error('Tienda - generalUrlOrden -> Error: '.$th);
+            Log::error('Tienda - generalUrlOrden -> Error: ' . $th);
             abort(403, "Ocurrio un error, contacte con el administrador");
         }
     }
 
     public function cambiar_status(Request $request)
 
-    {  
-         
+    {
+        $crypto = cryptos::orderBy('id', 'desc')->first();
+        if (empty($crypto)) {
+            return redirect()->back()->with('msj-warning', 'Los Campos Valor De La Moneda y Porcentaje De La Moneda Son Obligatorios');
+        }
+
         $orden = OrdenPurchases::findOrFail($request->id);
         $orden->status = $request->status;
         $orden->save();
@@ -281,49 +284,46 @@ class TiendaController extends Controller
         $user = User::findOrFail($orden->iduser);
 
         $this->registeInversion($request->id);
-        if($request->status == '1'){
+        if ($request->status == '1') {
             $this->registerDirectBonus($request->id);
-        
+
             $last = Wallet::get()->last();
             $this->investment($last->id);
-            
+
             $this->walletController->payPointsBinary();
 
-            if($user->status == '0'){
+            if ($user->status == '0') {
                 $user->status = '1';
                 $user->save();
             }
-            if($request->status == '1'){
-             try{
-               
-                   $crypto = cryptos::orderBy('id', 'desc')->first();
-             
-                   // aqui obtengo el ultimo valor de la tabla         $ordenes = Ordenes::where('status', '=', 1)->get(); // obtengo todas las ordenes activas        foreach ($ordenes as $orden) {
-                    
-                       $resulPorcentage = ($orden->total * $crypto->porcentaje_de_cryptos); // multiplico la cantidad entre el porcentaje final obtenido
-                       $resultDivision = ($resulPorcentage / $crypto->valor);
-                       
-                      
-                       // divido el resultado del porcentaje por el valor del crypto final obtenido            //Aqui guardo toda la informacion de la transacion anterior
-                      
-                      Crypto_Value::create([
-                          'iduser' => $orden->iduser,
-                           'cantidad' => $resultDivision,
-                           'status' => 1,
-                          
-                       ]);}
-                      
-                       catch (\Throwable $th) {
-                        Log::error('Tienda - generalUrlOrden -> Error: '.$th);
-                        abort(403, "Ocurrio un error, contacte con el administrador");
-                    }
-               }        
-              
-        
+            if ($request->status == '1') {
+                try {
+
+                    $crypto = cryptos::orderBy('id', 'desc')->first();
+
+                    // aqui obtengo el ultimo valor de la tabla         $ordenes = Ordenes::where('status', '=', 1)->get(); // obtengo todas las ordenes activas        foreach ($ordenes as $orden) {
+
+                    $resulPorcentage = ($orden->total * $crypto->porcentaje_de_cryptos); // multiplico la cantidad entre el porcentaje final obtenido
+                    $resultDivision = ($resulPorcentage / $crypto->valor);
+
+
+                    // divido el resultado del porcentaje por el valor del crypto final obtenido            //Aqui guardo toda la informacion de la transacion anterior
+
+                    Crypto_Value::create([
+                        'iduser' => $orden->iduser,
+                        'cantidad' => $resultDivision,
+                        'status' => 1,
+
+                    ]);
+                } catch (\Throwable $th) {
+                    Log::error('Tienda - generalUrlOrden -> Error: ' . $th);
+                    abort(403, "Ocurrio un error, contacte con el administrador");
+                }
+            }
         }
         // return redirect('/dashboard/reports/purchase')->with('msj-success', 'Orden actualizada exitosamente');
         //  $user->notify(new \App\Notifications\Order_approved);
-        return redirect('/dashboard/reports/purchase')->with('msj-success', 'Orden actualizada exitosamente'); 
+        return redirect('/dashboard/reports/purchase')->with('msj-success', 'Orden actualizada exitosamente');
     }
 
     public function registerDirectBonus($id)
@@ -332,10 +332,10 @@ class TiendaController extends Controller
         $comision = ($orden->total * 0.1);
         $sponsor = User::find($orden->getOrdenUser->referred_id);
         if ($sponsor->status == '1') {
-            $concepto = 'Bono directo del Usuario '.$orden->getOrdenUser->fullname;
+            $concepto = 'Bono directo del Usuario ' . $orden->getOrdenUser->fullname;
             $this->walletController->preSaveWallet2($sponsor->id, $orden->iduser, $orden->id, $comision, $concepto);
-        }else{
-            $concepto = 'Bono directo del Usuario '.$orden->getOrdenUser->fullname;
+        } else {
+            $concepto = 'Bono directo del Usuario ' . $orden->getOrdenUser->fullname;
             $this->walletController->preSaveWallet2($sponsor->id, $orden->iduser, $orden->id, 0, $concepto);
         }
     }
@@ -347,24 +347,24 @@ class TiendaController extends Controller
             'range' => 'required|numeric|min:70|max:10000',
         ]);
 
-        try{
-            if($validate){
-            
+        try {
+            if ($validate) {
+
                 $usuario = [];
-                if(isset($request->user)){
-                    $usuario = User::findOrFail($request->user);     
+                if (isset($request->user)) {
+                    $usuario = User::findOrFail($request->user);
 
                     $infoOrden = [
                         'iduser' => $usuario->id,
                         'cantidad' => 1,
-                        'total' => $request->range+10,
+                        'total' => $request->range + 10,
                         'status' => 1,
                     ];
 
                     $saveOrden = $this->guardarOrden($infoOrden);
 
-                    if($saveOrden){
-                        $usuario->update(['status'=>'1']);
+                    if ($saveOrden) {
+                        $usuario->update(['status' => '1']);
 
                         $orden = OrdenPurchases::findOrFail($saveOrden);
                         $orden->status = "1";
@@ -372,28 +372,27 @@ class TiendaController extends Controller
 
                         $this->registeInversion($saveOrden);
 
-                        if(isset($request->comision)){
+                        if (isset($request->comision)) {
                             $this->registerDirectBonus($saveOrden);
                             $last = Wallet::get()->last();
                             $this->investment($last->id);
-                            
+
                             $this->walletController->payPointsBinary();
                         }
 
                         return redirect('/dashboard/user/user-list')->with('msj-success', 'Orden creada - Cliente verificado');
                     }
-
-                }else{
-                     $infoOrden = [
-                         'iduser' => Auth::user()->id,
+                } else {
+                    $infoOrden = [
+                        'iduser' => Auth::user()->id,
                         //  'status' => 0,
-                         'cantidad' => 1,
-                         'total' => $request->range,
-                     ];
-                    
+                        'cantidad' => 1,
+                        'total' => $request->range,
+                    ];
+
                     $transacion = [
-                        'amountTotal' => (INT)$request->range +10,
-                        'note' => 'Inversión realizada por un precio de $'.(INT)$request->range,
+                        'amountTotal' => (int)$request->range + 10,
+                        'note' => 'Inversión realizada por un precio de $' . (int)$request->range,
                         'order_id' => $this->guardarOrden($infoOrden),
                         'tipo' => 'Compra de un paquete',
                         'tipo_transacion' => 3,
@@ -403,21 +402,20 @@ class TiendaController extends Controller
                         'cancel_url' => url('/dashboard/home')
                     ];
                     $transacion['items'][] = [
-                        'itemDescription' => 'Inversión de  $'.(INT)$request->range,
-                        'itemPrice' => (INT)$request->range, // USD
-                        'itemQty' => (INT) 1,
-                        'itemSubtotalAmount' => (INT)$request->range + 10 // USD
+                        'itemDescription' => 'Inversión de  $' . (int)$request->range,
+                        'itemPrice' => (int)$request->range, // USD
+                        'itemQty' => (int) 1,
+                        'itemSubtotalAmount' => (int)$request->range + 10 // USD
                     ];
                     $ruta = \CoinPayment::generatelink($transacion);
                     return redirect($ruta);
                 }
-
             }
         } catch (\Throwable $th) {
-            Log::error('Tienda - MakeInversion -> Error: '.$th);
+            Log::error('Tienda - MakeInversion -> Error: ' . $th);
             abort(403, "Ocurrio un error, contacte con el administrador");
         }
-    
+
 
         // $product = ProductWarehouse::find($id);
         // $user = Auth::user()->id;
@@ -434,25 +432,23 @@ class TiendaController extends Controller
     public function investment($id)
     {
 
-        try{
+        try {
             $wallet = Wallet::findOrFail($id);
 
             $inv = Inversion::where([
                 ['iduser', '=', $wallet->iduser],
                 ['status', '=', 1]
-            ])->first();            
+            ])->first();
 
-            if($inv != null){
+            if ($inv != null) {
                 // $inv = Inversion::where('iduser', '=', $wallet->iduser)->where('status', 1)->first();
                 $inv->ganacia += $wallet->monto;
                 $inv->save();
             }
-
         } catch (\Throwable $th) {
-            Log::error('Tienda - investment -> Error: '.$th);
+            Log::error('Tienda - investment -> Error: ' . $th);
             abort(403, "Ocurrio un error, contacte con el administrador");
         }
-
     }
 
     public function guardarOrden($infoOrden)
