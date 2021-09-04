@@ -90,7 +90,7 @@ class HomeController extends Controller
         $porcentajeInversion = 0;
         if ($inversionLast != null) {
             $montoInversion = $inversionLast->invertido;
-            $porcentajeInversion = (($inversionLast->ganacia / ($montoInversion * 2)) * 100);
+            $porcentajeInversion = (($inversionLast->ganacia / ($montoInversion * 1)) * 100);
         }
 
         $iduser = Auth::user()->id;
