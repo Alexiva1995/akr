@@ -13,7 +13,7 @@
 <script>
         axios.get('../dashboard/dataGrafica').then( function(response){
          
-          // console.log(response)
+          console.log(response)
           var options = {
             colors: ['#BA8621'],
             series: [{

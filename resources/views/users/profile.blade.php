@@ -18,7 +18,7 @@
 <script>
     $(document).ready(function() {
         @if($user -> photoDB !== NULL)
-        previewPersistedFile("{{asset('storage/'.$user->photoDB)}}", 'photo_preview');
+        previewPersistedFile("{{asset('storage/'.$user->photoDB)}}", 'photo_preview2');
         @endif
     });
 
@@ -99,8 +99,9 @@
                 <!-- left menu section -->
 
                 <div class="card ml-2" id="background">
-
-                    <img id="photo_preview" class="img-fluid " />
+                    <div class="d-flex justify-content-center mt-2">
+                        <img id="photo_preview2" class=" " />
+                    </div>
 
                     <div class="card-body">
                         <ul class="col">

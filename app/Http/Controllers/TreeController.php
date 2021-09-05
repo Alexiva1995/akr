@@ -30,7 +30,7 @@ class TreeController extends Controller
             $base->logoarbol = asset('assets/img/sistema/favicon.png');
             $binario = $this->getBinaryPoints(Auth::user()->id);
             $binarioTotal = $this->getTotalBinaryPoints(Auth::user()->id);
-            return view('genealogy.tree', compact('trees', 'type', 'base', 'binario', 'binarioTotal'));
+            // return view('genealogy.tree', compact('trees', 'type', 'base', 'binario', 'binarioTotal'));
         } catch (\Throwable $th) {
             Log::error('Tree - indexNewtwork -> Error: '.$th);
             abort(403, "Ocurrio un error, contacte con el administrador");

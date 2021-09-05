@@ -4442,3 +4442,9 @@ strong {
     color: rgba(5, 156, 189, 1); 
     font-weight: 600;
 }
+
+#photo_preview2{
+    max-width: 300px;
+    /* max-height: 200px; */
+    /* background-size:cover */
+}

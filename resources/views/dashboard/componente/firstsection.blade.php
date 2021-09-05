@@ -17,7 +17,7 @@
                         @if (Auth::user()->binary_side_register == 'I')                    
                             <div class="d-flex justify-content-center grupo mr-1">
                                 <a href="#" id="form-labels" class="btn btn-inactivo" v-on:click="updateBinarySide('D')">Derecha</a> 
-                                <a href="#" id="form-labels" class="btn btn-activo disabled">Izquierda</a> 
+                                <a id="form-labels" class="btn btn-activo" style="cursor:default; ">Izquierda</a> 
                             </div>                    
                         @else
                             <div class="d-flex justify-content-center grupo mr-1">
@@ -135,14 +135,14 @@
                                 <div class="col-6 w-100 pt-1 d-flex justify-content-center">
                                     <div>
                                         <p class="">Mes pasado</p>
-                                        <h1>{{ $data['directos'] }}</h1>
+                                        <h1>{{ $data['pasados'] }}</h1>
                                     </div>
                                 </div>
                                 <div class="col-6 w-100 pt-1 d-flex justify-content-center "
                                     style="border-left: 2px solid white">
                                     <div>
                                         <p class="">Mes Actual</p>
-                                        <h1>{{ $data['indirectos'] }}+</h1>
+                                        <h1>{{ $data['actuales'] }}+</h1>
                                     </div>
                                 </div>
                             </div>

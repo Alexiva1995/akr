@@ -117,7 +117,7 @@ class User extends Authenticatable /*implements MustVerifyEmail*/
         $monto = 0;
         foreach($this->getUserInversiones as $inversion){
             if($inversion->status == 1){
-                $monto+= $inversion->invertido;
+                $monto+= $inversion->ganacia;
             }
         }
 

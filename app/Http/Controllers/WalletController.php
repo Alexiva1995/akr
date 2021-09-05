@@ -681,7 +681,10 @@ class WalletController extends Controller
 
     public function binario()
     {
-        $binan = WalletBinary::where('iduser', Auth::user()->id)->get();
+        $binan = WalletBinary::where([
+            ['iduser', Auth::user()->id],
+            ['restante', 0]
+        ])->get();
         return view('regis.binario')->with('binan', $binan);
     }
 }

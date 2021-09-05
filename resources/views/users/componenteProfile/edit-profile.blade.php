@@ -131,7 +131,7 @@
             <label class="custom-file-label" id="id" for="photoDB">Seleccione su
                 Foto <b>(Se permiten JPG o PNG.
                     Tamaño máximo de 800kB)</b></label>
-            <input type="file" id="photoDB" class="custom-file-input @error('photoDB') is-invalid @enderror" name="photoDB" onchange="previewFile(this, 'photo_preview')" accept="image/*">
+            <input type="file" id="photoDB" class="custom-file-input @error('photoDB') is-invalid @enderror" name="photoDB" onchange="previewFile(this, 'photo_preview2')" accept="image/*">
             @error('photoDB')
             <span class="invalid-feedback" role="alert">
                 <strong>{{ $message }}</strong>

@@ -64,7 +64,7 @@
                 <th>ID</th>
                 <th>Nombre</th>
                 <th>Correo</th>
-                <th>Invertido</th>
+                <th>Ganancia</th>
                 <th>Estado</th>
                 <th>Ingreso</th>
             </tr>

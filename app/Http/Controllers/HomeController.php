@@ -16,6 +16,7 @@ use App\Models\Inversion;
 use App\Models\Liquidaction;
 use App\Models\LogLogin;
 use App\Models\RankRecord;
+use App\Models\User;
 use Carbon\Carbon;
 
 class HomeController extends Controller
@@ -84,7 +85,12 @@ class HomeController extends Controller
      */
     public function dataDashboard(int $iduser):array
     {
-        $cantUsers = $this->treeController->getTotalUser($iduser);
+        $mes = Carbon::now();
+        $mes = $mes->format('m');
+        // dd($mes-1);
+        $currentMonthRef = User::where('referred_id', Auth::id())->whereMonth('created_at',$mes)->count();
+        $lastMonthRef = User::where('referred_id', Auth::id())->whereMonth('created_at',$mes-1)->count();
+
         $inversionLast = Inversion::where('iduser', '=', Auth::id())->orderBy('id', 'desc')->first();
         $montoInversion = 0;
         $porcentajeInversion = 0;
@@ -99,8 +105,8 @@ class HomeController extends Controller
 
         $data = [
             'id' => Auth::user()->id,
-            'directos' => $cantUsers['directos'],
-            'indirectos' => $cantUsers['indirectos'],
+            'actuales' => $currentMonthRef,
+            'pasados' => $lastMonthRef,
             'wallet' => Auth::user()->getWallet->where('status', 0)->sum('monto'),
             'crypto' => Auth::user()->getCrypto->where('status', 0)->sum('cantidad'),
             'comisiones' => Auth::user()->getWallet->sum('monto'),
@@ -173,11 +179,11 @@ class HomeController extends Controller
         $fecha_ini = Carbon::createFromDate($anno,1,1)->startOfDay();
         $fecha_fin = Carbon::createFromDate($anno, 12,1)->endOfMonth()->endOfDay();
 
-        $ordenes = Liquidaction::where('iduser', Auth::id())->where('status', '1')
+        $ordenes = Wallet::where('iduser', Auth::id())->where('status', '1')
                     ->select(
                         
                         DB::raw('date_format(created_at,"%m/%Y") as created'),
-                        DB::raw('SUM(total) as montos'),
+                        DB::raw('SUM(monto) as montos'),
                     )
                     ->whereBetween('created_at', [$fecha_ini, $fecha_fin])
                     ->groupBy('created')
