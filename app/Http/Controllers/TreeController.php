@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Http\Controllers\Controller;
 use App\Models\Country;
+use App\Models\Inversion;
 use App\Models\WalletBinary;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
@@ -49,6 +50,7 @@ class TreeController extends Controller
             $allNetwork = ($network == 'direct') ? 1 : 0;
             $users = $this->getChidrens2(Auth::id(), [], 1, 'referred_id', $allNetwork);
             $title = ($network == 'direct') ? 'Directo' : ' En Red';
+
             //Titulo
             return view('genealogy.listNetwork', compact('users', 'title', 'allNetwork'));
         } catch (\Throwable $th) {
@@ -278,6 +280,7 @@ class TreeController extends Controller
         return $resul;
     }
 
+    
     /**
      * Permite tener la informacion de los hijos como un listado
      *

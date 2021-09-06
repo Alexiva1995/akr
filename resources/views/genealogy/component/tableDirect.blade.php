@@ -48,7 +48,7 @@
             <h1 class="text-white">Lista de Referidos</h1>
         </div>
 
-        <div class="col-3">
+        <div class="col-3 mb-2">
         <button class="btn" id="IDref" onclick="getlink()">ID de
                 referido: {{ Auth::user()->id }} <i class="fa fa-link"></i>
             </button>
@@ -64,6 +64,7 @@
                 <th>ID</th>
                 <th>Nombre</th>
                 <th>Correo</th>
+                <th>Monto</th>
                 <th>Ganancia</th>
                 <th>Estado</th>
                 <th>Ingreso</th>
@@ -76,6 +77,7 @@
                 <td>00{{$item->id}}</td>
                 <td>{{$item->name}}</td>
                 <td>{{$item->email}}</td>
+                <td>{{$item->montoInvertido()}}</td>
                 <td>{{$item->montoInvertido()}}</td>
 
                 @if ($item->status == '0')
