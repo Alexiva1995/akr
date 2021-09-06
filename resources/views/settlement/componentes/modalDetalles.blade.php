@@ -2,9 +2,9 @@
 <div class="modal fade" id="modalModalDetalles" tabindex="-1" role="dialog" aria-labelledby="modalModalDetallesTitle"
     aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-dialog-centered modal-xl" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="modalModalDetallesTitle">Detalles de comisiones del usuario (@{{ComisionesDetalles.fullname}})</h5>
+        <div class="modal-content" style="background-color: #0f1522;">
+            <div class="modal-header" style="background-color: #0f1522;">
+                <h5 class="modal-title text-white" id="modalModalDetallesTitle">Detalles de comisiones del usuario (@{{ComisionesDetalles.fullname}})</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -15,9 +15,9 @@
                     <input type="hidden" name="iduser" :value="ComisionesDetalles.iduser">
                     <input type="hidden" name="tipo" value="detallada">
                     <div class="table-responsive">
-                        <table class="table w-100 nowrap scroll-horizontal-vertical table-striped " style="width: 100%;" id="table_detalle">
+                        <table class="myTable w-100 nowrap scroll-horizontal-vertical table-striped " style="width: 100%;" id="table_detalle">
                             <thead>
-                                <tr class="text-center">
+                                <tr class="text-center text-white">
                                     @if ($all)
                                     <th> 
                                         <button style="position: relative; z-index: 1;" type="button" class="btn" :class="(seleAllComision) ? 'btn-danger' : 'btn-info'" v-on:click="seleAllComision = !seleAllComision">
@@ -50,7 +50,7 @@
                             </tbody>
                             <tfoot>
                                 <tr>
-                                    <th colspan="4" class="text-right">Total Comision</th>
+                                    <th colspan="4" class="text-right text-white">Total Comision</th>
                                     <th colspan="2" v-text="ComisionesDetalles.total+' $'" class="text-right"></th>
                                 </tr>
                             </tfoot>
