@@ -77,8 +77,8 @@
                 <td>00{{$item->id}}</td>
                 <td>{{$item->name}}</td>
                 <td>{{$item->email}}</td>
-                <td>{{$item->montoInvertido()}}</td>
-                <td>{{$item->montoInvertido()}}</td>
+                <td>{{$item->invertido}}</td>
+                <td>{{$item->ganacia}}</td>
 
                 @if ($item->status == '0')
                 <td> <a class=" btn" id="cerrado">Inactivo</a></td>
