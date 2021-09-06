@@ -399,17 +399,6 @@ class LiquidactionController extends Controller
 
             $idLiquidation = $this->saveLiquidation($arrayLiquidation);
 
-            $concepto = 'Liquidacion del usuario ' . $user->fullname . ' por un monto de ' . $bruto;
-            $arrayWallet = [
-                'iduser' => $user->id,
-                'referred_id' => $user->id,
-                'monto' => $bruto,
-                'descripcion' => $concepto,
-                'status' => 0,
-                'tipo_transaction' => 1,
-            ];
-
-            $this->walletController->saveWallet($arrayWallet);
 
             if (!empty($idLiquidation)) {
                 $listComi = $comisiones->pluck('id');
@@ -515,19 +504,7 @@ class LiquidactionController extends Controller
             'liquidation_id' => null,
         ]);
 
-        $concepto = 'Liquidacion Reservada - Motivo: ' . $comentario;
-        $arrayWallet = [
-            'iduser' => $liquidacion->iduser,
-            'cierre_comision_id' => null,
-            'referred_id' => $liquidacion->iduser,
-            'monto' => $liquidacion->monto_bruto,
-            'descripcion' => $concepto,
-            'status' => 3,
-            'tipo_transaction' => 0,
-        ];
-
-        //$this->walletController->saveWallet($arrayWallet);
-
+       
         $liquidacion->status = 2;
         $liquidacion->save();
     }
