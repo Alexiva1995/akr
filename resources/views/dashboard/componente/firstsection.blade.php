@@ -21,7 +21,7 @@
                             </div>                    
                         @else
                             <div class="d-flex justify-content-center grupo mr-1">
-                                <a href="#" id="form-labels" class="btn btn-activo  disabled">Derecha</a> 
+                                <a href="#" id="form-labels" class="btn btn-activo" style="cursor:default; ">Derecha</a> 
                                 <a href="#" id="form-labels" class="btn btn-inactivo " v-on:click="updateBinarySide('I')">Izquierda</a> 
                             </div>                    
                         @endif  
