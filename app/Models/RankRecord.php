@@ -16,4 +16,8 @@ class RankRecord extends Model
         'fecha_inicio', 'fecha_fin'
     ];
 
+    public function rank()
+    {
+        return $this->belongsTo('App\Models\Rank', 'id');
+    }
 }
