@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Rank;
 use App\Models\Wallet;
 use App\Models\OrdenPurchases;
 use Illuminate\Support\Facades\DB;
@@ -99,8 +100,9 @@ class HomeController extends Controller
             $porcentajeInversion = (($inversionLast->ganacia / ($montoInversion * 1)) * 100);
         }
 
-        $iduser = Auth::user()->id;
-        $rango = RankRecord::where('iduser', $iduser)->first();         
+        $user = Auth::user();
+        $rango = user::where('id', $user->id)->first(); 
+
         $rango_actual = $rango != null ? $rango->rank->name : "NO HA OBTENIDO UN RANGO AÚN";
 
         $data = [
