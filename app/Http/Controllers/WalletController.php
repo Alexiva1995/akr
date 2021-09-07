@@ -89,7 +89,7 @@ class WalletController extends Controller
         $user = User::findOrFail(1); //ADMIN
 
         $sponsors = $this->treeController->getSponsor($iduser, [], 0, 'ID', 'referred_id');
-        // dd($sponsors);
+        
         if (!empty($sponsors)) {
             foreach ($sponsors as $sponsor) {
                 if ($sponsor->id != $iduser) {
@@ -279,7 +279,6 @@ class WalletController extends Controller
                     $wallet = Wallet::create($data);
                 }
 
-                // dd($wallet->getWalletUser->wallet);
                 $saldoAcumulado = ($wallet->getWalletUser->wallet + $data['monto']);
                 $wallet->getWalletUser->update(['wallet' => $saldoAcumulado]);
                 //$wallet->update(['balance' => $saldoAcumulado]);
@@ -406,10 +405,24 @@ class WalletController extends Controller
     {
         try {
             $ordenes = $this->getOrdens(null);
-            // dd($ordenes);
+           
             foreach ($ordenes as $orden) {
                 $comision = ($orden->total * 0.1);
                 $sponsor = User::find($orden->getOrdenUser->referred_id);
+
+                foreach ($sponsor as $env) {
+
+                    $inv = Inversion::where('iduser', '=', $env->id)->where('status', 1)->first();
+
+                    if ($inv->ganacia >= $inv->max_ganancia) { //comparamos si se pasa de lo que puede ganar
+                        $inv = $inv->max_ganancia;
+                        $inv->max_ganancia = $inv->invertido * 2;
+                        $inv->ganacia = $inv->invertido * 2;
+                        $inv->status = 2;
+                    }
+
+                }
+
                 if ($sponsor->status == '1') {
                     $concepto = 'Bono directo del Usuario ' . $orden->getOrdenUser->fullname;
                     $this->preSaveWallet($sponsor->id, $orden->iduser, $orden->id, $comision, $concepto);
@@ -496,10 +509,9 @@ class WalletController extends Controller
             ['puntos_i', '>', 0],
         ])->selectRaw('iduser, SUM(puntos_d) as totald, SUM(puntos_i) as totali')->groupBy('iduser')->get();
 
-        // dd($binarios);
+    
 
         foreach ($binarios as $binario) {
-            // dd('Puntos por la izquierda: '.$binario->totali.'   ||   Puntos por la derecha: '.$binario->totald);
 
             $puntos = 0;
             $side_mayor = $side_menor = '';
@@ -514,7 +526,7 @@ class WalletController extends Controller
                 $side_menor = 'D';
                 $restante = $binario->totali - $binario->totald;
             }
-            // dd($puntos);
+          
             $sponsor = User::find($binario->iduser);
             $inv = Inversion::where([
                 ['iduser', '=', $binario->iduser],
@@ -534,7 +546,6 @@ class WalletController extends Controller
                         $porcentaje = 0.10;
                     }
                     $comision = ($puntos * $porcentaje);
-                    // dd('Porcentaje: '.$por.' monto: '.$comision);
                     $sponsor->point_rank += $puntos;
                     $concepto = 'Bono Binario - ' . $puntos;
                     // $idcomision = $binario->iduser.Carbon::now()->format('Ymd');

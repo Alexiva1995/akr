@@ -60,20 +60,19 @@ class InversionController extends Controller
                 ['status', '=', 1],
             ])->first();
             if ($check == null) {
-                // dd('No hay inversion');
+              
                 $data = [
                     'iduser' => $iduser,
                     'orden_id' => $orden,
                     'invertido' => $invertido,
                     'ganacia' => 0,
 
-                    // 'fecha_vencimiento' => $vencimiento,
                 ];
                 Inversion::create($data);
             }else{
                 $check->invertido += $invertido;
                 $check->save();
-                // dd("Al parecer todo salio bien, revisa");
+          
             }
         } catch (\Throwable $th) {
             Log::error('InversionController - saveInversion -> Error: '.$th);

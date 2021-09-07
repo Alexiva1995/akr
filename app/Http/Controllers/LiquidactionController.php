@@ -649,6 +649,6 @@ class LiquidactionController extends Controller
 
 
         return view('withdraw.Historial', compact('liquidaciones'));
-        // dd($liquidaciones);
+       
     }
 }

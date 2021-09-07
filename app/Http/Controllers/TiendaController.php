@@ -269,6 +269,7 @@ class TiendaController extends Controller
         }
     }
 
+    
     public function cambiar_status(Request $request)
 
     {

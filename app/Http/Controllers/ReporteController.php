@@ -22,12 +22,12 @@ class ReporteController extends Controller
     {
 
         if($this->isAdmin()){
-            // dd('Eres administrador');
+           
             $ordenes = OrdenPurchases::all();
         }else{
-            // dd('No eres administrador');
+      
             $id = Auth::user()->id;
-            // dd($id);
+           
             $ordenes = OrdenPurchases::where('iduser',$id)->get();
         }
 

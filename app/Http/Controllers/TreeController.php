@@ -228,7 +228,7 @@ class TreeController extends Controller
     {
         try {
             $resul = User::where($typeTree, '=', $id)->get();
-            // dd($resul->nombre);
+           
             foreach ($resul as $user) {
                 $user->nivel = $nivel;
                 $user->logoarbol = asset('assets/img/sistema/favicon.png');
@@ -347,7 +347,7 @@ class TreeController extends Controller
                 $array_tree_user = [];
 
             $data = $this->getDataSponsor($child, $nivel, $typeTree);
-            dd($data);
+        
             if (count($data) > 0) {
                 foreach ($data as $user) {
                     $array_tree_user[] = $user;
