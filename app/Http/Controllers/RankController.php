@@ -153,7 +153,7 @@ class RankController extends Controller
     public function currentRank()
     {
         $user = Auth::user();
-        $rango = RankRecord::where('iduser', $user->id)->first(); 
+        $rango = user::where('id', $user->id)->first(); 
 
         $idr = $rango->rank->id+1;
         $rango2 = Rank::where('id', $idr)->first();

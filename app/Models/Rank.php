@@ -18,8 +18,4 @@ class Rank extends Model
         return $this->belongsTo('App\Models\User', 'iduser', 'id');
     }
 
-    public function getCurrentRank()
-    {
-        return $this->hasMany('App\Models\Rank', 'rank_actual_id');
-    }
 }
