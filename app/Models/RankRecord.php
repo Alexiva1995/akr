@@ -18,6 +18,6 @@ class RankRecord extends Model
 
     public function rank()
     {
-        return $this->belongsTo('App\Models\Rank', 'rank_actual_id');
+        return $this->belongsTo('App\Models\Rank', 'id');
     }
 }

@@ -137,4 +137,9 @@ class User extends Authenticatable /*implements MustVerifyEmail*/
     {
         return $this->notify(new UserResetPassword($token));
     }
+
+    public function rank()
+    {
+        return $this->belongsTo('App\Models\Rank', 'rank_id');
+    }
 }
