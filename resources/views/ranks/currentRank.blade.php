@@ -1,8 +1,12 @@
 @php
-
-$porc = ($porcentaje < 100) ? $porcentaje : 100;
-$pf = $rango2->points-$user->point_rank;
-$puntosFaltantes  = $pf > 0 ? $pf : 0;
+    if($user->rank_id > 0){
+        $porc = ($porcentaje < 100) ? $porcentaje : 100;
+        $pf = $rango2->points-$user->point_rank;
+        $puntosFaltantes  = $pf > 0 ? $pf : 0;
+    }else{
+        $puntosFaltantes = 0;
+        $porc = 0;
+    }
 @endphp
 
 @extends('layouts.dashboard')
@@ -21,7 +25,7 @@ $puntosFaltantes  = $pf > 0 ? $pf : 0;
             <div class="text-center w-75 pb-4">
                 <div class="m-auto circle-rango2"></div>
                 <h2 class="mt-2">Rango Actual</h2>
-                <h1>{{$rango->rank->name}}</h1>
+                <h1>{{$rango}}</h1>
                 <h2>Puntos faltantes para tu siguiente rango</h2>
 
                 <div class="d-flex justify-content-around mt-2">

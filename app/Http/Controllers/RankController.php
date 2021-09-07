@@ -153,12 +153,19 @@ class RankController extends Controller
     public function currentRank()
     {
         $user = Auth::user();
-        $rango = user::where('id', $user->id)->first(); 
+        // $rango = user::where('id', $user->id)->first(); 
 
-        $idr = $rango->rank->id+1;
-        $rango2 = Rank::where('id', $idr)->first();
+        if($user->rank_id != 0){
+            $rango = $user->rank->name;
+            $idr = $user->rank->id+1;
+            $rango2 = Rank::where('id', $idr)->first();    
+            $porcentaje = round((($user->point_rank/$rango2->points)*100),2);
+        }else{
+            $rango = "Aún no tienes un rango";
+            $rango2 = 0;    
+            $porcentaje = 0;
+        }
 
-        $porcentaje = round((($user->point_rank/$rango2->points)*100),2);
         
         return view('ranks.currentRank', compact('rango', 'user', 'porcentaje', 'rango2'));        
     }

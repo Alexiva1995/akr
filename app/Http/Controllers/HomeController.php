@@ -99,9 +99,8 @@ class HomeController extends Controller
             $porcentajeInversion = (($inversionLast->ganacia / ($montoInversion * 1)) * 100);
         }
 
-        $iduser = Auth::user()->id;
-        $rango = RankRecord::where('iduser', $iduser)->first();         
-        $rango_actual = $rango != null ? $rango->rank->name : "NO HA OBTENIDO UN RANGO AÚN";
+        $iduser = Auth::user();                
+        $rango_actual = $iduser->rank_id != 0 ? $iduser->rank->name : "NO HA OBTENIDO UN RANGO AÚN";
 
         $data = [
             'id' => Auth::user()->id,
