@@ -1,7 +1,7 @@
 <!-- Modal -->
 <div class="modal fade" id="modalModalDetalles" tabindex="-1" role="dialog" aria-labelledby="modalModalDetallesTitle"
     aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-dialog-centered modal-xl" role="document">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-centered modal-lg" role="document">
         <div class="modal-content" style="background-color: #0f1522;">
             <div class="modal-header" style="background-color: #0f1522;">
                 <h5 class="modal-title text-white" id="modalModalDetallesTitle">Detalles de comisiones del usuario (@{{ComisionesDetalles.fullname}})</h5>
