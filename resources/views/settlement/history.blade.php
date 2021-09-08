@@ -68,11 +68,12 @@
                     </tbody>
                 </table>
             </div>
+            @include('settlement.componentes.modalDetalles', ['all' => false])
         </div>
     </div>
 </div>
 </div>
-@include('settlement.componentes.modalDetalles', ['all' => false])
+
 </div>
 
 

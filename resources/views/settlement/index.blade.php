@@ -83,9 +83,10 @@
             </form>
         </div>
     </div>
+    @include('settlement.componentes.modalDetalles', ['all' => true])
 </div>
 </div>
-@include('settlement.componentes.modalDetalles', ['all' => true])
+
 </div>
 @endsection
 

@@ -29,46 +29,47 @@
         <div class="card" style="background-color:#0f1522;">
             <div class="table-responsive">
                 <table class="nowrap myTable scroll-horizontal-vertical   table-striped w-100">
-                  
-                        <thead class="">
-                            <tr class="text-center text-white ">
-                                <th>ID</th>
-                                <th>Name</th>
-                                <th>Total </th>
-                                <th>Hash</th>
-                                <th>Billetera</th>
-                                <th>Status</th>
-                                <th>Fecha</th>
-                                <th>Accion</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($liquidaciones as $liqui)
-                            <tr class="text-center" id="contend">
-                                <td>{{$liqui->id}}</td>
-                                <td>{{$liqui->fullname}}</td>
-                                <td>{{$liqui->total}}</td>
-                                <td>{{$liqui->hash}}</td>
-                                <td>{{$liqui->wallet_used}}</td>
-                                <td>{{$liqui->status}}</td>
-                                <td>{{date('Y-M-d', strtotime($liqui->created_at))}}</td>
-                                <td>
-                                    @if ($estado == 1)
-                                    <button class="btn btn-info" onclick="vm_liquidation.getDetailComisionLiquidation({{$liqui->id}})">
-                                        <i class="fa fa-eye"></i>
-                                    </button>
-                                    @endif
-                                </td>
-                            </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
+
+                    <thead class="">
+                        <tr class="text-center text-white ">
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Total </th>
+                            <th>Hash</th>
+                            <th>Billetera</th>
+                            <th>Status</th>
+                            <th>Fecha</th>
+                            <th>Accion</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($liquidaciones as $liqui)
+                        <tr class="text-center" id="contend">
+                            <td>{{$liqui->id}}</td>
+                            <td>{{$liqui->fullname}}</td>
+                            <td>{{$liqui->total}}</td>
+                            <td>{{$liqui->hash}}</td>
+                            <td>{{$liqui->wallet_used}}</td>
+                            <td>{{$liqui->status}}</td>
+                            <td>{{date('Y-M-d', strtotime($liqui->created_at))}}</td>
+                            <td>
+                                @if ($estado == 1)
+                                <button class="btn btn-info" onclick="vm_liquidation.getDetailComisionLiquidation({{$liqui->id}})">
+                                    <i class="fa fa-eye"></i>
+                                </button>
+                                @endif
+                            </td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
             </div>
+            @include('settlement.componentes.modalDetalles', ['all' => false])
         </div>
     </div>
 </div>
 </div>
-@include('settlement.componentes.modalDetalles', ['all' => false])
+
 </div>
 
 

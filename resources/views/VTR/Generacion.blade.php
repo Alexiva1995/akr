@@ -41,7 +41,7 @@
                 @csrf
                 <div class="table-responsive">
                     <table class="w-100 nowrap scroll-horizontal-vertical myTable table-striped">
-                        <thead >
+                        <thead>
                             <tr class="text-center text-white bg-purple-alt2">
                                 <th> Seleccionar</th>
                                 <th>ID Usuario</th>
@@ -85,16 +85,16 @@
                     <button class="btn btn-primary">Generar Liquidacion</button>
                 </div>
             </form>
-     
-    <div class="form-group text-center">
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-            % de Moneda
-        </button>
+
+            <div class="form-group text-center">
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                    % de Moneda
+                </button>
+            </div>
+        </div>
     </div>
-</div>
-</div>
-@include('VTR.componentes.modalDetalles', ['all' => true])
-@include('VTR.component.modal%')
+    @include('VTR.componentes.modalDetalles', ['all' => true])
+    @include('VTR.component.modal%')
 </div>
 @endsection
 

@@ -27,8 +27,8 @@
     <div class="col-12 ">
         <div class="card" style="background-color:#0f1522;">
             <div class="table-responsive">
-            <table class="nowrap myTable scroll-horizontal-vertical   table-striped w-100">
-                    <thead >
+                <table class="nowrap myTable scroll-horizontal-vertical   table-striped w-100">
+                    <thead>
                         <tr class="text-center text-white ">
                             <th>ID</th>
                             <th>Nombre</th>
@@ -60,12 +60,14 @@
                     </tbody>
                 </table>
             </div>
+            @include('VTR.componentes.modalDetalles', ['all' => true])
+            @include('VTR.componentes.modalAction')
         </div>
     </div>
 </div>
 </div>
-@include('VTR.componentes.modalDetalles', ['all' => true])
-@include('VTR.componentes.modalAction')
+
+
 </div>
 
 
