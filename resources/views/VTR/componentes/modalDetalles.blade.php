@@ -5,7 +5,7 @@
     <div class="modal-dialog modal-dialog-centered modal-dialog-centered modal-lg" role="document">
         <div class="modal-content" style="background-color:#0f1522;">
             <div class="modal-header" style="background-color:#0f1522;">
-                <h5 class="modal-title" id="form-label">Detalles de comisiones del usuario (@{{ComisionesDetalles.fullname}})</h5>
+                <h5 class="modal-title" id="form-labels">Detalles de comisiones del usuario (@{{ComisionesDetalles.fullname}})</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true"><i class="fas fa-times"></i></span>
                 </button>
@@ -54,7 +54,7 @@
                     {{-- @if(\Carbon\Carbon::now()->format('l') == 'Friday') --}}
                         @if ($all)
                             <div class="form-group text-center">
-                                <button class="btn btn-primary">Generar Liquidacion</button>
+                                <button class="btn btn-primary" id="form-labels">Generar Liquidacion</button>
                             </div>
                         {{-- @endif --}}
                     @endif

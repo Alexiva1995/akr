@@ -70,12 +70,14 @@
                 </tbody>
             </table>
         </div>
+        @include('settlement.componentes.modalDetalles', ['all' => false])
+        @include('settlement.componentes.modalAction')
     </div>
 </div>
 </div>
 </div>
-@include('settlement.componentes.modalDetalles', ['all' => false])
-@include('settlement.componentes.modalAction')
+
+
 </div>
 
 

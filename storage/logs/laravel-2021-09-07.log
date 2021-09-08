@@ -26,3 +26,19 @@
 [2021-09-08 14:12:52] local.INFO: Fin de pagar utilidad diaria - 2021-09-08 14:12:52  
 [2021-09-08 14:12:52] local.INFO: Inicio Cron CheckRango 2021-09-08 14:12:52  
 [2021-09-08 14:12:52] local.INFO: Fin Cron CheckRango 2021-09-08 14:12:52  
+[2021-09-08 17:21:41] local.ERROR: There are no commands defined in the "mirate" namespace.
+
+Did you mean this?
+    migrate {"exception":"[object] (Symfony\\Component\\Console\\Exception\\NamespaceNotFoundException(code: 0): There are no commands defined in the \"mirate\" namespace.
+
+Did you mean this?
+    migrate at /home/abraham/Documents/coding/akr/vendor/symfony/console/Application.php:612)
+[stacktrace]
+#0 /home/abraham/Documents/coding/akr/vendor/symfony/console/Application.php(663): Symfony\\Component\\Console\\Application->findNamespace('mirate')
+#1 /home/abraham/Documents/coding/akr/vendor/symfony/console/Application.php(255): Symfony\\Component\\Console\\Application->find('mirate:fresh')
+#2 /home/abraham/Documents/coding/akr/vendor/symfony/console/Application.php(167): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#3 /home/abraham/Documents/coding/akr/vendor/laravel/framework/src/Illuminate/Console/Application.php(92): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#4 /home/abraham/Documents/coding/akr/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(129): Illuminate\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#5 /home/abraham/Documents/coding/akr/artisan(37): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#6 {main}
+"} 

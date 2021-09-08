@@ -1,7 +1,7 @@
 <!-- Modal -->
 <div class="modal fade" id="modalModalDetalles" tabindex="-1" role="dialog" aria-labelledby="modalModalDetallesTitle"
     aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-dialog-centered modal-lg" role="document">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-centered modal-xl" role="document">
         <div class="modal-content" style="background-color: #0f1522;">
             <div class="modal-header" style="background-color: #0f1522;">
                 <h5 class="modal-title text-white" id="modalModalDetallesTitle">Detalles de comisiones del usuario (@{{ComisionesDetalles.fullname}})</h5>
@@ -15,8 +15,8 @@
                     <input type="hidden" name="iduser" :value="ComisionesDetalles.iduser">
                     <input type="hidden" name="tipo" value="detallada">
                     <div class="table-responsive">
-                        <table class="myTable w-100 nowrap scroll-horizontal-vertical table-striped " style="width: 100%;" id="table_detalle">
-                            <thead>
+                        <table class="table w-100 nowrap scroll-horizontal-vertical table-striped " style="width: 100%;" id="table_detalle">
+                            <thead style="background-color: #095d76;  border: 2px solid rgba(17, 184, 209, 0.77); ">
                                 <tr class="text-center text-white">
                                     @if ($all)
                                     <th> 
@@ -25,33 +25,33 @@
                                         </button>
                                     </th>
                                     @endif
-                                    <th>ID Comision</th>
-                                    <th>Fecha</th>
-                                    <th>Concepto</th>
-                                    <th>ID Referido</th>
-                                    <th>Referido</th>
-                                    <th>Monto</th>
+                                    <th id="form-labels">ID Comision</th>
+                                    <th id="form-labels">Fecha</th>
+                                    <th id="form-labels">Concepto</th>
+                                    <th id="form-labels">ID Referido</th>
+                                    <th id="form-labels">Referido</th>
+                                    <th id="form-labels">Monto</th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody  style=" border: 2px solid rgba(17, 184, 209, 0.77);">
                                 <tr v-for="item in ComisionesDetalles.comisiones" class="text-center">
                                     @if ($all)
                                     <td>
                                         <input type="checkbox" :value="item.id" :checked="(seleAllComision) ? true : false" name="listComisiones[]">
                                     </td>
                                     @endif
-                                    <td v-text="item.id"></td>
-                                    <td v-text="item.fecha"></td>
-                                    <td v-text="item.descripcion"></td>
-                                    <td v-text="item.referred_id"></td>
-                                    <td v-text="item.referido.fullname"></td>
-                                    <td v-text="item.monto +' $'"></td>
+                                    <td id="form-labels" v-text="item.id"></td>
+                                    <td id="form-labels" v-text="item.fecha"></td>
+                                    <td id="form-labels" v-text="item.descripcion"></td>
+                                    <td  id="form-labels" v-text="item.referred_id"></td>
+                                    <td id="form-labels" v-text="item.referido.fullname"></td>
+                                    <td  id="form-labels" v-text="item.monto +' $'"></td>
                                 </tr>
                             </tbody>
                             <tfoot>
                                 <tr>
-                                    <th colspan="4" class="text-right text-white">Total Comision</th>
-                                    <th colspan="2" v-text="ComisionesDetalles.total+' $'" class="text-right"></th>
+                                    <th colspan="4" class="text-right text-white" id="form-labels">Total Comision</th>
+                                    <th colspan="2" id="form-labels" v-text="ComisionesDetalles.total+' $'" class="text-right"></th>
                                 </tr>
                             </tfoot>
                         </table>
@@ -66,7 +66,7 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+            <button type="button" id="form-labels" class="btn text-white" style="background-color: #00cfe8;" data-dismiss="modal">Cerrar</button>
             </div>
         </div>
     </div>
