@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Rank;
 use App\Models\Wallet;
 use App\Models\OrdenPurchases;
 use Illuminate\Support\Facades\DB;
