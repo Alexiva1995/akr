@@ -410,18 +410,6 @@ class WalletController extends Controller
                 $comision = ($orden->total * 0.1);
                 $sponsor = User::find($orden->getOrdenUser->referred_id);
 
-                foreach ($sponsor as $env) {
-
-                    $inv = Inversion::where('iduser', '=', $env->id)->where('status', 1)->first();
-
-                    if ($inv->ganacia >= $inv->max_ganancia) { //comparamos si se pasa de lo que puede ganar
-                        $inv = $inv->max_ganancia;
-                        $inv->max_ganancia = $inv->invertido * 2;
-                        $inv->ganacia = $inv->invertido * 2;
-                        $inv->status = 2;
-                    }
-
-                }
 
                 if ($sponsor->status == '1') {
                     $concepto = 'Bono directo del Usuario ' . $orden->getOrdenUser->fullname;
@@ -512,6 +500,7 @@ class WalletController extends Controller
     
 
         foreach ($binarios as $binario) {
+            
 
             $puntos = 0;
             $side_mayor = $side_menor = '';
