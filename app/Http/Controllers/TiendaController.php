@@ -445,6 +445,15 @@ class TiendaController extends Controller
                 // $inv = Inversion::where('iduser', '=', $wallet->iduser)->where('status', 1)->first();
                 $inv->ganacia += $wallet->monto;
                 $inv->save();
+                $total = $inv->ganacia += $wallet->monto;
+                if($total >= $inv->max_ganancia){
+                    $inv->ganacia = $inv->max_ganancia;
+                    $inv->status = 2;
+                }else{
+                    $inv->ganacia += $wallet->monto;
+                }
+    
+                $inv->save();
             }
         } catch (\Throwable $th) {
             Log::error('Tienda - investment -> Error: ' . $th);

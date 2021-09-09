@@ -577,8 +577,17 @@ class WalletController extends Controller
 
         if ($inv != null) {
             // $inv = Inversion::where('iduser', '=', $wallet->iduser)->where('status', 1)->first();
-            $inv->ganacia += $monto;
+
+            $total = $inv->ganacia += $monto;
+            if($total >= $inv->max_ganancia){
+                $inv->ganacia = $inv->max_ganancia;
+                $inv->status = 2;
+            }else{
+                $inv->ganacia += $monto;
+            }
+
             $inv->save();
+
         }
     }
 
