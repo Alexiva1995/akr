@@ -6,7 +6,7 @@
 </style>
 {{-- navbar navbar-with-menu floating-nav navbar-light navbar-shadow --}}
 <nav id="navbar_top" class="navbar navbar-expand-lg navbar-floating footer-static">
-    <a class="navbar-brand ml-4" href={{route('home')}}><img src="{{asset('assets/Diseño/DreamsBlue.svg')}}" alt="hola"></a>
+    <a class="navbar-brand ml-4" href={{route('home')}}><img src="{{asset('assets/Diseno/DreamsBlue.svg')}}" alt="hola"></a>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ml-auto">
             <li class="nav-item m-auto px-2 borde">                

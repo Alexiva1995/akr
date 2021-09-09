@@ -6,7 +6,7 @@
                 <div class="col-12">
                     <nav class="navbar navbar-expand-md ">
 
-                        <a class="navbar-brand" href="#"><img src="{{asset('assets/Diseño/DreamsBlue.svg')}}" alt="hola"></a>
+                        <a class="navbar-brand" href="#"><img src="{{asset('assets/Diseno/DreamsBlue.svg')}}" alt="hola"></a>
 
                         <button class="navbar-toggler text-center" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" >
                             <span class="navbar-toggler-icon"><i style="color:white;"  class="fas fa-bars"></i></span>

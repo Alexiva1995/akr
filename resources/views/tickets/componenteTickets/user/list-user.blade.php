@@ -55,9 +55,9 @@
 
 
                         @if ($item->status == '0')
-                        <td><a href="{{ route('ticket.edit-user',$item->id) }}"><img src="{{asset('assets/Diseño/Desktop.svg')}}" alt="" width="40" height="40"></a></td>
+                        <td><a href="{{ route('ticket.edit-user',$item->id) }}"><img src="{{asset('assets/Diseno/Desktop.svg')}}" alt="" width="40" height="40"></a></td>
                         @else
-                        <td><a href="{{ route('ticket.show-user',$item->id) }}"><img src="{{asset('assets/Diseño/Desktop.svg')}}" alt="" width="40" height="40"></a></a></td>
+                        <td><a href="{{ route('ticket.show-user',$item->id) }}"><img src="{{asset('assets/Diseno/Desktop.svg')}}" alt="" width="40" height="40"></a></a></td>
                         @endif
 
                     </tr>

@@ -189,7 +189,7 @@ body {
 <body>
   <!-- Tutorial: http://bit.ly/2N0hpde -->
 <div class='under'>
-    <img src="{{asset('assets/Diseño/DreamsBlue.svg')}}" class="under__footer" width="100" height="450" alt="bg-img">
+    <img src="{{asset('assets/Diseno/DreamsBlue.svg')}}" class="under__footer" width="100" height="450" alt="bg-img">
     <header class='under__content'>
       <h1 class='under__title mb-1 font-weight-bold'><b>Bienvenido a DreamsBlue</b></h1>
       {{-- <div class='under__text text-dark'>Estamos realizando cambios en la pagina. Síguenos en nuestras redes sociales para mantenerte informado.</div> --}}
